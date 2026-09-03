@@ -2237,6 +2237,32 @@ button {
   filter: saturate(1.05);
 }
 
+.project-live-badge {
+  position: absolute;
+  right: 0.85rem;
+  bottom: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.45rem 0.65rem;
+  border: 1px solid color-mix(in srgb, var(--line) 75%, transparent);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--paper) 88%, transparent);
+  color: var(--ink);
+  font: 0.68rem var(--mono);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0;
+  transform: translateY(0.35rem);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.project-image-box:hover .project-live-badge,
+.project-image-box:focus-visible .project-live-badge {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .project-badge-action {
   position: absolute;
   right: 1rem;

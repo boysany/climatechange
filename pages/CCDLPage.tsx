@@ -7,6 +7,7 @@ import { SEOStrategyPage } from '../sections/SEOStrategyPage.tsx';
 import { BlogPage } from '../sections/BlogPage.tsx';
 import { CommunityPage } from '../sections/CommunityPage.tsx';
 import { SEO_SERVICES_MAP } from '../lib/seoData.ts';
+import { portfolioProjects } from '../sections/Portfolio.tsx';
 
 // Authentic, real-world team member portraits provided by user
 import gaganPortrait from '../src/assets/images/gagan_chouhan_1787155556813.jpg';
@@ -179,6 +180,22 @@ export const projectsData = [
     tech: ['React', 'Framer Motion', 'Vite', 'Cloudflare'],
   },
 ];
+
+const livePortfolioProjects = portfolioProjects
+  .filter((project) => !projectsData.some((existing) => existing.title === project.title))
+  .map((project) => ({
+    id: `live-${project.num}`,
+    title: project.title,
+    type: project.category.includes('Education') ? 'EdTech' : project.category.includes('DeFi') ? 'DeFi' : 'Platforms',
+    category: project.category,
+    metrics: 'Live project preview',
+    text: project.desc,
+    image: project.img,
+    tech: [project.tag, 'Live Preview'],
+    liveUrl: project.liveUrl,
+  }));
+
+const allProjectsData = [...projectsData, ...livePortfolioProjects];
 
 export const caseStudiesDetail: Record<string, {
   title: string;
@@ -957,8 +974,8 @@ export default function CCDLPage({
 
   // Filtered projects for work page
   const filteredProjects = useMemo(() => {
-    if (activeFilter === 'All') return projectsData;
-    return projectsData.filter((p) => p.type === activeFilter);
+    if (activeFilter === 'All') return allProjectsData;
+    return allProjectsData.filter((p) => p.type === activeFilter);
   }, [activeFilter]);
 
   return (
@@ -1042,13 +1059,20 @@ export default function CCDLPage({
                   </div>
 
                   <div className="case-action-row">
-                    <button
-                      onClick={() => onNavigate(`case-study/${project.id}`)}
-                      className="case-live-btn"
-                    >
-                      <span>In-Depth Case Study</span>
-                      <ArrowRight size={14} />
-                    </button>
+                    {'liveUrl' in project && project.liveUrl ? (
+                      <a href={project.liveUrl} target="_blank" rel="noreferrer" className="case-live-btn">
+                        <span>Visit Live Site</span>
+                        <ArrowUpRight size={14} />
+                      </a>
+                    ) : (
+                      <button
+                        onClick={() => onNavigate(`case-study/${project.id}`)}
+                        className="case-live-btn"
+                      >
+                        <span>In-Depth Case Study</span>
+                        <ArrowRight size={14} />
+                      </button>
+                    )}
                   </div>
                 </div>
               </ScrollReveal>
