@@ -16,25 +16,63 @@ export const portfolioProjects = [
     tag: 'Talent Platform',
     title: 'Hire Professional',
     desc: 'A modern on-demand hiring platform connecting vetted industry specialists with enterprise teams through automated matchmaking and contract workflows.',
-    img: 'https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=85&w=1600',
+    img: 'https://image.thum.io/get/width/1200/crop/800/wait/5/https://hireprofessional.vercel.app/',
+    liveUrl: 'https://hireprofessional.vercel.app/',
     year: '2025',
     category: 'Talent / Web Platform',
   },
   {
     num: '02',
+    tag: 'DeFi & Web3',
+    title: 'Swap',
+    desc: 'A live exchange interface designed around clear asset discovery, confident transaction flow, and real-time market context.',
+    img: 'https://image.thum.io/get/width/1200/crop/800/wait/5/https://swap-zeta.vercel.app/',
+    liveUrl: 'https://swap-zeta.vercel.app/',
+    year: '2026',
+    category: 'DeFi / Web3 Product',
+  },
+  {
+    num: '03',
+    tag: 'Fintech Exchange',
+    title: 'CC Exchange',
+    desc: 'A focused digital exchange experience with a crisp trading-oriented interface and accessible account workflows.',
+    img: 'https://image.thum.io/get/width/1200/crop/800/wait/5/https://ccexchange.vercel.app/',
+    liveUrl: 'https://ccexchange.vercel.app/',
+    year: '2026',
+    category: 'Fintech / Exchange',
+  },
+  {
+    num: '04',
     tag: 'EdTech System',
     title: 'School Management',
     desc: 'An all-in-one institutional management portal orchestrating student grading, attendance telemetry, faculty scheduling, and parent communication.',
-    img: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=85&w=1600',
+    img: 'https://image.thum.io/get/width/1200/crop/800/wait/5/https://schoolmangment.vercel.app/',
+    liveUrl: 'https://schoolmangment.vercel.app/',
     year: '2025',
     category: 'EdTech / Dashboard',
+  },
+  {
+    num: '05', tag: 'Education Portal', title: 'Gurukul The School',
+    desc: 'A polished school website for curriculum discovery, admissions, and parent engagement.',
+    img: 'https://image.thum.io/get/width/1200/crop/800/wait/5/https://gurukultheschool.in/', liveUrl: 'https://gurukultheschool.in/', year: '2026', category: 'Education / Web Portal',
+  },
+  {
+    num: '06', tag: 'AI & Product', title: 'Hezafx',
+    desc: 'A live product experience with a focused, modern interface and clear conversion flow.',
+    img: 'https://image.thum.io/get/width/1200/crop/800/wait/5/https://hezafx.vercel.app/', liveUrl: 'https://hezafx.vercel.app/', year: '2026', category: 'AI / Product',
+  },
+  {
+    num: '07', tag: 'Fintech Wallet', title: 'TP Wallet',
+    desc: 'A digital wallet experience built around simple financial actions and trustworthy information design.',
+    img: 'https://image.thum.io/get/width/1200/crop/800/wait/5/https://tpwallet.vercel.app/', liveUrl: 'https://tpwallet.vercel.app/', year: '2026', category: 'Fintech / Wallet',
   },
   {
     num: '03',
     tag: 'DeFi & Web3',
     title: 'Urmi Swap',
     desc: 'A focused decentralized exchange experience built around real-time liquidity pools, minimal slippage, speed, and confident asset swapping.',
-    img: 'https://images.unsplash.com/photo-1642543492481-44e81e3914a7?auto=format&fit=crop&q=85&w=1600',
+    img: 'https://image.thum.io/get/width/1200/crop/800/wait/5/https://swap-zeta.vercel.app/',
+    liveUrl: 'https://swap-zeta.vercel.app/',
     year: '2025',
     category: 'DeFi / Web3 Product',
   },
@@ -48,7 +86,42 @@ export const portfolioProjects = [
     category: 'Education / Web Portal',
   },
   {
-    num: '05',
+    num: '08', tag: 'Translation AI', title: 'Traslate',
+    desc: 'An approachable translation product designed for fast, direct multilingual workflows.',
+    img: 'https://image.thum.io/get/width/1200/crop/800/wait/5/https://traslate-six.vercel.app/', liveUrl: 'https://traslate-six.vercel.app/', year: '2026', category: 'AI / Language',
+  },
+  {
+    num: '09', tag: 'Commerce', title: 'GShop',
+    desc: 'A storefront experience balancing product discovery, visual merchandising, and a smooth shopping journey.',
+    img: 'https://image.thum.io/get/width/1200/crop/800/wait/5/https://gshop-gamma.vercel.app/', liveUrl: 'https://gshop-gamma.vercel.app/', year: '2026', category: 'E-Commerce / Growth',
+  },
+  {
+    num: '10', tag: 'Healthcare', title: 'MedXpert',
+    desc: 'A healthcare product interface that makes expert information and patient journeys easier to navigate.',
+    img: 'https://image.thum.io/get/width/1200/crop/800/wait/5/https://medxpert-aujj.vercel.app/', liveUrl: 'https://medxpert-aujj.vercel.app/', year: '2026', category: 'Healthcare / Platform',
+  },
+  {
+    num: '11', tag: 'Interface System', title: 'UIMA',
+    desc: 'A distinctive interface system showcasing structured content and refined interaction patterns.',
+    img: 'https://image.thum.io/get/width/1200/crop/800/wait/5/https://uima.vercel.app/', liveUrl: 'https://uima.vercel.app/', year: '2026', category: 'UI/UX / Product',
+  },
+  {
+    num: '12', tag: 'AI Product', title: 'Coca AI',
+    desc: 'An AI-first product surface built to make intelligent tools feel clear, useful, and approachable.',
+    img: 'https://image.thum.io/get/width/1200/crop/800/wait/5/https://coca-ai.vercel.app/', liveUrl: 'https://coca-ai.vercel.app/', year: '2026', category: 'AI / SaaS',
+  },
+  {
+    num: '13', tag: 'Digital Product', title: 'Zenith',
+    desc: 'A polished digital product experience with a strong visual identity and focused navigation.',
+    img: 'https://image.thum.io/get/width/1200/crop/800/wait/5/https://zenith-gules-seven.vercel.app/', liveUrl: 'https://zenith-gules-seven.vercel.app/', year: '2026', category: 'Product / Web',
+  },
+  {
+    num: '14', tag: 'Healthcare', title: 'Docter',
+    desc: 'A doctor discovery and healthcare experience designed around clarity, trust, and quick access.',
+    img: 'https://image.thum.io/get/width/1200/crop/800/wait/5/https://docter-three.vercel.app/', liveUrl: 'https://docter-three.vercel.app/', year: '2026', category: 'Healthcare / Web App',
+  },
+  {
+    num: '15',
     tag: 'Fintech & Cloud AI',
     title: 'Apex Global Banking',
     desc: 'An institutional-grade real-time treasury analytics portal processing multi-currency payouts, AI fraud detection, and instant liquidity settlement.',
@@ -176,9 +249,16 @@ export default function Portfolio({ onNavigate }: PortfolioProps) {
               key={project.title}
               className={`project-card-h project-${i}`}
             >
-              <div className="project-image-box">
-                <img src={project.img} alt={project.title} loading="lazy" />
-              </div>
+              <a
+                className="project-image-box"
+                href={project.liveUrl}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={`Open ${project.title} live site`}
+              >
+                <img src={project.img} alt={`${project.title} live site preview`} loading="lazy" />
+                <span className="project-live-badge">Live site <ArrowUpRight size={14} /></span>
+              </a>
               <small>
                 {project.num} — {project.tag}
               </small>

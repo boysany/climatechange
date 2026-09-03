@@ -1683,6 +1683,104 @@ button {
   position: relative;
 }
 
+.services-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(20rem, 0.78fr);
+  gap: clamp(3rem, 9vw, 9rem);
+  align-items: end;
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+.services-heading-copy h2 {
+  margin-top: 1.15rem;
+  max-width: 8ch;
+  font-size: clamp(3.5rem, 6vw, 6.4rem);
+  line-height: 0.9;
+  letter-spacing: -0.06em;
+}
+
+.services-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: var(--blue);
+}
+
+.services-eyebrow span:last-child {
+  color: var(--muted);
+}
+
+.services-eyebrow-dot {
+  width: 0.42rem;
+  height: 0.42rem;
+  border-radius: 50%;
+  background: var(--cyan);
+  box-shadow: 0 0 0 0.25rem color-mix(in srgb, var(--cyan) 12%, transparent);
+}
+
+.services-intro {
+  margin: 0 0 0.25rem;
+  max-width: 31rem !important;
+  font-size: clamp(1rem, 1.45vw, 1.2rem) !important;
+  line-height: 1.65 !important;
+  color: var(--muted);
+}
+
+.services-filters {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  max-width: 1500px;
+  margin: clamp(2.5rem, 4vw, 4rem) auto 0;
+  padding: 0.9rem 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.services-filter-label {
+  flex: 0 0 auto;
+  color: var(--muted);
+  font: 0.68rem var(--mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.services-filter-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.services-filter-button {
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: 0.55rem 0.9rem;
+  background: transparent;
+  color: var(--muted);
+  font: 0.74rem var(--mono);
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+}
+
+.services-filter-button:hover,
+.services-filter-button:focus-visible {
+  color: var(--ink);
+  border-color: color-mix(in srgb, var(--blue) 35%, var(--line));
+  outline: none;
+}
+
+.services-filter-button.is-selected {
+  color: var(--cyan);
+  border-color: var(--cyan);
+  background: color-mix(in srgb, var(--cyan) 12%, transparent);
+}
+
+.services-filter-button:active {
+  transform: translateY(1px);
+}
+
 .services-layout {
   display: grid;
   grid-template-columns: minmax(0, 1.35fr) minmax(0, 0.85fr);
@@ -1694,6 +1792,25 @@ button {
 }
 
 @media (max-width: 1024px) {
+  .services-header {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .services-heading-copy h2 {
+    max-width: none;
+  }
+
+  .services-intro {
+    margin-bottom: 0;
+  }
+
+  .services-filters {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
   .services-layout {
     grid-template-columns: 1fr;
     gap: 3rem;
@@ -2118,6 +2235,32 @@ button {
 .project-card-h:hover .project-image-box img {
   transform: scale(1.05);
   filter: saturate(1.05);
+}
+
+.project-live-badge {
+  position: absolute;
+  right: 0.85rem;
+  bottom: 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.45rem 0.65rem;
+  border: 1px solid color-mix(in srgb, var(--line) 75%, transparent);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--paper) 88%, transparent);
+  color: var(--ink);
+  font: 0.68rem var(--mono);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  opacity: 0;
+  transform: translateY(0.35rem);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.project-image-box:hover .project-live-badge,
+.project-image-box:focus-visible .project-live-badge {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .project-badge-action {
