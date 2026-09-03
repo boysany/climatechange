@@ -263,11 +263,11 @@ export default function Expertise({ onNavigate }: ExpertiseProps) {
         )}
       </AnimatePresence>
 
-      <div className="section-heading">
-        <div>
-          <span className="eyebrow" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
-            <span style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--cyan)' }} />
-            Capabilities & Services / 02
+      <header className="services-header">
+        <div className="services-heading-copy">
+          <span className="eyebrow services-eyebrow">
+            <span className="services-eyebrow-dot" aria-hidden="true" />
+            Capabilities & Services <span>/ 02</span>
           </span>
           <h2>
             <TextReveal>
@@ -276,56 +276,34 @@ export default function Expertise({ onNavigate }: ExpertiseProps) {
           </h2>
         </div>
         <ScrollReveal delay={120}>
-          <p>
+          <p className="services-intro">
             One multidisciplinary engineering studio combining strategy, bespoke UI/UX, full-stack cloud
             architectures, autonomous AI agents, and data-driven revenue growth.
           </p>
         </ScrollReveal>
-      </div>
+      </header>
 
-      {/* Interactive Category Filter Pills */}
-      <div
-        style={{
-          display: 'flex',
-          flexWrap: 'wrap',
-          gap: '0.5rem',
-          marginBottom: '2rem',
-          paddingBottom: '0.75rem',
-          borderBottom: '1px solid var(--border-subtle, rgba(255,255,255,0.08))',
-        }}
-      >
-        {filterTabs.map((tab) => {
-          const isSelected = selectedCategory === tab.key;
-          return (
-            <button
-              key={tab.key}
-              onClick={() => {
-                setSelectedCategory(tab.key);
-                setActive(0);
-              }}
-              style={{
-                fontSize: '0.75rem',
-                fontFamily: 'var(--mono)',
-                letterSpacing: '0.04em',
-                padding: '0.45rem 0.9rem',
-                borderRadius: '999px',
-                border: isSelected
-                  ? '1px solid var(--cyan)'
-                  : '1px solid var(--border-subtle, rgba(255,255,255,0.12))',
-                background: isSelected
-                  ? 'color-mix(in srgb, var(--cyan) 16%, transparent)'
-                  : 'transparent',
-                color: isSelected ? 'var(--cyan)' : 'var(--text-secondary, #8b93a7)',
-                cursor: 'pointer',
-                transition: 'all 0.2s ease',
-                fontWeight: isSelected ? 600 : 400,
-              }}
-            >
-              {tab.label}
-            </button>
-          );
-        })}
-      </div>
+      <nav className="services-filters" aria-label="Filter services">
+        <span className="services-filter-label">Explore by discipline</span>
+        <div className="services-filter-list">
+          {filterTabs.map((tab) => {
+            const isSelected = selectedCategory === tab.key;
+            return (
+              <button
+                key={tab.key}
+                className={`services-filter-button ${isSelected ? 'is-selected' : ''}`}
+                onClick={() => {
+                  setSelectedCategory(tab.key);
+                  setActive(0);
+                }}
+                aria-pressed={isSelected}
+              >
+                {tab.label}
+              </button>
+            );
+          })}
+        </div>
+      </nav>
 
       <div className="services-layout">
         {/* Interactive Services List with Hover Image Popups */}
