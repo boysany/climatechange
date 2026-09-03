@@ -1,0 +1,9 @@
+# Robots.txt for Selmedic Digital Labs (https://selmedicdigitallabs.com)
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /private/
+
+# Sitemaps
+Sitemap: https://selmedicdigitallabs.com/sitemap.xml
