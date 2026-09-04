@@ -256,7 +256,19 @@ export default function Portfolio({ onNavigate }: PortfolioProps) {
                 rel="noreferrer"
                 aria-label={`Open ${project.title} live site`}
               >
-                <img src={project.img} alt={`${project.title} live site preview`} loading="lazy" />
+                <img
+                  src={project.img}
+                  alt={`${project.title} software preview`}
+                  loading={i < 3 ? 'eager' : 'lazy'}
+                  decoding="async"
+                  fetchPriority={i < 3 ? 'high' : 'auto'}
+                  onError={(event) => {
+                    const image = event.currentTarget;
+                    if (image.dataset.fallbackApplied) return;
+                    image.dataset.fallbackApplied = 'true';
+                    image.src = 'https://images.unsplash.com/photo-1558655146-9f40138edfeb?auto=format&fit=crop&q=80&w=1200';
+                  }}
+                />
                 <span className="project-live-badge">Live site <ArrowUpRight size={14} /></span>
               </a>
               <small>
