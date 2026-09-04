@@ -774,6 +774,15 @@ export default function CCDLPage({
     return <ServiceDetailPage service={SEO_SERVICES_MAP[serviceSlug]} onNavigate={onNavigate} />;
   }
 
+  // 1. DEDICATED BLOG AND COMMUNITY HUBS
+  if (normalizedPageId === 'blog' || normalizedPageId === 'insights') {
+    return <BlogPage onNavigate={onNavigate} />;
+  }
+
+  if (normalizedPageId === 'community') {
+    return <CommunityPage onNavigate={onNavigate} />;
+  }
+
   // 1. DEDICATED CASE STUDY VIEW (e.g. case-study/hire-professional)
   if (pageId.startsWith('case-study/')) {
     const slug = pageId.replace('case-study/', '');
