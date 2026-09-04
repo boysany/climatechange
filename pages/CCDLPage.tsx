@@ -169,16 +169,6 @@ export const projectsData = [
     image: 'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&q=82&w=1200',
     tech: ['Web3.js', 'React', 'Tailwind', 'Ethers'],
   },
-  {
-    id: 'gurukul-school',
-    title: 'Gurukul School',
-    type: 'EdTech',
-    category: 'Education Platform',
-    metrics: '3.4x Admissions Growth · 100% Mobile Ready',
-    text: 'An inspiring, student-first digital campus portal for holistic education, curriculum discovery, admissions, and virtual interactive campus exploration.',
-    image: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=85&w=1600',
-    tech: ['React', 'Framer Motion', 'Vite', 'Cloudflare'],
-  },
 ];
 
 const livePortfolioProjects = portfolioProjects

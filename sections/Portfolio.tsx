@@ -52,11 +52,6 @@ export const portfolioProjects = [
     category: 'EdTech / Dashboard',
   },
   {
-    num: '05', tag: 'Education Portal', title: 'Gurukul The School',
-    desc: 'A polished school website for curriculum discovery, admissions, and parent engagement.',
-    img: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&q=82&w=1200', liveUrl: 'https://gurukultheschool.in/', year: '2026', category: 'Education / Web Portal',
-  },
-  {
     num: '06', tag: 'AI & Product', title: 'Hezafx',
     desc: 'A live product experience with a focused, modern interface and clear conversion flow.',
     img: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=82&w=1200', liveUrl: 'https://hezafx.vercel.app/', year: '2026', category: 'AI / Product',
@@ -75,15 +70,6 @@ export const portfolioProjects = [
     liveUrl: 'https://swap-zeta.vercel.app/',
     year: '2025',
     category: 'DeFi / Web3 Product',
-  },
-  {
-    num: '04',
-    tag: 'Academic Portal',
-    title: 'Gurukul School',
-    desc: 'An inspiring, student-first digital campus portal for holistic education, curriculum discovery, admissions, and virtual campus exploration.',
-    img: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?auto=format&fit=crop&q=85&w=1600',
-    year: '2026',
-    category: 'Education / Web Portal',
   },
   {
     num: '08', tag: 'Translation AI', title: 'Traslate',
@@ -106,11 +92,6 @@ export const portfolioProjects = [
     img: 'https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&q=82&w=1200', liveUrl: 'https://uima.vercel.app/', year: '2026', category: 'UI/UX / Product',
   },
   {
-    num: '12', tag: 'AI Product', title: 'Coca AI',
-    desc: 'An AI-first product surface built to make intelligent tools feel clear, useful, and approachable.',
-    img: 'https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&q=82&w=1200', liveUrl: 'https://coca-ai.vercel.app/', year: '2026', category: 'AI / SaaS',
-  },
-  {
     num: '13', tag: 'Digital Product', title: 'Zenith',
     desc: 'A polished digital product experience with a strong visual identity and focused navigation.',
     img: 'https://images.unsplash.com/photo-1558655146-9f40138edfeb?auto=format&fit=crop&q=82&w=1200', liveUrl: 'https://zenith-gules-seven.vercel.app/', year: '2026', category: 'Product / Web',
@@ -119,15 +100,6 @@ export const portfolioProjects = [
     num: '14', tag: 'Healthcare', title: 'Docter',
     desc: 'A doctor discovery and healthcare experience designed around clarity, trust, and quick access.',
     img: 'https://images.unsplash.com/photo-1538108149393-fbbd81895907?auto=format&fit=crop&q=82&w=1200', liveUrl: 'https://docter-three.vercel.app/', year: '2026', category: 'Healthcare / Web App',
-  },
-  {
-    num: '15',
-    tag: 'Fintech & Cloud AI',
-    title: 'Apex Global Banking',
-    desc: 'An institutional-grade real-time treasury analytics portal processing multi-currency payouts, AI fraud detection, and instant liquidity settlement.',
-    img: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=85&w=1600',
-    year: '2026',
-    category: 'Fintech / Enterprise Platform',
   },
 ];
 
