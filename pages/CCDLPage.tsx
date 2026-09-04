@@ -1032,7 +1032,19 @@ export default function CCDLPage({
                   onClick={() => onNavigate(`case-study/${project.id}`)}
                   style={{ cursor: 'pointer' }}
                 >
-                  <img src={project.image} alt={project.title} loading="lazy" />
+                  <img
+    src={project.image}
+    alt={`${project.title} project preview`}
+    loading={idx < 3 ? 'eager' : 'lazy'}
+    decoding="async"
+    fetchPriority={idx < 3 ? 'high' : 'auto'}
+    onError={(event) => {
+      const image = event.currentTarget;
+      if (image.dataset.fallbackApplied) return;
+      image.dataset.fallbackApplied = 'true';
+      image.src = 'https://images.unsplash.com/photo-1558655146-9f40138edfeb?auto=format&fit=crop&q=80&w=1200';
+    }}
+  />
                   <span className="case-category-tag">{project.category}</span>
                 </div>
 
