@@ -27,6 +27,10 @@ export interface ScrollRevealProps {
   duration?: number;
   scale?: number;
   key?: React.Key;
+  role?: string;
+  tabIndex?: number;
+  onClick?: React.MouseEventHandler<HTMLElement>;
+  onKeyDown?: React.KeyboardEventHandler<HTMLElement>;
 }
 
 export default function ScrollReveal({
@@ -37,6 +41,10 @@ export default function ScrollReveal({
   y = 32,
   duration = 0.85,
   scale = 0.98,
+  role,
+  tabIndex,
+  onClick,
+  onKeyDown,
 }: ScrollRevealProps) {
   const ref = useRef<HTMLElement | null>(null);
 
@@ -83,7 +91,14 @@ export default function ScrollReveal({
   const Tag = Component as any;
 
   return (
-    <Tag ref={ref} className={`scroll-reveal-gsap ${className}`}>
+    <Tag
+      ref={ref}
+      className={`scroll-reveal-gsap ${className}`}
+      role={role}
+      tabIndex={tabIndex}
+      onClick={onClick}
+      onKeyDown={onKeyDown}
+    >
       {children}
     </Tag>
   );

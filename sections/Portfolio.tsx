@@ -248,6 +248,15 @@ export default function Portfolio({ onNavigate }: PortfolioProps) {
             <div
               key={project.title}
               className={`project-card-h project-${i}`}
+              role="link"
+              tabIndex={0}
+              onClick={() => window.open(project.liveUrl, '_blank', 'noopener,noreferrer')}
+              onKeyDown={(event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                  event.preventDefault();
+                  window.open(project.liveUrl, '_blank', 'noopener,noreferrer');
+                }
+              }}
             >
               <a
                 className="project-image-box"
@@ -255,6 +264,7 @@ export default function Portfolio({ onNavigate }: PortfolioProps) {
                 target="_blank"
                 rel="noreferrer"
                 aria-label={`Open ${project.title} live site`}
+                onClick={(event) => event.stopPropagation()}
               >
                 <img
                   src={project.img}

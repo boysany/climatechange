@@ -774,6 +774,15 @@ export default function CCDLPage({
     return <ServiceDetailPage service={SEO_SERVICES_MAP[serviceSlug]} onNavigate={onNavigate} />;
   }
 
+  // 1. DEDICATED BLOG AND COMMUNITY HUBS
+  if (normalizedPageId === 'blog' || normalizedPageId === 'insights') {
+    return <BlogPage onNavigate={onNavigate} />;
+  }
+
+  if (normalizedPageId === 'community') {
+    return <CommunityPage onNavigate={onNavigate} />;
+  }
+
   // 1. DEDICATED CASE STUDY VIEW (e.g. case-study/hire-professional)
   if (pageId.startsWith('case-study/')) {
     const slug = pageId.replace('case-study/', '');
@@ -1026,10 +1035,27 @@ export default function CCDLPage({
 
           <div className="inner-work-grid">
             {filteredProjects.map((project, idx) => (
-              <ScrollReveal key={project.title} delay={idx * 80} className="enterprise-case-card">
+              <ScrollReveal
+                key={project.title}
+                delay={idx * 80}
+                className="enterprise-case-card"
+                role={project.liveUrl ? 'link' : undefined}
+                tabIndex={project.liveUrl ? 0 : undefined}
+                onClick={project.liveUrl ? () => window.open(project.liveUrl, '_blank', 'noopener,noreferrer') : undefined}
+                onKeyDown={project.liveUrl ? (event) => {
+                  if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    window.open(project.liveUrl, '_blank', 'noopener,noreferrer');
+                  }
+                } : undefined}
+              >
                 <div
                   className="case-card-media"
-                  onClick={() => onNavigate(`case-study/${project.id}`)}
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    if (project.liveUrl) window.open(project.liveUrl, '_blank', 'noopener,noreferrer');
+                    else onNavigate(`case-study/${project.id}`);
+                  }}
                   style={{ cursor: 'pointer' }}
                 >
                   <img
@@ -1055,7 +1081,11 @@ export default function CCDLPage({
 
                   <h3
                     className="case-title"
-                    onClick={() => onNavigate(`case-study/${project.id}`)}
+                    onClick={(event) => {
+                      event.stopPropagation();
+                      if (project.liveUrl) window.open(project.liveUrl, '_blank', 'noopener,noreferrer');
+                      else onNavigate(`case-study/${project.id}`);
+                    }}
                     style={{ cursor: 'pointer' }}
                   >
                     {project.title}
