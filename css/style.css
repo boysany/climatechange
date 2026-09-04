@@ -9139,6 +9139,56 @@ button {
 .simple-review-attribution { grid-column: 2; display: flex; gap: 0.65rem; flex-wrap: wrap; color: var(--muted); font: 0.7rem var(--mono); text-transform: uppercase; letter-spacing: 0.06em; }
 .simple-review-attribution strong { color: var(--blue); }
 
+/* Final review strip overrides: keep the footer-adjacent testimonial calm and contained. */
+.work-reviews-container.work-reviews-simple {
+  display: block;
+  width: min(100%, 72rem);
+  min-height: 0;
+  margin: clamp(2.5rem, 5vw, 5rem) auto 0;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 1.25rem;
+  overflow: hidden;
+  background: var(--paper-card);
+  box-shadow: none;
+}
+
+.work-reviews-container.work-reviews-simple .simple-review-progress {
+  width: 100%;
+  height: 3px;
+  background: color-mix(in srgb, var(--line) 70%, transparent);
+}
+
+.work-reviews-container.work-reviews-simple .simple-review-slider {
+  width: 100%;
+  box-sizing: border-box;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.75rem 1rem;
+  align-items: start;
+  padding: clamp(1.25rem, 3vw, 2rem);
+}
+
+.work-reviews-container.work-reviews-simple .simple-review-slider p {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.work-reviews-container.work-reviews-simple .simple-review-attribution {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 560px) {
+  .work-reviews-container.work-reviews-simple .simple-review-slider {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .work-reviews-container.work-reviews-simple .simple-review-attribution {
+    grid-column: 1;
+  }
+}
+
 .work-reviews-container {
     margin-top: 2.5rem;
     border-radius: 1.25rem;
@@ -11937,6 +11987,57 @@ button {
 }
 
 /* RSVP Dialog */
+/* Blog + Community page refresh */
+.blog-page-root,
+.community-page-root {
+  min-height: 100vh;
+  padding-top: clamp(4.5rem, 8vw, 7rem);
+}
+
+.blog-page-root .blog-breadcrumb,
+.community-page-root .blog-breadcrumb { position: relative; z-index: 1; }
+
+.blog-page-root .blog-breadcrumb,
+.community-page-root .blog-breadcrumb {
+  max-width: 1180px;
+  margin: 0 auto 1.5rem;
+  padding-top: clamp(1.5rem, 4vw, 3rem);
+  letter-spacing: 0.12em;
+}
+
+.blog-featured-card,
+.community-cockpit-banner {
+  max-width: 1180px;
+  margin-inline: auto;
+  border: 1px solid var(--line);
+  border-radius: 1.5rem;
+  overflow: hidden;
+  box-shadow: 0 1.5rem 4rem rgba(13, 16, 23, 0.08);
+}
+
+.blog-featured-grid { min-height: 31rem; }
+.blog-featured-media { min-height: 31rem; background: var(--ink); }
+.blog-featured-img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.blog-featured-content { padding: clamp(2rem, 5vw, 4.5rem); display: flex; flex-direction: column; justify-content: center; }
+.blog-featured-title { max-width: 12ch; font-size: clamp(2.4rem, 5vw, 5.2rem); line-height: 0.98; letter-spacing: -0.055em; text-wrap: balance; }
+.blog-featured-excerpt { max-width: 42rem; font-size: 1.05rem; line-height: 1.65; color: var(--muted); }
+
+.community-cockpit-banner { padding: clamp(1.25rem, 3vw, 2.5rem); background: var(--paper-card); }
+.community-cockpit-header { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; padding-bottom: 1.25rem; border-bottom: 1px solid var(--line); }
+.community-metrics-grid { gap: 0; }
+.community-stat-card { border-radius: 0; border: 0; border-right: 1px solid var(--line); background: transparent; padding: 1.35rem; }
+.community-stat-card:last-child { border-right: 0; }
+.community-stat-num { font-size: clamp(2.4rem, 5vw, 4.5rem); letter-spacing: -0.06em; }
+
+@media (max-width: 760px) {
+  .blog-featured-grid { min-height: auto; }
+  .blog-featured-media { min-height: 15rem; max-height: 19rem; }
+  .blog-featured-content { padding: 1.5rem; }
+  .community-cockpit-header { align-items: flex-start; flex-direction: column; }
+  .community-stat-card { border-right: 0; border-bottom: 1px solid var(--line); }
+  .community-stat-card:last-child { border-bottom: 0; }
+}
+
 .community-modal-box {
   width: 100%;
   max-width: 520px;
