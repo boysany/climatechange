@@ -1077,7 +1077,6 @@ export default function CCDLPage({
     alt={`${project.title} project preview`}
     loading={idx < 3 ? 'eager' : 'lazy'}
     decoding="async"
-    fetchPriority={idx < 3 ? 'high' : 'auto'}
     onError={(event) => {
       const image = event.currentTarget;
       if (image.dataset.fallbackApplied) return;

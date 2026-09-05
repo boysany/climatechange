@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { CheckCircle2 } from 'lucide-react';
+import { CheckCircle2, ArrowUpRight, Sparkles, Clock, ShieldCheck } from 'lucide-react';
 import TextReveal from '../components/TextReveal.tsx';
 import ScrollReveal from '../components/ScrollReveal.tsx';
 import gsap from 'gsap';
@@ -16,66 +16,84 @@ export const processSteps = [
     phase: 'Discovery & User Research',
     title: 'Discover',
     tagline: 'Understand the business model and uncover high-conviction opportunity.',
+    duration: 'Week 1',
+    outcome: 'Validated Problem Statement & Product Scope',
     desc: 'We immerse ourselves in your market landscape, customer behaviors, business unit economics, and technical constraints before writing a single line of code or finalizing wireframes.',
-    deliverables: ['Market Audit', 'Stakeholder Workshops', 'User Persona Mapping'],
+    deliverables: ['Competitive Market Audit', 'Stakeholder Alignment Workshops', 'User Journey Mapping'],
     image: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=85&w=1200',
     timeline: 'Phase 01',
     accent: '#3b82f6',
+    route: 'strategy',
   },
   {
     num: '02',
     phase: 'Strategic Architecture',
     title: 'Strategize',
     tagline: 'Define the clearest path to product-market traction and technical feasibility.',
+    duration: 'Weeks 1–2',
+    outcome: 'Technical Architecture & Sprint Roadmap',
     desc: 'We translate raw insights into a structured product roadmap, measurable KPIs, system architectures, and high-impact design directions that eliminate execution risk.',
-    deliverables: ['Architecture Blueprint', 'User Journey Mapping', 'KPI & Feasibility Specs'],
+    deliverables: ['System Architecture Blueprint', 'Information Architecture & Data Schema', 'KPI & Feasibility Specifications'],
     image: 'https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=85&w=1200',
     timeline: 'Phase 02',
     accent: '#8b5cf6',
+    route: 'strategy',
   },
   {
     num: '03',
     phase: 'Experience & Interface',
     title: 'Design',
     tagline: 'Craft interfaces with intention, character, tactile feel, and mathematical polish.',
+    duration: 'Weeks 2–4',
+    outcome: 'Production Figma Tokens & Interactive Prototype',
     desc: 'We shape interactive systems that balance editorial beauty with strict usability standards. Every micro-interaction, typography pairing, and state transition is deliberately engineered.',
-    deliverables: ['Design Token Systems', 'Interactive Prototypes', 'Production Design Specs'],
+    deliverables: ['Tokenized Design Systems', 'Figma Clickable Prototypes', 'WCAG AAA Accessibility Specs'],
     image: 'https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?auto=format&fit=crop&q=85&w=1200',
     timeline: 'Phase 03',
     accent: '#06b6d4',
+    route: 'design-systems',
   },
   {
     num: '04',
     phase: 'High-Velocity Engineering',
     title: 'Build',
     tagline: 'Engineer high-performance, resilient, and scalable software systems.',
+    duration: 'Weeks 3–6',
+    outcome: 'Sub-Second Production TypeScript Codebase',
     desc: 'We develop using modern TypeScript stacks, component architecture, and cloud-native backends to ensure lightning-fast speeds, accessibility, and clean maintainability.',
-    deliverables: ['TypeScript Codebase', 'Sub-second Core Web Vitals', 'CI/CD Pipelines'],
+    deliverables: ['TypeScript React / Next.js Stack', 'Sub-second Core Web Vitals (98+ score)', 'Automated CI/CD Test Coverage'],
     image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&q=85&w=1200',
     timeline: 'Phase 04',
     accent: '#10b981',
+    route: 'software',
   },
   {
     num: '05',
     phase: 'Precision Deployment',
     title: 'Launch',
     tagline: 'Deploy with precision, zero downtime, and complete operational confidence.',
+    duration: 'Week 6',
+    outcome: 'Zero-Downtime Public Production Release',
     desc: 'We execute comprehensive QA, stress testing, security checks, and cross-platform verification before orchestrating a seamless, zero-downtime launch day rollout.',
-    deliverables: ['Zero-Downtime Deployment', 'SSL & DNS Handover', 'Telemetry Setup'],
+    deliverables: ['Zero-Downtime Cloud Deployment', 'Automated SSL, CDN & DNS Handover', 'Full Telemetry & Error Tracking Setup'],
     image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=85&w=1200',
     timeline: 'Phase 05',
     accent: '#f59e0b',
+    route: 'enterprise',
   },
   {
     num: '06',
     phase: 'Continuous Optimization',
     title: 'Grow',
     tagline: 'Iterate based on empirical evidence, telemetry, and real user signals.',
+    duration: 'Ongoing Sprints',
+    outcome: 'Compounding Conversion Rate Optimization',
     desc: 'Digital products must evolve. We monitor live telemetry, conversion funnels, and feature adoption to continuously refine the experience and drive long-term business value.',
-    deliverables: ['CRO Sprints', 'Telemetry Auditing', 'Continuous Feature Scaling'],
+    deliverables: ['CRO Optimization Sprints', 'Telemetry Audits & Funnel Analysis', 'Continuous Feature Scaling'],
     image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=85&w=1200',
     timeline: 'Phase 06',
     accent: '#ec4899',
+    route: 'seo-ads',
   },
 ];
 
@@ -185,6 +203,17 @@ export default function Process({ onNavigate }: ProcessProps) {
           </div>
 
           <div className="process-nav-list">
+            <div className="process-active-tracker">
+              <span className="process-tracker-label">CURRENTLY VIEWING</span>
+              <div className="process-tracker-val">
+                <span className="tracker-num">{processSteps[activeStep].num}</span>
+                <span className="tracker-title">{processSteps[activeStep].title}</span>
+                <span className="tracker-time" style={{ color: processSteps[activeStep].accent }}>
+                  {processSteps[activeStep].duration}
+                </span>
+              </div>
+            </div>
+
             {processSteps.map((step, idx) => (
               <button
                 key={step.num}
@@ -193,9 +222,10 @@ export default function Process({ onNavigate }: ProcessProps) {
                 aria-label={`Scroll to phase ${step.num} ${step.title}`}
               >
                 <div className="nav-dot" />
-                <span>
-                  {step.num} — {step.title}
-                </span>
+                <div className="nav-content">
+                  <span className="nav-main-title">{step.num} — {step.title}</span>
+                  <span className="nav-sub-phase">{step.phase}</span>
+                </div>
               </button>
             ))}
           </div>
@@ -221,7 +251,12 @@ export default function Process({ onNavigate }: ProcessProps) {
                     <span className="phase-dot" style={{ backgroundColor: step.accent }} />
                     {step.num} • {step.phase}
                   </span>
-                  <span className="process-timeline-pill">{step.timeline}</span>
+                  <div className="process-media-tags">
+                    <span className="process-duration-pill">
+                      <Clock size={11} /> {step.duration}
+                    </span>
+                    <span className="process-timeline-pill">{step.timeline}</span>
+                  </div>
                 </div>
               </div>
 
@@ -238,6 +273,12 @@ export default function Process({ onNavigate }: ProcessProps) {
                   <p className="process-card-desc">{step.desc}</p>
                 </div>
 
+                {/* Milestone Outcome Callout Box */}
+                <div className="process-outcome-box" style={{ borderColor: `color-mix(in srgb, ${step.accent} 30%, transparent)` }}>
+                  <ShieldCheck size={15} style={{ color: step.accent, flexShrink: 0 }} />
+                  <span>Phase Outcome: <strong>{step.outcome}</strong></span>
+                </div>
+
                 <div className="process-deliverables-box">
                   <span className="process-deliverables-title">Key Phase Deliverables</span>
                   <div className="process-deliverables-list">
@@ -248,6 +289,17 @@ export default function Process({ onNavigate }: ProcessProps) {
                       </span>
                     ))}
                   </div>
+                </div>
+
+                <div className="process-card-footer">
+                  <button
+                    onClick={() => onNavigate?.(step.route || 'services')}
+                    className="process-card-action-btn"
+                    style={{ cursor: 'pointer' }}
+                  >
+                    <span>Explore {step.title} Phase Specs</span>
+                    <ArrowUpRight size={14} />
+                  </button>
                 </div>
               </div>
             </div>

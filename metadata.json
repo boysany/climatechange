@@ -1,6 +1,6 @@
 {
   "name": "Remix Deepx",
-  "description": "Imported from GitHub: Sanybarupal/Deepx",
+  "description": "Software development and digital services platform engineered for modern web applications, mobile apps, and UI/UX design.",
   "requestFramePermissions": [],
   "majorCapabilities": [
     "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"

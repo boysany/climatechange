@@ -4,7 +4,7 @@ import ScrollReveal from '../components/ScrollReveal.tsx';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { getReducedMotion } from '../lib/animations.ts';
-import { Sparkles, Terminal, TrendingUp } from 'lucide-react';
+import { Sparkles, Terminal, TrendingUp, ArrowUpRight, CheckCircle2, ShieldCheck } from 'lucide-react';
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
@@ -16,24 +16,30 @@ const pillars = [
     role: 'Designers',
     tag: 'Craft & Usability',
     icon: Sparkles,
+    metric: '60 FPS Transitions',
+    accent: '#06b6d4',
     desc: 'Considered, intuitive interfaces shaped with typographic discipline, visual balance, and human empathy.',
-    bullets: ['Design Systems', 'Micro-Interactions', 'Editorial Typography', 'Spatial Hierarchy'],
+    bullets: ['Tokenized Design Systems', 'Fluid Micro-Interactions', 'Editorial Typography & Rhythm', 'Spatial Precision Layouts'],
   },
   {
     num: '02',
     role: 'Developers',
     tag: 'Systems & Speed',
     icon: Terminal,
+    metric: '<0.8s First Contentful Paint',
+    accent: '#3b82f6',
     desc: 'Clean, durable TypeScript engineering that turns design vision into ultra-responsive, resilient code.',
-    bullets: ['Sub-second Load Times', 'Modern React & Vite', 'Resilient Architecture', 'Zero Code Bloat'],
+    bullets: ['Sub-second Load Times', 'Modern React & Vite Stacks', 'Zero Code Bloat Architecture', 'Automated CI/CD Pipelines'],
   },
   {
     num: '03',
     role: 'Problem Solvers',
     tag: 'Business & Value',
     icon: TrendingUp,
+    metric: '+185% Conversion Lift',
+    accent: '#8b5cf6',
     desc: 'Strategic partners aligned with commercial objectives, user conversion velocity, and measurable scale.',
-    bullets: ['Conversion Architecture', 'User Behavior Telemetry', 'Scalable Direction', 'Compounding ROI'],
+    bullets: ['Conversion Architecture', 'User Behavior Telemetry', '100% IP Code Ownership', 'Compounding Growth Returns'],
   },
 ];
 
@@ -241,6 +247,7 @@ export default function About({ onNavigate }: AboutProps) {
         {pillars.map((pillar) => {
           const targetPage =
             pillar.num === '01' ? 'product-design' : pillar.num === '02' ? 'software' : 'strategy';
+          const IconComponent = pillar.icon;
           return (
             <div
               key={pillar.num}
@@ -250,18 +257,34 @@ export default function About({ onNavigate }: AboutProps) {
             >
               <div>
                 <div className="about-pillar-top">
-                  <span className="about-pillar-num">{pillar.num} / DISCIPLINE</span>
-                  <span className="about-pillar-tag">{pillar.tag}</span>
+                  <div className="about-pillar-badge-group">
+                    <div className="about-pillar-icon-box" style={{ color: pillar.accent }}>
+                      <IconComponent size={18} />
+                    </div>
+                    <span className="about-pillar-num">{pillar.num} / DISCIPLINE</span>
+                  </div>
+                  <span className="about-pillar-metric">{pillar.metric}</span>
                 </div>
                 <h3>{pillar.role}</h3>
+                <span className="about-pillar-subtag">{pillar.tag}</span>
                 <p>{pillar.desc}</p>
               </div>
 
-              <ul className="about-pillar-bullets">
-                {pillar.bullets.map((bullet) => (
-                  <li key={bullet}>{bullet}</li>
-                ))}
-              </ul>
+              <div>
+                <ul className="about-pillar-bullets">
+                  {pillar.bullets.map((bullet) => (
+                    <li key={bullet}>
+                      <CheckCircle2 size={13} className="bullet-check-icon" style={{ color: pillar.accent }} />
+                      <span>{bullet}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="about-pillar-cta">
+                  <span>Explore {pillar.role}</span>
+                  <ArrowUpRight size={14} className="pillar-arrow-icon" />
+                </div>
+              </div>
             </div>
           );
         })}

@@ -8,16 +8,6 @@ import {
   X,
   Globe,
   Sparkles,
-  Shield,
-  FileText,
-  HelpCircle,
-  Briefcase,
-  Layers,
-  Lock,
-  Cookie,
-  ExternalLink,
-  Code2,
-  Palette,
   Clock,
   Compass,
 } from 'lucide-react';
@@ -35,7 +25,7 @@ interface NavbarProps {
 export default function Navbar({ currentRoute = 'home', onNavigate }: NavbarProps) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [activeMobileTab, setActiveMobileTab] = useState<'main' | 'solutions' | 'legal'>('main');
+  const [activeMobileTab, setActiveMobileTab] = useState<'main' | 'direct'>('main');
   const [hoveredItem, setHoveredItem] = useState<{
     title: string;
     category: string;
@@ -107,7 +97,7 @@ export default function Navbar({ currentRoute = 'home', onNavigate }: NavbarProp
 
   const cleanCurrent = currentRoute.replace(/^\//, '').replace(/\/$/, '') || 'home';
 
-  const primaryMenuItems = [
+  const studioGridOne = [
     {
       num: '01',
       label: 'WORK',
@@ -148,16 +138,19 @@ export default function Navbar({ currentRoute = 'home', onNavigate }: NavbarProp
       desc: 'Founding team, collective mindset & studio origins',
       preview: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=900&auto=format&fit=crop',
     },
+  ];
+
+  const studioGridTwo = [
     {
-      num: '05',
+      num: '06',
       label: 'BLOG',
       page: 'blog',
       category: 'DISPATCHES',
-      desc: 'Architectural thinking & deep tech analysis',
+      desc: 'Architectural thinking & deep tech engineering analysis',
       preview: 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=900&auto=format&fit=crop',
     },
     {
-      num: '06',
+      num: '07',
       label: 'COMMUNITY',
       page: 'community',
       category: 'DEVELOPER HUB',
@@ -177,51 +170,16 @@ export default function Navbar({ currentRoute = 'home', onNavigate }: NavbarProp
       label: 'CONTACT',
       page: 'contact',
       category: 'FOUNDER SYNC',
-      desc: 'Direct channels, project intake & sprint bookings',
+      desc: 'Direct channels, project intake & founder sync',
       preview: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=900&auto=format&fit=crop',
     },
-  ];
-
-  const solutionItems = [];
-
-  const designItems = [];
-
-  const legalItems = [
     {
-      label: 'Privacy Policy',
-      page: 'privacy',
-      icon: Lock,
-      desc: 'GDPR & DPDP 2023 compliance standard',
-    },
-    {
-      label: 'Terms of Service',
-      page: 'terms',
-      icon: FileText,
-      desc: '100% IP ownership & milestone terms',
-    },
-    {
-      label: 'Security & Compliance',
-      page: 'security',
-      icon: Shield,
-      desc: 'SOC2 Type II, TLS 1.3 & AES-256 standards',
-    },
-    {
-      label: 'Cookie Policy',
-      page: 'cookies',
-      icon: Cookie,
-      desc: 'Zero 3rd-party ad trackers & preference controls',
-    },
-    {
-      label: 'Frequently Asked Questions',
-      page: 'faqs',
-      icon: HelpCircle,
-      desc: 'Sprint pricing, timelines & technical FAQ',
-    },
-    {
-      label: 'Open Careers',
-      page: 'careers',
-      icon: Briefcase,
-      desc: 'Remote roles in frontend, backend & design',
+      num: '10',
+      label: 'BOOK SPRINT',
+      page: 'book-call',
+      category: 'FAST TRACK',
+      desc: 'Reserve 2-week architectural sprint & intake',
+      preview: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=900&auto=format&fit=crop',
     },
   ];
 
@@ -360,24 +318,18 @@ export default function Navbar({ currentRoute = 'home', onNavigate }: NavbarProp
                   <span>Studio Index</span>
                 </button>
                 <button
-                  className={`mobile-tab-btn ${activeMobileTab === 'solutions' ? 'is-active' : ''}`}
-                  onClick={() => setActiveMobileTab('solutions')}
+                  className={`mobile-tab-btn ${activeMobileTab === 'direct' ? 'is-active' : ''}`}
+                  onClick={() => setActiveMobileTab('direct')}
                 >
-                  <span>Domains</span>
-                </button>
-                <button
-                  className={`mobile-tab-btn ${activeMobileTab === 'legal' ? 'is-active' : ''}`}
-                  onClick={() => setActiveMobileTab('legal')}
-                >
-                  <span>Direct Reach</span>
+                  <span>Direct Reach & Intake</span>
                 </button>
               </div>
 
               {/* Mega Menu Grid Content (Desktop View & Responsive Layout) */}
               <div className="alien-mega-content-grid">
-                {/* Column 1: Primary Navigation List */}
+                {/* Column 1: Studio Index divided into Two Cards / Grids */}
                 <div
-                  className={`alien-mega-col primary-col ${
+                  className={`alien-mega-col primary-col studio-index-col ${
                     activeMobileTab === 'main' ? 'mobile-show' : 'mobile-hide'
                   }`}
                 >
@@ -386,154 +338,119 @@ export default function Navbar({ currentRoute = 'home', onNavigate }: NavbarProp
                     <span>01 // STUDIO INDEX</span>
                   </div>
 
-                  <nav className="alien-menu-nav-list" aria-label="Main Studio Navigation">
-                    {primaryMenuItems.map((item, idx) => {
-                      const isCurrent = cleanCurrent === item.page;
-                      return (
-                        <motion.a
-                          key={item.label}
-                          href={`/${item.page}`}
-                          onMouseEnter={() =>
-                            setHoveredItem({
-                              title: item.label,
-                              category: item.category,
-                              desc: item.desc,
-                              preview: item.preview,
-                            })
-                          }
-                          onClick={(e) => {
-                            e.preventDefault();
-                            handleNav(item.page);
-                          }}
-                          className={`alien-mega-link ${isCurrent ? 'is-current-route' : ''}`}
-                          initial={{ opacity: 0, y: 8 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: 0.02 + idx * 0.025, duration: 0.28 }}
-                        >
-                          <div className="menu-link-lead">
-                            <span className="menu-num">{item.num}</span>
-                            {isCurrent && <span className="current-route-badge">CURRENT</span>}
-                          </div>
+                  <div className="studio-cards-grid">
+                    {/* Card 1: Core Capabilities & Architecture */}
+                    <div className="studio-nav-card">
+                      <div className="studio-card-top">
+                        <div className="studio-card-badge">
+                          <span className="studio-card-dot" />
+                          <span>CORE CAPABILITIES & PROCESS</span>
+                        </div>
+                        <span className="studio-card-count">05 SECTIONS</span>
+                      </div>
 
-                          <div className="menu-text-wrap">
-                            <span className="menu-text">{item.label}</span>
-                            <span className="menu-sub-desc">{item.desc}</span>
-                          </div>
-
-                          <div className="link-arrow-circle">
-                            <ArrowUpRight size={16} className="link-arrow" />
-                          </div>
-                        </motion.a>
-                      );
-                    })}
-                  </nav>
-                </div>
-
-                {/* Column 2: Digital & Tech Solutions & Design Services */}
-                <div
-                  className={`alien-mega-col secondary-col ${
-                    activeMobileTab === 'solutions' ? 'mobile-show' : 'mobile-hide'
-                  }`}
-                >
-                  {/* Digital Solutions Group */}
-                  <div className="alien-sub-group">
-                    <div className="alien-col-label">
-                      <Code2 size={13} className="text-blue-500" />
-                      <span>02 // DOMAINS & PLATFORMS</span>
-                    </div>
-
-                    <div className="alien-menu-nav-list">
-                      {solutionItems.map((item, idx) => {
-                        const isCurrent = cleanCurrent === item.page;
-                        return (
-                          <motion.a
-                            key={item.label}
-                            href={`/${item.page}`}
-                            onMouseEnter={() =>
-                              setHoveredItem({
-                                title: item.label,
-                                category: `DOMAIN // ${item.tag}`,
-                                desc: item.desc,
-                                preview: item.preview,
-                              })
-                            }
-                            onClick={(e) => {
-                              e.preventDefault();
-                              handleNav(item.page);
-                            }}
-                            className={`alien-mega-link secondary-link ${
-                              isCurrent ? 'is-current-route' : ''
-                            }`}
-                            initial={{ opacity: 0, y: 8 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.08 + idx * 0.03, duration: 0.28 }}
-                          >
-                            <div className="menu-text-wrap">
-                              <div className="secondary-title-row">
-                                <span className="secondary-title">{item.label}</span>
-                                <span className="secondary-tag-badge">{item.tag}</span>
+                      <nav className="alien-menu-nav-list" aria-label="Core Capabilities and Process">
+                        {studioGridOne.map((item, idx) => {
+                          const isCurrent = cleanCurrent === item.page;
+                          return (
+                            <motion.a
+                              key={item.label}
+                              href={`/${item.page}`}
+                              onMouseEnter={() =>
+                                setHoveredItem({
+                                  title: item.label,
+                                  category: item.category,
+                                  desc: item.desc,
+                                  preview: item.preview,
+                                })
+                              }
+                              onClick={(e) => {
+                                e.preventDefault();
+                                handleNav(item.page);
+                              }}
+                              className={`alien-mega-link ${isCurrent ? 'is-current-route' : ''}`}
+                              initial={{ opacity: 0, y: 8 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              transition={{ delay: 0.02 + idx * 0.025, duration: 0.28 }}
+                            >
+                              <div className="menu-link-lead">
+                                <span className="menu-num">{item.num}</span>
+                                {isCurrent && <span className="current-route-badge">CURRENT</span>}
                               </div>
-                              <span className="menu-sub-desc">{item.desc}</span>
-                            </div>
-                            <ArrowUpRight size={15} className="link-arrow" />
-                          </motion.a>
-                        );
-                      })}
-                    </div>
-                  </div>
 
-                  {/* Design Services Group */}
-                  <div className="alien-sub-group menu-group-spacing">
-                    <div className="alien-col-label">
-                      <Palette size={13} className="text-purple-500" />
-                      <span>03 // DESIGN & INTERFACES</span>
-                    </div>
-
-                    <div className="alien-menu-nav-list">
-                      {designItems.map((item, idx) => {
-                        const isCurrent = cleanCurrent === item.page;
-                        return (
-                          <motion.a
-                            key={item.label}
-                            href={`/${item.page}`}
-                            onMouseEnter={() =>
-                              setHoveredItem({
-                                title: item.label,
-                                category: `DESIGN // ${item.tag}`,
-                                desc: item.desc,
-                                preview: item.preview,
-                              })
-                            }
-                            onClick={(e) => {
-                              e.preventDefault();
-                              handleNav(item.page);
-                            }}
-                            className={`alien-mega-link secondary-link ${
-                              isCurrent ? 'is-current-route' : ''
-                            }`}
-                            initial={{ opacity: 0, y: 8 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.15 + idx * 0.03, duration: 0.28 }}
-                          >
-                            <div className="menu-text-wrap">
-                              <div className="secondary-title-row">
-                                <span className="secondary-title">{item.label}</span>
-                                <span className="secondary-tag-badge">{item.tag}</span>
+                              <div className="menu-text-wrap">
+                                <span className="menu-text">{item.label}</span>
+                                <span className="menu-sub-desc">{item.desc}</span>
                               </div>
-                              <span className="menu-sub-desc">{item.desc}</span>
-                            </div>
-                            <ArrowUpRight size={15} className="link-arrow" />
-                          </motion.a>
-                        );
-                      })}
+
+                              <div className="link-arrow-circle">
+                                <ArrowUpRight size={15} className="link-arrow" />
+                              </div>
+                            </motion.a>
+                          );
+                        })}
+                      </nav>
+                    </div>
+
+                    {/* Card 2: Perspectives, Ecosystem & Direct Line */}
+                    <div className="studio-nav-card">
+                      <div className="studio-card-top">
+                        <div className="studio-card-badge">
+                          <span className="studio-card-dot dot-alt" />
+                          <span>PERSPECTIVES & DIRECT REACH</span>
+                        </div>
+                        <span className="studio-card-count">05 SECTIONS</span>
+                      </div>
+
+                      <nav className="alien-menu-nav-list" aria-label="Perspectives and Direct Reach">
+                        {studioGridTwo.map((item, idx) => {
+                          const isCurrent = cleanCurrent === item.page;
+                          return (
+                            <motion.a
+                              key={item.label}
+                              href={`/${item.page}`}
+                              onMouseEnter={() =>
+                                setHoveredItem({
+                                  title: item.label,
+                                  category: item.category,
+                                  desc: item.desc,
+                                  preview: item.preview,
+                                })
+                              }
+                              onClick={(e) => {
+                                e.preventDefault();
+                                handleNav(item.page);
+                              }}
+                              className={`alien-mega-link ${isCurrent ? 'is-current-route' : ''}`}
+                              initial={{ opacity: 0, y: 8 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              transition={{ delay: 0.06 + idx * 0.025, duration: 0.28 }}
+                            >
+                              <div className="menu-link-lead">
+                                <span className="menu-num">{item.num}</span>
+                                {isCurrent && <span className="current-route-badge">CURRENT</span>}
+                              </div>
+
+                              <div className="menu-text-wrap">
+                                <span className="menu-text">{item.label}</span>
+                                <span className="menu-sub-desc">{item.desc}</span>
+                              </div>
+
+                              <div className="link-arrow-circle">
+                                <ArrowUpRight size={15} className="link-arrow" />
+                              </div>
+                            </motion.a>
+                          );
+                        })}
+                      </nav>
                     </div>
                   </div>
                 </div>
 
-                {/* Column 3: Interactive Media Showcase & Direct Booking Dock (Desktop) */}
+                {/* Column 2: Interactive Media Showcase & Direct Booking Dock (Desktop) */}
                 <div
                   className={`alien-mega-col preview-col ${
-                    activeMobileTab === 'legal' ? 'mobile-show' : ''
+                    activeMobileTab === 'direct' ? 'mobile-show' : ''
                   }`}
                 >
                   <div className="preview-col-wrapper">

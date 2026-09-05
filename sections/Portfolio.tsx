@@ -213,7 +213,6 @@ export default function Portfolio({ onNavigate }: PortfolioProps) {
                   alt={`${project.title} software preview`}
                   loading={i < 3 ? 'eager' : 'lazy'}
                   decoding="async"
-                  fetchPriority={i < 3 ? 'high' : 'auto'}
                   onError={(event) => {
                     const image = event.currentTarget;
                     if (image.dataset.fallbackApplied) return;

@@ -40,16 +40,12 @@ export default function Hero({ onNavigate }: HeroProps) {
   return (
     <section className="hero section-pad alien-hero" id="home">
       <div className="hero-grid alien-hero-grid">
-        {/* Top Status Bar */}
+        {/* Top Status Bar (Live Availability & Clutch Rating) */}
         <div className="hero-meta alien-hero-meta">
-          <button
-            onClick={() => onNavigate?.('about')}
-            className="hero-live-pill"
-            style={{ cursor: 'pointer', background: 'transparent', border: 'none', textAlign: 'left' }}
-          >
+          <div className="hero-live-status">
             <span className="live-pulse-dot" />
-            <span>00 / INDEX • BASED IN RAJASTHAN • WORKING WORLDWIDE</span>
-          </button>
+            <span className="live-status-text">AVAILABLE FOR SPRINT COMMISSIONS</span>
+          </div>
 
           <button
             onClick={() => onNavigate?.('about')}
@@ -153,32 +149,97 @@ export default function Hero({ onNavigate }: HeroProps) {
         </div>
       </div>
 
-      {/* Hero Bottom Capabilities */}
-      <div className="hero-foot alien-hero-foot">
-        <button
-          onClick={() => onNavigate?.('strategy')}
-          className="hero-foot-col"
-          style={{ cursor: 'pointer', background: 'transparent', border: 'none', textAlign: 'left', color: 'inherit' }}
-        >
-          <b>01</b>
-          <span>STRATEGY &amp; PRODUCT ROADMAPS</span>
-        </button>
-        <button
-          onClick={() => onNavigate?.('design-systems')}
-          className="hero-foot-col"
-          style={{ cursor: 'pointer', background: 'transparent', border: 'none', textAlign: 'left', color: 'inherit' }}
-        >
-          <b>02</b>
-          <span>DESIGN SYSTEMS &amp; DEV</span>
-        </button>
-        <button
-          onClick={() => onNavigate?.('software')}
-          className="hero-foot-col"
-          style={{ cursor: 'pointer', background: 'transparent', border: 'none', textAlign: 'left', color: 'inherit' }}
-        >
-          <b>03</b>
-          <span>FULL-STACK WEB APPS &amp; CLOUD</span>
-        </button>
+      {/* Strategic Product Roadmap Section */}
+      <div className="hero-roadmap-section" id="roadmap">
+        <div className="hero-roadmap-header">
+          <div className="hero-roadmap-header-left">
+            <span className="hero-roadmap-eyebrow">
+              <span className="hero-roadmap-pulse" />
+              CAPABILITIES &amp; SPRINT MILESTONES
+            </span>
+            <h2 className="hero-roadmap-title">Strategic Product Roadmap</h2>
+          </div>
+          <p className="hero-roadmap-subtitle">
+            From product discovery to enterprise deployment — structured in 3 synchronized phases with zero vendor lock-in.
+          </p>
+        </div>
+
+        <div className="hero-roadmap-cards-grid">
+          {/* Card 01: Strategy & Product Roadmaps */}
+          <div
+            className="hero-roadmap-card card-glow-cyan"
+            onClick={() => onNavigate?.('strategy')}
+            style={{ cursor: 'pointer' }}
+          >
+            <div className="roadmap-card-top">
+              <span className="roadmap-phase-tag">PHASE 01</span>
+              <span className="roadmap-timeline-pill">WEEKS 1–2</span>
+            </div>
+            <h3 className="roadmap-card-title">Strategy &amp; Product Roadmaps</h3>
+            <p className="roadmap-card-desc">
+              Deconstruct market opportunity, user journeys, unit economics, and data architecture to eliminate execution risk.
+            </p>
+            <div className="roadmap-deliverables-list">
+              <span>• Product Market Validation</span>
+              <span>• Information Architecture &amp; User Flows</span>
+              <span>• Technical Feasibility &amp; API Schemas</span>
+            </div>
+            <div className="roadmap-card-bottom">
+              <span className="roadmap-link-text">Explore Strategy Blueprint</span>
+              <ArrowUpRight size={15} className="roadmap-arrow" />
+            </div>
+          </div>
+
+          {/* Card 02: Design Systems & Dev */}
+          <div
+            className="hero-roadmap-card card-glow-purple"
+            onClick={() => onNavigate?.('design-systems')}
+            style={{ cursor: 'pointer' }}
+          >
+            <div className="roadmap-card-top">
+              <span className="roadmap-phase-tag tag-purple">PHASE 02</span>
+              <span className="roadmap-timeline-pill">WEEKS 2–4</span>
+            </div>
+            <h3 className="roadmap-card-title">Design Systems &amp; Dev</h3>
+            <p className="roadmap-card-desc">
+              Mathematical typography, tactile atomic components, and living Figma tokens linked seamlessly to production code.
+            </p>
+            <div className="roadmap-deliverables-list">
+              <span>• Figma Tokenized UI System</span>
+              <span>• Fluid Micro-Interactions &amp; States</span>
+              <span>• WCAG AAA Accessibility Compliance</span>
+            </div>
+            <div className="roadmap-card-bottom">
+              <span className="roadmap-link-text">View Design Tokens</span>
+              <ArrowUpRight size={15} className="roadmap-arrow" />
+            </div>
+          </div>
+
+          {/* Card 03: Full-Stack Web Apps & Cloud */}
+          <div
+            className="hero-roadmap-card card-glow-blue"
+            onClick={() => onNavigate?.('software')}
+            style={{ cursor: 'pointer' }}
+          >
+            <div className="roadmap-card-top">
+              <span className="roadmap-phase-tag tag-blue">PHASE 03</span>
+              <span className="roadmap-timeline-pill">WEEKS 4–6</span>
+            </div>
+            <h3 className="roadmap-card-title">Full-Stack Web Apps &amp; Cloud</h3>
+            <p className="roadmap-card-desc">
+              Resilient TypeScript engineering, edge cloud architecture, sub-second Core Web Vitals, and automated CI/CD.
+            </p>
+            <div className="roadmap-deliverables-list">
+              <span>• Modern React &amp; Next.js Architecture</span>
+              <span>• Edge Caching &amp; Sub-200ms Latency</span>
+              <span>• Zero-Downtime Deployment &amp; QA</span>
+            </div>
+            <div className="roadmap-card-bottom">
+              <span className="roadmap-link-text">Inspect Tech Stack</span>
+              <ArrowUpRight size={15} className="roadmap-arrow" />
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
