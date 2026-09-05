@@ -52,18 +52,18 @@ export interface BlogPost {
 export const BLOG_POSTS: BlogPost[] = [
   {
     slug: 'optimizing-core-web-vitals-react-nextjs',
-    title: 'How We Achieve 95+ Core Web Vitals on Heavy React & Next.js Websites',
+    title: 'Ideas, Insights & Practical Knowledge',
     category: 'Web Development',
     date: 'August 28, 2026',
     readTime: '7 min read',
     author: {
-      name: 'Sandeep Barupal',
+      name: 'Aarav Mehta',
       role: 'Lead Frontend Engineer',
       avatar: sandeepAvatar,
     },
     coverImage: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=1200',
     excerpt:
-      'A practical engineering guide on tackling Largest Contentful Paint (LCP), eliminating layout shifts (CLS), and managing hydration overhead for real-world client websites.',
+      'Expert articles, tutorials, and engineering insights to help you build better products, grow your business, and stay ahead in the digital world.',
     featured: true,
     tags: ['React 18', 'Next.js', 'Core Web Vitals', 'Performance', 'Lighthouse'],
     takeaways: [
@@ -109,7 +109,7 @@ export const BLOG_POSTS: BlogPost[] = [
     date: 'August 14, 2026',
     readTime: '9 min read',
     author: {
-      name: 'Jaspal Byavat',
+      name: 'Rohan Verma',
       role: 'Senior Backend Architect',
       avatar: jaspalAvatar,
     },
@@ -153,7 +153,7 @@ export const dbPool = new Pool({
     date: 'July 30, 2026',
     readTime: '6 min read',
     author: {
-      name: 'Gagan Chouhan',
+      name: 'Mira Kapoor',
       role: 'Lead Web & UI/UX Designer',
       avatar: gaganAvatar,
     },
@@ -183,7 +183,7 @@ export const dbPool = new Pool({
     date: 'July 18, 2026',
     readTime: '8 min read',
     author: {
-      name: 'Sahiram Nayak',
+      name: 'Nisha Rao',
       role: 'Senior Backend & Cloud Engineer',
       avatar: sahiramAvatar,
     },
@@ -213,7 +213,7 @@ export const dbPool = new Pool({
     date: 'July 05, 2026',
     readTime: '8 min read',
     author: {
-      name: 'Sandeep Barupal',
+      name: 'Aarav Mehta',
       role: 'Lead Frontend Engineer',
       avatar: sandeepAvatar,
     },
@@ -243,7 +243,7 @@ export const dbPool = new Pool({
     date: 'June 22, 2026',
     readTime: '7 min read',
     author: {
-      name: 'Jaspal Byavat',
+      name: 'Rohan Verma',
       role: 'Senior Backend Architect',
       avatar: jaspalAvatar,
     },
@@ -273,7 +273,7 @@ export const dbPool = new Pool({
     date: 'June 10, 2026',
     readTime: '6 min read',
     author: {
-      name: 'Gagan Chouhan',
+      name: 'Mira Kapoor',
       role: 'Lead Web & UI/UX Designer',
       avatar: gaganAvatar,
     },
@@ -303,7 +303,7 @@ export const dbPool = new Pool({
     date: 'May 25, 2026',
     readTime: '8 min read',
     author: {
-      name: 'Sahiram Nayak',
+      name: 'Nisha Rao',
       role: 'Senior Backend & Cloud Engineer',
       avatar: sahiramAvatar,
     },
@@ -532,65 +532,39 @@ export const BlogPage: React.FC<BlogPageProps> = ({ onNavigate }) => {
             HOME
           </button>
           <span>/</span>
-          <span className="blog-breadcrumb-current">BLOG & ENGINEERING DISPATCHES</span>
+          <span className="blog-breadcrumb-current">INSIGHTS FOR A BETTER DIGITAL TOMORROW</span>
         </nav>
 
-        {/* Featured Post Spotlight Banner */}
-        <div className="blog-featured-card" id="blog-featured-hero">
-          <div className="blog-featured-grid">
-            <div className="blog-featured-media">
-              <img
-                src={featuredPost.coverImage}
-                alt={featuredPost.title}
-                className="blog-featured-img"
-                loading="lazy"
-                referrerPolicy="no-referrer"
-              />
-              <span className="blog-featured-badge">FEATURED ARTICLE</span>
-            </div>
-
-            <div className="blog-featured-content">
-              <div className="blog-featured-meta">
-                <span className="blog-cat-pill">{featuredPost.category}</span>
-                <span className="blog-time-pill">
-                  <Clock size={12} /> {featuredPost.readTime}
-                </span>
-                <span className="blog-date-pill">{featuredPost.date}</span>
-              </div>
-
-              <h2 className="blog-featured-title">
-                {featuredPost.title}
-              </h2>
-
-              <p className="blog-featured-excerpt">
-                {featuredPost.excerpt}
-              </p>
-
-              <div className="blog-featured-author-row">
-                <div className="blog-author-compact">
-                  <img
-                    src={featuredPost.author.avatar}
-                    alt={featuredPost.author.name}
-                    className="blog-author-avatar-sm"
-                  />
-                  <div>
-                    <strong>{featuredPost.author.name}</strong>
-                    <span>{featuredPost.author.role}</span>
-                  </div>
-                </div>
-
-                <button
-                  onClick={() => setActiveArticle(featuredPost)}
-                  className="button button-dark blog-read-btn"
-                  id="read-featured-article-btn"
-                >
-                  <span>Read Full Article</span>
-                  <ArrowUpRight size={15} />
-                </button>
-              </div>
-            </div>
+        <section className="blog-compact-hero" aria-labelledby="blog-page-title">
+          <div className="blog-compact-copy">
+            <span className="blog-compact-kicker">INSIGHTS FOR A BETTER DIGITAL TOMORROW</span>
+            <h1 id="blog-page-title">Ideas, insights & practical knowledge.</h1>
+            <p>Expert articles, tutorials, and engineering notes to help you build better products and make sharper digital decisions.</p>
           </div>
-        </div>
+          <div className="blog-compact-search blog-search-box">
+            <Search size={17} className="blog-search-icon" />
+            <input type="text" placeholder="Search articles, topics, or keywords..." value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} className="blog-search-input" id="blog-hero-search-field" />
+            {searchQuery && <button onClick={() => setSearchQuery('')} className="blog-search-clear" title="Clear search"><X size={14} /></button>}
+          </div>
+          <div className="blog-compact-tags" aria-label="Popular topics">
+            {['Web Development', 'UI/UX Design', 'SEO', 'Digital Marketing', 'Product Design', 'Case Studies'].map((tag) => (
+              <button key={tag} onClick={() => setSearchQuery(tag)} className="blog-topic-chip">{tag}</button>
+            ))}
+          </div>
+        </section>
+
+        <article className="blog-featured-card blog-featured-card-compact" id="blog-featured-hero">
+          <div className="blog-featured-media">
+            <img src={featuredPost.coverImage} alt={featuredPost.title} className="blog-featured-img" loading="lazy" referrerPolicy="no-referrer" />
+            <span className="blog-featured-badge">FEATURED ARTICLE</span>
+          </div>
+          <div className="blog-featured-content">
+            <div className="blog-featured-meta"><span className="blog-cat-pill">{featuredPost.category}</span><span className="blog-time-pill"><Clock size={12} /> {featuredPost.readTime}</span><span className="blog-date-pill">{featuredPost.date}</span></div>
+            <h2 className="blog-featured-title">{featuredPost.title}</h2>
+            <p className="blog-featured-excerpt">{featuredPost.excerpt}</p>
+            <div className="blog-featured-author-row"><div className="blog-author-compact"><img src={featuredPost.author.avatar} alt={featuredPost.author.name} className="blog-author-avatar-sm" /><div><strong>{featuredPost.author.name}</strong><span>{featuredPost.author.role}</span></div></div><button onClick={() => setActiveArticle(featuredPost)} className="button button-dark blog-read-btn" id="read-featured-article-btn"><span>Read Full Article</span><ArrowUpRight size={15} /></button></div>
+          </div>
+        </article>
 
         {/* Filter and Search Bar */}
         <div className="blog-filter-bar" id="blog-filter-controls">
