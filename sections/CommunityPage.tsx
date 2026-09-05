@@ -58,12 +58,12 @@ const UPCOMING_EVENTS: WorkshopEvent[] = [
     platform: 'Google Meet / Virtual Live Stream',
     hosts: [
       {
-        name: 'Sandeep Barupal',
+        name: 'Aarav Mehta',
         role: 'Lead Frontend Engineer',
         avatar: sandeepAvatar,
       },
       {
-        name: 'Gagan Chouhan',
+        name: 'Mira Kapoor',
         role: 'Lead UI/UX Designer',
         avatar: gaganAvatar,
       },
@@ -87,12 +87,12 @@ const UPCOMING_EVENTS: WorkshopEvent[] = [
     platform: 'Discord Stage Audio & Screen Share',
     hosts: [
       {
-        name: 'Jaspal Byavat',
+        name: 'Rohan Verma',
         role: 'Senior Backend Architect',
         avatar: jaspalAvatar,
       },
       {
-        name: 'Sahiram Nayak',
+        name: 'Nisha Rao',
         role: 'Senior Backend & Cloud Engineer',
         avatar: sahiramAvatar,
       },
@@ -116,7 +116,7 @@ const UPCOMING_EVENTS: WorkshopEvent[] = [
     platform: 'Virtual Live Stream & Community Figma Canvas',
     hosts: [
       {
-        name: 'Gagan Chouhan',
+        name: 'Mira Kapoor',
         role: 'Lead UI/UX Designer',
         avatar: gaganAvatar,
       },

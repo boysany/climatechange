@@ -57,7 +57,7 @@ export const BLOG_POSTS: BlogPost[] = [
     date: 'August 28, 2026',
     readTime: '7 min read',
     author: {
-      name: 'Sandeep Barupal',
+      name: 'Aarav Mehta',
       role: 'Lead Frontend Engineer',
       avatar: sandeepAvatar,
     },
@@ -109,7 +109,7 @@ export const BLOG_POSTS: BlogPost[] = [
     date: 'August 14, 2026',
     readTime: '9 min read',
     author: {
-      name: 'Jaspal Byavat',
+      name: 'Rohan Verma',
       role: 'Senior Backend Architect',
       avatar: jaspalAvatar,
     },
@@ -153,7 +153,7 @@ export const dbPool = new Pool({
     date: 'July 30, 2026',
     readTime: '6 min read',
     author: {
-      name: 'Gagan Chouhan',
+      name: 'Mira Kapoor',
       role: 'Lead Web & UI/UX Designer',
       avatar: gaganAvatar,
     },
@@ -183,7 +183,7 @@ export const dbPool = new Pool({
     date: 'July 18, 2026',
     readTime: '8 min read',
     author: {
-      name: 'Sahiram Nayak',
+      name: 'Nisha Rao',
       role: 'Senior Backend & Cloud Engineer',
       avatar: sahiramAvatar,
     },
@@ -213,7 +213,7 @@ export const dbPool = new Pool({
     date: 'July 05, 2026',
     readTime: '8 min read',
     author: {
-      name: 'Sandeep Barupal',
+      name: 'Aarav Mehta',
       role: 'Lead Frontend Engineer',
       avatar: sandeepAvatar,
     },
@@ -243,7 +243,7 @@ export const dbPool = new Pool({
     date: 'June 22, 2026',
     readTime: '7 min read',
     author: {
-      name: 'Jaspal Byavat',
+      name: 'Rohan Verma',
       role: 'Senior Backend Architect',
       avatar: jaspalAvatar,
     },
@@ -273,7 +273,7 @@ export const dbPool = new Pool({
     date: 'June 10, 2026',
     readTime: '6 min read',
     author: {
-      name: 'Gagan Chouhan',
+      name: 'Mira Kapoor',
       role: 'Lead Web & UI/UX Designer',
       avatar: gaganAvatar,
     },
@@ -303,7 +303,7 @@ export const dbPool = new Pool({
     date: 'May 25, 2026',
     readTime: '8 min read',
     author: {
-      name: 'Sahiram Nayak',
+      name: 'Nisha Rao',
       role: 'Senior Backend & Cloud Engineer',
       avatar: sahiramAvatar,
     },

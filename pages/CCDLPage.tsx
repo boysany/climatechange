@@ -1,7 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import ScrollReveal from '../components/ScrollReveal.tsx';
 import TextReveal from '../components/TextReveal.tsx';
-import WorkReviewsSection from '../components/WorkReviewsSection.tsx';
 import { ServiceDetailPage } from '../sections/ServiceDetailPage.tsx';
 import { SEOStrategyPage } from '../sections/SEOStrategyPage.tsx';
 import { BlogPage } from '../sections/BlogPage.tsx';
@@ -188,7 +187,17 @@ const livePortfolioProjects = portfolioProjects
     liveUrl: project.liveUrl,
   }));
 
-const allProjectsData = [...projectsData, ...livePortfolioProjects];
+const allProjectsData = portfolioProjects.map((project) => ({
+  id: `live-${project.liveUrl}`,
+  title: project.title,
+  type: project.category.includes('Education') ? 'EdTech' : project.category.includes('DeFi') ? 'DeFi' : 'Platforms',
+  category: project.category,
+  metrics: 'Live project preview',
+  text: project.desc,
+  image: project.img,
+  tech: [project.tag, 'Live Preview'],
+  liveUrl: project.liveUrl,
+}));
 
 export const caseStudiesDetail: Record<string, {
   title: string;
@@ -356,7 +365,7 @@ export const processStages = [
 
 export const teamMembers = [
   {
-    name: 'Gagan Chouhan',
+    name: 'Mira Kapoor',
     role: 'Lead Web & UI/UX Designer',
     specialty: 'Creative Direction & Design Systems',
     tag: 'FOUNDING CORE',
@@ -368,7 +377,7 @@ export const teamMembers = [
     highlights: '50+ High-Conversion Interfaces Delivered',
   },
   {
-    name: 'Sandeep Barupal',
+    name: 'Aarav Mehta',
     role: 'Lead Frontend Engineer',
     specialty: 'React 18, TypeScript & Micro-Interactions',
     tag: 'FOUNDING CORE',
@@ -380,7 +389,7 @@ export const teamMembers = [
     highlights: '99.9% Uptime & 95+ Core Web Vitals Specialist',
   },
   {
-    name: 'Jaspal Byavat',
+    name: 'Rohan Verma',
     role: 'Senior Backend Architect',
     specialty: 'Distributed Systems & High-Throughput APIs',
     tag: 'FOUNDING CORE',
@@ -392,7 +401,7 @@ export const teamMembers = [
     highlights: '<100ms API Response Latency Engineering',
   },
   {
-    name: 'Sahiram Nayak',
+    name: 'Nisha Rao',
     role: 'Senior Backend & Cloud Engineer',
     specialty: 'Database Security & Cloud DevOps',
     tag: 'FOUNDING CORE',
@@ -402,6 +411,18 @@ export const teamMembers = [
     skills: ['Database Optimization', 'Cloud DevOps', 'Microservices', 'API Security', 'Docker'],
     experience: '5+ Years Experience',
     highlights: 'Zero-Downtime Migration & SOC2 Security Standards',
+  },
+  {
+    name: 'Ishita Sen', role: 'Product Marketing Lead', specialty: 'Positioning, Content & Growth Campaigns', tag: 'DELIVERY CORE', location: 'Remote / Jaipur', image: gaganPortrait, bio: 'Builds clear product stories and practical growth systems that turn technical value into qualified demand.', skills: ['Content Strategy', 'Product Marketing', 'Campaigns'], experience: '4+ Years Experience', highlights: 'Multi-channel launch strategy',
+  },
+  {
+    name: 'Dev Malhotra', role: 'QA & Release Engineer', specialty: 'Quality Systems & Release Automation', tag: 'DELIVERY CORE', location: 'Remote / Bangalore', image: sandeepPortrait, bio: 'Keeps every release dependable through thoughtful test coverage, observability, and calm incident response.', skills: ['QA Automation', 'CI/CD', 'Performance'], experience: '4+ Years Experience', highlights: 'Reliable release pipelines',
+  },
+  {
+    name: 'Kavya Iyer', role: 'Customer Success Partner', specialty: 'Client Enablement & Sprint Delivery', tag: 'DELIVERY CORE', location: 'Remote / Mumbai', image: jaspalPortrait, bio: 'Connects client goals to practical sprint decisions and makes collaboration transparent from kickoff to launch.', skills: ['Discovery', 'Delivery', 'Client Success'], experience: '5+ Years Experience', highlights: 'High-trust client partnerships',
+  },
+  {
+    name: 'Arjun Rao', role: 'Cloud Support Engineer', specialty: 'Infrastructure & Platform Reliability', tag: 'DELIVERY CORE', location: 'Remote / Pune', image: sahiramPortrait, bio: 'Supports secure, observable cloud environments that help product teams move quickly without compromising stability.', skills: ['Cloud Ops', 'Monitoring', 'Security'], experience: '4+ Years Experience', highlights: 'Reliable platform operations',
   },
 ];
 
@@ -1114,10 +1135,7 @@ export default function CCDLPage({
             ))}
           </div>
 
-          {/* Client Testimonials: 6 Real Reviews with Auto-Scroll */}
-          <ScrollReveal delay={100}>
-            <WorkReviewsSection />
-          </ScrollReveal>
+
         </section>
       )}
 

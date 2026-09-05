@@ -12,6 +12,11 @@ if (typeof window !== 'undefined') {
 
 export const portfolioProjects = [
   {
+    num: '01', tag: 'Legal Platform', title: 'Legal Website',
+    desc: 'A clear, trustworthy legal services website designed for discovery, education, and qualified inquiries.',
+    img: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&q=82&w=1200', liveUrl: 'https://legal-omega-red.vercel.app/', year: '2026', category: 'Legal / Web',
+  },
+  {
     num: '01',
     tag: 'Talent Platform',
     title: 'Hire Professional',
@@ -24,7 +29,7 @@ export const portfolioProjects = [
   {
     num: '02',
     tag: 'DeFi & Web3',
-    title: 'Swap',
+    title: 'Swap Platform',
     desc: 'A live exchange interface designed around clear asset discovery, confident transaction flow, and real-time market context.',
     img: 'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&q=82&w=1200',
     liveUrl: 'https://swap-zeta.vercel.app/',
@@ -32,14 +37,9 @@ export const portfolioProjects = [
     category: 'DeFi / Web3 Product',
   },
   {
-    num: '03',
-    tag: 'Fintech Exchange',
-    title: 'CC Exchange',
-    desc: 'A focused digital exchange experience with a crisp trading-oriented interface and accessible account workflows.',
-    img: 'https://image.thum.io/get/width/1200/crop/800/wait/5/https://ccexchange.vercel.app/',
-    liveUrl: 'https://ccexchange.vercel.app/',
-    year: '2026',
-    category: 'Fintech / Exchange',
+    num: '03', tag: 'Fintech Exchange', title: 'CC Exchange',
+    desc: 'A focused digital exchange experience with clear market context and accessible account workflows.',
+    img: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=82&w=1200', liveUrl: 'https://ccexchange.vercel.app/', year: '2026', category: 'Fintech / Exchange',
   },
   {
     num: '04',
@@ -52,29 +52,14 @@ export const portfolioProjects = [
     category: 'EdTech / Dashboard',
   },
   {
-    num: '06', tag: 'AI & Product', title: 'Hezafx',
-    desc: 'A live product experience with a focused, modern interface and clear conversion flow.',
-    img: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=82&w=1200', liveUrl: 'https://hezafx.vercel.app/', year: '2026', category: 'AI / Product',
-  },
-  {
     num: '07', tag: 'Fintech Wallet', title: 'TP Wallet',
     desc: 'A digital wallet experience built around simple financial actions and trustworthy information design.',
     img: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=82&w=1200', liveUrl: 'https://tpwallet.vercel.app/', year: '2026', category: 'Fintech / Wallet',
   },
   {
-    num: '03',
-    tag: 'DeFi & Web3',
-    title: 'Urmi Swap',
-    desc: 'A focused decentralized exchange experience built around real-time liquidity pools, minimal slippage, speed, and confident asset swapping.',
-    img: 'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&q=82&w=1200',
-    liveUrl: 'https://swap-zeta.vercel.app/',
-    year: '2025',
-    category: 'DeFi / Web3 Product',
-  },
-  {
-    num: '08', tag: 'Translation AI', title: 'Traslate',
+    num: '07', tag: 'Translation AI', title: 'AI Translate',
     desc: 'An approachable translation product designed for fast, direct multilingual workflows.',
-    img: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&q=82&w=1200', liveUrl: 'https://traslate-six.vercel.app/', year: '2026', category: 'AI / Language',
+    img: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&q=82&w=1200', liveUrl: 'https://aitraslate.vercel.app/', year: '2026', category: 'AI / Language',
   },
   {
     num: '09', tag: 'Commerce', title: 'GShop',
@@ -82,24 +67,9 @@ export const portfolioProjects = [
     img: 'https://images.unsplash.com/photo-1556740749-887f6717d7e4?auto=format&fit=crop&q=82&w=1200', liveUrl: 'https://gshop-gamma.vercel.app/', year: '2026', category: 'E-Commerce / Growth',
   },
   {
-    num: '10', tag: 'Healthcare', title: 'MedXpert',
-    desc: 'A healthcare product interface that makes expert information and patient journeys easier to navigate.',
-    img: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=82&w=1200', liveUrl: 'https://medxpert-aujj.vercel.app/', year: '2026', category: 'Healthcare / Platform',
-  },
-  {
-    num: '11', tag: 'Interface System', title: 'UIMA',
-    desc: 'A distinctive interface system showcasing structured content and refined interaction patterns.',
-    img: 'https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&q=82&w=1200', liveUrl: 'https://uima.vercel.app/', year: '2026', category: 'UI/UX / Product',
-  },
-  {
-    num: '13', tag: 'Digital Product', title: 'Zenith',
+    num: '09', tag: 'Digital Product', title: 'Zenith',
     desc: 'A polished digital product experience with a strong visual identity and focused navigation.',
     img: 'https://images.unsplash.com/photo-1558655146-9f40138edfeb?auto=format&fit=crop&q=82&w=1200', liveUrl: 'https://zenith-gules-seven.vercel.app/', year: '2026', category: 'Product / Web',
-  },
-  {
-    num: '14', tag: 'Healthcare', title: 'Docter',
-    desc: 'A doctor discovery and healthcare experience designed around clarity, trust, and quick access.',
-    img: 'https://images.unsplash.com/photo-1538108149393-fbbd81895907?auto=format&fit=crop&q=82&w=1200', liveUrl: 'https://docter-three.vercel.app/', year: '2026', category: 'Healthcare / Web App',
   },
 ];
 

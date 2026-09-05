@@ -30,13 +30,13 @@ const teamSections: SquadSection[] = [
     badge: '01 / CREATIVE CORE',
     members: [
       {
-        name: 'Gagan Chouhan',
+        name: 'Mira Kapoor',
         role: 'Lead Web & UI/UX Designer',
         experience: '6+ Years Experience',
         image: gaganPortrait,
       },
       {
-        name: 'Sandeep Barupal',
+        name: 'Aarav Mehta',
         role: 'Lead Frontend Engineer',
         experience: '5+ Years Experience',
         image: sandeepPortrait,
@@ -49,17 +49,28 @@ const teamSections: SquadSection[] = [
     badge: '02 / SYSTEMS CORE',
     members: [
       {
-        name: 'Jaspal Byavat',
+        name: 'Rohan Verma',
         role: 'Senior Backend Architect',
         experience: '5+ Years Experience',
         image: jaspalPortrait,
       },
       {
-        name: 'Sahiram Nayak',
+        name: 'Nisha Rao',
         role: 'Senior Backend & Cloud Engineer',
         experience: '5+ Years Experience',
         image: sahiramPortrait,
       },
+    ],
+  },
+  {
+    title: 'Growth, Delivery & Product Operations',
+    subtitle: 'Strategy, delivery coordination, QA, and customer success across every sprint',
+    badge: '03 / DELIVERY CORE',
+    members: [
+      { name: 'Ishita Sen', role: 'Product Marketing Lead', experience: '4+ Years Experience', image: gaganPortrait },
+      { name: 'Dev Malhotra', role: 'QA & Release Engineer', experience: '4+ Years Experience', image: sandeepPortrait },
+      { name: 'Kavya Iyer', role: 'Customer Success Partner', experience: '5+ Years Experience', image: jaspalPortrait },
+      { name: 'Arjun Rao', role: 'Cloud Support Engineer', experience: '4+ Years Experience', image: sahiramPortrait },
     ],
   },
 ];
