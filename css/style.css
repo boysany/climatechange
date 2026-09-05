@@ -11987,6 +11987,28 @@ button {
 }
 
 /* RSVP Dialog */
+/* Final responsive and content-hub polish */
+@media (max-width: 760px) {
+  .services-header { gap: 1rem; }
+  .services-heading-copy h2 { font-size: clamp(3.1rem, 16vw, 5rem); }
+  .services-filters { margin-top: 2rem; padding: 0.75rem 0; }
+  .services-filter-list { width: 100%; flex-wrap: nowrap; overflow-x: auto; padding-bottom: 0.25rem; scrollbar-width: none; }
+  .services-filter-list::-webkit-scrollbar { display: none; }
+  .services-filter-button { flex: 0 0 auto; min-height: 2.75rem; }
+  .blog-page-root, .community-page-root { padding-top: 4.25rem; overflow-x: hidden; }
+  .blog-page-root .blog-breadcrumb, .community-page-root .blog-breadcrumb { padding-inline: 1rem; }
+  .blog-featured-card, .community-cockpit-banner { margin-inline: 1rem; border-radius: 1rem; }
+  .blog-featured-title { font-size: clamp(2.3rem, 12vw, 4rem); }
+  .community-metrics-grid { grid-template-columns: 1fr !important; }
+  .community-stat-card { padding: 1rem 0.5rem; }
+  .community-stat-num { font-size: 3rem; }
+  .seo-strategy-container { padding-inline: 1rem; }
+  .seo-hero-title { font-size: clamp(2.2rem, 11vw, 4.5rem); line-height: 1; }
+  .seo-tabs-bar { display: flex; overflow-x: auto; gap: 0.5rem; scrollbar-width: none; }
+  .seo-tabs-bar::-webkit-scrollbar { display: none; }
+  .seo-tabs-bar button { flex: 0 0 auto; min-height: 2.75rem; }
+}
+
 /* Blog + Community page refresh */
 .blog-page-root,
 .community-page-root {

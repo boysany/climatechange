@@ -165,14 +165,6 @@ export default function Navbar({ currentRoute = 'home', onNavigate }: NavbarProp
       preview: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=900&auto=format&fit=crop',
     },
     {
-      num: '07',
-      label: 'INSIGHTS',
-      page: 'insights',
-      category: 'RESEARCH',
-      desc: 'Technical essays, architecture deep-dives & blueprints',
-      preview: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=900&auto=format&fit=crop',
-    },
-    {
       num: '08',
       label: 'CAREERS',
       page: 'careers',
@@ -190,46 +182,9 @@ export default function Navbar({ currentRoute = 'home', onNavigate }: NavbarProp
     },
   ];
 
-  const solutionItems = [
-    {
-      label: 'FOR STARTUPS',
-      tag: '0-to-1 MVP',
-      page: 'startups',
-      desc: 'Rapid venture builds & investor-ready cloud architectures',
-      preview: 'https://images.unsplash.com/photo-1531403009284-440f080d1e12?q=80&w=900&auto=format&fit=crop',
-    },
-    {
-      label: 'FOR ENTERPRISE',
-      tag: 'Scale & SLAs',
-      page: 'enterprise',
-      desc: 'Multi-tenant systems, SOC2 compliance & platform migrations',
-      preview: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=900&auto=format&fit=crop',
-    },
-    {
-      label: 'FULL-STACK SOFTWARE',
-      tag: 'React / Node / Cloud',
-      page: 'software',
-      desc: 'Ultra-fast web platforms, microservices & real-time APIs',
-      preview: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=900&auto=format&fit=crop',
-    },
-  ];
+  const solutionItems = [];
 
-  const designItems = [
-    {
-      label: 'PRODUCT DESIGN (UI/UX)',
-      tag: 'Figma to Code',
-      page: 'product-design',
-      desc: 'Kinetic design systems, tactile prototypes & interactions',
-      preview: 'https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?q=80&w=900&auto=format&fit=crop',
-    },
-    {
-      label: 'DESIGN SYSTEMS & SCALE',
-      tag: 'Token Systems',
-      page: 'design-systems',
-      desc: 'Design token architectures, React component kits & docs',
-      preview: 'https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=900&auto=format&fit=crop',
-    },
-  ];
+  const designItems = [];
 
   const legalItems = [
     {

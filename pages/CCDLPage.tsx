@@ -148,6 +148,7 @@ export const projectsData = [
     text: 'A high-performance talent orchestration platform connecting vetted specialists with enterprise teams through automated AI matchmaking and smart contracts.',
     image: 'https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&q=82&w=1200',
     tech: ['React', 'TypeScript', 'Node.js', 'Tailwind CSS'],
+    liveUrl: 'https://hireprofessional.vercel.app/',
   },
   {
     id: 'school-management',
@@ -158,6 +159,7 @@ export const projectsData = [
     text: 'An all-in-one institutional management portal orchestrating student grading, attendance telemetry, faculty scheduling, fee pipelines, and parent communication.',
     image: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=82&w=1200',
     tech: ['Next.js', 'PostgreSQL', 'Express', 'D3.js'],
+    liveUrl: 'https://schoolmangment.vercel.app/',
   },
   {
     id: 'urmi-swap',
@@ -168,6 +170,7 @@ export const projectsData = [
     text: 'A focused decentralized liquidity exchange experience built around real-time liquidity pools, minimal slippage, speed, and confident asset swapping.',
     image: 'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&q=82&w=1200',
     tech: ['Web3.js', 'React', 'Tailwind', 'Ethers'],
+    liveUrl: 'https://swap-zeta.vercel.app/',
   },
 ];
 
@@ -1093,7 +1096,7 @@ export default function CCDLPage({
                   <div className="case-action-row">
                     {'liveUrl' in project && project.liveUrl ? (
                       <a href={project.liveUrl} target="_blank" rel="noreferrer" className="case-live-btn">
-                        <span>Visit Live Site</span>
+                        <span>View Project</span>
                         <ArrowUpRight size={14} />
                       </a>
                     ) : (
