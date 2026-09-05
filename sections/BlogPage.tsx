@@ -52,7 +52,7 @@ export interface BlogPost {
 export const BLOG_POSTS: BlogPost[] = [
   {
     slug: 'optimizing-core-web-vitals-react-nextjs',
-    title: 'How We Achieve 95+ Core Web Vitals on Heavy React & Next.js Websites',
+    title: 'Ideas, Insights & Practical Knowledge',
     category: 'Web Development',
     date: 'August 28, 2026',
     readTime: '7 min read',
@@ -63,7 +63,7 @@ export const BLOG_POSTS: BlogPost[] = [
     },
     coverImage: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=1200',
     excerpt:
-      'A practical engineering guide on tackling Largest Contentful Paint (LCP), eliminating layout shifts (CLS), and managing hydration overhead for real-world client websites.',
+      'Expert articles, tutorials, and engineering insights to help you build better products, grow your business, and stay ahead in the digital world.',
     featured: true,
     tags: ['React 18', 'Next.js', 'Core Web Vitals', 'Performance', 'Lighthouse'],
     takeaways: [
@@ -532,7 +532,7 @@ export const BlogPage: React.FC<BlogPageProps> = ({ onNavigate }) => {
             HOME
           </button>
           <span>/</span>
-          <span className="blog-breadcrumb-current">BLOG & ENGINEERING DISPATCHES</span>
+          <span className="blog-breadcrumb-current">INSIGHTS FOR A BETTER DIGITAL TOMORROW</span>
         </nav>
 
         {/* Featured Post Spotlight Banner */}

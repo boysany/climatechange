@@ -332,6 +332,15 @@ export const CommunityPage: React.FC<CommunityPageProps> = ({ onNavigate }) => {
 
         {/* Community Live Stats Cockpit */}
         <div className="community-cockpit-banner" id="community-metrics-cockpit">
+          <div className="community-hero-copy">
+            <span className="community-hero-kicker">THE SELMEDIC BUILDER COLLECTIVE</span>
+            <h1 className="community-hero-title">Build Together.<br /><em>Go Further.</em></h1>
+            <p className="community-hero-lead">A growing community of developers, designers, and creators building real-world products, sharing knowledge, and helping each other grow.</p>
+            <div className="community-hero-actions">
+              <button className="button button-dark" onClick={() => setActiveTab('channels')}><span>Join the Community</span><ArrowUpRight size={16} /></button>
+              <button className="button button-outline" onClick={() => setActiveTab('repos')}><span>Explore Projects</span><ArrowUpRight size={16} /></button>
+            </div>
+          </div>
           <div className="community-cockpit-header">
             <div className="telemetry-pulse-label">
               <span className="telemetry-live-dot" />
