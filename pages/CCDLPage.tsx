@@ -1320,7 +1320,7 @@ export default function CCDLPage({
                       <input type="email" required placeholder="alex@company.com" className="form-input" />
                     </div>
 
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
+                    <div className="booking-date-time-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
                       <div className="form-group">
                         <label>PREFERRED DATE *</label>
                         <input

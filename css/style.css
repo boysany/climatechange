@@ -12480,6 +12480,62 @@ html, body { max-width: 100%; overflow-x: hidden; }
 .alien-mega-content-grid > :last-child:empty { display: none; }
 @media (max-width: 1080px) { .alien-mega-content-grid { grid-template-columns: 1fr !important; } }
 
+/* Route polish: keep the existing CCDL visual language while making dense layouts resilient. */
+.inner-contact-section {
+  width: min(100% - 2rem, 1200px);
+  margin-inline: auto;
+  padding-block: clamp(2rem, 5vw, 5rem);
+}
+.inner-contact-section .contact-form-box {
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: 1.25rem;
+  background: var(--paper-card);
+  box-shadow: 0 18px 48px -24px rgba(16, 24, 40, 0.28);
+}
+.inner-contact-section .contact-channel-card {
+  display: flex;
+  align-items: flex-start;
+  gap: .8rem;
+}
+.inner-contact-section .contact-channel-card > div {
+  display: flex;
+  flex-direction: column;
+  gap: .2rem;
+  min-width: 0;
+}
+.inner-contact-section .contact-channel-card span { line-height: 1.45; }
+.booking-date-time-grid { min-width: 0; }
+.service-detail-page { width: 100%; max-width: 100%; overflow-x: clip; }
+.service-detail-page h1, .service-detail-page h2, .service-detail-page h3,
+.service-detail-page p, .service-detail-page li { overflow-wrap: anywhere; }
+.blog-reader-modal { border: 1px solid var(--line); box-shadow: 0 28px 90px -30px rgba(0, 0, 0, 0.45); }
+.blog-reader-body-content { width: min(100%, 54rem); margin-inline: auto; }
+.blog-reader-title, .blog-reader-lead, .blog-reader-section p { overflow-wrap: anywhere; }
+.community-section.repos-section { border-top: 1px solid var(--line); }
+.community-section.repos-section .community-repos-grid { align-items: stretch; }
+.community-repo-card { min-width: 0; display: flex; flex-direction: column; }
+.community-repo-card .repo-actions-row { margin-top: auto; }
+
+@media (max-width: 760px) {
+  .inner-contact-section { width: min(100% - 1.5rem, 1200px); padding-block: 2rem 3rem; }
+  .inner-contact-section .contact-form-box { padding: 1rem; }
+  .booking-date-time-grid { grid-template-columns: 1fr !important; gap: 0 !important; }
+  .blog-reader-top-bar { gap: .75rem; align-items: flex-start; }
+  .blog-reader-top-bar > div:first-child { min-width: 0; flex-wrap: wrap; }
+  .blog-reader-actions { flex-shrink: 0; }
+  .blog-reader-body-content { padding-inline: 1rem; }
+  .blog-reader-title { font-size: clamp(1.8rem, 8vw, 2.6rem); line-height: 1.08; }
+  .community-filter-row { overflow-x: auto; max-width: 100%; padding-bottom: .35rem; flex-wrap: nowrap; }
+  .community-filter-pill { flex: 0 0 auto; }
+  .community-repo-card { padding: 1.15rem; }
+  .repo-clone-bar { max-width: 100%; overflow: hidden; }
+  .repo-clone-bar code { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .process-card-content { padding: 1.15rem; }
+  .process-card-title-row { align-items: flex-start; gap: .75rem; }
+  .process-card-title-row h3 { min-width: 0; overflow-wrap: anywhere; }
+}
+
 .blog-page-root,
 .community-page-root {
   background: var(--paper);
