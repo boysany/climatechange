@@ -12419,6 +12419,26 @@ button {
 }
 
 /* RSVP Dialog */
+/* Final responsive fixes for booking, single pages, and mobile navigation */
+html, body { max-width: 100%; overflow-x: hidden; }
+.book-call-page, .service-detail-page, .blog-reader-modal, .blog-reader-backdrop { max-width: 100%; overflow-x: hidden; }
+.blog-page-root .blog-featured-media, .community-page-root .community-cockpit-header, .community-page-root .community-new-visual { display: none; }
+.blog-page-root .blog-compact-copy, .blog-page-root .blog-compact-search, .blog-page-root .blog-compact-tags { margin-inline: auto; text-align: center; }
+.blog-page-root .blog-compact-copy { max-width: 54rem; }.blog-page-root .blog-compact-copy p { margin-inline: auto; }.blog-page-root .blog-compact-search { text-align: left; }.blog-page-root .blog-compact-tags { justify-content: center; }
+.community-page-root .community-new-hero { grid-template-columns: 1fr; text-align: center; }.community-page-root .community-new-hero > div:first-child { max-width: 46rem; margin-inline: auto; }.community-page-root .community-new-hero p { margin-inline: auto; }.community-page-root .community-new-actions, .community-page-root .community-hero-points { justify-content: center; }
+.community-page-root .community-cockpit-banner { display: block; }.community-page-root .community-new-hero + .community-stat-grid { margin-top: 1rem; }
+.community-section.repos-section .community-repos-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }.community-section.repos-section + section { display: none; }
+@media (max-width: 760px) {
+  .mobile-menu-panel, .alien-mobile-menu, .navbar-mobile-menu { width: 100vw; max-width: 100vw; overflow-x: hidden; }
+  .methodology-grid, .process-cards, .process-card-list { grid-template-columns: 1fr !important; width: 100%; }
+  .process-card-item { min-width: 0; width: 100%; }.process-card-item img { max-height: 12rem; object-fit: cover; }
+  .team-grid, .team-members-grid, .team-compressed-grid { grid-template-columns: 1fr !important; }.team-card, .team-member-card { min-width: 0; }
+  .blog-compact-search { width: 100%; min-height: 3.25rem; }.blog-compact-search input { font-size: .85rem; }.blog-compact-search button { padding-inline: .85rem; }
+  .service-detail-page .service-process-grid, .service-detail-page .service-features-grid { grid-template-columns: 1fr !important; }.service-detail-page section, .service-detail-page header { overflow: hidden; }
+  .book-call-page main, .book-call-page form { width: 100%; max-width: 100%; }.book-call-page input, .book-call-page textarea, .book-call-page select { max-width: 100%; min-width: 0; }
+  .community-section.repos-section .community-repos-grid { grid-template-columns: 1fr; }.community-section.repos-section { padding-bottom: 2rem; }
+}
+
 /* Complete Blog + Community page rebuild */
 .alien-mega-content-grid { grid-template-columns: minmax(0, 1.85fr) minmax(18rem, 0.9fr); gap: 1.75rem; align-items: start; }
 .alien-mega-col .preview-desc-text { display: block !important; }
