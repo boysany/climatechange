@@ -12439,6 +12439,41 @@ html, body { max-width: 100%; overflow-x: hidden; }
   .community-section.repos-section .community-repos-grid { grid-template-columns: 1fr; }.community-section.repos-section { padding-bottom: 2rem; }
 }
 
+/* Verified route-specific corrections */
+.blog-hero .community-hero-art,
+.blog-hero .hero-art,
+.community-hero .community-hero-art,
+.community-hero .hero-art { display: none !important; }
+.blog-hero .alien-hero-grid,
+.community-hero .alien-hero-grid { grid-template-columns: 1fr !important; }
+.blog-hero .alien-hero-copy,
+.community-hero .alien-hero-copy { max-width: 56rem; margin-inline: auto; text-align: center; }
+.blog-hero .hero-badge-row,
+.community-hero .hero-badge-row,
+.blog-hero .alien-hero-actions,
+.community-hero .alien-hero-actions,
+.blog-hero .community-hero-points-strip,
+.community-hero .community-hero-points-strip { justify-content: center; }
+.blog-hero .hero-narrative,
+.community-hero .hero-narrative { margin-inline: auto; }
+.blog-hero .blog-hero-topic-pills { justify-content: center; }
+.inner-contact-section .contact-dual-layout { align-items: start; }
+.inner-contact-section form { min-width: 0; width: 100%; }
+.inner-contact-section input,
+.inner-contact-section textarea,
+.inner-contact-section select { max-width: 100%; min-width: 0; box-sizing: border-box; }
+@media (max-width: 760px) {
+  .inner-contact-section { padding-inline: 1rem; }
+  .inner-contact-section .contact-dual-layout { grid-template-columns: 1fr !important; gap: 2rem; }
+  .inner-contact-section .contact-info-col,
+  .inner-contact-section .contact-form-col { min-width: 0; width: 100%; }
+  .inner-contact-section .contact-form-card { padding: 1.25rem; }
+  .blog-hero .display-title,
+  .community-hero .display-title { text-align: center; }
+  .blog-hero .alien-hero-bottom,
+  .community-hero .alien-hero-bottom { align-items: center; }
+}
+
 /* Complete Blog + Community page rebuild */
 .alien-mega-content-grid { grid-template-columns: minmax(0, 1.85fr) minmax(18rem, 0.9fr); gap: 1.75rem; align-items: start; }
 .alien-mega-col .preview-desc-text { display: block !important; }
