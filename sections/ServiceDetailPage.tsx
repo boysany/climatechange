@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
 import {
   ArrowRight,
+  ArrowUpRight,
   CheckCircle2,
   ChevronDown,
   Layers,
@@ -12,12 +12,14 @@ import {
   Sparkles,
   PhoneCall,
   MessageSquare,
-  HelpCircle,
-  ExternalLink,
   ChevronRight,
   Target,
   Award,
-  Globe
+  Globe,
+  Check,
+  Share2,
+  Cpu,
+  Database
 } from 'lucide-react';
 import { ServiceDetail, SEO_SERVICES_MAP } from '../lib/seoData';
 import { useSEO } from '../lib/useSEO';
@@ -29,11 +31,40 @@ interface ServiceDetailPageProps {
 }
 
 export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
-  service,
+  service: inputService,
   onNavigate,
   onOpenConsultation
 }) => {
+  // Safe fallback if service is somehow undefined
+  const service = inputService || SEO_SERVICES_MAP['software-development'];
   const [openFaq, setOpenFaq] = useState<number | null>(0);
+  const [copiedLink, setCopiedLink] = useState(false);
+
+  // Scroll to top when service changes
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [service.slug]);
+
+  const handleCopyLink = () => {
+    navigator.clipboard.writeText(window.location.href);
+    setCopiedLink(true);
+    setTimeout(() => setCopiedLink(false), 2000);
+  };
+
+  const handleConsultation = () => {
+    if (onOpenConsultation) {
+      onOpenConsultation();
+    } else {
+      onNavigate('book-call');
+    }
+  };
+
+  const scrollToBlueprint = () => {
+    const el = document.getElementById('sprint-blueprint');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   // Dynamic SEO Injection for Google Crawlers and Live Users
   useSEO({
@@ -65,7 +96,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
           'hasOfferCatalog': {
             '@type': 'OfferCatalog',
             'name': service.title,
-            'itemListElement': service.features.map((f, i) => ({
+            'itemListElement': service.features.map((f) => ({
               '@type': 'Offer',
               'itemOffered': {
                 '@type': 'Service',
@@ -115,184 +146,179 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
     }
   });
 
+  // Feature icon mapping
+  const getDeliverableIcon = (idx: number) => {
+    switch (idx % 4) {
+      case 0:
+        return <Zap size={18} />;
+      case 1:
+        return <Code2 size={18} />;
+      case 2:
+        return <Layers size={18} />;
+      case 3:
+      default:
+        return <ShieldCheck size={18} />;
+    }
+  };
+
   return (
-    <div className="w-full min-h-screen bg-[#f6f5f2] dark:bg-[#090c13] text-[#0d1017] dark:text-[#f3f5f9] pt-24 pb-20 transition-colors duration-300">
-      {/* 1. Breadcrumbs Navigation for SEO Hierarchy */}
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 mb-6">
-        <nav aria-label="Breadcrumb" className="flex items-center space-x-2 text-xs font-mono tracking-wider text-[#6e7587] dark:text-[#8b93a7]">
-          <button
-            onClick={() => onNavigate('home')}
-            className="hover:text-blue-600 dark:hover:text-cyan-400 transition-colors"
-          >
+    <main className="sdp-page-root">
+      <div className="sdp-container">
+        {/* 1. Breadcrumbs Navigation */}
+        <nav aria-label="Breadcrumb" className="sdp-breadcrumb-nav">
+          <button onClick={() => onNavigate('home')} className="sdp-breadcrumb-btn">
             HOME
           </button>
-          <span>/</span>
-          <button
-            onClick={() => onNavigate('services')}
-            className="hover:text-blue-600 dark:hover:text-cyan-400 transition-colors"
-          >
+          <span className="sdp-breadcrumb-sep">/</span>
+          <button onClick={() => onNavigate('services')} className="sdp-breadcrumb-btn">
             SERVICES
           </button>
-          <span>/</span>
-          <span className="text-[#0d1017] dark:text-[#f3f5f9] font-bold uppercase truncate max-w-[200px] sm:max-w-none">
-            {service.shortTitle}
-          </span>
+          <span className="sdp-breadcrumb-sep">/</span>
+          <span className="sdp-breadcrumb-current">{service.shortTitle}</span>
         </nav>
-      </div>
 
-      {/* 2. Hero Section */}
-      <header className="max-w-6xl mx-auto px-4 sm:px-6 mb-16">
-        <div className="border border-[#e2dfd7] dark:border-[#1f2637] bg-white/70 dark:bg-[#0f1422]/80 backdrop-blur-md p-6 sm:p-10 lg:p-12 shadow-sm relative overflow-hidden">
-          {/* Subtle decorative background accent */}
-          <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500/5 dark:bg-cyan-500/5 blur-3xl pointer-events-none rounded-full" />
+        {/* 2. Hero Section Card */}
+        <header className="sdp-hero-card">
+          <div className="sdp-hero-bg-glow" aria-hidden="true" />
 
-          <div className="flex flex-wrap items-center gap-3 mb-5">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 text-[11px] font-mono tracking-wider uppercase font-bold bg-blue-50 dark:bg-cyan-950/40 text-blue-700 dark:text-cyan-400 border border-blue-200 dark:border-cyan-800/60">
-              <Sparkles className="w-3 h-3" />
-              {service.tag}
+          {/* Badges Row */}
+          <div className="sdp-badge-row">
+            <span className="sdp-badge-pill sdp-badge-blue">
+              <Sparkles size={13} />
+              <span>{service.tag}</span>
             </span>
-            <span className="inline-flex items-center gap-1 px-3 py-1 text-[11px] font-mono tracking-wider uppercase text-[#6e7587] dark:text-[#8b93a7] border border-[#e2dfd7] dark:border-[#222b40]">
-              <Globe className="w-3 h-3 text-emerald-500" />
-              INDIA HQ • GLOBAL DELIVERY
+
+            <span className="sdp-badge-pill sdp-badge-green">
+              <span className="sdp-pulse-dot" />
+              <span>ACTIVE SPRINT SQUAD • GLOBAL CLIENT DELIVERY</span>
             </span>
+
+            <span className="sdp-badge-pill sdp-badge-muted">
+              <span>{service.category}</span>
+            </span>
+
+            <button
+              onClick={handleCopyLink}
+              className="sdp-badge-pill sdp-badge-muted"
+              style={{ cursor: 'pointer', background: 'transparent' }}
+              title="Share service page"
+            >
+              {copiedLink ? <Check size={12} className="text-emerald-500" /> : <Share2 size={12} />}
+              <span>{copiedLink ? 'COPIED!' : 'SHARE'}</span>
+            </button>
           </div>
 
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-[1.15] mb-6 text-[#0d1017] dark:text-[#f3f5f9]">
-            {service.heroHeadline}
-          </h1>
+          {/* Main Title & Subtitle */}
+          <h1 className="sdp-hero-headline">{service.heroHeadline}</h1>
+          <p className="sdp-hero-subheadline">{service.heroSubheadline}</p>
 
-          <p className="text-base sm:text-lg text-[#555d71] dark:text-[#9ea7bc] max-w-3xl leading-relaxed mb-8">
-            {service.heroSubheadline}
-          </p>
-
-          {/* Quick Metrics Bar */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 py-6 border-y border-[#e2dfd7] dark:border-[#1f2637] mb-8">
+          {/* Quick Metrics Grid */}
+          <div className="sdp-metrics-grid">
             {service.keyBenefits.map((benefit, idx) => (
-              <div key={idx} className="space-y-1">
-                <div className="text-2xl sm:text-3xl font-black text-blue-600 dark:text-cyan-400 font-mono">
-                  {benefit.stat || '99.9%'}
-                </div>
-                <div className="text-xs font-semibold text-[#0d1017] dark:text-[#e4e7ee]">
-                  {benefit.title}
-                </div>
+              <div key={idx} className="sdp-metric-card">
+                <div className="sdp-metric-stat">{benefit.stat || '99.9%'}</div>
+                <div className="sdp-metric-title">{benefit.title}</div>
+                <div className="sdp-metric-desc">{benefit.desc}</div>
               </div>
             ))}
           </div>
 
-          {/* Conversion CTA Group */}
-          <div className="flex flex-wrap items-center gap-4">
-            <button
-              onClick={() => onOpenConsultation ? onOpenConsultation() : onNavigate('contact')}
-              className="inline-flex items-center justify-center gap-2 px-6 py-3.5 text-xs font-mono font-bold uppercase tracking-wider bg-blue-600 hover:bg-blue-700 dark:bg-cyan-500 dark:hover:bg-cyan-400 text-white dark:text-[#090c13] transition-all shadow-md active:scale-95"
-            >
-              <PhoneCall className="w-4 h-4" />
-              Book Discovery Session
+          {/* Conversion Action Buttons */}
+          <div className="sdp-hero-actions">
+            <button onClick={handleConsultation} className="sdp-primary-btn">
+              <PhoneCall size={16} />
+              <span>Schedule Architecture Review</span>
+              <ArrowUpRight size={15} />
             </button>
+
             <a
-              href="https://wa.me/917852052323?text=Hello%20Selmedic%20Digital%20Labs%2C%20I%20am%20interested%20in%20your%20services"
+              href={`https://wa.me/917852052323?text=Hello%20Selmedic%20Digital%20Labs%2C%20I%20am%20interested%20in%20your%20${encodeURIComponent(service.shortTitle)}%20service.`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3.5 text-xs font-mono font-bold uppercase tracking-wider bg-emerald-600 hover:bg-emerald-700 text-white transition-all shadow-md active:scale-95"
+              className="sdp-whatsapp-btn"
             >
-              <MessageSquare className="w-4 h-4" />
-              WhatsApp Direct Chat
+              <MessageSquare size={16} />
+              <span>WhatsApp Direct Desk</span>
             </a>
-            <button
-              onClick={() => onNavigate('portfolio')}
-              className="inline-flex items-center justify-center gap-2 px-6 py-3.5 text-xs font-mono font-bold uppercase tracking-wider border border-[#d2cebe] dark:border-[#2e374d] hover:bg-[#eae7df] dark:hover:bg-[#161c2d] transition-all"
-            >
-              View Case Studies
-              <ArrowRight className="w-3.5 h-3.5" />
+
+            <button onClick={scrollToBlueprint} className="sdp-outline-btn">
+              <span>View Sprint Blueprint</span>
+              <ArrowRight size={15} />
             </button>
           </div>
-        </div>
-      </header>
+        </header>
 
-      {/* 3. Deep Service Architecture & Challenges Solved */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-16">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-          <div className="lg:col-span-7 space-y-6">
-            <div className="border border-[#e2dfd7] dark:border-[#1f2637] bg-white/70 dark:bg-[#0f1422]/80 p-8">
-              <span className="text-[11px] font-mono tracking-widest text-blue-600 dark:text-cyan-400 uppercase font-bold block mb-2">
-                EXECUTIVE OVERVIEW
-              </span>
-              <h2 className="text-2xl font-bold tracking-tight mb-4">
-                Engineered for High-Scale Production
-              </h2>
-              <p className="text-sm sm:text-base text-[#555d71] dark:text-[#9ea7bc] leading-relaxed mb-6">
-                {service.overview}
-              </p>
+        {/* 3. Deep Architecture & Challenges Solved */}
+        <section className="sdp-main-layout">
+          {/* Left Column: Scope Overview & Deliverables */}
+          <div className="sdp-left-col">
+            {/* Overview & Challenges */}
+            <div className="sdp-card">
+              <span className="sdp-eyebrow">01 // ARCHITECTURAL SPECIFICATION</span>
+              <h2 className="sdp-section-title">Engineered for High-Scale Enterprise Production</h2>
+              <p className="sdp-lead-p">{service.overview}</p>
 
-              <h3 className="text-base font-bold uppercase tracking-wider font-mono mb-4 text-[#0d1017] dark:text-[#f3f5f9] flex items-center gap-2">
-                <Target className="w-4 h-4 text-blue-600 dark:text-cyan-400" />
-                Critical Challenges We Eliminate
-              </h3>
-              <ul className="space-y-3">
+              <div className="sdp-sub-heading">
+                <Target size={15} className="text-blue-500" />
+                <span>Critical Bottlenecks We Eliminate</span>
+              </div>
+
+              <div className="sdp-challenges-grid">
                 {service.challengesSolved.map((challenge, idx) => (
-                  <li key={idx} className="flex items-start gap-3 text-sm text-[#434b5d] dark:text-[#b4bccf]">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
+                  <div key={idx} className="sdp-challenge-item">
+                    <CheckCircle2 size={16} className="sdp-challenge-icon" />
                     <span>{challenge}</span>
-                  </li>
+                  </div>
                 ))}
-              </ul>
+              </div>
             </div>
 
-            {/* Core Features Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {service.features.map((feat, idx) => (
-                <div
-                  key={idx}
-                  className="border border-[#e2dfd7] dark:border-[#1f2637] bg-white/50 dark:bg-[#0f1422]/50 p-6 space-y-2"
-                >
-                  <div className="w-8 h-8 rounded bg-blue-50 dark:bg-cyan-950/40 border border-blue-200 dark:border-cyan-800/60 flex items-center justify-center text-blue-600 dark:text-cyan-400 mb-3">
-                    <Zap className="w-4 h-4" />
+            {/* Core Capabilities / Deliverables */}
+            <div className="sdp-card">
+              <span className="sdp-eyebrow">02 // PRODUCTION ARTIFACTS</span>
+              <h2 className="sdp-section-title">Key Architectural Deliverables</h2>
+              <p className="sdp-lead-p" style={{ marginBottom: '1.25rem' }}>
+                Every sprint yields battle-tested code, fully documented schemas, and zero-debt system modules.
+              </p>
+
+              <div className="sdp-deliverables-grid">
+                {service.features.map((feat, idx) => (
+                  <div key={idx} className="sdp-deliverable-card">
+                    <div className="sdp-deliverable-icon-box">{getDeliverableIcon(idx)}</div>
+                    <h3 className="sdp-deliverable-title">{feat.title}</h3>
+                    <p className="sdp-deliverable-desc">{feat.desc}</p>
                   </div>
-                  <h3 className="text-sm font-bold tracking-tight text-[#0d1017] dark:text-[#f3f5f9]">
-                    {feat.title}
-                  </h3>
-                  <p className="text-xs text-[#555d71] dark:text-[#9ea7bc] leading-relaxed">
-                    {feat.desc}
-                  </p>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
 
-          {/* Right Column: Why Choose Selmedic Digital Labs + Tech Stack */}
-          <div className="lg:col-span-5 space-y-6">
-            <div className="border border-[#e2dfd7] dark:border-[#1f2637] bg-white/70 dark:bg-[#0f1422]/80 p-8 space-y-6">
-              <span className="text-[11px] font-mono tracking-widest text-blue-600 dark:text-cyan-400 uppercase font-bold block">
-                WHY OUR AGENCY
-              </span>
-              <h2 className="text-xl font-bold tracking-tight">
-                The Indian Engineering & Global Standard Advantage
+          {/* Right Column: Agency Advantage & Tech Stack (Sticky Sidebar) */}
+          <aside className="sdp-sidebar">
+            <div className="sdp-card">
+              <span className="sdp-eyebrow">03 // THE CCDL ADVANTAGE</span>
+              <h2 className="sdp-section-title" style={{ fontSize: '1.45rem' }}>
+                Why Global Founders Partner With Us
               </h2>
 
-              <div className="space-y-4">
+              <div className="sdp-advantage-list">
                 {service.whyChooseUs.map((reason, idx) => (
-                  <div key={idx} className="border-l-2 border-blue-600 dark:border-cyan-400 pl-4 py-1 space-y-1">
-                    <h3 className="text-xs font-mono font-bold uppercase tracking-wider text-[#0d1017] dark:text-[#f3f5f9]">
-                      {reason.title}
-                    </h3>
-                    <p className="text-xs text-[#555d71] dark:text-[#9ea7bc] leading-relaxed">
-                      {reason.desc}
-                    </p>
+                  <div key={idx} className="sdp-advantage-item">
+                    <div className="sdp-advantage-title">{reason.title}</div>
+                    <p className="sdp-advantage-desc">{reason.desc}</p>
                   </div>
                 ))}
               </div>
 
               {/* Tech Stack Chips */}
-              <div className="pt-4 border-t border-[#e2dfd7] dark:border-[#1f2637]">
-                <h3 className="text-xs font-mono font-bold uppercase tracking-wider mb-3 text-[#6e7587] dark:text-[#8b93a7] flex items-center gap-1.5">
-                  <Code2 className="w-3.5 h-3.5 text-blue-600 dark:text-cyan-400" />
-                  Production Technology Stack
-                </h3>
-                <div className="flex flex-wrap gap-2">
+              <div style={{ marginTop: '1.5rem', paddingTop: '1.25rem', borderTop: '1px solid var(--line)' }}>
+                <div className="sdp-sub-heading" style={{ marginBottom: '0.65rem' }}>
+                  <Code2 size={15} className="text-blue-500" />
+                  <span>Production Technology Stack</span>
+                </div>
+                <div className="sdp-tech-chips">
                   {service.techStack.map((tech, idx) => (
-                    <span
-                      key={idx}
-                      className="px-2.5 py-1 text-[11px] font-mono font-medium bg-[#eae7df] dark:bg-[#161c2d] text-[#0d1017] dark:text-[#d1d7e5] border border-[#d2cebe] dark:border-[#2a3349]"
-                    >
+                    <span key={idx} className="sdp-tech-chip">
                       {tech}
                     </span>
                   ))}
@@ -300,201 +326,154 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
               </div>
             </div>
 
-            {/* Inbound Direct Contact Widget */}
-            <div className="border border-blue-200 dark:border-cyan-800/60 bg-blue-50/50 dark:bg-cyan-950/20 p-6 space-y-4">
-              <div className="flex items-center gap-2">
-                <ShieldCheck className="w-5 h-5 text-emerald-500" />
-                <span className="text-xs font-mono font-bold uppercase tracking-wider text-blue-900 dark:text-cyan-300">
-                  NDA & IP Security Guarantee
-                </span>
+            {/* Inbound Direct Contact & NDA Guarantee */}
+            <div className="sdp-card">
+              <div className="sdp-sub-heading" style={{ marginBottom: '0.65rem' }}>
+                <ShieldCheck size={18} className="text-emerald-500" />
+                <span>100% IP Security &amp; Mutual NDA</span>
               </div>
-              <p className="text-xs text-[#434b5d] dark:text-[#a0a9bd] leading-relaxed">
-                We sign mutual Non-Disclosure Agreements (NDAs) before discovery. You retain 100% intellectual property ownership of all repositories and design systems.
+              <p className="sdp-lead-p" style={{ fontSize: '0.82rem', marginBottom: '1.25rem' }}>
+                We execute mutual NDAs before requirements discovery. You retain complete ownership of all repositories, design tokens, CI/CD secrets, and database schemas.
               </p>
-              <div className="pt-2">
-                <button
-                  onClick={() => onNavigate('contact')}
-                  className="w-full py-2.5 text-xs font-mono font-bold uppercase tracking-wider bg-[#0d1017] dark:bg-white text-white dark:text-[#0d1017] hover:opacity-90 transition-opacity text-center"
-                >
-                  Request Technical Estimate
-                </button>
-              </div>
+              <button
+                onClick={handleConsultation}
+                className="sdp-primary-btn"
+                style={{ width: '100%', boxSizing: 'border-box' }}
+              >
+                <span>Request Sprint Estimate</span>
+                <ArrowUpRight size={15} />
+              </button>
             </div>
-          </div>
-        </div>
-      </section>
+          </aside>
+        </section>
 
-      {/* 4. 5-Stage Engineering Lifecycle Process */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-16">
-        <div className="border border-[#e2dfd7] dark:border-[#1f2637] bg-white/70 dark:bg-[#0f1422]/80 p-8 sm:p-10">
-          <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
+        {/* 4. 5-Stage Sprint Execution Blueprint */}
+        <section id="sprint-blueprint" className="sdp-process-card">
+          <div className="sdp-process-header">
             <div>
-              <span className="text-[11px] font-mono tracking-widest text-blue-600 dark:text-cyan-400 uppercase font-bold block mb-1">
-                SPRINT BLUEPRINT
-              </span>
-              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">
+              <span className="sdp-eyebrow">04 // SPRINT EXECUTION ROADMAP</span>
+              <h2 className="sdp-section-title" style={{ margin: 0 }}>
                 Our 5-Stage Structured Delivery Process
               </h2>
             </div>
-            <span className="text-xs font-mono text-[#6e7587] dark:text-[#8b93a7] border border-[#e2dfd7] dark:border-[#222b40] px-3 py-1.5">
-              AVERAGE SPRINT: 4 TO 8 WEEKS
-            </span>
+            <span className="sdp-badge-pill sdp-badge-muted">TYPICAL TIMELINE: 4 TO 8 WEEKS</span>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+          <div className="sdp-process-grid">
             {service.process.map((stage, idx) => (
-              <div
-                key={idx}
-                className="border border-[#e2dfd7] dark:border-[#1f2637] bg-white/40 dark:bg-[#090c13]/40 p-5 space-y-3 relative flex flex-col justify-between"
-              >
+              <div key={idx} className="sdp-stage-card">
                 <div>
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-xl font-mono font-extrabold text-blue-600 dark:text-cyan-400">
-                      {stage.step}
-                    </span>
-                    <span className="text-[10px] font-mono text-[#6e7587] dark:text-[#8b93a7] bg-[#eae7df] dark:bg-[#161c2d] px-2 py-0.5">
-                      {stage.duration}
-                    </span>
+                  <div className="sdp-stage-top">
+                    <span className="sdp-stage-num">{stage.step}</span>
+                    <span className="sdp-stage-duration">{stage.duration}</span>
                   </div>
-                  <h3 className="text-xs font-bold uppercase tracking-wider font-mono text-[#0d1017] dark:text-[#f3f5f9] mb-2">
-                    {stage.title}
-                  </h3>
-                  <p className="text-xs text-[#555d71] dark:text-[#9ea7bc] leading-relaxed">
-                    {stage.desc}
-                  </p>
+                  <h3 className="sdp-stage-title">{stage.title}</h3>
+                  <p className="sdp-stage-desc">{stage.desc}</p>
                 </div>
               </div>
             ))}
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* 5. Comprehensive FAQs with JSON-LD Schema */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-16">
-        <div className="border border-[#e2dfd7] dark:border-[#1f2637] bg-white/70 dark:bg-[#0f1422]/80 p-8 sm:p-10">
-          <div className="mb-8">
-            <span className="text-[11px] font-mono tracking-widest text-blue-600 dark:text-cyan-400 uppercase font-bold block mb-1">
-              QUESTIONS & TRANSPARENCY
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">
-              Frequently Asked Questions About {service.shortTitle}
-            </h2>
-          </div>
+        {/* 5. Comprehensive FAQs */}
+        <section className="sdp-faq-card">
+          <span className="sdp-eyebrow">05 // TECHNICAL CLARITY &amp; FAQ</span>
+          <h2 className="sdp-section-title">
+            Frequently Asked Questions About {service.shortTitle}
+          </h2>
 
-          <div className="space-y-3">
+          <div className="sdp-faq-list">
             {service.faqs.map((faq, idx) => {
               const isOpen = openFaq === idx;
               return (
-                <div
-                  key={idx}
-                  className="border border-[#e2dfd7] dark:border-[#1f2637] bg-white/50 dark:bg-[#090c13]/50 overflow-hidden"
-                >
+                <div key={idx} className={`sdp-faq-item ${isOpen ? 'is-open' : ''}`}>
                   <button
                     onClick={() => setOpenFaq(isOpen ? null : idx)}
-                    className="w-full text-left p-5 flex items-center justify-between gap-4 font-semibold text-sm sm:text-base hover:bg-[#eae7df]/50 dark:hover:bg-[#161c2d]/50 transition-colors"
+                    className="sdp-faq-trigger"
+                    aria-expanded={isOpen}
                   >
                     <span>{faq.q}</span>
-                    <ChevronDown
-                      className={`w-4 h-4 text-[#6e7587] dark:text-[#8b93a7] shrink-0 transition-transform duration-200 ${
-                        isOpen ? 'rotate-180 text-blue-600 dark:text-cyan-400' : ''
-                      }`}
-                    />
+                    <ChevronDown size={18} className="sdp-faq-icon" />
                   </button>
 
-                  <AnimatePresence>
-                    {isOpen && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: 'auto', opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.2 }}
-                      >
-                        <div className="px-5 pb-5 text-xs sm:text-sm text-[#555d71] dark:text-[#9ea7bc] leading-relaxed border-t border-[#e2dfd7] dark:border-[#1f2637] pt-4">
-                          {faq.a}
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                  {isOpen && (
+                    <div className="sdp-faq-answer">
+                      {faq.a}
+                    </div>
+                  )}
                 </div>
               );
             })}
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* 6. Interlinked Related Services */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-6 mb-16">
-        <div className="mb-6">
-          <span className="text-[11px] font-mono tracking-widest text-[#6e7587] dark:text-[#8b93a7] uppercase font-bold block mb-1">
-            CROSS-DISCIPLINARY CAPABILITIES
-          </span>
-          <h2 className="text-xl font-bold tracking-tight">
-            Complementary Software & Design Services
-          </h2>
-        </div>
+        {/* 6. Interlinked Related Services */}
+        {service.relatedServices && service.relatedServices.length > 0 && (
+          <section className="sdp-related-card">
+            <span className="sdp-eyebrow">06 // CROSS-DISCIPLINARY CAPABILITIES</span>
+            <h2 className="sdp-section-title">Complementary Software &amp; Design Services</h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {service.relatedServices.map((relSlug, idx) => {
-            const rel = SEO_SERVICES_MAP[relSlug];
-            if (!rel) return null;
-            return (
-              <button
-                key={idx}
-                onClick={() => onNavigate(`service-${rel.slug}`)}
-                className="text-left border border-[#e2dfd7] dark:border-[#1f2637] bg-white/60 dark:bg-[#0f1422]/60 p-5 hover:border-blue-500 dark:hover:border-cyan-400 hover:shadow-md transition-all group flex flex-col justify-between"
-              >
-                <div className="space-y-2">
-                  <span className="text-[10px] font-mono text-blue-600 dark:text-cyan-400 uppercase font-bold block">
-                    {rel.category}
-                  </span>
-                  <h3 className="text-sm font-bold group-hover:text-blue-600 dark:group-hover:text-cyan-400 transition-colors">
-                    {rel.shortTitle}
-                  </h3>
-                  <p className="text-xs text-[#555d71] dark:text-[#9ea7bc] line-clamp-2">
-                    {rel.metaDesc}
-                  </p>
-                </div>
-                <div className="mt-4 pt-3 border-t border-[#e2dfd7] dark:border-[#1f2637] flex items-center justify-between text-xs font-mono text-[#6e7587] dark:text-[#8b93a7] group-hover:text-blue-600 dark:group-hover:text-cyan-400">
-                  <span>EXPLORE SERVICE</span>
-                  <ChevronRight className="w-3.5 h-3.5" />
-                </div>
-              </button>
-            );
-          })}
-        </div>
-      </section>
+            <div className="sdp-related-grid">
+              {service.relatedServices.map((relSlug, idx) => {
+                const rel = SEO_SERVICES_MAP[relSlug];
+                if (!rel) return null;
+                return (
+                  <div
+                    key={idx}
+                    onClick={() => onNavigate(`service-${rel.slug}`)}
+                    className="sdp-related-item"
+                    role="button"
+                    tabIndex={0}
+                  >
+                    <div>
+                      <span className="sdp-related-cat">{rel.category}</span>
+                      <h3 className="sdp-related-title">{rel.shortTitle}</h3>
+                      <p className="sdp-related-desc">{rel.metaDesc}</p>
+                    </div>
+                    <div className="sdp-related-footer">
+                      <span>EXPLORE SERVICE</span>
+                      <ChevronRight size={15} />
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </section>
+        )}
 
-      {/* 7. Conversion Footer Banner */}
-      <footer className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="border border-blue-300 dark:border-cyan-800 bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800 dark:from-[#0f1a2e] dark:via-[#10223b] dark:to-[#09101c] p-8 sm:p-12 text-white shadow-xl relative overflow-hidden">
-          <div className="relative z-10 max-w-2xl space-y-4">
-            <span className="text-xs font-mono tracking-widest text-cyan-200 uppercase font-bold">
-              START YOUR PROJECT TODAY
-            </span>
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight leading-tight">
-              Ready to build high-impact {service.shortTitle.toLowerCase()} with Selmedic Digital Labs?
+        {/* 7. Full-Width Conversion Footer Banner */}
+        <footer className="sdp-cta-banner">
+          <div className="sdp-cta-glow" aria-hidden="true" />
+          <div className="sdp-cta-content">
+            <span className="sdp-cta-eyebrow">READY TO DEPLOY YOUR SPRINT?</span>
+            <h2 className="sdp-cta-title">
+              Ready to engineer high-impact {service.shortTitle.toLowerCase()} with Selmedic Digital Labs?
             </h2>
-            <p className="text-sm text-blue-100 dark:text-slate-300 leading-relaxed">
+            <p className="sdp-cta-desc">
               Our founding engineering and UI/UX design collective is ready to scope your requirements and provide an itemized sprint roadmap within 4 hours.
             </p>
-            <div className="flex flex-wrap items-center gap-4 pt-4">
-              <button
-                onClick={() => onOpenConsultation ? onOpenConsultation() : onNavigate('contact')}
-                className="px-6 py-3.5 text-xs font-mono font-bold uppercase tracking-wider bg-white text-blue-900 hover:bg-slate-100 transition-colors shadow-md"
-              >
-                Schedule Architecture Review
+            <div className="sdp-cta-actions">
+              <button onClick={handleConsultation} className="sdp-cta-primary-btn">
+                <span>Schedule Architecture Review</span>
+                <ArrowUpRight size={15} />
               </button>
+              <a href="tel:+917852052323" className="sdp-cta-phone-btn">
+                <PhoneCall size={15} className="text-cyan-400" />
+                <span>+91 78520 52323</span>
+              </a>
               <a
-                href="tel:+917852052323"
-                className="px-6 py-3.5 text-xs font-mono font-bold uppercase tracking-wider border border-white/40 hover:bg-white/10 transition-colors flex items-center gap-2"
+                href={`https://wa.me/917852052323?text=Hello%20CCDL%2C%20I%20would%20like%20to%20discuss%20${encodeURIComponent(service.shortTitle)}.`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="sdp-whatsapp-btn"
               >
-                <PhoneCall className="w-3.5 h-3.5" />
-                +91 78520 52323
+                <MessageSquare size={15} />
+                <span>WhatsApp Architect</span>
               </a>
             </div>
           </div>
-        </div>
-      </footer>
-    </div>
+        </footer>
+      </div>
+    </main>
   );
 };

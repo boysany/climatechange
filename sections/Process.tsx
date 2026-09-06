@@ -202,7 +202,7 @@ export default function Process({ onNavigate }: ProcessProps) {
             </div>
           </div>
 
-          <div className="process-nav-list">
+          <div className="process-nav-wrapper">
             <div className="process-active-tracker">
               <span className="process-tracker-label">CURRENTLY VIEWING</span>
               <div className="process-tracker-val">
@@ -214,20 +214,22 @@ export default function Process({ onNavigate }: ProcessProps) {
               </div>
             </div>
 
-            {processSteps.map((step, idx) => (
-              <button
-                key={step.num}
-                className={`process-nav-item ${activeStep === idx ? 'is-active' : ''}`}
-                onClick={() => scrollToStep(idx)}
-                aria-label={`Scroll to phase ${step.num} ${step.title}`}
-              >
-                <div className="nav-dot" />
-                <div className="nav-content">
-                  <span className="nav-main-title">{step.num} — {step.title}</span>
-                  <span className="nav-sub-phase">{step.phase}</span>
-                </div>
-              </button>
-            ))}
+            <div className="process-nav-list">
+              {processSteps.map((step, idx) => (
+                <button
+                  key={step.num}
+                  className={`process-nav-item ${activeStep === idx ? 'is-active' : ''}`}
+                  onClick={() => scrollToStep(idx)}
+                  aria-label={`Scroll to phase ${step.num} ${step.title}`}
+                >
+                  <div className="nav-dot" />
+                  <div className="nav-content">
+                    <span className="nav-main-title">{step.num} — {step.title}</span>
+                    <span className="nav-sub-phase">{step.phase}</span>
+                  </div>
+                </button>
+              ))}
+            </div>
           </div>
         </div>
 

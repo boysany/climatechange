@@ -535,13 +535,13 @@ export const CommunityPage: React.FC<CommunityPageProps> = ({ onNavigate }) => {
       <section className="hero section-pad alien-hero community-hero" id="community-hero">
         <div className="alien-hero-aura" />
 
-        <div className="hero-grid alien-hero-grid">
-          {/* Top Status Bar (Matching Home page .alien-hero-meta) */}
-          <div className="hero-meta alien-hero-meta">
+        <div className="hero-grid alien-hero-grid community-hero-grid-centered" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+          {/* Top Status Bar (Centered) */}
+          <div className="hero-meta alien-hero-meta" style={{ width: '100%', display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '0.75rem' }}>
             <button
               onClick={() => onNavigate('home')}
               className="hero-live-pill"
-              style={{ cursor: 'pointer', background: 'transparent', border: 'none', textAlign: 'left' }}
+              style={{ cursor: 'pointer', background: 'transparent', border: 'none', textAlign: 'center' }}
             >
               <span className="live-pulse-dot" />
               <span>06 / COLLECTIVE • OPEN GUILD • 1,200+ BUILDERS WORLDWIDE</span>
@@ -555,30 +555,30 @@ export const CommunityPage: React.FC<CommunityPageProps> = ({ onNavigate }) => {
             </div>
           </div>
 
-          {/* Left Column: Headline & Narrative Copy */}
-          <div className="hero-copy alien-hero-copy">
-            <div className="hero-badge-row">
+          {/* Centered Headline & Narrative Copy */}
+          <div className="hero-copy alien-hero-copy" style={{ maxWidth: '58rem', margin: '0 auto', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <div className="hero-badge-row" style={{ justifyContent: 'center', width: '100%' }}>
               <span className="kicker-pill">
                 <Sparkles size={13} className="pill-spark" />
                 THE SELMEDIC &amp; CCDL BUILDER GUILD
               </span>
             </div>
 
-            <h1 className="display-title alien-display-title">
+            <h1 className="display-title alien-display-title" style={{ textAlign: 'center' }}>
               Build <span className="hero-hl-blue">together</span>, share{' '}
               <span className="hero-hl-purple">craft</span>, &amp; ship digital{' '}
               <span className="hero-hl-cyan">products</span>.
             </h1>
 
-            <div className="hero-bottom alien-hero-bottom">
-              <p className="hero-narrative">
+            <div className="hero-bottom alien-hero-bottom" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+              <p className="hero-narrative" style={{ textAlign: 'center', maxWidth: '46rem', margin: '0 auto 1.75rem' }}>
                 A high-density network of software engineers, product designers, technical founders, and growth
                 architects. We build in public, contribute to production-grade open source, conduct live design
                 clinics, and run weekly peer architectural AMAs.
               </p>
 
-              {/* Action Buttons (Matching Home page buttons) */}
-              <div className="hero-actions alien-hero-actions">
+              {/* Action Buttons Centered */}
+              <div className="hero-actions alien-hero-actions" style={{ justifyContent: 'center', flexWrap: 'wrap' }}>
                 <button
                   className="button button-dark alien-hero-btn"
                   onClick={() => setShowJoinModal(true)}
@@ -599,8 +599,8 @@ export const CommunityPage: React.FC<CommunityPageProps> = ({ onNavigate }) => {
                 </button>
               </div>
 
-              {/* Value proposition points */}
-              <div className="community-hero-points-strip">
+              {/* Value proposition points Centered */}
+              <div className="community-hero-points-strip" style={{ justifyContent: 'center', flexWrap: 'wrap' }}>
                 <div className="hero-point-item">
                   <Code2 size={15} className="text-blue-500" />
                   <span>Production Code</span>
@@ -617,45 +617,6 @@ export const CommunityPage: React.FC<CommunityPageProps> = ({ onNavigate }) => {
                 </div>
               </div>
             </div>
-          </div>
-
-          {/* Right Column: Exact Interactive Specimen Terminal Card */}
-          <div
-            ref={artRef}
-            className="hero-art community-hero-art"
-            style={{ '--mx': `${pointer.x}%`, '--my': `${pointer.y}%`, perspective: 1000 } as any}
-            aria-label="Interactive community terminal specimen card"
-          >
-            <span className="art-label">Guild / Radar</span>
-            <span className="art-code">
-              STATUS: <b>ACTIVE</b>
-              <br />
-              1,248 ONLINE
-            </span>
-
-            <div className="art-panel community-terminal-panel">
-              <span className="art-panel-kicker">06 // TERMINAL SHELL</span>
-              <div className="terminal-screen">
-                <div className="terminal-line prompt">
-                  <span className="term-user">builder@ccdl:~$</span> <code>npx @selmedic/cli init</code>
-                </div>
-                <div className="terminal-line success">
-                  <Check size={13} className="text-emerald-400" /> <span>Connecting to CCDL Guild cluster...</span>
-                </div>
-                <div className="terminal-line info">
-                  <span>✓ 1,248 builders active across 14 cities</span>
-                </div>
-                <div className="terminal-line info">
-                  <span>✓ Next live session: React Perf Clinic (Sep 19)</span>
-                </div>
-                <div className="terminal-line accent">
-                  <span>▶ Guild status: Accepting new builders</span>
-                </div>
-              </div>
-              <small>Real-time collective collaboration hub</small>
-            </div>
-
-            <div className="art-crosshair">+</div>
           </div>
         </div>
 
@@ -883,205 +844,7 @@ export const CommunityPage: React.FC<CommunityPageProps> = ({ onNavigate }) => {
           </div>
         </section>
 
-        {/* SECTION 04: WHY JOIN / GUILD TENETS (Bento Grid) */}
-        <section className="community-section tenets-section">
-          <div className="section-heading-row">
-            <div className="about-heading-top">
-              <span className="eyebrow">
-                <span className="about-pulse-dot" />
-                04 // WHY BUILDERS JOIN
-              </span>
-              <span className="about-heading-tag">FOUR CORE TENETS</span>
-            </div>
-          </div>
-
-          <div className="community-tenets-grid">
-            {[
-              {
-                icon: Terminal,
-                title: 'Learn by Building Real Software',
-                desc: 'No theoretical whiteboard trivia. We inspect real pull requests, solve production performance bottlenecks, and share genuine post-mortems.',
-              },
-              {
-                icon: Heart,
-                title: 'Generous, High-Standard Collaboration',
-                desc: 'Meet seasoned engineers, product designers, and co-founders who take pride in answering questions thoroughly and reviewing code carefully.',
-              },
-              {
-                icon: Code2,
-                title: 'Ship Open-Source Production Code',
-                desc: 'Contribute to maintained open-source libraries used by companies worldwide. Build an undeniable public track record of craftsmanship.',
-              },
-              {
-                icon: ShieldCheck,
-                title: 'High-Trust, Zero-Spam Environment',
-                desc: 'Our channels are strictly moderated. No aggressive marketing or recruitment spam—just builders discussing technical problems honestly.',
-              },
-            ].map((tenet, idx) => {
-              const IconComp = tenet.icon;
-              return (
-                <div key={idx} className="tenet-card">
-                  <div className="tenet-icon-wrap">
-                    <IconComp size={22} />
-                  </div>
-                  <h3>{tenet.title}</h3>
-                  <p>{tenet.desc}</p>
-                </div>
-              );
-            })}
-          </div>
-        </section>
-
-        {/* SECTION 05: ACTIVE BUILDERS & CONTRIBUTORS SPOTLIGHT */}
-        <section className="community-section contributors-section">
-          <div className="section-heading-row">
-            <div className="about-heading-top">
-              <span className="eyebrow">
-                <span className="about-pulse-dot" />
-                05 // GUILD MEMBERS &amp; MENTORS
-              </span>
-              <span className="about-heading-tag">PEER ARCHITECTS</span>
-            </div>
-          </div>
-
-          <div className="community-people-grid">
-            {[
-              {
-                name: 'Aarav Mehta',
-                role: 'Lead Frontend Engineer',
-                specialty: 'React 18, GSAP & Web Vitals',
-                avatar: sandeepAvatar,
-                location: 'Jaipur / Remote',
-              },
-              {
-                name: 'Mira Kapoor',
-                role: 'Lead Product Designer',
-                specialty: 'Design Tokens & Spatial Ergonomics',
-                avatar: gaganAvatar,
-                location: 'Jaipur / Remote',
-              },
-              {
-                name: 'Rohan Verma',
-                role: 'Senior Backend Architect',
-                specialty: 'Node.js, PostgreSQL & Redis Caching',
-                avatar: jaspalAvatar,
-                location: 'Jaipur / Remote',
-              },
-              {
-                name: 'Nisha Rao',
-                role: 'Platform & DevOps Engineer',
-                specialty: 'Kubernetes, Cloud CI/CD & SOC2',
-                avatar: sahiramAvatar,
-                location: 'Jaipur / Remote',
-              },
-            ].map((person) => (
-              <div key={person.name} className="community-person-card">
-                <img src={person.avatar} alt={person.name} />
-                <div>
-                  <h4>{person.name}</h4>
-                  <span className="person-role">{person.role}</span>
-                  <p>{person.specialty}</p>
-                  <span className="person-loc">
-                    <MapPin size={11} /> {person.location}
-                  </span>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* SECTION 06: LIVE COMMUNITY DISCUSSIONS / SHOW & TELL */}
-        <section className="community-section discussions-section">
-          <div className="section-heading-row">
-            <div className="about-heading-top">
-              <span className="eyebrow">
-                <span className="about-pulse-dot" />
-                06 // SHOW &amp; TELL THREADS
-              </span>
-              <span className="about-heading-tag">COMMUNITY DISCUSSIONS</span>
-            </div>
-          </div>
-
-          <div className="community-discussions-list">
-            {DISCUSSIONS.map((disc) => (
-              <div key={disc.id} className="discussion-row-card">
-                <button
-                  className="discussion-upvote-btn"
-                  onClick={() => handleUpvote(disc.id)}
-                  title="Upvote discussion"
-                >
-                  <ThumbsUp size={15} />
-                  <span>{upvotesState[disc.id] || disc.upvotes}</span>
-                </button>
-
-                <div className="discussion-main-info">
-                  <div className="discussion-meta-top">
-                    <span className="discussion-tag">#{disc.tag}</span>
-                    <span className="discussion-time">{disc.timestamp}</span>
-                  </div>
-
-                  <h3 className="discussion-title">{disc.title}</h3>
-                  <p className="discussion-snippet">{disc.snippet}</p>
-
-                  <div className="discussion-author-row">
-                    <img src={disc.author.avatar} alt={disc.author.name} />
-                    <span>
-                      Posted by <b>{disc.author.name}</b> ({disc.author.role})
-                    </span>
-                    <span className="discussion-replies">
-                      <MessageCircle size={13} /> {disc.replies} responses
-                    </span>
-                  </div>
-                </div>
-
-                <button
-                  className="button button-dark discussion-join-btn"
-                  onClick={() => setShowJoinModal(true)}
-                >
-                  Join Thread <ArrowRight size={14} />
-                </button>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* SECTION 07: COMMUNITY FAQ ACCORDION */}
-        <section className="community-section faq-section">
-          <div className="section-heading-row">
-            <div className="about-heading-top">
-              <span className="eyebrow">
-                <span className="about-pulse-dot" />
-                07 // FREQUENTLY ASKED QUESTIONS
-              </span>
-              <span className="about-heading-tag">EVERYTHING YOU NEED TO KNOW</span>
-            </div>
-          </div>
-
-          <div className="community-faq-container">
-            {FAQ_ITEMS.map((faq, idx) => {
-              const isOpen = expandedFaq === idx;
-              return (
-                <div key={idx} className={`faq-accordion-item ${isOpen ? 'is-open' : ''}`}>
-                  <button
-                    className="faq-question-btn"
-                    onClick={() => setExpandedFaq(isOpen ? null : idx)}
-                    aria-expanded={isOpen}
-                  >
-                    <span>{faq.q}</span>
-                    <ChevronDown size={18} className={`faq-chevron ${isOpen ? 'rotated' : ''}`} />
-                  </button>
-                  {isOpen && (
-                    <div className="faq-answer-pane">
-                      <p>{faq.a}</p>
-                    </div>
-                  )}
-                </div>
-              );
-            })}
-          </div>
-        </section>
-
-        {/* SECTION 08: FINAL INTAKE CTA (Matching Home Page CTA Style) */}
+        {/* SECTION 04: FINAL INTAKE CTA (Matching Home Page CTA Style) */}
         <section className="community-section community-final-cta-section">
           <div className="community-cta-box">
             <div className="cta-ambient" aria-hidden="true" />

@@ -3,8 +3,9 @@ import ScrollReveal from '../components/ScrollReveal.tsx';
 import TextReveal from '../components/TextReveal.tsx';
 import { ServiceDetailPage } from '../sections/ServiceDetailPage.tsx';
 import { SEOStrategyPage } from '../sections/SEOStrategyPage.tsx';
-import { BlogPage } from '../sections/BlogPage.tsx';
+import { BlogPage, BLOG_POSTS } from '../sections/BlogPage.tsx';
 import { CommunityPage } from '../sections/CommunityPage.tsx';
+import { SingleArticlePage } from '../sections/SingleArticlePage.tsx';
 import { SEO_SERVICES_MAP } from '../lib/seoData.ts';
 import { portfolioProjects } from '../sections/Portfolio.tsx';
 
@@ -774,7 +775,7 @@ export default function CCDLPage({
     return <SEOStrategyPage onNavigate={onNavigate} />;
   }
 
-  // 0.1 DEDICATED 13 SEO SERVICE HUBS
+  // 0.1 DEDICATED 18 SERVICE HUBS
   let serviceSlug = '';
   if (pageId.startsWith('service-')) {
     serviceSlug = pageId.replace('service-', '');
@@ -784,8 +785,36 @@ export default function CCDLPage({
     serviceSlug = pageId;
   }
 
-  if (serviceSlug && SEO_SERVICES_MAP[serviceSlug]) {
-    return <ServiceDetailPage service={SEO_SERVICES_MAP[serviceSlug]} onNavigate={onNavigate} />;
+  // Handle common aliases
+  if (serviceSlug === 'uiux' || serviceSlug === 'ui-ux') serviceSlug = 'ui-ux-design';
+  if (serviceSlug === 'software') serviceSlug = 'software-development';
+  if (serviceSlug === 'web' || serviceSlug === 'website') serviceSlug = 'website-development';
+  if (serviceSlug === 'mobile' || serviceSlug === 'app') serviceSlug = 'mobile-app-development';
+
+  if (serviceSlug) {
+    let matched = SEO_SERVICES_MAP[serviceSlug];
+    if (!matched) {
+      const foundKey = Object.keys(SEO_SERVICES_MAP).find(k => k.includes(serviceSlug) || serviceSlug.includes(k));
+      matched = foundKey ? SEO_SERVICES_MAP[foundKey] : SEO_SERVICES_MAP['software-development'];
+    }
+    return <ServiceDetailPage service={matched} onNavigate={onNavigate} />;
+  }
+
+  // 1. DEDICATED SINGLE BLOG ARTICLE VIEW (e.g. article/:slug or blog/:slug or insights/:slug)
+  if (
+    pageId.startsWith('article/') ||
+    pageId.startsWith('blog/') ||
+    (pageId.startsWith('insights/') && pageId.includes('/'))
+  ) {
+    const parts = pageId.split('/');
+    const slug = parts.slice(1).join('/');
+    return <SingleArticlePage slug={slug} onNavigate={onNavigate} />;
+  }
+
+  // 1.01 Match directly by slug if route matches a known blog post
+  const directPostMatch = BLOG_POSTS.find((p) => p.slug === pageId);
+  if (directPostMatch) {
+    return <SingleArticlePage slug={directPostMatch.slug} onNavigate={onNavigate} />;
   }
 
   // 1. DEDICATED BLOG AND COMMUNITY HUBS
@@ -920,77 +949,10 @@ export default function CCDLPage({
     );
   }
 
-  // 2. DEDICATED ARTICLE READING VIEW (e.g. article/designing-for-clarity)
+  // 2. DEDICATED ARTICLE READING VIEW (e.g. article/optimizing-core-web-vitals-react-nextjs)
   if (pageId.startsWith('article/')) {
     const slug = pageId.split('/')[1];
-    const post = insightsPosts.find((p) => p.slug === slug) || insightsPosts[0];
-
-    return (
-      <main className="inner-page article-page">
-        <section className="section-pad article-hero">
-          <div className="article-hero-inner">
-            <button
-              onClick={() => onNavigate('insights')}
-              className="article-back-btn"
-              style={{ cursor: 'pointer', background: 'transparent', border: 'none', font: 'inherit', color: 'inherit' }}
-            >
-              ← Back to Insights
-            </button>
-
-            <div className="article-tag-row">
-              <span className="article-cat-badge">{post.category}</span>
-              <span className="article-date-badge">{post.date}</span>
-              <span className="article-read-badge">{post.read}</span>
-            </div>
-
-            <h1 className="article-main-title">{post.title}</h1>
-            <p className="article-lead-intro">{post.intro}</p>
-
-            <div className="article-author-card">
-              <img
-                src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=300&auto=format&fit=crop"
-                alt="Sandeep Sharma"
-                className="author-avatar"
-              />
-              <div className="author-info">
-                <strong>Sandeep Sharma</strong>
-                <span>Founder & Principal Architect • CCDL Studio</span>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="section-pad article-content-section">
-          <div className="article-body-container">
-            {post.content.map((paragraph, idx) => (
-              <p key={idx} className="article-paragraph">
-                {paragraph}
-              </p>
-            ))}
-
-            <div className="article-key-takeaways">
-              <h3>
-                <Sparkles size={18} className="text-blue-500" />
-                Key Enterprise Takeaways
-              </h3>
-              <ul>
-                <li>Mathematical spacing ratios prevent visual chaos across diverse viewports.</li>
-                <li>Single-source-of-truth design tokens accelerate engineering velocity by up to 40%.</li>
-                <li>Zero-bloat TypeScript architecture protects future maintenance budgets.</li>
-              </ul>
-            </div>
-
-            <div className="article-cta-box">
-              <h3>Ready to engineer your next high-impact product?</h3>
-              <p>Work directly with our senior collective to bring your vision to life.</p>
-              <button onClick={() => onNavigate('contact')} className="button button-dark">
-                Schedule Architecture Consultation <ArrowUpRight size={16} />
-              </button>
-            </div>
-          </div>
-        </section>
-      </main>
-    );
+    return <SingleArticlePage slug={slug} onNavigate={onNavigate} />;
   }
 
   const copy = pageMeta[normalizedPageId] || pageMeta.about;
@@ -1249,22 +1211,51 @@ export default function CCDLPage({
           PAGE: BOOK A CALL / CONSULTATION SCHEDULER
           ============================================================ */}
       {normalizedPageId === 'book-call' && (
-        <section className="section-pad inner-contact-section">
+        <section className="section-pad inner-contact-section book-call-section">
           <div className="contact-dual-layout">
             <div className="contact-info-col">
               <span className="sub-badge">DIRECT DISCOVERY SESSION</span>
-              <h2>30-Minute Architecture & Scope Consultation</h2>
+              <h2>30-Minute Architecture &amp; Scope Consultation</h2>
               <p>
                 Meet with our founding engineering architect to evaluate feasibility, explore design
                 options, and receive an upfront sprint timeline and pricing structure.
               </p>
 
+              {/* Instant Direct Channels with Real WhatsApp & Phone Links */}
               <div className="direct-channels-list">
-                <div className="contact-channel-card whatsapp-channel" style={{ cursor: 'default' }}>
+                <a
+                  href="https://wa.me/917852052323?text=Hi%20CCDL%2C%20I%20would%20like%20to%20schedule%20a%20discovery%20consultation."
+                  target="_blank"
+                  rel="noreferrer"
+                  className="contact-channel-card whatsapp-channel hover-lift"
+                >
+                  <MessageCircle size={22} className="text-emerald-500" />
+                  <div className="flex-1">
+                    <strong>WhatsApp Direct Sync</strong>
+                    <span>+91 78520 52323 • Instant Response</span>
+                  </div>
+                  <ArrowUpRight size={16} className="channel-arrow" />
+                </a>
+
+                <a
+                  href="https://wa.me/918005873764?text=Hi%20CCDL%2C%20I%20would%20like%20to%20discuss%20a%20new%20product%20sprint."
+                  target="_blank"
+                  rel="noreferrer"
+                  className="contact-channel-card whatsapp-channel hover-lift"
+                >
+                  <MessageCircle size={22} className="text-emerald-500" />
+                  <div className="flex-1">
+                    <strong>Secondary WhatsApp Desk</strong>
+                    <span>+91 80058 73764 • Architect Line</span>
+                  </div>
+                  <ArrowUpRight size={16} className="channel-arrow" />
+                </a>
+
+                <div className="contact-channel-card phone-channel" style={{ cursor: 'default' }}>
                   <Calendar size={22} />
                   <div>
                     <strong>Direct Video / Voice Sync</strong>
-                    <span>Google Meet or Zoom • Screen Sharing</span>
+                    <span>Google Meet or Zoom • High-Res Screen Sharing</span>
                   </div>
                 </div>
 
@@ -1272,34 +1263,72 @@ export default function CCDLPage({
                   <ShieldCheck size={22} />
                   <div>
                     <strong>100% Confidential</strong>
-                    <span>Mutual NDA automatically applied to discussions</span>
+                    <span>Mutual NDA automatically applied to all discussions</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Consultation Agenda Bento */}
+              <div className="consultation-agenda-box">
+                <div className="agenda-title font-mono text-xs uppercase tracking-wider text-[var(--muted)] mb-3 font-bold">
+                  WHAT WE WILL COVER IN 30 MINUTES:
+                </div>
+                <div className="agenda-steps-list space-y-2 text-xs sm:text-sm">
+                  <div className="agenda-step flex items-start gap-2.5">
+                    <span className="agenda-step-num font-mono font-bold text-blue-500">01</span>
+                    <span><strong>10m:</strong> Product scope, technical feasibility &amp; requirements audit.</span>
+                  </div>
+                  <div className="agenda-step flex items-start gap-2.5">
+                    <span className="agenda-step-num font-mono font-bold text-blue-500">02</span>
+                    <span><strong>15m:</strong> Architecture blueprint, design tokens &amp; tech stack selection.</span>
+                  </div>
+                  <div className="agenda-step flex items-start gap-2.5">
+                    <span className="agenda-step-num font-mono font-bold text-blue-500">03</span>
+                    <span><strong>05m:</strong> Fixed sprint pricing, deliverables checklist &amp; start date.</span>
                   </div>
                 </div>
               </div>
 
               <div className="response-sla-pill">
                 <Clock size={16} />
-                <span>Instant Confirmation & Calendar Invite</span>
+                <span>Instant Confirmation &amp; Google Meet Calendar Invite</span>
               </div>
             </div>
 
             <div className="contact-form-col">
               <div className="contact-form-box">
                 {bookingConfirmed ? (
-                  <div className="contact-success-message">
-                    <CheckCircle2 size={48} className="success-icon" />
-                    <h3>Consultation Confirmed!</h3>
-                    <p>
-                      We have scheduled your session for <b>{bookingDate}</b> at <b>{bookingTime} IST</b>.
-                      A calendar invite and Google Meet link have been dispatched.
+                  <div className="contact-success-message text-center py-6">
+                    <CheckCircle2 size={56} className="text-emerald-500 mx-auto mb-4" />
+                    <h3 className="text-2xl font-extrabold text-[var(--ink)] mb-2">Consultation Confirmed!</h3>
+                    <p className="text-sm sm:text-base text-[var(--muted)] leading-relaxed max-w-md mx-auto mb-6">
+                      We have reserved your discovery consultation for <b>{bookingDate}</b> at <b>{bookingTime} IST</b>.
+                      A calendar invite with Google Meet coordinates has been dispatched to your email.
                     </p>
-                    <button
-                      onClick={() => setBookingConfirmed(false)}
-                      className="button button-dark"
-                      style={{ marginTop: '1.5rem' }}
-                    >
-                      Book Another Slot
-                    </button>
+
+                    <div className="meeting-prep-card p-4 rounded-xl bg-[var(--paper)] border border-[var(--line)] text-left mb-6 text-xs sm:text-sm text-[var(--muted)] space-y-1">
+                      <div className="font-bold text-[var(--ink)] mb-1">Session Checklist:</div>
+                      <div>• Prepare any Figma links, PRDs, or reference websites.</div>
+                      <div>• Invite any co-founders or engineering stakeholders.</div>
+                      <div>• We will present a tailored architecture roadmap.</div>
+                    </div>
+
+                    <div className="flex flex-wrap items-center justify-center gap-3">
+                      <button
+                        onClick={() => setBookingConfirmed(false)}
+                        className="button button-dark text-sm"
+                      >
+                        Book Another Slot
+                      </button>
+                      <a
+                        href="https://wa.me/917852052323?text=Hi%20CCDL%2C%20I%20just%20scheduled%20a%20discovery%20session."
+                        target="_blank"
+                        rel="noreferrer"
+                        className="button alien-hero-btn-outline text-sm"
+                      >
+                        Ping on WhatsApp
+                      </a>
+                    </div>
                   </div>
                 ) : (
                   <form
@@ -1308,7 +1337,14 @@ export default function CCDLPage({
                       setBookingConfirmed(true);
                     }}
                   >
-                    <h3 className="form-title">Select Consultation Slot</h3>
+                    <div className="form-header-row mb-6">
+                      <h3 className="form-title text-xl sm:text-2xl font-extrabold text-[var(--ink)] m-0">
+                        Select Consultation Slot
+                      </h3>
+                      <p className="text-xs sm:text-sm text-[var(--muted)] mt-1">
+                        Pick a date and time that works best for your team.
+                      </p>
+                    </div>
 
                     <div className="form-group">
                       <label>YOUR FULL NAME *</label>
@@ -1320,8 +1356,8 @@ export default function CCDLPage({
                       <input type="email" required placeholder="alex@company.com" className="form-input" />
                     </div>
 
-                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
-                      <div className="form-group">
+                    <div className="form-grid-2col grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div className="form-group m-0">
                         <label>PREFERRED DATE *</label>
                         <input
                           type="date"
@@ -1331,7 +1367,7 @@ export default function CCDLPage({
                           required
                         />
                       </div>
-                      <div className="form-group">
+                      <div className="form-group m-0">
                         <label>TIME SLOT *</label>
                         <select
                           value={bookingTime}
@@ -1346,21 +1382,35 @@ export default function CCDLPage({
                       </div>
                     </div>
 
-                    <div className="form-group">
-                      <label>PROJECT TOPIC *</label>
+                    <div className="form-group mt-4">
+                      <label>PRIMARY DISCUSSION FOCUS *</label>
                       <select className="form-input" required>
-                        <option value="mvp">30-Day Startup MVP Sprint</option>
-                        <option value="ui-ux">Product Design & Prototyping</option>
-                        <option value="engineering">Full-Stack Software Architecture</option>
-                        <option value="systems">Design System Modernization</option>
-                        <option value="enterprise">Enterprise Dedicated Squad</option>
+                        <option value="mvp">30-Day Startup MVP Sprint (Zero-to-One)</option>
+                        <option value="ui-ux">Product Design &amp; Interactive Prototyping</option>
+                        <option value="engineering">Full-Stack Cloud &amp; High-Concurrency Architecture</option>
+                        <option value="systems">Design System Tokens &amp; Component Modernization</option>
+                        <option value="enterprise">Dedicated Enterprise Agile Pod</option>
                       </select>
                     </div>
 
-                    <button type="submit" className="button button-dark form-submit-btn">
+                    <div className="form-group">
+                      <label>PROJECT CONTEXT / NOTES (OPTIONAL)</label>
+                      <textarea
+                        rows={3}
+                        placeholder="Briefly describe what you are building, target timeline, or existing stack..."
+                        className="form-input resize-none"
+                      />
+                    </div>
+
+                    <button type="submit" className="button button-dark form-submit-btn w-full mt-4">
                       <span>Confirm Discovery Call</span>
                       <ArrowUpRight size={16} />
                     </button>
+
+                    <div className="form-guarantee-note flex items-center justify-center gap-2 text-xs text-[var(--muted)] mt-4">
+                      <ShieldCheck size={14} className="text-emerald-500" />
+                      <span>Zero sales pitch. Pure engineering &amp; architecture strategy.</span>
+                    </div>
                   </form>
                 )}
               </div>

@@ -14,7 +14,7 @@ export const portfolioProjects = [
   {
     num: '01', tag: 'Legal Platform', title: 'Legal Website',
     desc: 'A clear, trustworthy legal services website designed for discovery, education, and qualified inquiries.',
-    img: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&q=82&w=1200', liveUrl: 'https://legal-omega-red.vercel.app/', year: '2026', category: 'Legal / Web',
+    img: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&q=82&w=1200', liveUrl: 'https://legal-jz4g.vercel.app/', year: '2026', category: 'Legal / Web',
   },
   {
     num: '01',

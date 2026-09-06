@@ -406,7 +406,6 @@ export const BlogPage: React.FC<BlogPageProps> = ({ onNavigate }) => {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [searchQuery, setSearchQuery] = useState('');
   const [sortBy, setSortBy] = useState<'latest' | 'readTime' | 'title'>('latest');
-  const [activeArticle, setActiveArticle] = useState<BlogPost | null>(null);
   const [copiedLink, setCopiedLink] = useState(false);
   const [newsletterEmail, setNewsletterEmail] = useState('');
   const [newsletterSuccess, setNewsletterSuccess] = useState(false);
@@ -445,13 +444,10 @@ export const BlogPage: React.FC<BlogPageProps> = ({ onNavigate }) => {
         e.preventDefault();
         searchInputRef.current?.focus();
       }
-      if (e.key === 'Escape' && activeArticle) {
-        setActiveArticle(null);
-      }
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [activeArticle]);
+  }, []);
 
   // Filter and sort articles
   const filteredPosts = useMemo(() => {
@@ -490,155 +486,17 @@ export const BlogPage: React.FC<BlogPageProps> = ({ onNavigate }) => {
 
   return (
     <div className="blog-page-root" id="blog-page-container">
-      {/* 1. Publication-Grade Article Reader Modal */}
-      {activeArticle && (
-        <div className="blog-reader-backdrop" onClick={() => setActiveArticle(null)}>
-          <div className="blog-reader-modal" onClick={(e) => e.stopPropagation()} role="dialog" aria-modal="true">
-            {/* Sticky Header Bar */}
-            <div className="blog-reader-top-bar">
-              <div className="flex items-center gap-3">
-                <span className="blog-reader-badge">{activeArticle.category}</span>
-                <span className="blog-reader-time">
-                  <Clock size={13} /> {activeArticle.readTime}
-                </span>
-              </div>
-              <div className="blog-reader-actions">
-                <button
-                  className="blog-reader-share-btn"
-                  onClick={() => handleShare(activeArticle)}
-                  title="Copy link to clipboard"
-                >
-                  {copiedLink ? <Check size={14} className="text-emerald-500" /> : <Share2 size={14} />}
-                  <span>{copiedLink ? 'Link Copied' : 'Share'}</span>
-                </button>
-                <button
-                  className="blog-reader-close-btn"
-                  onClick={() => setActiveArticle(null)}
-                  aria-label="Close article modal"
-                >
-                  <X size={18} />
-                </button>
-              </div>
-            </div>
-
-            {/* Scrollable Article Body */}
-            <div className="blog-reader-scrollable">
-              <div className="blog-reader-hero-media">
-                <img src={activeArticle.coverImage} alt={activeArticle.title} className="blog-reader-hero-img" />
-              </div>
-
-              <div className="blog-reader-body-content">
-                <div className="blog-reader-meta-row">
-                  <span className="blog-reader-date">
-                    <Calendar size={13} /> {activeArticle.date}
-                  </span>
-                  <span className="blog-reader-dot">•</span>
-                  <span className="blog-reader-cat">{activeArticle.category}</span>
-                </div>
-
-                <h1 className="blog-reader-title">{activeArticle.title}</h1>
-                <p className="blog-reader-lead">{activeArticle.excerpt}</p>
-
-                {/* Author Strip */}
-                <div className="blog-author-strip">
-                  <img src={activeArticle.author.avatar} alt={activeArticle.author.name} />
-                  <div>
-                    <strong>{activeArticle.author.name}</strong>
-                    <span>{activeArticle.author.role}</span>
-                  </div>
-                </div>
-
-                {/* Key Takeaways Callout Box */}
-                {activeArticle.takeaways && activeArticle.takeaways.length > 0 && (
-                  <div className="blog-takeaways-card">
-                    <div className="blog-takeaways-header">
-                      <Sparkles size={16} className="text-blue-500" />
-                      <strong>Core Architectural Takeaways</strong>
-                    </div>
-                    <ul className="blog-takeaways-list">
-                      {activeArticle.takeaways.map((point, idx) => (
-                        <li key={idx}>
-                          <CheckCircle2 size={15} className="takeaway-check" />
-                          <span>{point}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-
-                {/* Content Sections */}
-                {activeArticle.contentSections.map((section, idx) => (
-                  <div key={idx} className="blog-reader-section">
-                    <h2>{section.heading}</h2>
-                    {section.body.map((p, pIdx) => (
-                      <p key={pIdx}>{p}</p>
-                    ))}
-
-                    {section.callout && (
-                      <blockquote className="blog-reader-quote">
-                        <span>“</span>
-                        <p>{section.callout}</p>
-                      </blockquote>
-                    )}
-
-                    {section.codeSnippet && (
-                      <div className="blog-reader-code-box">
-                        <div className="code-box-header">
-                          <span className="code-dot red" />
-                          <span className="code-dot yellow" />
-                          <span className="code-dot green" />
-                          <span className="code-lang-label">TypeScript / Configuration</span>
-                        </div>
-                        <pre>
-                          <code>{section.codeSnippet}</code>
-                        </pre>
-                      </div>
-                    )}
-                  </div>
-                ))}
-
-                {/* Tags */}
-                <div className="blog-reader-tags-row">
-                  {activeArticle.tags.map((tag) => (
-                    <span key={tag} className="blog-reader-tag-pill">
-                      #{tag}
-                    </span>
-                  ))}
-                </div>
-
-                {/* Next Article Recommendation */}
-                <div className="blog-reader-footer-nav">
-                  <div className="blog-reader-nav-copy">
-                    <span className="blog-reader-nav-label">EXPLORE NEXT DISPATCH</span>
-                    <h4>Ready for more deep engineering?</h4>
-                  </div>
-                  <button
-                    className="button button-dark"
-                    onClick={() => {
-                      const next = BLOG_POSTS.find((p) => p.slug !== activeArticle.slug);
-                      if (next) setActiveArticle(next);
-                    }}
-                  >
-                    Read Next <ArrowRight size={16} />
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-
       {/* 2. EXACT HOME PAGE HERO FOUNDATION */}
       <section className="hero section-pad alien-hero blog-hero" id="blog-hero">
         <div className="alien-hero-aura" />
 
-        <div className="hero-grid alien-hero-grid">
-          {/* Top Status Bar (Matching Home page .alien-hero-meta) */}
-          <div className="hero-meta alien-hero-meta">
+        <div className="hero-grid alien-hero-grid blog-hero-grid-centered" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+          {/* Top Status Bar (Centered) */}
+          <div className="hero-meta alien-hero-meta" style={{ width: '100%', display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '0.75rem' }}>
             <button
               onClick={() => onNavigate('home')}
               className="hero-live-pill"
-              style={{ cursor: 'pointer', background: 'transparent', border: 'none', textAlign: 'left' }}
+              style={{ cursor: 'pointer', background: 'transparent', border: 'none', textAlign: 'center' }}
             >
               <span className="live-pulse-dot" />
               <span>05 / DISPATCHES • UPDATED WEEKLY • ENGINEERING &amp; DESIGN ARCHITECTURE</span>
@@ -652,29 +510,29 @@ export const BlogPage: React.FC<BlogPageProps> = ({ onNavigate }) => {
             </div>
           </div>
 
-          {/* Left Column: Headline & Narrative Copy */}
-          <div className="hero-copy alien-hero-copy">
-            <div className="hero-badge-row">
+          {/* Centered Headline & Narrative Copy */}
+          <div className="hero-copy alien-hero-copy" style={{ maxWidth: '58rem', margin: '0 auto', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <div className="hero-badge-row" style={{ justifyContent: 'center', width: '100%' }}>
               <span className="kicker-pill">
                 <Sparkles size={13} className="pill-spark" />
                 EDITORIAL JOURNAL &amp; DEEP TECH RESEARCH
               </span>
             </div>
 
-            <h1 className="display-title alien-display-title">
+            <h1 className="display-title alien-display-title" style={{ textAlign: 'center' }}>
               Engineering <span className="hero-hl-blue">dispatches</span>, design{' '}
               <span className="hero-hl-purple">systems</span>, &amp; architecture{' '}
               <span className="hero-hl-cyan">playbooks</span>.
             </h1>
 
-            <div className="hero-bottom alien-hero-bottom">
-              <p className="hero-narrative">
+            <div className="hero-bottom alien-hero-bottom" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+              <p className="hero-narrative" style={{ textAlign: 'center', maxWidth: '46rem', margin: '0 auto 1.75rem' }}>
                 In-depth breakdowns on high-performance React architectures, zero-downtime APIs, design token
                 mathematical scaling, database query tuning, and product leadership from the CCDL collective.
               </p>
 
-              {/* Action Buttons (Matching Home page buttons) */}
-              <div className="hero-actions alien-hero-actions">
+              {/* Action Buttons Centered */}
+              <div className="hero-actions alien-hero-actions" style={{ justifyContent: 'center', flexWrap: 'wrap' }}>
                 <button
                   className="button button-dark alien-hero-btn"
                   onClick={() => {
@@ -698,8 +556,8 @@ export const BlogPage: React.FC<BlogPageProps> = ({ onNavigate }) => {
                 </button>
               </div>
 
-              {/* Quick Topic Jump Chips */}
-              <div className="blog-hero-topic-pills">
+              {/* Quick Topic Jump Chips Centered */}
+              <div className="blog-hero-topic-pills" style={{ justifyContent: 'center' }}>
                 <span className="blog-topic-label">QUICK TOPICS:</span>
                 {['React 18', 'Design Systems', 'PostgreSQL', 'APIs', 'Core Web Vitals'].map((tag) => (
                   <button
@@ -715,43 +573,6 @@ export const BlogPage: React.FC<BlogPageProps> = ({ onNavigate }) => {
                 ))}
               </div>
             </div>
-          </div>
-
-          {/* Right Column: Exact Interactive Geometric Art Specimen Card */}
-          <div
-            ref={artRef}
-            className="hero-art blog-hero-art"
-            style={{ '--mx': `${pointer.x}%`, '--my': `${pointer.y}%`, perspective: 1000 } as any}
-            aria-label="Interactive architectural specimen card"
-          >
-            <span className="art-label">Dispatches / Specimen</span>
-            <span className="art-code">
-              REV. <b>2026.09</b>
-              <br />
-              CODE + CRAFT
-            </span>
-
-            <div className="art-panel">
-              <span className="art-panel-kicker">05 // EDITORIAL SPOTLIGHT</span>
-              <strong>
-                Crafted with
-                <br />
-                <i>architectural</i> rigor
-              </strong>
-              <div className="art-specimen-stats">
-                <div>
-                  <b>10</b>
-                  <span>DEEP ARTICLES</span>
-                </div>
-                <div>
-                  <b>0%</b>
-                  <span>SPONSORED NOISE</span>
-                </div>
-              </div>
-              <small>CCDL Collective Engineering Journal</small>
-            </div>
-
-            <div className="art-crosshair">+</div>
           </div>
         </div>
 
@@ -840,7 +661,10 @@ export const BlogPage: React.FC<BlogPageProps> = ({ onNavigate }) => {
               </div>
             </div>
 
-            <article className="featured-story-card" onClick={() => setActiveArticle(featuredPost)}>
+            <article
+              className="featured-story-card cursor-pointer"
+              onClick={() => onNavigate('article/' + featuredPost.slug)}
+            >
               <div className="featured-story-media">
                 <img src={featuredPost.coverImage} alt={featuredPost.title} />
                 <span className="featured-pill">FEATURED STORY</span>
@@ -882,7 +706,13 @@ export const BlogPage: React.FC<BlogPageProps> = ({ onNavigate }) => {
                     </div>
                   </div>
 
-                  <button className="button button-dark featured-read-btn">
+                  <button
+                    className="button button-dark featured-read-btn"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      onNavigate('article/' + featuredPost.slug);
+                    }}
+                  >
                     Read Dispatch <ArrowUpRight size={16} />
                   </button>
                 </div>
@@ -908,8 +738,8 @@ export const BlogPage: React.FC<BlogPageProps> = ({ onNavigate }) => {
               {spotlightPosts.map((post) => (
                 <article
                   key={post.slug}
-                  className="spotlight-card"
-                  onClick={() => setActiveArticle(post)}
+                  className="spotlight-card cursor-pointer"
+                  onClick={() => onNavigate('article/' + post.slug)}
                 >
                   <div className="spotlight-img-wrap">
                     <img src={post.coverImage} alt={post.title} />
@@ -961,8 +791,8 @@ export const BlogPage: React.FC<BlogPageProps> = ({ onNavigate }) => {
               {filteredPosts.map((post) => (
                 <article
                   key={post.slug}
-                  className="archive-card"
-                  onClick={() => setActiveArticle(post)}
+                  className="archive-card cursor-pointer"
+                  onClick={() => onNavigate('article/' + post.slug)}
                 >
                   <div className="archive-img-wrap">
                     <img src={post.coverImage} alt={post.title} loading="lazy" />
