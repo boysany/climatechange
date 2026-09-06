@@ -116,7 +116,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
   });
 
   return (
-    <div className="w-full min-h-screen bg-[#f6f5f2] dark:bg-[#090c13] text-[#0d1017] dark:text-[#f3f5f9] pt-24 pb-20 transition-colors duration-300">
+    <div className="service-detail-page w-full min-h-screen bg-[#f6f5f2] dark:bg-[#090c13] text-[#0d1017] dark:text-[#f3f5f9] pt-24 pb-20 transition-colors duration-300">
       {/* 1. Breadcrumbs Navigation for SEO Hierarchy */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 mb-6">
         <nav aria-label="Breadcrumb" className="flex items-center space-x-2 text-xs font-mono tracking-wider text-[#6e7587] dark:text-[#8b93a7]">
