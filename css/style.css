@@ -12462,6 +12462,52 @@ top: 0;
 
 /* RSVP Dialog */
 /* Final responsive fixes for booking, single pages, and mobile navigation */
+.book-call-page {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: clip;
+}
+.book-call-page .contact-dual-layout {
+  width: min(100%, 1180px);
+  margin-inline: auto;
+  align-items: start;
+}
+.book-call-page .contact-info-col,
+.book-call-page .contact-form-col,
+.book-call-page .contact-form-box {
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+.book-call-page .contact-form-box {
+  padding: clamp(1rem, 3vw, 2rem);
+}
+.book-call-page .form-title {
+  margin-bottom: 1.5rem;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  line-height: 1.15;
+}
+.book-call-page .form-group { min-width: 0; }
+.book-call-page .form-input {
+  width: 100%;
+  min-width: 0;
+  min-height: 3.25rem;
+  box-sizing: border-box;
+  border-radius: .75rem;
+}
+.book-call-page .form-submit-btn {
+  min-height: 3.25rem;
+  width: 100%;
+  justify-content: center;
+}
+@media (max-width: 760px) {
+  .book-call-page { padding-inline: 1rem; }
+  .book-call-page .contact-dual-layout { grid-template-columns: minmax(0, 1fr) !important; gap: 2rem; }
+  .book-call-page .booking-date-time-grid { grid-template-columns: minmax(0, 1fr) !important; gap: .85rem !important; }
+  .book-call-page .contact-form-box { padding: 1rem; }
+}
+
 html, body { max-width: 100%; overflow-x: hidden; }
 .book-call-page, .service-detail-page, .blog-reader-modal, .blog-reader-backdrop { max-width: 100%; overflow-x: hidden; }
 .blog-page-root .blog-featured-media, .community-page-root .community-cockpit-header, .community-page-root .community-new-visual { display: none; }

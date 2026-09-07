@@ -1249,7 +1249,7 @@ export default function CCDLPage({
           PAGE: BOOK A CALL / CONSULTATION SCHEDULER
           ============================================================ */}
       {normalizedPageId === 'book-call' && (
-        <section className="section-pad inner-contact-section">
+        <section className="section-pad inner-contact-section book-call-page">
           <div className="contact-dual-layout">
             <div className="contact-info-col">
               <span className="sub-badge">DIRECT DISCOVERY SESSION</span>
