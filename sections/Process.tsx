@@ -112,39 +112,43 @@ export default function Process({ onNavigate }: ProcessProps) {
     if (!section || !cardsContainer || getReducedMotion()) return;
 
     const cards = cardsContainer.querySelectorAll<HTMLElement>('.process-card-item');
+    const isDesktop = window.innerWidth > 960;
 
     const ctx = gsap.context(() => {
       cards.forEach((card, index) => {
-        // Active indicator on scroll
+        // Active indicator on scroll to update left-side tracker & navigation
         ScrollTrigger.create({
           trigger: card,
-          start: 'top center+=80',
-          end: 'bottom center-=40',
+          start: 'top center',
+          end: 'bottom center',
           onEnter: () => setActiveStep(index),
           onEnterBack: () => setActiveStep(index),
         });
 
-        // Bottom to top progressive scroll animation
-        gsap.fromTo(
-          card,
-          {
-            y: 80,
-            opacity: 0.35,
-            scale: 0.95,
-          },
-          {
-            y: 0,
-            opacity: 1,
-            scale: 1,
-            ease: 'power2.out',
-            scrollTrigger: {
-              trigger: card,
-              start: 'top 88%',
-              end: 'top 48%',
-              scrub: 0.6,
-            },
+        // 3D Stacking depth scroll effect on desktop:
+        // As subsequent cards scroll up over this card, this card's inner content
+        // progressively scales down slightly (1 -> 0.94) and dims subtly, creating
+        // a physical layered card deck feel without breaking CSS position: sticky
+        if (isDesktop && index < cards.length - 1) {
+          const inner = card.querySelector<HTMLElement>('.process-card-inner');
+          const nextCard = cards[index + 1];
+
+          if (inner && nextCard) {
+            gsap.to(inner, {
+              scale: 0.94,
+              opacity: 0.82,
+              filter: 'brightness(0.92)',
+              transformOrigin: 'top center',
+              ease: 'none',
+              scrollTrigger: {
+                trigger: nextCard,
+                start: 'top bottom-=60',
+                end: 'top top+=140',
+                scrub: true,
+              },
+            });
           }
-        );
+        }
       });
     }, section);
 
@@ -157,7 +161,10 @@ export default function Process({ onNavigate }: ProcessProps) {
     if (!cardsRef.current) return;
     const cards = cardsRef.current.querySelectorAll<HTMLElement>('.process-card-item');
     if (cards[index]) {
-      cards[index].scrollIntoView({ behavior: 'smooth', block: 'center' });
+      const stickyOffset = 90 + index * 18;
+      const cardRect = cards[index].getBoundingClientRect();
+      const targetY = window.pageYOffset + cardRect.top - stickyOffset;
+      window.scrollTo({ top: targetY, behavior: 'smooth' });
       setActiveStep(index);
     }
   };
@@ -206,9 +213,17 @@ export default function Process({ onNavigate }: ProcessProps) {
             <div className="process-active-tracker">
               <span className="process-tracker-label">CURRENTLY VIEWING</span>
               <div className="process-tracker-val">
-                <span className="tracker-num">{processSteps[activeStep].num}</span>
+                <span className="tracker-num" style={{ color: processSteps[activeStep].accent }}>
+                  {processSteps[activeStep].num}
+                </span>
                 <span className="tracker-title">{processSteps[activeStep].title}</span>
-                <span className="tracker-time" style={{ color: processSteps[activeStep].accent }}>
+                <span
+                  className="tracker-time"
+                  style={{
+                    color: processSteps[activeStep].accent,
+                    borderColor: `color-mix(in srgb, ${processSteps[activeStep].accent} 35%, transparent)`,
+                  }}
+                >
                   {processSteps[activeStep].duration}
                 </span>
               </div>
@@ -220,11 +235,25 @@ export default function Process({ onNavigate }: ProcessProps) {
                   key={step.num}
                   className={`process-nav-item ${activeStep === idx ? 'is-active' : ''}`}
                   onClick={() => scrollToStep(idx)}
+                  style={{
+                    '--step-accent': step.accent,
+                  } as React.CSSProperties}
                   aria-label={`Scroll to phase ${step.num} ${step.title}`}
                 >
-                  <div className="nav-dot" />
+                  <div
+                    className="nav-dot"
+                    style={{
+                      backgroundColor: activeStep === idx ? step.accent : undefined,
+                      boxShadow: activeStep === idx ? `0 0 10px ${step.accent}` : undefined,
+                    }}
+                  />
                   <div className="nav-content">
-                    <span className="nav-main-title">{step.num} — {step.title}</span>
+                    <span
+                      className="nav-main-title"
+                      style={{ color: activeStep === idx ? step.accent : undefined }}
+                    >
+                      {step.num} — {step.title}
+                    </span>
                     <span className="nav-sub-phase">{step.phase}</span>
                   </div>
                 </button>
@@ -239,69 +268,77 @@ export default function Process({ onNavigate }: ProcessProps) {
             <div
               key={step.num}
               className={`process-card-item ${activeStep === idx ? 'is-active' : ''}`}
-              style={{ '--card-index': idx } as React.CSSProperties}
+              style={{
+                '--card-index': idx,
+                '--step-accent': step.accent,
+              } as React.CSSProperties}
             >
-              {/* Top Media Banner (Full Bleed, No Padding Pinch) */}
-              <div className="process-card-media">
-                <img src={step.image} alt={step.title} loading="lazy" />
-                <div className="process-card-media-gradient" />
-                <div className="process-card-media-top">
-                  <span
-                    className="process-phase-pill"
-                    style={{ borderColor: `color-mix(in srgb, ${step.accent} 40%, transparent)` }}
-                  >
-                    <span className="phase-dot" style={{ backgroundColor: step.accent }} />
-                    {step.num} • {step.phase}
-                  </span>
-                  <div className="process-media-tags">
-                    <span className="process-duration-pill">
-                      <Clock size={11} /> {step.duration}
+              <div className="process-card-inner">
+                {/* Top Media Banner (Full Bleed, No Padding Pinch) */}
+                <div className="process-card-media">
+                  <img src={step.image} alt={step.title} loading="lazy" />
+                  <div className="process-card-media-gradient" />
+                  <div className="process-card-media-top">
+                    <span
+                      className="process-phase-pill"
+                      style={{ borderColor: `color-mix(in srgb, ${step.accent} 40%, transparent)` }}
+                    >
+                      <span className="phase-dot" style={{ backgroundColor: step.accent }} />
+                      {step.num} • {step.phase}
                     </span>
-                    <span className="process-timeline-pill">{step.timeline}</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Card Content with Balanced Spacing */}
-              <div className="process-card-content">
-                <div className="process-card-body">
-                  <div className="process-card-title-row">
-                    <h3>{step.title}</h3>
-                    <span className="process-stage-indicator" style={{ color: step.accent }}>
-                      Stage {step.num}
-                    </span>
-                  </div>
-                  <p className="process-card-tagline">{step.tagline}</p>
-                  <p className="process-card-desc">{step.desc}</p>
-                </div>
-
-                {/* Milestone Outcome Callout Box */}
-                <div className="process-outcome-box" style={{ borderColor: `color-mix(in srgb, ${step.accent} 30%, transparent)` }}>
-                  <ShieldCheck size={15} style={{ color: step.accent, flexShrink: 0 }} />
-                  <span>Phase Outcome: <strong>{step.outcome}</strong></span>
-                </div>
-
-                <div className="process-deliverables-box">
-                  <span className="process-deliverables-title">Key Phase Deliverables</span>
-                  <div className="process-deliverables-list">
-                    {step.deliverables.map((deliv) => (
-                      <span key={deliv} className="process-deliverable-chip">
-                        <CheckCircle2 size={13} style={{ color: step.accent, flexShrink: 0 }} />
-                        <span>{deliv}</span>
+                    <div className="process-media-tags">
+                      <span className="process-duration-pill">
+                        <Clock size={11} /> {step.duration}
                       </span>
-                    ))}
+                      <span className="process-timeline-pill">{step.timeline}</span>
+                    </div>
                   </div>
                 </div>
 
-                <div className="process-card-footer">
-                  <button
-                    onClick={() => onNavigate?.(step.route || 'services')}
-                    className="process-card-action-btn"
-                    style={{ cursor: 'pointer' }}
+                {/* Card Content with Balanced Spacing */}
+                <div className="process-card-content">
+                  <div className="process-card-body">
+                    <div className="process-card-title-row">
+                      <h3>{step.title}</h3>
+                      <span className="process-stage-indicator" style={{ color: step.accent }}>
+                        Stage {step.num}
+                      </span>
+                    </div>
+                    <p className="process-card-tagline">{step.tagline}</p>
+                    <p className="process-card-desc">{step.desc}</p>
+                  </div>
+
+                  {/* Milestone Outcome Callout Box */}
+                  <div
+                    className="process-outcome-box"
+                    style={{ borderColor: `color-mix(in srgb, ${step.accent} 30%, transparent)` }}
                   >
-                    <span>Explore {step.title} Phase Specs</span>
-                    <ArrowUpRight size={14} />
-                  </button>
+                    <ShieldCheck size={15} style={{ color: step.accent, flexShrink: 0 }} />
+                    <span>Phase Outcome: <strong>{step.outcome}</strong></span>
+                  </div>
+
+                  <div className="process-deliverables-box">
+                    <span className="process-deliverables-title">Key Phase Deliverables</span>
+                    <div className="process-deliverables-list">
+                      {step.deliverables.map((deliv) => (
+                        <span key={deliv} className="process-deliverable-chip">
+                          <CheckCircle2 size={13} style={{ color: step.accent, flexShrink: 0 }} />
+                          <span>{deliv}</span>
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="process-card-footer">
+                    <button
+                      onClick={() => onNavigate?.(step.route || 'services')}
+                      className="process-card-action-btn"
+                      style={{ cursor: 'pointer' }}
+                    >
+                      <span>Explore {step.title} Phase Specs</span>
+                      <ArrowUpRight size={14} />
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>

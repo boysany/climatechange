@@ -126,89 +126,87 @@ export const SingleArticlePage: React.FC<SingleArticlePageProps> = ({ slug, onNa
       />
 
       {/* Article Inner Container */}
-      <article className="single-article-container max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 sm:pt-36 pb-24">
+      <article className="single-article-container">
         {/* Navigation & Breadcrumb Row */}
-        <div className="article-nav-row flex items-center justify-between flex-wrap gap-4 mb-8">
+        <div className="article-nav-row">
           <button
             onClick={() => onNavigate('blog')}
-            className="article-back-button inline-flex items-center gap-2 text-xs sm:text-sm font-semibold text-[var(--muted)] hover:text-[var(--blue)] transition-colors py-2 px-3 rounded-full hover:bg-[var(--paper-card)]"
+            className="article-back-button"
             aria-label="Back to all articles"
           >
             <ArrowLeft size={16} />
             <span>Back to All Dispatches</span>
           </button>
 
-          <div className="article-breadcrumbs hidden sm:flex items-center gap-2 text-xs font-mono text-[var(--muted)]">
-            <span onClick={() => onNavigate('home')} className="hover:underline cursor-pointer">
+          <div className="article-breadcrumbs">
+            <span onClick={() => onNavigate('home')} className="article-crumb-link">
               HOME
             </span>
             <span>/</span>
-            <span onClick={() => onNavigate('blog')} className="hover:underline cursor-pointer">
+            <span onClick={() => onNavigate('blog')} className="article-crumb-link">
               BLOG
             </span>
             <span>/</span>
-            <span className="text-[var(--ink)] font-semibold truncate max-w-[220px]">
+            <span className="article-crumb-current">
               {post.category.toUpperCase()}
             </span>
           </div>
         </div>
 
         {/* Header Metadata Pill Bar */}
-        <header className="article-header mb-10">
-          <div className="article-meta-badges flex flex-wrap items-center gap-3 mb-6">
-            <span className="article-category-badge inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-bold tracking-wider uppercase bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20">
-              <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
-              {post.category}
+        <header className="article-header">
+          <div className="article-meta-badges">
+            <span className="article-category-badge">
+              <span className="article-pulse-dot" />
+              <span>{post.category}</span>
             </span>
-            <span className="article-meta-chip inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono text-[var(--muted)] bg-[var(--paper-card)] border border-[var(--line)]">
-              <Calendar size={13} className="text-[var(--muted)]" />
-              {post.date}
+            <span className="article-meta-chip">
+              <Calendar size={13} />
+              <span>{post.date}</span>
             </span>
-            <span className="article-meta-chip inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono text-[var(--muted)] bg-[var(--paper-card)] border border-[var(--line)]">
-              <Clock size={13} className="text-[var(--muted)]" />
-              {post.readTime}
+            <span className="article-meta-chip">
+              <Clock size={13} />
+              <span>{post.readTime}</span>
             </span>
           </div>
 
           {/* Main Display Headline */}
-          <h1 className="article-main-heading text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[var(--ink)] leading-[1.14] mb-6">
+          <h1 className="article-main-heading">
             {post.title}
           </h1>
 
           {/* Lead Intro Excerpt */}
-          <p className="article-lead-text text-lg sm:text-xl text-[var(--muted)] leading-relaxed mb-8 max-w-3xl">
+          <p className="article-lead-text">
             {post.excerpt}
           </p>
 
           {/* Author Card & Social Share Bar */}
-          <div className="article-author-share-bar flex flex-wrap items-center justify-between gap-6 py-5 border-y border-[var(--line)]">
-            <div className="author-identity-wrap flex items-center gap-3.5">
+          <div className="article-author-share-bar">
+            <div className="author-identity-wrap">
               <img
                 src={post.author.avatar}
                 alt={post.author.name}
-                className="author-avatar w-12 h-12 rounded-full object-cover border-2 border-white/20 shadow-sm"
+                className="author-avatar"
               />
               <div className="author-details">
-                <div className="author-name font-bold text-base text-[var(--ink)] leading-snug">
+                <div className="author-name">
                   {post.author.name}
                 </div>
-                <div className="author-role text-xs sm:text-sm text-[var(--muted)]">
-                  {post.author.role} • <span className="text-[var(--blue)] font-medium">CCDL Studio</span>
+                <div className="author-role">
+                  {post.author.role} • <span>CCDL Studio</span>
                 </div>
               </div>
             </div>
 
             {/* Social Share Buttons */}
-            <div className="article-share-actions flex items-center gap-2">
-              <span className="text-xs font-mono text-[var(--muted)] uppercase mr-1 hidden sm:inline-block">
-                Share:
-              </span>
+            <div className="article-share-actions">
+              <span className="share-label">Share:</span>
               <button
                 onClick={handleShare}
-                className="share-btn inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-[var(--paper-card)] hover:bg-[var(--paper)] text-[var(--ink)] border border-[var(--line)] transition-all cursor-pointer shadow-sm hover:shadow"
+                className="share-btn"
                 title="Copy link to clipboard"
               >
-                {copied ? <Check size={14} className="text-emerald-500" /> : <Share2 size={14} />}
+                {copied ? <Check size={14} style={{ color: '#10b981' }} /> : <Share2 size={14} />}
                 <span>{copied ? 'Link Copied!' : 'Copy Link'}</span>
               </button>
 
@@ -216,49 +214,48 @@ export const SingleArticlePage: React.FC<SingleArticlePageProps> = ({ slug, onNa
                 href={`https://wa.me/?text=${encodeURIComponent(`${post.title} - Read more: ${typeof window !== 'undefined' ? window.location.href : ''}`)}`}
                 target="_blank"
                 rel="noreferrer"
-                className="share-social-btn p-2 rounded-full bg-[var(--paper-card)] hover:bg-emerald-500/10 text-[var(--muted)] hover:text-emerald-500 border border-[var(--line)] transition-colors"
+                className="share-social-btn whatsapp-share"
                 title="Share on WhatsApp"
                 aria-label="Share on WhatsApp"
               >
-                <MessageCircle size={15} />
+                <MessageCircle size={16} />
               </a>
 
               <a
                 href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(typeof window !== 'undefined' ? window.location.href : '')}`}
                 target="_blank"
                 rel="noreferrer"
-                className="share-social-btn p-2 rounded-full bg-[var(--paper-card)] hover:bg-sky-500/10 text-[var(--muted)] hover:text-sky-500 border border-[var(--line)] transition-colors"
+                className="share-social-btn twitter-share"
                 title="Share on X"
                 aria-label="Share on X"
               >
-                <Twitter size={15} />
+                <Twitter size={16} />
               </a>
 
               <a
                 href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(typeof window !== 'undefined' ? window.location.href : '')}`}
                 target="_blank"
                 rel="noreferrer"
-                className="share-social-btn p-2 rounded-full bg-[var(--paper-card)] hover:bg-blue-600/10 text-[var(--muted)] hover:text-blue-600 border border-[var(--line)] transition-colors"
+                className="share-social-btn linkedin-share"
                 title="Share on LinkedIn"
                 aria-label="Share on LinkedIn"
               >
-                <Linkedin size={15} />
+                <Linkedin size={16} />
               </a>
             </div>
           </div>
         </header>
 
         {/* Featured Cover Media */}
-        <figure className="article-hero-figure mb-12 rounded-2xl sm:rounded-3xl overflow-hidden border border-[var(--line)] shadow-xl bg-[var(--paper-card)]">
-          <div className="relative aspect-[16/9] sm:aspect-[21/9] w-full overflow-hidden">
+        <figure className="article-hero-figure">
+          <div className="article-hero-media">
             <img
               src={post.coverImage || defaultCover}
               alt={post.title}
-              className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
+            <div className="article-hero-media-overlay" />
           </div>
-          <figcaption className="p-3 sm:px-5 sm:py-3 text-xs font-mono text-[var(--muted)] border-t border-[var(--line)] bg-[var(--paper-card)] flex items-center justify-between">
+          <figcaption className="article-hero-figcaption">
             <span>Fig 1.0 // Architectural breakdown &amp; system telemetry</span>
             <span>CCDL ENGINEERING ARCHIVE</span>
           </figcaption>
@@ -266,15 +263,15 @@ export const SingleArticlePage: React.FC<SingleArticlePageProps> = ({ slug, onNa
 
         {/* Core Architectural Takeaways Callout Card */}
         {post.takeaways && post.takeaways.length > 0 && (
-          <div className="article-takeaways-card mb-12 p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-[var(--paper-card)] to-blue-500/5 border border-blue-500/25 shadow-md">
-            <div className="takeaways-header flex items-center gap-2.5 mb-4 text-base sm:text-lg font-bold text-[var(--ink)]">
-              <Sparkles size={20} className="text-blue-500 flex-shrink-0" />
+          <div className="article-takeaways-card">
+            <div className="takeaways-header">
+              <Sparkles size={20} style={{ color: 'var(--blue)', flexShrink: 0 }} />
               <span>Key Enterprise Takeaways</span>
             </div>
-            <ul className="takeaways-list space-y-3">
+            <ul className="takeaways-list">
               {post.takeaways.map((item, idx) => (
-                <li key={idx} className="flex items-start gap-3 text-sm sm:text-base text-[var(--ink)] leading-relaxed">
-                  <CheckCircle2 size={18} className="text-blue-500 flex-shrink-0 mt-0.5" />
+                <li key={idx}>
+                  <CheckCircle2 size={18} style={{ color: 'var(--blue)', flexShrink: 0, marginTop: '2px' }} />
                   <span>{item}</span>
                 </li>
               ))}
@@ -283,14 +280,14 @@ export const SingleArticlePage: React.FC<SingleArticlePageProps> = ({ slug, onNa
         )}
 
         {/* Article Body Content Sections */}
-        <div className="article-body-content space-y-12">
+        <div className="article-body-content">
           {post.contentSections.map((section, idx) => (
             <section key={idx} className="article-section-block">
-              <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-[var(--ink)] mb-5">
+              <h2>
                 {section.heading}
               </h2>
 
-              <div className="article-paragraphs space-y-4 text-base sm:text-lg text-[var(--ink)]/90 leading-[1.78]">
+              <div className="article-paragraphs">
                 {section.body.map((p, pIdx) => (
                   <p key={pIdx}>{p}</p>
                 ))}
@@ -298,32 +295,30 @@ export const SingleArticlePage: React.FC<SingleArticlePageProps> = ({ slug, onNa
 
               {/* Callout Quote Block */}
               {section.callout && (
-                <blockquote className="article-quote-block my-8 p-6 sm:p-7 rounded-xl sm:rounded-2xl bg-[var(--paper-card)] border-l-4 border-[var(--blue)] shadow-sm">
-                  <div className="text-3xl sm:text-4xl text-[var(--blue)] leading-none mb-2 font-serif">“</div>
-                  <p className="text-base sm:text-lg font-medium italic text-[var(--ink)] leading-relaxed">
-                    {section.callout}
-                  </p>
+                <blockquote className="article-quote-block">
+                  <div className="article-quote-symbol">“</div>
+                  <p>{section.callout}</p>
                 </blockquote>
               )}
 
               {/* Syntax Highlighted Code Box with Mac Window Controls & Copy */}
               {section.codeSnippet && (
-                <div className="article-code-wrapper my-8 rounded-xl sm:rounded-2xl overflow-hidden border border-[var(--line)] bg-[#0c0f17] text-slate-100 shadow-xl">
-                  <div className="code-box-header flex items-center justify-between px-4 py-2.5 bg-[#141926] border-b border-slate-800 text-xs font-mono">
-                    <div className="flex items-center gap-2">
-                      <span className="w-3 h-3 rounded-full bg-rose-500 inline-block" />
-                      <span className="w-3 h-3 rounded-full bg-amber-500 inline-block" />
-                      <span className="w-3 h-3 rounded-full bg-emerald-500 inline-block" />
-                      <span className="text-slate-400 ml-2 font-medium">TypeScript / Production Architecture</span>
+                <div className="article-code-wrapper">
+                  <div className="code-box-header">
+                    <div className="code-mac-controls">
+                      <span className="code-mac-dot" style={{ background: '#f43f5e' }} />
+                      <span className="code-mac-dot" style={{ background: '#f59e0b' }} />
+                      <span className="code-mac-dot" style={{ background: '#10b981' }} />
+                      <span className="code-box-title">TypeScript / Production Architecture</span>
                     </div>
                     <button
                       onClick={() => handleCopySnippet(section.codeSnippet!, idx)}
-                      className="copy-code-btn inline-flex items-center gap-1 text-slate-400 hover:text-white transition-colors cursor-pointer py-1 px-2 rounded hover:bg-slate-800"
+                      className="copy-code-btn"
                     >
                       {copiedSnippetIndex === idx ? (
                         <>
-                          <Check size={13} className="text-emerald-400" />
-                          <span className="text-emerald-400">Copied</span>
+                          <Check size={13} style={{ color: '#34d399' }} />
+                          <span style={{ color: '#34d399' }}>Copied</span>
                         </>
                       ) : (
                         <>
@@ -333,7 +328,7 @@ export const SingleArticlePage: React.FC<SingleArticlePageProps> = ({ slug, onNa
                       )}
                     </button>
                   </div>
-                  <pre className="p-4 sm:p-6 overflow-x-auto text-xs sm:text-sm font-mono text-slate-200 leading-relaxed scrollbar-thin">
+                  <pre>
                     <code>{section.codeSnippet}</code>
                   </pre>
                 </div>
@@ -344,14 +339,14 @@ export const SingleArticlePage: React.FC<SingleArticlePageProps> = ({ slug, onNa
 
         {/* Tags Cloud */}
         {post.tags && post.tags.length > 0 && (
-          <div className="article-tags-wrap my-10 pt-8 border-t border-[var(--line)] flex items-center flex-wrap gap-2">
-            <span className="text-xs font-mono text-[var(--muted)] uppercase mr-2 flex items-center gap-1">
+          <div className="article-tags-wrap">
+            <span className="article-tags-label">
               <Tag size={13} /> Topics:
             </span>
             {post.tags.map((tag) => (
               <span
                 key={tag}
-                className="article-tag-chip px-3 py-1 rounded-full text-xs font-mono font-medium bg-[var(--paper-card)] border border-[var(--line)] text-[var(--muted)] hover:text-[var(--blue)] hover:border-[var(--blue)] transition-colors cursor-pointer"
+                className="article-tag-chip"
                 onClick={() => onNavigate('blog')}
               >
                 #{tag}
@@ -361,19 +356,19 @@ export const SingleArticlePage: React.FC<SingleArticlePageProps> = ({ slug, onNa
         )}
 
         {/* Author Bio Signature Box */}
-        <div className="author-bio-signature my-12 p-6 sm:p-8 rounded-2xl bg-[var(--paper-card)] border border-[var(--line)] flex flex-col sm:flex-row items-start sm:items-center gap-6 shadow-sm">
+        <div className="author-bio-signature">
           <img
             src={post.author.avatar}
             alt={post.author.name}
-            className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl object-cover border-2 border-white/20 flex-shrink-0 shadow"
+            className="author-bio-avatar"
           />
-          <div className="bio-copy flex-1">
-            <span className="text-xs font-mono uppercase text-blue-500 font-bold tracking-wider">
+          <div className="author-bio-copy">
+            <span className="author-bio-badge">
               AUTHOR PERSPECTIVE
             </span>
-            <h3 className="text-xl font-bold text-[var(--ink)] mt-0.5">{post.author.name}</h3>
-            <p className="text-sm font-medium text-[var(--muted)] mb-2">{post.author.role}</p>
-            <p className="text-sm text-[var(--muted)] leading-relaxed">
+            <h3 className="author-bio-name">{post.author.name}</h3>
+            <div className="author-bio-role">{post.author.role}</div>
+            <p className="author-bio-desc">
               {post.author.bio ||
                 'Senior product architect specializing in mathematical design systems, resilient cloud infrastructure, and enterprise high-velocity software engineering.'}
             </p>
@@ -382,15 +377,15 @@ export const SingleArticlePage: React.FC<SingleArticlePageProps> = ({ slug, onNa
 
         {/* Explore Next Dispatch Recommendation Box */}
         {nextPost && (
-          <div className="next-dispatch-card my-12 p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-[var(--paper-card)] via-[var(--paper-card)] to-blue-500/5 border border-[var(--line)] shadow-md flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
-            <div className="next-copy max-w-xl">
-              <span className="text-xs font-mono uppercase text-[var(--muted)] font-bold tracking-wider block mb-1">
+          <div className="next-dispatch-card">
+            <div className="next-copy">
+              <span className="next-kicker">
                 CONTINUE READING →
               </span>
-              <h4 className="text-lg sm:text-xl font-bold text-[var(--ink)] leading-snug">
+              <h4 className="next-title">
                 {nextPost.title}
               </h4>
-              <p className="text-xs sm:text-sm text-[var(--muted)] mt-1.5 line-clamp-2">
+              <p className="next-desc">
                 {nextPost.excerpt}
               </p>
             </div>
@@ -399,7 +394,8 @@ export const SingleArticlePage: React.FC<SingleArticlePageProps> = ({ slug, onNa
                 onNavigate(`article/${nextPost.slug}`);
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
-              className="button button-dark flex-shrink-0 inline-flex items-center gap-2 text-sm cursor-pointer"
+              className="button button-dark"
+              style={{ cursor: 'pointer', flexShrink: 0 }}
             >
               <span>Read Next Dispatch</span>
               <ArrowRight size={16} />
@@ -409,24 +405,24 @@ export const SingleArticlePage: React.FC<SingleArticlePageProps> = ({ slug, onNa
 
         {/* Related Dispatches Grid */}
         {relatedPosts.length > 0 && (
-          <div className="related-dispatches-section my-16 pt-12 border-t border-[var(--line)]">
-            <div className="flex items-center justify-between flex-wrap gap-4 mb-8">
+          <div className="related-dispatches-section">
+            <div className="related-section-header">
               <div>
-                <span className="text-xs font-mono text-blue-500 uppercase tracking-wider font-bold block mb-1">
+                <span className="related-header-kicker">
                   MORE FROM OUR COLLECTIVE
                 </span>
-                <h3 className="text-2xl font-bold text-[var(--ink)]">Related Dispatches</h3>
+                <h3 className="related-header-title">Related Dispatches</h3>
               </div>
               <button
                 onClick={() => onNavigate('blog')}
-                className="text-xs sm:text-sm font-semibold text-[var(--muted)] hover:text-[var(--blue)] inline-flex items-center gap-1.5"
+                className="related-view-all-btn"
               >
                 <span>View Complete Archive</span>
                 <ArrowRight size={14} />
               </button>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="related-grid">
               {relatedPosts.map((rel) => (
                 <div
                   key={rel.slug}
@@ -434,37 +430,36 @@ export const SingleArticlePage: React.FC<SingleArticlePageProps> = ({ slug, onNa
                     onNavigate(`article/${rel.slug}`);
                     window.scrollTo({ top: 0, behavior: 'smooth' });
                   }}
-                  className="related-card group cursor-pointer p-5 rounded-2xl bg-[var(--paper-card)] border border-[var(--line)] hover:border-[var(--blue)] transition-all flex flex-col justify-between"
+                  className="related-card"
                 >
                   <div>
-                    <div className="relative aspect-[16/10] rounded-xl overflow-hidden mb-4 bg-slate-900">
+                    <div className="related-card-media">
                       <img
                         src={rel.coverImage}
                         alt={rel.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                         loading="lazy"
                       />
-                      <span className="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase bg-black/60 backdrop-blur-md text-white border border-white/10">
+                      <span className="related-card-category">
                         {rel.category}
                       </span>
                     </div>
 
-                    <div className="flex items-center gap-2 text-xs font-mono text-[var(--muted)] mb-2">
+                    <div className="related-card-meta">
                       <span>{rel.date}</span>
                       <span>•</span>
                       <span>{rel.readTime}</span>
                     </div>
 
-                    <h4 className="text-base font-bold text-[var(--ink)] group-hover:text-[var(--blue)] transition-colors line-clamp-2 mb-2 leading-snug">
+                    <h4 className="related-card-title">
                       {rel.title}
                     </h4>
 
-                    <p className="text-xs text-[var(--muted)] line-clamp-2 mb-4 leading-relaxed">
+                    <p className="related-card-desc">
                       {rel.excerpt}
                     </p>
                   </div>
 
-                  <div className="pt-3 border-t border-[var(--line)] flex items-center justify-between text-xs font-semibold text-[var(--muted)] group-hover:text-[var(--blue)]">
+                  <div className="related-card-footer">
                     <span>Read Article</span>
                     <ArrowUpRight size={14} />
                   </div>
@@ -475,24 +470,25 @@ export const SingleArticlePage: React.FC<SingleArticlePageProps> = ({ slug, onNa
         )}
 
         {/* Consultation Callout CTA */}
-        <div className="article-cta-box mt-16 p-8 sm:p-12 rounded-3xl bg-[var(--paper-card)] border border-[var(--line)] shadow-2xl text-center relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-b from-blue-500/5 via-transparent to-blue-500/10 pointer-events-none" />
-          <div className="relative z-10 max-w-2xl mx-auto">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono font-bold tracking-wider uppercase bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20 mb-4">
+        <div className="article-cta-box">
+          <div className="article-cta-ambient" aria-hidden="true" />
+          <div className="article-cta-inner">
+            <span className="article-cta-pill">
               <Sparkles size={13} />
-              PARTNER WITH CCDL STUDIO
+              <span>PARTNER WITH CCDL STUDIO</span>
             </span>
-            <h3 className="text-2xl sm:text-3xl font-extrabold text-[var(--ink)] tracking-tight mb-3">
+            <h3 className="article-cta-title">
               Ready to engineer your next high-impact product?
             </h3>
-            <p className="text-sm sm:text-base text-[var(--muted)] leading-relaxed mb-6">
+            <p className="article-cta-desc">
               Work directly with our senior collective to bring your product vision to market with
               mathematical precision, zero bloat, and sub-second performance.
             </p>
-            <div className="flex flex-wrap items-center justify-center gap-4">
+            <div className="article-cta-actions">
               <button
                 onClick={() => onNavigate('book-call')}
-                className="button button-dark inline-flex items-center gap-2 cursor-pointer"
+                className="button button-dark"
+                style={{ cursor: 'pointer' }}
               >
                 <PhoneCall size={15} />
                 <span>Schedule Discovery Consultation</span>
@@ -502,7 +498,7 @@ export const SingleArticlePage: React.FC<SingleArticlePageProps> = ({ slug, onNa
                 href="https://wa.me/917852052323?text=Hello%20CCDL%2C%20I%20read%20your%20dispatch%20and%20want%20to%20consult%20with%20your%20team."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="button alien-hero-btn-outline inline-flex items-center gap-2"
+                className="button alien-hero-btn-outline"
               >
                 <MessageSquare size={15} />
                 <span>WhatsApp Architect</span>

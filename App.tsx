@@ -127,9 +127,10 @@ export default function App() {
       <motion.div
         key={route}
         className="route-transition"
-        initial={{ opacity: 0, y: 8 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.28, ease: 'easeOut' }}
+        style={{ transform: 'none' }}
       >
         <main>
           {internal ? (

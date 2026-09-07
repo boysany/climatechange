@@ -486,107 +486,97 @@ export const BlogPage: React.FC<BlogPageProps> = ({ onNavigate }) => {
 
   return (
     <div className="blog-page-root" id="blog-page-container">
-      {/* 2. EXACT HOME PAGE HERO FOUNDATION */}
-      <section className="hero section-pad alien-hero blog-hero" id="blog-hero">
+      {/* 2. ENTERPRISE BLOG HERO SECTION */}
+      <section className="blog-hero" id="blog-hero">
         <div className="alien-hero-aura" />
 
-        <div className="hero-grid alien-hero-grid blog-hero-grid-centered" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-          {/* Top Status Bar (Centered) */}
-          <div className="hero-meta alien-hero-meta" style={{ width: '100%', display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '0.75rem' }}>
-            <button
-              onClick={() => onNavigate('home')}
-              className="hero-live-pill"
-              style={{ cursor: 'pointer', background: 'transparent', border: 'none', textAlign: 'center' }}
-            >
+        <div className="blog-hero-centered-content">
+          {/* Top Status & Metrics Row */}
+          <div className="blog-hero-kicker-bar">
+            <span className="blog-hero-kicker-pill">
               <span className="live-pulse-dot" />
-              <span>05 / DISPATCHES • UPDATED WEEKLY • ENGINEERING &amp; DESIGN ARCHITECTURE</span>
-            </button>
+              <span>EDITORIAL JOURNAL &amp; RESEARCH</span>
+            </span>
 
-            <div className="hero-rating-badge">
-              <span className="rating-clutch">DISPATCHES</span>
-              <span className="rating-num">10</span>
-              <span className="rating-divider">/</span>
-              <span>42 MIN READ</span>
-            </div>
+            <span className="blog-hero-metric-badge">
+              <Sparkles size={12} style={{ color: 'var(--blue)' }} />
+              <span>10 Dispatches • Updated Weekly</span>
+            </span>
+
+            <span className="blog-hero-metric-badge">
+              <Clock size={12} style={{ color: 'var(--blue)' }} />
+              <span>42 Min Reading Archive</span>
+            </span>
           </div>
 
-          {/* Centered Headline & Narrative Copy */}
-          <div className="hero-copy alien-hero-copy" style={{ maxWidth: '58rem', margin: '0 auto', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            <div className="hero-badge-row" style={{ justifyContent: 'center', width: '100%' }}>
-              <span className="kicker-pill">
-                <Sparkles size={13} className="pill-spark" />
-                EDITORIAL JOURNAL &amp; DEEP TECH RESEARCH
-              </span>
-            </div>
+          {/* Main Display Headline */}
+          <h1 className="blog-hero-title">
+            Engineering <span className="hero-hl-blue">dispatches</span>, design{' '}
+            <span className="hero-hl-purple">systems</span>, &amp; architecture{' '}
+            <span className="hero-hl-cyan">playbooks</span>.
+          </h1>
 
-            <h1 className="display-title alien-display-title" style={{ textAlign: 'center' }}>
-              Engineering <span className="hero-hl-blue">dispatches</span>, design{' '}
-              <span className="hero-hl-purple">systems</span>, &amp; architecture{' '}
-              <span className="hero-hl-cyan">playbooks</span>.
-            </h1>
+          {/* Subtitle / Narrative Copy */}
+          <p className="blog-hero-description">
+            In-depth architectural breakdowns on sub-100ms client applications, resilient distributed systems, mathematical design tokens, database query execution tuning, and high-velocity product engineering.
+          </p>
 
-            <div className="hero-bottom alien-hero-bottom" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-              <p className="hero-narrative" style={{ textAlign: 'center', maxWidth: '46rem', margin: '0 auto 1.75rem' }}>
-                In-depth breakdowns on high-performance React architectures, zero-downtime APIs, design token
-                mathematical scaling, database query tuning, and product leadership from the CCDL collective.
-              </p>
+          {/* Action CTAs */}
+          <div className="blog-hero-actions-row">
+            <button
+              className="blog-hero-btn-featured"
+              onClick={() => {
+                const el = document.getElementById('featured-dispatch-section');
+                el?.scrollIntoView({ behavior: 'smooth' });
+              }}
+              style={{ cursor: 'pointer' }}
+            >
+              <span>Explore Featured Story</span>
+              <ArrowDownRight size={17} className="btn-icon" />
+            </button>
 
-              {/* Action Buttons Centered */}
-              <div className="hero-actions alien-hero-actions" style={{ justifyContent: 'center', flexWrap: 'wrap' }}>
-                <button
-                  className="button button-dark alien-hero-btn"
-                  onClick={() => {
-                    const el = document.getElementById('featured-dispatch-section');
-                    el?.scrollIntoView({ behavior: 'smooth' });
-                  }}
-                  style={{ cursor: 'pointer' }}
-                >
-                  Explore Featured Story <ArrowDownRight size={16} />
-                </button>
+            <button
+              className="blog-hero-btn-subscribe"
+              onClick={() => {
+                const el = document.getElementById('blog-newsletter-section');
+                el?.scrollIntoView({ behavior: 'smooth' });
+              }}
+              style={{ cursor: 'pointer' }}
+            >
+              <span>Subscribe to Dispatch</span>
+              <ArrowUpRight size={17} className="btn-icon" />
+            </button>
+          </div>
 
-                <button
-                  className="button alien-hero-btn-outline"
-                  onClick={() => {
-                    const el = document.getElementById('blog-newsletter-section');
-                    el?.scrollIntoView({ behavior: 'smooth' });
-                  }}
-                  style={{ cursor: 'pointer' }}
-                >
-                  Subscribe to Dispatch <ArrowUpRight size={16} />
-                </button>
-              </div>
-
-              {/* Quick Topic Jump Chips Centered */}
-              <div className="blog-hero-topic-pills" style={{ justifyContent: 'center' }}>
-                <span className="blog-topic-label">QUICK TOPICS:</span>
-                {['React 18', 'Design Systems', 'PostgreSQL', 'APIs', 'Core Web Vitals'].map((tag) => (
-                  <button
-                    key={tag}
-                    className="blog-hero-tag-btn"
-                    onClick={() => {
-                      setSearchQuery(tag);
-                      document.getElementById('blog-catalog-section')?.scrollIntoView({ behavior: 'smooth' });
-                    }}
-                  >
-                    #{tag}
-                  </button>
-                ))}
-              </div>
-            </div>
+          {/* Quick Topic Jump Chips */}
+          <div className="blog-hero-topic-pills">
+            <span className="blog-topic-label">QUICK TOPICS:</span>
+            {['React 18', 'Design Systems', 'PostgreSQL', 'Microservices', 'Core Web Vitals'].map((tag) => (
+              <button
+                key={tag}
+                className="blog-hero-tag-btn"
+                onClick={() => {
+                  setSearchQuery(tag);
+                  document.getElementById('blog-catalog-section')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
+                #{tag}
+              </button>
+            ))}
           </div>
         </div>
 
-        {/* Hero Bottom Capabilities Ticker (Matching Home page foot) */}
-        <div className="hero-foot alien-hero-foot">
-          <div className="hero-foot-col">
+        {/* Hero Bottom Capabilities Ticker */}
+        <div className="blog-hero-ticker-foot">
+          <div className="blog-hero-ticker-col">
             <b>01</b>
-            <span>FRONTEND &amp; CORE WEB VITALS</span>
+            <span>FRONTEND ARCHITECTURE &amp; WEB VITALS</span>
           </div>
-          <div className="hero-foot-col">
+          <div className="blog-hero-ticker-col">
             <b>02</b>
             <span>SCALABLE BACKEND &amp; MICROSERVICES</span>
           </div>
-          <div className="hero-foot-col">
+          <div className="blog-hero-ticker-col">
             <b>03</b>
             <span>DESIGN SYSTEMS &amp; INTERFACES</span>
           </div>
