@@ -7,7 +7,9 @@
   --color-border-subtle: rgba(13, 16, 23, 0.12);
   --color-accent-primary: #2456d6;
   --color-accent-secondary: #36cfc2;
-  --space-section: clamp(4.5rem, 10vw, 9rem);
+  --space-section: clamp(4rem, 8vw, 8rem);
+  --radius-card: 1rem;
+  --shadow-soft: 0 18px 48px -32px rgba(13, 16, 23, 0.36);
 }
 
 .blog-page-root,
