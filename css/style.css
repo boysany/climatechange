@@ -12455,6 +12455,34 @@ html, body { max-width: 100%; overflow-x: hidden; }
 .blog-reader-scrollable { min-height: 0; overflow-y: auto; overscroll-behavior: contain; }
 .blog-reader-hero-media { width: 100%; height: clamp(180px, 32vw, 320px); overflow: hidden; background: var(--ink); }
 .blog-reader-hero-media .blog-reader-hero-img { width: 100%; height: 100%; object-fit: cover; }
+/* Final Blog and Book Call overrides. These selectors follow the rendered route structure. */
+.blog-page-root .blog-hero .hero-grid { display: block; max-width: 78rem; margin-inline: auto; }
+.blog-page-root .blog-hero .hero-meta { justify-content: center; }
+.blog-page-root .blog-hero .hero-copy { width: min(100%, 62rem); margin-inline: auto; text-align: center; }
+.blog-page-root .blog-hero .hero-bottom { align-items: center; }
+.blog-page-root .blog-hero .hero-narrative { max-width: 44rem; margin-inline: auto; }
+.blog-page-root .blog-hero .hero-actions { justify-content: center; flex-wrap: wrap; }
+.blog-page-root .blog-hero .blog-hero-topic-pills { justify-content: center; }
+.blog-page-root .blog-reader-modal { display: flex; flex-direction: column; overflow: hidden; }
+.blog-page-root .blog-reader-top-bar { flex: 0 0 auto; }
+.blog-page-root .blog-reader-scrollable { flex: 1 1 auto; min-height: 0; }
+.inner-contact-section .contact-form-box,
+.inner-contact-section .contact-form-card,
+.inner-contact-section form { width: 100%; max-width: 100%; box-sizing: border-box; }
+.inner-contact-section input, .inner-contact-section textarea, .inner-contact-section select { width: 100%; box-sizing: border-box; }
+@media (max-width: 760px) {
+  .blog-page-root .blog-hero { text-align: center; }
+  .blog-page-root .blog-hero .hero-meta { gap: .6rem; flex-wrap: wrap; }
+  .blog-page-root .blog-hero .hero-live-pill { text-align: center !important; }
+  .blog-page-root .blog-hero .hero-bottom { display: flex; flex-direction: column; }
+  .blog-page-root .blog-hero .hero-actions { width: 100%; }
+  .blog-page-root .blog-hero .hero-actions > * { flex: 1 1 100%; }
+  .blog-page-root .blog-reader-backdrop { padding: .5rem; }
+  .blog-page-root .blog-reader-modal { width: 100%; max-height: calc(100dvh - 1rem); }
+  .inner-contact-section .contact-form-box, .inner-contact-section .contact-form-card { padding: 1rem; }
+  .inner-contact-section .contact-dual-layout { width: 100%; }
+}
+
 @media (max-width: 760px) {
   .service-detail-page > header { text-align: center; }
   .service-detail-page > header .grid.grid-cols-2 { grid-template-columns: 1fr 1fr; }

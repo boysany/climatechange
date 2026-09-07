@@ -124,7 +124,7 @@ export default function TextReveal({
     if (React.isValidElement(nodes)) {
       const element = nodes as React.ReactElement<any>;
       if (element.type === 'br') {
-        return <br key={Math.random()} />;
+        return <br />;
       }
       return React.cloneElement(
         element,

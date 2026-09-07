@@ -68,6 +68,7 @@ export default function ScrollReveal({
     const st = ScrollTrigger.create({
       trigger: el,
       start: 'top 88%',
+      invalidateOnRefresh: true,
       once: true,
       onEnter: () => {
         gsap.to(el, {
@@ -85,6 +86,8 @@ export default function ScrollReveal({
 
     return () => {
       st.kill();
+      gsap.killTweensOf(el);
+      gsap.set(el, { clearProps: 'all' });
     };
   }, [delay, y, duration, scale]);
 
