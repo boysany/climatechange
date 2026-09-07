@@ -7,6 +7,7 @@ if (typeof window !== 'undefined') {
 }
 
 let lenisInstance: Lenis | null = null;
+let lenisTicker: ((time: number) => void) | null = null;
 
 export function getReducedMotion(): boolean {
   if (typeof window === 'undefined') return false;
@@ -36,6 +37,7 @@ export function initLenis(): Lenis | null {
       lenis.raf(time * 1000);
     };
 
+    lenisTicker = updateTicker;
     gsap.ticker.add(updateTicker);
     gsap.ticker.lagSmoothing(0);
 
@@ -48,6 +50,10 @@ export function initLenis(): Lenis | null {
 }
 
 export function destroyLenis() {
+  if (lenisTicker) {
+    gsap.ticker.remove(lenisTicker);
+    lenisTicker = null;
+  }
   if (lenisInstance) {
     lenisInstance.destroy();
     lenisInstance = null;
