@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowUpRight, Calendar, Sparkles, Zap, ShieldCheck, Clock, Mail } from 'lucide-react';
+import { ArrowUpRight, MessageCircle, Sparkles, Zap, ShieldCheck, Clock, Mail } from 'lucide-react';
 import TextReveal from '../components/TextReveal.tsx';
 import ScrollReveal from '../components/ScrollReveal.tsx';
 
@@ -70,17 +70,20 @@ export default function CTA({ onNavigate }: CTAProps) {
             <ArrowUpRight size={16} className="final-cta-arrow" />
           </button>
 
-          <button
-            onClick={() => onNavigate?.('book-call')}
+          <a
+            href="https://wa.me/917852052323?text=Hello%2C%20I%20am%20interested%20in%20discussing%20a%20project%20with%20CCDL."
+            target="_blank"
+            rel="noopener noreferrer"
             className="final-cta-btn final-cta-btn-secondary"
-            id="final-cta-book-call"
-            title="Schedule a Discovery Call"
+            id="final-cta-whatsapp"
+            title="Chat directly on WhatsApp"
+            style={{ textDecoration: 'none' }}
           >
-            <Calendar size={16} className="final-cta-icon" />
-            <span className="final-cta-btn-label">Book Discovery Call</span>
-            <span className="final-cta-btn-tag">30 Min</span>
+            <MessageCircle size={16} className="final-cta-icon" />
+            <span className="final-cta-btn-label">WhatsApp Direct</span>
+            <span className="final-cta-btn-tag">Instant</span>
             <ArrowUpRight size={16} className="final-cta-arrow" />
-          </button>
+          </a>
         </ScrollReveal>
 
         {/* Trust Badges & Direct Studio Contact */}

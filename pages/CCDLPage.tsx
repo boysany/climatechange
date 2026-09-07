@@ -18,6 +18,7 @@ import sahiramPortrait from '../src/assets/images/sahiram_nayak_1787155597072.jp
 import {
   ArrowUpRight,
   ArrowRight,
+  ArrowDownRight,
   CheckCircle2,
   Sparkles,
   ShieldCheck,
@@ -559,162 +560,418 @@ export const faqList = [
 /* ============================================================
    PAGE COPY DEFINITIONS
    ============================================================ */
-const pageMeta: Record<string, { label: string; title: string; intro: string }> = {
+interface PageMetaItem {
+  label: string;
+  title: string;
+  titleNode?: React.ReactNode;
+  intro: string;
+  status?: string;
+  primaryText?: string;
+  primaryRoute?: string;
+  secondaryText?: string;
+  secondaryRoute?: string;
+}
+
+const pageMeta: Record<string, PageMetaItem> = {
   about: {
     label: 'ABOUT CCDL STUDIO',
     title: 'We design and engineer what comes next.',
+    titleNode: (
+      <>
+        We design &amp; engineer <span className="hero-hl-blue">what comes next</span> with <span className="hero-hl-purple">human craft</span> &amp; <span className="hero-hl-cyan">deep code</span>.
+      </>
+    ),
     intro:
       'Climate Change Digital Labs (CCDL) brings strategic product vision, award-winning UI/UX design, and full-stack engineering together to build software that scales globally.',
+    status: 'GLOBAL DELIVERY SQUAD • HEADQUARTERS IN INDIA',
+    primaryText: 'Explore Capabilities',
+    primaryRoute: 'services',
+    secondaryText: 'Get in Touch',
+    secondaryRoute: 'contact'
   },
   services: {
     label: 'STUDIO CAPABILITIES',
     title: 'Digital product systems built for ambitious scale.',
+    titleNode: (
+      <>
+        Digital product <span className="hero-hl-blue">systems</span>, resilient <span className="hero-hl-purple">architecture</span>, &amp; software for <span className="hero-hl-cyan">ambitious scale</span>.
+      </>
+    ),
     intro:
       'From foundational product architecture to full-stack cloud deployment, we build systems, interfaces, and software that give our partners an unassailable edge.',
+    status: 'ACTIVE PRODUCTION SPRINTS • 18 DEDICATED DOMAINS',
+    primaryText: 'Explore Work',
+    primaryRoute: 'work',
+    secondaryText: 'Get in Touch',
+    secondaryRoute: 'contact'
   },
   work: {
     label: 'CLIENT ARCHIVES',
     title: 'Proven work engineered for industry leaders.',
+    titleNode: (
+      <>
+        Proven <span className="hero-hl-blue">digital platforms</span>, design <span className="hero-hl-purple">systems</span>, &amp; apps for <span className="hero-hl-cyan">industry leaders</span>.
+      </>
+    ),
     intro:
       'A curated showcase of digital applications, decentralized protocols, and enterprise portals crafted for teams that demand absolute craft.',
+    status: 'VERIFIED PRODUCTION DEPLOYMENTS • ZERO DOWNTIME',
+    primaryText: 'Start a Project',
+    primaryRoute: 'contact',
+    secondaryText: 'Explore Capabilities',
+    secondaryRoute: 'services'
   },
   portfolio: {
     label: 'CLIENT ARCHIVES',
     title: 'Proven work engineered for industry leaders.',
+    titleNode: (
+      <>
+        Proven <span className="hero-hl-blue">digital platforms</span>, design <span className="hero-hl-purple">systems</span>, &amp; apps for <span className="hero-hl-cyan">industry leaders</span>.
+      </>
+    ),
     intro:
       'A curated showcase of digital applications, decentralized protocols, and enterprise portals crafted for teams that demand absolute craft.',
+    status: 'VERIFIED PRODUCTION DEPLOYMENTS • ZERO DOWNTIME',
+    primaryText: 'Start a Project',
+    primaryRoute: 'contact',
+    secondaryText: 'Explore Capabilities',
+    secondaryRoute: 'services'
   },
   process: {
     label: 'ENGINEERING BLUEPRINT',
     title: 'A disciplined path from discovery to compound impact.',
+    titleNode: (
+      <>
+        A disciplined <span className="hero-hl-blue">engineering blueprint</span> from <span className="hero-hl-purple">first principles</span> to <span className="hero-hl-cyan">compound impact</span>.
+      </>
+    ),
     intro:
       'Every engagement is backed by an agile 6-phase engineering lifecycle designed to eliminate guesswork, accelerate delivery, and guarantee enterprise reliability.',
+    status: 'AGILE 2-WEEK SPRINT CADENCES • 100% IP TRANSFER',
+    primaryText: 'Start Discovery Sprint',
+    primaryRoute: 'contact',
+    secondaryText: 'Explore Case Studies',
+    secondaryRoute: 'work'
   },
   team: {
     label: 'THE COLLECTIVE',
     title: 'Small, elite squad. Serious technical range.',
+    titleNode: (
+      <>
+        Small, elite squad with <span className="hero-hl-blue">serious technical range</span>, obsessive <span className="hero-hl-purple">craft</span>, &amp; <span className="hero-hl-cyan">founder speed</span>.
+      </>
+    ),
     intro:
       'CCDL is a focused collective of senior architects, product designers, and creative engineers obsessed with craftsmanship and measurable results.',
+    status: 'SENIOR ARCHITECTS • ZERO JUNIOR OUTSOURCING',
+    primaryText: 'Join the Squad',
+    primaryRoute: 'careers',
+    secondaryText: 'Get in Touch',
+    secondaryRoute: 'contact'
   },
   insights: {
     label: 'THOUGHT LEADERSHIP',
     title: 'Ideas and architecture for modern digital builders.',
+    titleNode: (
+      <>
+        Ideas &amp; <span className="hero-hl-blue">architecture playbooks</span> for modern <span className="hero-hl-purple">product builders</span> &amp; <span className="hero-hl-cyan">engineering leaders</span>.
+      </>
+    ),
     intro:
       'Deep dives into interface design mathematics, resilient software architecture, and the economics of scaling modern digital products.',
+    status: 'PEER-REVIEWED TECHNICAL DISPATCHES',
+    primaryText: 'Explore Dispatches',
+    primaryRoute: 'blog',
+    secondaryText: 'Subscribe via Email',
+    secondaryRoute: 'contact'
   },
   contact: {
     label: 'CONTACT US',
     title: 'Get in Touch with Our Team',
+    titleNode: (
+      <>
+        Get in touch with our <span className="hero-hl-blue">founding architects</span> to build <span className="hero-hl-purple">transformative</span> digital <span className="hero-hl-cyan">software</span>.
+      </>
+    ),
     intro:
       'Have a project inquiry, partnership idea, or question? Reach out to us directly via phone, WhatsApp, email, or by sending a message below.',
-  },
-  'book-call': {
-    label: 'DIRECT CONSULTATION',
-    title: 'Schedule a discovery session with our founding team.',
-    intro:
-      'Choose a time to discuss your product requirements, explore technical architecture, and receive an instant project estimate.',
+    status: 'SUB-2 HOUR INQUIRY RESPONSE TIME GUARANTEED',
+    primaryText: 'Explore Our Work',
+    primaryRoute: 'work',
+    secondaryText: 'Our Methodology',
+    secondaryRoute: 'process'
   },
   startups: {
     label: 'FOR STARTUPS & FOUNDERS',
     title: 'Go from concept to market-ready MVP in 30 days.',
+    titleNode: (
+      <>
+        Go from raw <span className="hero-hl-blue">concept</span> to market-ready <span className="hero-hl-purple">MVP</span> in <span className="hero-hl-cyan">30 days flat</span>.
+      </>
+    ),
     intro:
       'We help venture-backed founders and ambitious entrepreneurs turn complex ideas into polished, investor-grade products ready for immediate traction.',
+    status: '30-DAY MVP COMMITMENT • INVESTOR-GRADE QUALITY',
+    primaryText: 'Start 30-Day Sprint',
+    primaryRoute: 'contact',
+    secondaryText: 'Explore Case Studies',
+    secondaryRoute: 'work'
   },
   enterprise: {
     label: 'FOR ENTERPRISE & SCALE',
     title: 'Modernize legacy systems and scale design with confidence.',
+    titleNode: (
+      <>
+        Modernize <span className="hero-hl-blue">legacy platforms</span> and scale <span className="hero-hl-purple">design systems</span> with <span className="hero-hl-cyan">zero downtime</span>.
+      </>
+    ),
     intro:
       'Enterprise-grade digital transformation, SOC2-compliant engineering, dedicated agile squads, and multi-brand design systems built for millions of users.',
+    status: 'SOC2-READY PROTOCOLS • ENTERPRISE SLAS',
+    primaryText: 'Request Enterprise Proposal',
+    primaryRoute: 'contact',
+    secondaryText: 'Explore Capabilities',
+    secondaryRoute: 'services'
   },
   software: {
     label: 'SOFTWARE ENGINEERING',
     title: 'Full-stack cloud applications engineered for 99.99% uptime.',
+    titleNode: (
+      <>
+        Full-stack <span className="hero-hl-blue">cloud software</span>, resilient <span className="hero-hl-purple">APIs</span>, &amp; systems for <span className="hero-hl-cyan">99.99% uptime</span>.
+      </>
+    ),
     intro:
       'Resilient TypeScript backends, modern React architectures, microservices, and automated cloud pipelines built to handle massive data throughput.',
+    status: 'SUB-100MS LATENCY • EDGE-READY ARCHITECTURE',
+    primaryText: 'View Software Work',
+    primaryRoute: 'work',
+    secondaryText: 'Start a Project',
+    secondaryRoute: 'contact'
   },
   strategy: {
     label: 'DIGITAL STRATEGY & ROADMAPS',
     title: 'Architecting market fit before writing a single line of code.',
+    titleNode: (
+      <>
+        Architecting <span className="hero-hl-blue">market fit</span> before writing a single line of <span className="hero-hl-purple">code</span> or <span className="hero-hl-cyan">tokens</span>.
+      </>
+    ),
     intro:
       'We deconstruct your competitive landscape, user mental models, and unit economics to create an unshakeable digital product blueprint.',
+    status: 'DATA-DRIVEN PRODUCT DISCOVERY & TELEMETRY',
+    primaryText: 'Explore Methodology',
+    primaryRoute: 'process',
+    secondaryText: 'Start Strategy Sprint',
+    secondaryRoute: 'contact'
   },
   'seo-ads': {
     label: 'GOOGLE SEO & PERFORMANCE ADS',
     title: 'Search engine dominance and high-ROI acquisition engines.',
+    titleNode: (
+      <>
+        Google <span className="hero-hl-blue">search dominance</span>, technical <span className="hero-hl-purple">Core Web Vitals</span>, &amp; high-ROI <span className="hero-hl-cyan">growth engines</span>.
+      </>
+    ),
     intro:
       'Technical Core Web Vitals optimization, semantic schema data, and precision Google Ads campaigns engineered to drive compounding qualified revenue.',
+    status: '100% WHITE-HAT TECHNICAL AUDIT & RANKINGS',
+    primaryText: 'Explore SEO Audit Hub',
+    primaryRoute: 'seo-strategy',
+    secondaryText: 'Start a Project',
+    secondaryRoute: 'contact'
   },
   ecommerce: {
     label: 'E-COMMERCE & STOREFRONTS',
     title: 'High-conversion headless commerce and checkout experiences.',
+    titleNode: (
+      <>
+        High-conversion <span className="hero-hl-blue">headless commerce</span>, 3D <span className="hero-hl-purple">visualizers</span>, &amp; friction-free <span className="hero-hl-cyan">checkout flows</span>.
+      </>
+    ),
     intro:
       'Sub-second load times, bespoke 3D product visualizers, dynamic bundling, and friction-free payment funnels designed to maximize average order value.',
+    status: 'SUB-SECOND PAGE LOADS • HIGH AOV OPTIMIZED',
+    primaryText: 'Start Commerce Sprint',
+    primaryRoute: 'contact',
+    secondaryText: 'View Case Studies',
+    secondaryRoute: 'work'
   },
   'web-design': {
     label: 'EDITORIAL WEB DESIGN',
     title: 'Brand experiences with mathematical layout precision.',
+    titleNode: (
+      <>
+        Editorial <span className="hero-hl-blue">web design</span> with mathematical <span className="hero-hl-purple">layout precision</span> &amp; fluid <span className="hero-hl-cyan">micro-motion</span>.
+      </>
+    ),
     intro:
       'We design bespoke, responsive web presences that fuse striking visual storytelling, kinetic typography, and fluid micro-motion.',
+    status: 'AWWWARDS-CALIBER TYPOGRAPHY & PERFORMANCE',
+    primaryText: 'Explore Web Work',
+    primaryRoute: 'work',
+    secondaryText: 'Start a Project',
+    secondaryRoute: 'contact'
   },
   branding: {
     label: 'BRAND IDENTITY & SYSTEMS',
     title: 'Distinctive visual identities engineered for digital scale.',
+    titleNode: (
+      <>
+        Distinctive <span className="hero-hl-blue">visual identities</span>, token <span className="hero-hl-purple">systems</span>, &amp; typography for <span className="hero-hl-cyan">digital scale</span>.
+      </>
+    ),
     intro:
       'From custom logomarks and typographic rules to comprehensive multi-channel digital design guidelines that make your brand unmistakable.',
+    status: 'MULTI-CHANNEL DESIGN TOKENS & FIGMA KITS',
+    primaryText: 'Start Brand Project',
+    primaryRoute: 'contact',
+    secondaryText: 'Explore Portfolio',
+    secondaryRoute: 'work'
   },
   'digital-products': {
     label: 'DIGITAL PRODUCTS & SAAS',
     title: 'SaaS applications built around habit loops and user retention.',
+    titleNode: (
+      <>
+        SaaS applications built around <span className="hero-hl-blue">habit loops</span>, telemetry, &amp; <span className="hero-hl-cyan">world-class UX</span>.
+      </>
+    ),
     intro:
       'Intuitive onboarding journeys, telemetry-driven features, and responsive design systems that keep power users engaged and churn at record lows.',
+    status: 'USER-CENTRIC RETENTION LOOPS & TELEMETRY',
+    primaryText: 'Explore SaaS Work',
+    primaryRoute: 'work',
+    secondaryText: 'Start a Project',
+    secondaryRoute: 'contact'
   },
   'product-design': {
     label: 'PRODUCT DESIGN (UI/UX)',
     title: 'Interfaces engineered for intuitive clarity and delight.',
+    titleNode: (
+      <>
+        Product interfaces engineered for <span className="hero-hl-blue">intuitive clarity</span>, speed, &amp; <span className="hero-hl-cyan">user delight</span>.
+      </>
+    ),
     intro:
       'Human-centered interaction design, user journey optimization, design tokens, and fluid micro-animations that turn casual visitors into loyal power users.',
+    status: 'FIGMA INTERACTIVE PROTOTYPES • DESIGN TOKENS',
+    primaryText: 'View Design Work',
+    primaryRoute: 'work',
+    secondaryText: 'Start a Project',
+    secondaryRoute: 'contact'
   },
   'design-systems': {
     label: 'DESIGN SYSTEMS & SCALE',
     title: 'Unified tokens and component libraries for rapid product velocity.',
+    titleNode: (
+      <>
+        Unified <span className="hero-hl-blue">design tokens</span> and component libraries for <span className="hero-hl-purple">10x product velocity</span> &amp; <span className="hero-hl-cyan">consistency</span>.
+      </>
+    ),
     intro:
       'Stop recreating wheels. We build production-ready, multi-brand token architectures and Storybook component ecosystems that 10x developer shipping speed.',
+    status: 'STORYBOOK & FIGMA TOKENS SYNCHRONIZATION',
+    primaryText: 'Explore Systems Work',
+    primaryRoute: 'work',
+    secondaryText: 'Start a Project',
+    secondaryRoute: 'contact'
   },
   careers: {
     label: 'CAREERS AT CCDL',
     title: 'Join an elite collective of digital craftspeople.',
+    titleNode: (
+      <>
+        Join an elite <span className="hero-hl-blue">collective</span> of digital <span className="hero-hl-purple">craftspeople</span> shipping <span className="hero-hl-cyan">world-class software</span>.
+      </>
+    ),
     intro:
       'We are looking for ambitious product designers, TypeScript architects, and creative technologists who obsess over details and take pride in their craft.',
+    status: 'REMOTE-FIRST • GLOBAL TALENT WELCOME',
+    primaryText: 'Send Portfolio & Code',
+    primaryRoute: 'contact',
+    secondaryText: 'Read Our Story',
+    secondaryRoute: 'about'
   },
   privacy: {
     label: 'LEGAL & COMPLIANCE',
     title: 'Enterprise Privacy Policy & Data Protection Standards.',
+    titleNode: (
+      <>
+        Enterprise <span className="hero-hl-blue">privacy policy</span>, strict <span className="hero-hl-purple">data protection</span>, &amp; zero-trust <span className="hero-hl-cyan">standards</span>.
+      </>
+    ),
     intro:
       'Your privacy and data security are fundamental to our engineering philosophy. Learn how CCDL handles, protects, and isolates client information.',
+    status: 'GDPR, CCPA & ZERO-TRUST ARCHITECTURE COMPLIANT',
+    primaryText: 'Explore Security Standards',
+    primaryRoute: 'security',
+    secondaryText: 'Contact Privacy Officer',
+    secondaryRoute: 'contact'
   },
   terms: {
     label: 'LEGAL AGREEMENT',
     title: 'Terms of Service & Master Services Standards.',
+    titleNode: (
+      <>
+        Terms of <span className="hero-hl-blue">service</span>, master <span className="hero-hl-purple">services agreement</span>, &amp; irrevocable <span className="hero-hl-cyan">IP transfer</span>.
+      </>
+    ),
     intro:
       'Clear, transparent terms governing client engagements, intellectual property ownership, service level agreements, and project deliverables.',
+    status: '100% REPOSITORY TRANSFER • ZERO IP AMBIGUITY',
+    primaryText: 'Partner With Us',
+    primaryRoute: 'contact',
+    secondaryText: 'Explore Delivery Process',
+    secondaryRoute: 'process'
   },
   security: {
     label: 'SECURITY & COMPLIANCE',
     title: 'Zero-Trust Architecture & Enterprise Security Protocols.',
+    titleNode: (
+      <>
+        Zero-trust <span className="hero-hl-blue">architecture</span>, automated <span className="hero-hl-purple">vulnerability testing</span>, &amp; <span className="hero-hl-cyan">SOC2 protocols</span>.
+      </>
+    ),
     intro:
       'How CCDL implements automated vulnerability testing, strict client repository isolation, SOC2 readiness, and end-to-end data encryption.',
+    status: 'SOC2-READY • AIR-GAPPED REPOSITORIES • HARDWARE 2FA',
+    primaryText: 'Start Secure Engagement',
+    primaryRoute: 'contact',
+    secondaryText: 'Contact Security Desk',
+    secondaryRoute: 'contact'
   },
   cookies: {
     label: 'COOKIE POLICY',
     title: 'Transparent Cookie & Telemetry Standards.',
+    titleNode: (
+      <>
+        Transparent <span className="hero-hl-blue">cookie policy</span> and essential <span className="hero-hl-purple">session telemetry</span> <span className="hero-hl-cyan">standards</span>.
+      </>
+    ),
     intro:
       'We respect your digital footprint. Learn how we utilize essential session tokens and anonymous Core Web Vitals telemetry.',
+    status: 'ZERO THIRD-PARTY TRACKERS • RESPECTFUL TELEMETRY',
+    primaryText: 'Read Privacy Terms',
+    primaryRoute: 'privacy',
+    secondaryText: 'Contact Support',
+    secondaryRoute: 'contact'
   },
   faqs: {
     label: 'FREQUENTLY ASKED QUESTIONS',
     title: 'Everything you need to know about partnering with CCDL.',
+    titleNode: (
+      <>
+        Frequently asked <span className="hero-hl-blue">questions</span> on delivery <span className="hero-hl-purple">sprints</span>, pricing, &amp; <span className="hero-hl-cyan">ownership</span>.
+      </>
+    ),
     intro:
       'Answers to common questions regarding our delivery methodology, sprint timelines, pricing models, IP ownership, and post-launch SLAs.',
+    status: '100% TRANSPARENCY • FLAT-RATE PRICING GUIDES',
+    primaryText: 'Get in Touch',
+    primaryRoute: 'contact',
+    secondaryText: 'View Case Studies',
+    secondaryRoute: 'work'
   },
 };
 
@@ -731,10 +988,7 @@ export default function CCDLPage({
   const [activeFilter, setActiveFilter] = useState('All');
   const [calcTier, setCalcTier] = useState<'startup' | 'growth' | 'enterprise'>('growth');
   const [contactSubmitted, setContactSubmitted] = useState(false);
-  const [bookingConfirmed, setBookingConfirmed] = useState(false);
   const [activeFaqIndex, setActiveFaqIndex] = useState<number | null>(0);
-  const [bookingDate, setBookingDate] = useState('2026-08-25');
-  const [bookingTime, setBookingTime] = useState('14:00');
   const [faqCategory, setFaqCategory] = useState('All');
   const [faqSearch, setFaqSearch] = useState('');
   const [contactName, setContactName] = useState('');
@@ -769,6 +1023,7 @@ export default function CCDLPage({
   if (pageId === 'growth' || pageId === 'seo-growth') normalizedPageId = 'seo-ads';
   if (pageId === 'fullstack-software') normalizedPageId = 'software';
   if (pageId === 'digital-strategy') normalizedPageId = 'strategy';
+  if (pageId === 'book-call') normalizedPageId = 'contact';
 
   // 0. SEO STRATEGY & TECHNICAL AUDIT HUB
   if (pageId === 'seo-strategy' || pageId === 'seo-audit') {
@@ -966,24 +1221,73 @@ export default function CCDLPage({
   return (
     <div className={`inner-page inner-${normalizedPageId}`}>
       {/* ============================================================
-          UNIVERSAL HIGH-END HERO HEADER
+          UNIVERSAL HIGH-END HERO HEADER (Matching Home Page Foundation)
           ============================================================ */}
-      <section className="section-pad inner-hero">
+      <section className="hero section-pad alien-hero inner-hero" id={`inner-${normalizedPageId}`}>
+        <div className="alien-hero-aura" />
         <div className="inner-hero-container">
-          <div className="inner-badge-row">
-            <span className="inner-kicker-pill">
-              <span className="kicker-dot" />
+          {/* Top Status Bar (Left-Aligned, Matching Home Hero) */}
+          <div className="hero-meta alien-hero-meta" style={{ width: '100%', display: 'flex', justifyContent: 'flex-start', flexWrap: 'wrap', gap: '0.75rem', marginBottom: '1.25rem' }}>
+            <div className="hero-live-status">
+              <span className="live-pulse-dot" />
+              <span className="live-status-text">
+                {copy.status || 'AVAILABLE FOR SPRINT COMMISSIONS'}
+              </span>
+            </div>
+
+            <button
+              onClick={() => onNavigate('about')}
+              className="hero-rating-badge"
+              style={{ cursor: 'pointer', background: 'transparent', border: 'none' }}
+            >
+              <span className="rating-clutch">CLUTCH</span>
+              <span className="rating-num">4.9</span>
+              <Star size={13} fill="currentColor" />
+              <span className="rating-divider">/</span>
+              <span>50+ REVIEWS</span>
+            </button>
+          </div>
+
+          {/* Kicker Pill (Left-Aligned) */}
+          <div className="hero-badge-row" style={{ justifyContent: 'flex-start', marginBottom: '1.25rem' }}>
+            <span className="kicker-pill" style={{ cursor: 'default' }}>
+              <Sparkles size={13} className="pill-spark" />
               {copy.label}
             </span>
           </div>
 
-          <h1 className="display-title inner-display-title">
-            {copy.title}
+          {/* Main Title with Home Page Highlight Colors */}
+          <h1 className="display-title alien-display-title inner-display-title" style={{ textAlign: 'left', maxWidth: '1240px' }}>
+            {copy.titleNode || copy.title}
           </h1>
 
-          <ScrollReveal delay={120}>
-            <p className="inner-intro-copy">{copy.intro}</p>
-          </ScrollReveal>
+          {/* Narrative & Left-Aligned CTA Buttons */}
+          <div className="hero-bottom alien-hero-bottom inner-hero-bottom" style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', marginTop: '1.5rem', width: '100%' }}>
+            <p className="hero-narrative inner-hero-narrative" style={{ textAlign: 'left', maxWidth: '840px', margin: '0 0 1.85rem' }}>
+              {copy.intro}
+            </p>
+
+            {/* Action Buttons Left-Aligned */}
+            <div className="hero-actions alien-hero-actions inner-hero-actions" style={{ justifyContent: 'flex-start', flexWrap: 'wrap' }}>
+              <button
+                className="button button-dark alien-hero-btn"
+                onClick={() => onNavigate(copy.primaryRoute || (normalizedPageId === 'work' ? 'contact' : 'work'))}
+                style={{ cursor: 'pointer' }}
+              >
+                <span>{copy.primaryText || (normalizedPageId === 'work' ? 'Start a Project' : 'Explore Work')}</span>
+                <ArrowDownRight size={16} />
+              </button>
+
+              <button
+                className="button alien-hero-btn-outline"
+                onClick={() => onNavigate(copy.secondaryRoute || 'contact')}
+                style={{ cursor: 'pointer' }}
+              >
+                <span>{copy.secondaryText || 'Get in Touch'}</span>
+                <ArrowUpRight size={16} />
+              </button>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -1207,217 +1511,7 @@ export default function CCDLPage({
         </section>
       )}
 
-      {/* ============================================================
-          PAGE: BOOK A CALL / CONSULTATION SCHEDULER
-          ============================================================ */}
-      {normalizedPageId === 'book-call' && (
-        <section className="section-pad inner-contact-section book-call-section">
-          <div className="contact-dual-layout">
-            <div className="contact-info-col">
-              <span className="sub-badge">DIRECT DISCOVERY SESSION</span>
-              <h2>30-Minute Architecture &amp; Scope Consultation</h2>
-              <p>
-                Meet with our founding engineering architect to evaluate feasibility, explore design
-                options, and receive an upfront sprint timeline and pricing structure.
-              </p>
 
-              {/* Instant Direct Channels with Real WhatsApp & Phone Links */}
-              <div className="direct-channels-list">
-                <a
-                  href="https://wa.me/917852052323?text=Hi%20CCDL%2C%20I%20would%20like%20to%20schedule%20a%20discovery%20consultation."
-                  target="_blank"
-                  rel="noreferrer"
-                  className="contact-channel-card whatsapp-channel hover-lift"
-                >
-                  <MessageCircle size={22} className="text-emerald-500" />
-                  <div className="flex-1">
-                    <strong>WhatsApp Direct Sync</strong>
-                    <span>+91 78520 52323 • Instant Response</span>
-                  </div>
-                  <ArrowUpRight size={16} className="channel-arrow" />
-                </a>
-
-                <a
-                  href="https://wa.me/918005873764?text=Hi%20CCDL%2C%20I%20would%20like%20to%20discuss%20a%20new%20product%20sprint."
-                  target="_blank"
-                  rel="noreferrer"
-                  className="contact-channel-card whatsapp-channel hover-lift"
-                >
-                  <MessageCircle size={22} className="text-emerald-500" />
-                  <div className="flex-1">
-                    <strong>Secondary WhatsApp Desk</strong>
-                    <span>+91 80058 73764 • Architect Line</span>
-                  </div>
-                  <ArrowUpRight size={16} className="channel-arrow" />
-                </a>
-
-                <div className="contact-channel-card phone-channel" style={{ cursor: 'default' }}>
-                  <Calendar size={22} />
-                  <div>
-                    <strong>Direct Video / Voice Sync</strong>
-                    <span>Google Meet or Zoom • High-Res Screen Sharing</span>
-                  </div>
-                </div>
-
-                <div className="contact-channel-card phone-channel" style={{ cursor: 'default' }}>
-                  <ShieldCheck size={22} />
-                  <div>
-                    <strong>100% Confidential</strong>
-                    <span>Mutual NDA automatically applied to all discussions</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Consultation Agenda Bento */}
-              <div className="consultation-agenda-box">
-                <div className="agenda-title font-mono text-xs uppercase tracking-wider text-[var(--muted)] mb-3 font-bold">
-                  WHAT WE WILL COVER IN 30 MINUTES:
-                </div>
-                <div className="agenda-steps-list space-y-2 text-xs sm:text-sm">
-                  <div className="agenda-step flex items-start gap-2.5">
-                    <span className="agenda-step-num font-mono font-bold text-blue-500">01</span>
-                    <span><strong>10m:</strong> Product scope, technical feasibility &amp; requirements audit.</span>
-                  </div>
-                  <div className="agenda-step flex items-start gap-2.5">
-                    <span className="agenda-step-num font-mono font-bold text-blue-500">02</span>
-                    <span><strong>15m:</strong> Architecture blueprint, design tokens &amp; tech stack selection.</span>
-                  </div>
-                  <div className="agenda-step flex items-start gap-2.5">
-                    <span className="agenda-step-num font-mono font-bold text-blue-500">03</span>
-                    <span><strong>05m:</strong> Fixed sprint pricing, deliverables checklist &amp; start date.</span>
-                  </div>
-                </div>
-              </div>
-
-              <div className="response-sla-pill">
-                <Clock size={16} />
-                <span>Instant Confirmation &amp; Google Meet Calendar Invite</span>
-              </div>
-            </div>
-
-            <div className="contact-form-col">
-              <div className="contact-form-box">
-                {bookingConfirmed ? (
-                  <div className="contact-success-message text-center py-6">
-                    <CheckCircle2 size={56} className="text-emerald-500 mx-auto mb-4" />
-                    <h3 className="text-2xl font-extrabold text-[var(--ink)] mb-2">Consultation Confirmed!</h3>
-                    <p className="text-sm sm:text-base text-[var(--muted)] leading-relaxed max-w-md mx-auto mb-6">
-                      We have reserved your discovery consultation for <b>{bookingDate}</b> at <b>{bookingTime} IST</b>.
-                      A calendar invite with Google Meet coordinates has been dispatched to your email.
-                    </p>
-
-                    <div className="meeting-prep-card p-4 rounded-xl bg-[var(--paper)] border border-[var(--line)] text-left mb-6 text-xs sm:text-sm text-[var(--muted)] space-y-1">
-                      <div className="font-bold text-[var(--ink)] mb-1">Session Checklist:</div>
-                      <div>• Prepare any Figma links, PRDs, or reference websites.</div>
-                      <div>• Invite any co-founders or engineering stakeholders.</div>
-                      <div>• We will present a tailored architecture roadmap.</div>
-                    </div>
-
-                    <div className="flex flex-wrap items-center justify-center gap-3">
-                      <button
-                        onClick={() => setBookingConfirmed(false)}
-                        className="button button-dark text-sm"
-                      >
-                        Book Another Slot
-                      </button>
-                      <a
-                        href="https://wa.me/917852052323?text=Hi%20CCDL%2C%20I%20just%20scheduled%20a%20discovery%20session."
-                        target="_blank"
-                        rel="noreferrer"
-                        className="button alien-hero-btn-outline text-sm"
-                      >
-                        Ping on WhatsApp
-                      </a>
-                    </div>
-                  </div>
-                ) : (
-                  <form
-                    onSubmit={(e) => {
-                      e.preventDefault();
-                      setBookingConfirmed(true);
-                    }}
-                  >
-                    <div className="form-header-row mb-6">
-                      <h3 className="form-title text-xl sm:text-2xl font-extrabold text-[var(--ink)] m-0">
-                        Select Consultation Slot
-                      </h3>
-                      <p className="text-xs sm:text-sm text-[var(--muted)] mt-1">
-                        Pick a date and time that works best for your team.
-                      </p>
-                    </div>
-
-                    <div className="form-group">
-                      <label>YOUR FULL NAME *</label>
-                      <input type="text" required placeholder="Alex Morgan" className="form-input" />
-                    </div>
-
-                    <div className="form-group">
-                      <label>WORK EMAIL *</label>
-                      <input type="email" required placeholder="alex@company.com" className="form-input" />
-                    </div>
-
-                    <div className="form-grid-2col grid grid-cols-1 sm:grid-cols-2 gap-4">
-                      <div className="form-group m-0">
-                        <label>PREFERRED DATE *</label>
-                        <input
-                          type="date"
-                          value={bookingDate}
-                          onChange={(e) => setBookingDate(e.target.value)}
-                          className="form-input"
-                          required
-                        />
-                      </div>
-                      <div className="form-group m-0">
-                        <label>TIME SLOT *</label>
-                        <select
-                          value={bookingTime}
-                          onChange={(e) => setBookingTime(e.target.value)}
-                          className="form-input"
-                        >
-                          <option value="11:00">11:00 AM IST (Europe Morning)</option>
-                          <option value="14:00">02:00 PM IST (Asia/Gulf)</option>
-                          <option value="17:30">05:30 PM IST (UK/EMEA)</option>
-                          <option value="20:00">08:00 PM IST (US East)</option>
-                        </select>
-                      </div>
-                    </div>
-
-                    <div className="form-group mt-4">
-                      <label>PRIMARY DISCUSSION FOCUS *</label>
-                      <select className="form-input" required>
-                        <option value="mvp">30-Day Startup MVP Sprint (Zero-to-One)</option>
-                        <option value="ui-ux">Product Design &amp; Interactive Prototyping</option>
-                        <option value="engineering">Full-Stack Cloud &amp; High-Concurrency Architecture</option>
-                        <option value="systems">Design System Tokens &amp; Component Modernization</option>
-                        <option value="enterprise">Dedicated Enterprise Agile Pod</option>
-                      </select>
-                    </div>
-
-                    <div className="form-group">
-                      <label>PROJECT CONTEXT / NOTES (OPTIONAL)</label>
-                      <textarea
-                        rows={3}
-                        placeholder="Briefly describe what you are building, target timeline, or existing stack..."
-                        className="form-input resize-none"
-                      />
-                    </div>
-
-                    <button type="submit" className="button button-dark form-submit-btn w-full mt-4">
-                      <span>Confirm Discovery Call</span>
-                      <ArrowUpRight size={16} />
-                    </button>
-
-                    <div className="form-guarantee-note flex items-center justify-center gap-2 text-xs text-[var(--muted)] mt-4">
-                      <ShieldCheck size={14} className="text-emerald-500" />
-                      <span>Zero sales pitch. Pure engineering &amp; architecture strategy.</span>
-                    </div>
-                  </form>
-                )}
-              </div>
-            </div>
-          </div>
-        </section>
-      )}
 
       {/* ============================================================
           PAGE: PROCESS
@@ -1808,12 +1902,12 @@ export default function CCDLPage({
               <p>Collaborate directly with our founding architecture collective in Jaipur & worldwide.</p>
             </div>
             <div className="cta-dock-actions">
-              <button onClick={() => onNavigate('book-call')} className="button button-dark cta-main-btn">
-                <span>Book Discovery Call (30 Min)</span>
+              <button onClick={() => onNavigate('contact')} className="button button-dark cta-main-btn">
+                <span>Start Project Brief</span>
                 <ArrowUpRight size={16} />
               </button>
-              <button onClick={() => onNavigate('contact')} className="button alien-hero-btn-outline">
-                <span>Start Project Brief</span>
+              <button onClick={() => onNavigate('work')} className="button alien-hero-btn-outline">
+                <span>Explore Client Archives</span>
                 <ArrowRight size={16} />
               </button>
             </div>
@@ -3155,26 +3249,28 @@ export default function CCDLPage({
                   </div>
                 ) : (
                   <form onSubmit={handleContactSubmit} className="contact-form-inner">
-                    <div className="form-top-bar">
-                      <span className="form-badge-pill">
-                        <span className="badge-live-dot" />
-                        Direct Client Desk
-                      </span>
-                      <span className="form-reply-est">⚡ Avg Response: &lt; 2 hrs</span>
+                    <div className="contact-form-header">
+                      <div className="contact-form-status-row">
+                        <span className="contact-live-status-badge">
+                          <span className="contact-live-pulse-dot" />
+                          Direct Client Desk
+                        </span>
+                        <span className="contact-reply-sla-tag">⚡ Avg Response: &lt; 2 hrs</span>
+                      </div>
+
+                      <h3 className="contact-form-main-title">Send a Message</h3>
+                      <p className="contact-form-sub-desc">
+                        Share your requirement or project vision. Our architects review and respond promptly.
+                      </p>
                     </div>
 
-                    <h3 className="form-title">Send a Message</h3>
-                    <p className="form-subtitle">
-                      Share your requirement or project vision. We'll review and respond promptly.
-                    </p>
-
                     {/* Quick Requirement Chips */}
-                    <div className="form-group form-group-compact">
-                      <label className="form-label-flex">
+                    <div className="contact-field-group">
+                      <label className="contact-field-label">
                         <span>Select Requirement</span>
-                        <span className="label-tag-hint">Click to choose</span>
+                        <span className="contact-field-hint">Click to choose</span>
                       </label>
-                      <div className="contact-chips-row">
+                      <div className="contact-chips-grid">
                         {[
                           'General Inquiry',
                           'Web Development',
@@ -3188,7 +3284,7 @@ export default function CCDLPage({
                             key={srv}
                             type="button"
                             onClick={() => setContactSubject(srv)}
-                            className={`contact-chip-item ${contactSubject === srv ? 'is-active' : ''}`}
+                            className={`contact-chip-pill ${contactSubject === srv ? 'is-active' : ''}`}
                           >
                             {srv}
                           </button>
@@ -3196,11 +3292,16 @@ export default function CCDLPage({
                       </div>
                     </div>
 
-                    <div className="form-row-2col">
-                      <div className="form-group form-group-compact">
-                        <label htmlFor="contact-name">Your Full Name *</label>
-                        <div className="input-icon-wrap icon-user-wrap">
-                          <User size={15} className="input-field-icon" />
+                    {/* Name and Phone Inputs */}
+                    <div className="contact-form-2col">
+                      <div className="contact-field-group">
+                        <label className="contact-field-label" htmlFor="contact-name">
+                          <span>Your Full Name<span className="contact-required-dot">*</span></span>
+                        </label>
+                        <div className="contact-input-wrapper">
+                          <div className="contact-input-icon-slot icon-slot-blue">
+                            <User size={15} />
+                          </div>
                           <input
                             id="contact-name"
                             type="text"
@@ -3208,15 +3309,19 @@ export default function CCDLPage({
                             value={contactName}
                             onChange={(e) => setContactName(e.target.value)}
                             placeholder="e.g. Rahul Sharma"
-                            className="form-input form-input-with-icon"
+                            className="contact-clean-input"
                           />
                         </div>
                       </div>
 
-                      <div className="form-group form-group-compact">
-                        <label htmlFor="contact-phone">Phone / WhatsApp *</label>
-                        <div className="input-icon-wrap icon-phone-wrap">
-                          <Phone size={15} className="input-field-icon" />
+                      <div className="contact-field-group">
+                        <label className="contact-field-label" htmlFor="contact-phone">
+                          <span>Phone / WhatsApp<span className="contact-required-dot">*</span></span>
+                        </label>
+                        <div className="contact-input-wrapper">
+                          <div className="contact-input-icon-slot icon-slot-emerald">
+                            <Phone size={15} />
+                          </div>
                           <input
                             id="contact-phone"
                             type="tel"
@@ -3224,16 +3329,21 @@ export default function CCDLPage({
                             value={contactPhone}
                             onChange={(e) => setContactPhone(e.target.value)}
                             placeholder="+91 98765 43210"
-                            className="form-input form-input-with-icon"
+                            className="contact-clean-input"
                           />
                         </div>
                       </div>
                     </div>
 
-                    <div className="form-group form-group-compact">
-                      <label htmlFor="contact-email">Email Address *</label>
-                      <div className="input-icon-wrap icon-mail-wrap">
-                        <Mail size={15} className="input-field-icon" />
+                    {/* Email Input */}
+                    <div className="contact-field-group">
+                      <label className="contact-field-label" htmlFor="contact-email">
+                        <span>Email Address<span className="contact-required-dot">*</span></span>
+                      </label>
+                      <div className="contact-input-wrapper">
+                        <div className="contact-input-icon-slot icon-slot-violet">
+                          <Mail size={15} />
+                        </div>
                         <input
                           id="contact-email"
                           type="email"
@@ -3241,15 +3351,20 @@ export default function CCDLPage({
                           value={contactEmail}
                           onChange={(e) => setContactEmail(e.target.value)}
                           placeholder="name@company.com"
-                          className="form-input form-input-with-icon"
+                          className="contact-clean-input"
                         />
                       </div>
                     </div>
 
-                    <div className="form-group form-group-compact">
-                      <label htmlFor="contact-message">Your Message *</label>
-                      <div className="input-icon-wrap icon-msg-wrap">
-                        <FileText size={15} className="input-field-icon icon-textarea" />
+                    {/* Message Textarea */}
+                    <div className="contact-field-group">
+                      <label className="contact-field-label" htmlFor="contact-message">
+                        <span>Your Message<span className="contact-required-dot">*</span></span>
+                      </label>
+                      <div className="contact-input-wrapper contact-textarea-wrapper">
+                        <div className="contact-input-icon-slot icon-slot-amber icon-slot-textarea">
+                          <FileText size={15} />
+                        </div>
                         <textarea
                           id="contact-message"
                           required
@@ -3257,31 +3372,31 @@ export default function CCDLPage({
                           value={contactMessage}
                           onChange={(e) => setContactMessage(e.target.value)}
                           placeholder="Briefly describe your requirements, questions, or project timeline..."
-                          className="form-input form-input-with-icon form-textarea"
+                          className="contact-clean-input contact-clean-textarea"
                         />
                       </div>
                     </div>
 
                     <button
                       type="submit"
-                      className="form-submit-btn-colorful"
+                      className="contact-submit-action-btn"
                     >
                       <Send size={15} />
                       <span>Send Message Now</span>
                       <ArrowRight size={14} className="submit-arrow-icon" />
                     </button>
 
-                    <div className="form-assurance-strip">
-                      <span className="assurance-item">
-                        <CheckCircle2 size={13} className="assurance-icon-emerald" /> Quick Reply
+                    <div className="contact-form-guarantees">
+                      <span className="guarantee-badge">
+                        <CheckCircle2 size={13} className="text-emerald-500" /> Rapid Reply
                       </span>
-                      <span className="assurance-dot">•</span>
-                      <span className="assurance-item">
-                        <Lock size={12} className="assurance-icon-blue" /> 100% Confidential
+                      <span className="guarantee-dot">•</span>
+                      <span className="guarantee-badge">
+                        <Lock size={12} className="text-blue-500" /> 100% Confidential
                       </span>
-                      <span className="assurance-dot">•</span>
-                      <span className="assurance-item">
-                        <ShieldCheck size={13} className="assurance-icon-indigo" /> No Spam
+                      <span className="guarantee-dot">•</span>
+                      <span className="guarantee-badge">
+                        <ShieldCheck size={13} className="text-violet-500" /> Zero Spam
                       </span>
                     </div>
                   </form>

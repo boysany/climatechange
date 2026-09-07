@@ -29,7 +29,6 @@ const PAGE_NAMES: Record<string, { title: string; category: string }> = {
   careers: { title: 'OPEN EXPEDITIONS', category: 'TALENT NETWORK' },
   blog: { title: 'DISPATCHES & EDITORIAL', category: 'THOUGHT LEADERSHIP' },
   community: { title: 'OPEN NETWORK & HUB', category: 'COLLECTIVE' },
-  'book-call': { title: 'DISCOVERY CALL SCHEDULER', category: 'CALENDAR DESK' },
   faqs: { title: 'FREQUENTLY ASKED QUESTIONS', category: 'DOCUMENTATION' },
   privacy: { title: 'PRIVACY & DATA POLICY', category: 'LEGAL PROTOCOL' },
   terms: { title: 'TERMS OF SERVICE', category: 'COMPLIANCE' },

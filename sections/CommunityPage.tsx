@@ -531,17 +531,17 @@ export const CommunityPage: React.FC<CommunityPageProps> = ({ onNavigate }) => {
         </div>
       )}
 
-      {/* 3. EXACT HOME PAGE HERO FOUNDATION */}
+      {/* 3. EXACT HOME PAGE HERO FOUNDATION (LEFT-ALIGNED) */}
       <section className="hero section-pad alien-hero community-hero" id="community-hero">
         <div className="alien-hero-aura" />
 
-        <div className="hero-grid alien-hero-grid community-hero-grid-centered" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-          {/* Top Status Bar (Centered) */}
-          <div className="hero-meta alien-hero-meta" style={{ width: '100%', display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: '0.75rem' }}>
+        <div className="hero-grid alien-hero-grid community-hero-grid-wide" style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', maxWidth: '1360px', margin: '0 auto', width: '100%', padding: '0 clamp(1.25rem, 4vw, 3rem)' }}>
+          {/* Top Status Bar (Left-Aligned) */}
+          <div className="hero-meta alien-hero-meta" style={{ width: '100%', display: 'flex', justifyContent: 'flex-start', flexWrap: 'wrap', gap: '0.75rem' }}>
             <button
               onClick={() => onNavigate('home')}
               className="hero-live-pill"
-              style={{ cursor: 'pointer', background: 'transparent', border: 'none', textAlign: 'center' }}
+              style={{ cursor: 'pointer', background: 'transparent', border: 'none', textAlign: 'left' }}
             >
               <span className="live-pulse-dot" />
               <span>06 / COLLECTIVE • OPEN GUILD • 1,200+ BUILDERS WORLDWIDE</span>
@@ -555,30 +555,30 @@ export const CommunityPage: React.FC<CommunityPageProps> = ({ onNavigate }) => {
             </div>
           </div>
 
-          {/* Centered Headline & Narrative Copy */}
-          <div className="hero-copy alien-hero-copy" style={{ maxWidth: '58rem', margin: '0 auto', textAlign: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            <div className="hero-badge-row" style={{ justifyContent: 'center', width: '100%' }}>
+          {/* Left-Aligned Headline & Narrative Copy */}
+          <div className="hero-copy alien-hero-copy" style={{ maxWidth: '1240px', width: '100%', margin: '0', textAlign: 'left', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+            <div className="hero-badge-row" style={{ justifyContent: 'flex-start', width: '100%' }}>
               <span className="kicker-pill">
                 <Sparkles size={13} className="pill-spark" />
                 THE SELMEDIC &amp; CCDL BUILDER GUILD
               </span>
             </div>
 
-            <h1 className="display-title alien-display-title" style={{ textAlign: 'center' }}>
+            <h1 className="display-title alien-display-title" style={{ textAlign: 'left', maxWidth: '1200px' }}>
               Build <span className="hero-hl-blue">together</span>, share{' '}
               <span className="hero-hl-purple">craft</span>, &amp; ship digital{' '}
               <span className="hero-hl-cyan">products</span>.
             </h1>
 
-            <div className="hero-bottom alien-hero-bottom" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-              <p className="hero-narrative" style={{ textAlign: 'center', maxWidth: '46rem', margin: '0 auto 1.75rem' }}>
+            <div className="hero-bottom alien-hero-bottom" style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', marginTop: '1.75rem', width: '100%' }}>
+              <p className="hero-narrative" style={{ textAlign: 'left', maxWidth: '820px', margin: '0 0 1.75rem' }}>
                 A high-density network of software engineers, product designers, technical founders, and growth
                 architects. We build in public, contribute to production-grade open source, conduct live design
                 clinics, and run weekly peer architectural AMAs.
               </p>
 
-              {/* Action Buttons Centered */}
-              <div className="hero-actions alien-hero-actions" style={{ justifyContent: 'center', flexWrap: 'wrap' }}>
+              {/* Action Buttons Left-Aligned */}
+              <div className="hero-actions alien-hero-actions" style={{ justifyContent: 'flex-start', flexWrap: 'wrap' }}>
                 <button
                   className="button button-dark alien-hero-btn"
                   onClick={() => setShowJoinModal(true)}
@@ -599,8 +599,8 @@ export const CommunityPage: React.FC<CommunityPageProps> = ({ onNavigate }) => {
                 </button>
               </div>
 
-              {/* Value proposition points Centered */}
-              <div className="community-hero-points-strip" style={{ justifyContent: 'center', flexWrap: 'wrap' }}>
+              {/* Value proposition points Left-Aligned */}
+              <div className="community-hero-points-strip" style={{ justifyContent: 'flex-start', flexWrap: 'wrap', marginTop: '1.25rem' }}>
                 <div className="hero-point-item">
                   <Code2 size={15} className="text-blue-500" />
                   <span>Production Code</span>

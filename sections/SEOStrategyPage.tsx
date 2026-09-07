@@ -8,6 +8,9 @@ import {
   Globe,
   Layers,
   ArrowRight,
+  ArrowDownRight,
+  ArrowUpRight,
+  Star,
   TrendingUp,
   MapPin,
   Code2,
@@ -74,26 +77,70 @@ export const SEOStrategyPage: React.FC<SEOStrategyPageProps> = ({
           </span>
         </nav>
 
-        {/* Hero Header */}
-        <header className="seo-hero-card" id="seo-hero-header">
-          <div className="seo-badges-row">
-            <span className="seo-badge-pill seo-badge-blue" id="seo-badge-whitehat">
-              <ShieldCheck size={14} />
-              100% WHITE-HAT TECHNICAL SEO
-            </span>
-            <span className="seo-badge-pill seo-badge-green" id="seo-badge-google">
-              <Sparkles size={14} />
-              GOOGLE SEARCH ESSENTIALS COMPLIANT
+        {/* Hero Header (Matching Home Page Hero Layout) */}
+        <header className="seo-hero-card" id="seo-hero-header" style={{ textAlign: 'left' }}>
+          {/* Top Status Bar Left-Aligned */}
+          <div className="hero-meta alien-hero-meta" style={{ width: '100%', display: 'flex', justifyContent: 'flex-start', flexWrap: 'wrap', gap: '0.75rem', marginBottom: '1.25rem' }}>
+            <div className="hero-live-status">
+              <span className="live-pulse-dot" />
+              <span className="live-status-text">
+                SEARCH ENGINE ARCHITECTURE • GOOGLE CORE UPDATE COMPLIANT
+              </span>
+            </div>
+
+            <button
+              onClick={() => onNavigate('about')}
+              className="hero-rating-badge"
+              style={{ cursor: 'pointer', background: 'transparent', border: 'none' }}
+            >
+              <span className="rating-clutch">CLUTCH</span>
+              <span className="rating-num">4.9</span>
+              <Star size={13} fill="currentColor" />
+              <span className="rating-divider">/</span>
+              <span>50+ REVIEWS</span>
+            </button>
+          </div>
+
+          <div className="hero-badge-row" style={{ justifyContent: 'flex-start', marginBottom: '1.25rem' }}>
+            <span className="kicker-pill">
+              <Sparkles size={13} className="pill-spark" />
+              100% WHITE-HAT TECHNICAL SEO &amp; GOOGLE RANKING ENGINE
             </span>
           </div>
 
-          <h1 className="seo-hero-title" id="seo-main-heading">
-            Selmedic Digital Labs SEO Engine & Google Ranking Architecture
+          <h1 className="display-title alien-display-title" id="seo-main-heading" style={{ textAlign: 'left', maxWidth: '1240px' }}>
+            Selmedic <span className="hero-hl-blue">SEO Engine</span>, Google{' '}
+            <span className="hero-hl-purple">Ranking Architecture</span>, &amp; Search{' '}
+            <span className="hero-hl-cyan">Dominance</span>.
           </h1>
 
-          <p className="seo-hero-desc" id="seo-sub-heading">
-            A comprehensive, data-driven blueprint engineered for India market dominance and seamless global expansion. Verified against modern Google Search algorithms, Core Web Vitals, and structured entity graphs.
-          </p>
+          <div className="hero-bottom alien-hero-bottom" style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', marginTop: '1.5rem', width: '100%' }}>
+            <p className="hero-narrative" id="seo-sub-heading" style={{ textAlign: 'left', maxWidth: '820px', margin: '0 0 1.85rem' }}>
+              A comprehensive, data-driven blueprint engineered for India market dominance and seamless global expansion. Verified against modern Google Search algorithms, Core Web Vitals, and structured entity graphs.
+            </p>
+
+            {/* Action Buttons Left-Aligned */}
+            <div className="hero-actions alien-hero-actions" style={{ justifyContent: 'flex-start', flexWrap: 'wrap', marginBottom: '2rem' }}>
+              <button
+                className="button button-dark alien-hero-btn"
+                onClick={() => {
+                  setActiveTab('audit');
+                  document.getElementById('seo-card-audit-checklist')?.scrollIntoView({ behavior: 'smooth' });
+                }}
+                style={{ cursor: 'pointer' }}
+              >
+                Explore 8-Pillar Audit <ArrowDownRight size={16} />
+              </button>
+
+              <button
+                className="button alien-hero-btn-outline"
+                onClick={() => onNavigate('contact')}
+                style={{ cursor: 'pointer' }}
+              >
+                Contact SEO Team <ArrowUpRight size={16} />
+              </button>
+            </div>
+          </div>
 
           {/* Tab Navigation */}
           <div className="seo-tabs-bar" id="seo-tab-navigation">

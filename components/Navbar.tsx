@@ -173,14 +173,6 @@ export default function Navbar({ currentRoute = 'home', onNavigate }: NavbarProp
       desc: 'Direct channels, project intake & founder sync',
       preview: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=900&auto=format&fit=crop',
     },
-    {
-      num: '10',
-      label: 'BOOK SPRINT',
-      page: 'book-call',
-      category: 'FAST TRACK',
-      desc: 'Reserve 2-week architectural sprint & intake',
-      preview: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=900&auto=format&fit=crop',
-    },
   ];
 
   const quickServices = [
@@ -189,7 +181,7 @@ export default function Navbar({ currentRoute = 'home', onNavigate }: NavbarProp
     { label: 'Mobile Apps', page: 'service-mobile-app-development' },
     { label: 'UI/UX Design', page: 'service-ui-ux-design' },
     { label: 'SEO & Growth', page: 'seo-strategy' },
-    { label: 'Book Sprint', page: 'book-call' },
+    { label: 'Contact Us', page: 'contact' },
   ];
 
   return (
@@ -211,17 +203,7 @@ export default function Navbar({ currentRoute = 'home', onNavigate }: NavbarProp
 
           {/* Desktop & Mobile Right Action Bar */}
           <div className="alien-nav-right">
-            {/* Book A Call Outline Pill */}
-            <button
-              onClick={() => handleNav('book-call')}
-              className="alien-btn-pill alien-btn-outline nav-cta-book"
-              style={{ cursor: 'pointer' }}
-            >
-              <span>Book A Call</span>
-              <ArrowUpRight size={15} className="alien-btn-arrow" />
-            </button>
-
-            {/* Contact Solid Dark Pill (Desktop) */}
+            {/* Contact Solid Dark Pill */}
             <button
               onClick={() => handleNav('contact')}
               className="alien-btn-pill alien-btn-solid nav-cta-contact"

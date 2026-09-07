@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import {
   ArrowRight,
   ArrowUpRight,
+  ArrowDownRight,
+  Star,
   CheckCircle2,
   ChevronDown,
   Layers,
@@ -55,7 +57,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
     if (onOpenConsultation) {
       onOpenConsultation();
     } else {
-      onNavigate('book-call');
+      onNavigate('contact');
     }
   };
 
@@ -64,6 +66,29 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
     if (el) {
       el.scrollIntoView({ behavior: 'smooth' });
     }
+  };
+
+  // Helper to colorize service headline with home-page highlight tokens
+  const renderHighlightedHeadline = (headline: string) => {
+    const words = headline.split(' ');
+    if (words.length < 4) return headline;
+
+    const firstHl = Math.min(2, Math.floor(words.length * 0.22));
+    const secondHl = Math.floor(words.length * 0.52);
+    const thirdHl = Math.max(secondHl + 2, words.length - 2);
+
+    return words.map((w, i) => {
+      if (i === firstHl || i === firstHl + 1) {
+        return <span key={i} className="hero-hl-blue">{w} </span>;
+      }
+      if (i === secondHl || i === secondHl + 1) {
+        return <span key={i} className="hero-hl-purple">{w} </span>;
+      }
+      if (i >= thirdHl) {
+        return <span key={i} className="hero-hl-cyan">{w} </span>;
+      }
+      return w + ' ';
+    });
   };
 
   // Dynamic SEO Injection for Google Crawlers and Live Users
@@ -177,20 +202,37 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
           <span className="sdp-breadcrumb-current">{service.shortTitle}</span>
         </nav>
 
-        {/* 2. Hero Section Card */}
-        <header className="sdp-hero-card">
+        {/* 2. Hero Section Card (Matching Home Page Hero Foundation) */}
+        <header className="sdp-hero-card" style={{ textAlign: 'left' }}>
           <div className="sdp-hero-bg-glow" aria-hidden="true" />
 
-          {/* Badges Row */}
-          <div className="sdp-badge-row">
-            <span className="sdp-badge-pill sdp-badge-blue">
-              <Sparkles size={13} />
-              <span>{service.tag}</span>
-            </span>
+          {/* Top Status Bar (Left-Aligned, Matching Home Hero) */}
+          <div className="hero-meta alien-hero-meta" style={{ width: '100%', display: 'flex', justifyContent: 'flex-start', flexWrap: 'wrap', gap: '0.75rem', marginBottom: '1.25rem' }}>
+            <div className="hero-live-status">
+              <span className="live-pulse-dot" />
+              <span className="live-status-text">
+                ACTIVE SPRINT SQUAD • GLOBAL CLIENT DELIVERY
+              </span>
+            </div>
 
-            <span className="sdp-badge-pill sdp-badge-green">
-              <span className="sdp-pulse-dot" />
-              <span>ACTIVE SPRINT SQUAD • GLOBAL CLIENT DELIVERY</span>
+            <button
+              onClick={() => onNavigate('about')}
+              className="hero-rating-badge"
+              style={{ cursor: 'pointer', background: 'transparent', border: 'none' }}
+            >
+              <span className="rating-clutch">CLUTCH</span>
+              <span className="rating-num">4.9</span>
+              <Star size={13} fill="currentColor" />
+              <span className="rating-divider">/</span>
+              <span>50+ REVIEWS</span>
+            </button>
+          </div>
+
+          {/* Badges Row */}
+          <div className="sdp-badge-row" style={{ justifyContent: 'flex-start', marginBottom: '1.25rem' }}>
+            <span className="kicker-pill" style={{ cursor: 'default' }}>
+              <Sparkles size={13} className="pill-spark" />
+              <span>{service.tag}</span>
             </span>
 
             <span className="sdp-badge-pill sdp-badge-muted">
@@ -208,9 +250,41 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
             </button>
           </div>
 
-          {/* Main Title & Subtitle */}
-          <h1 className="sdp-hero-headline">{service.heroHeadline}</h1>
-          <p className="sdp-hero-subheadline">{service.heroSubheadline}</p>
+          {/* Main Title with Home Page Highlight Colors */}
+          <h1 className="display-title alien-display-title sdp-hero-headline" style={{ textAlign: 'left', maxWidth: '1240px' }}>
+            {renderHighlightedHeadline(service.heroHeadline)}
+          </h1>
+
+          <div className="hero-bottom alien-hero-bottom" style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', marginTop: '1.5rem', width: '100%' }}>
+            <p className="hero-narrative sdp-hero-subheadline" style={{ textAlign: 'left', maxWidth: '840px', margin: '0 0 1.85rem' }}>
+              {service.heroSubheadline}
+            </p>
+
+            {/* Conversion Action Buttons (Matching Home Page Buttons) */}
+            <div className="hero-actions alien-hero-actions sdp-hero-actions" style={{ justifyContent: 'flex-start', flexWrap: 'wrap', marginBottom: '2rem' }}>
+              <button onClick={handleConsultation} className="button button-dark alien-hero-btn" style={{ cursor: 'pointer' }}>
+                <PhoneCall size={16} />
+                <span>Schedule Architecture Review</span>
+                <ArrowDownRight size={16} />
+              </button>
+
+              <button onClick={scrollToBlueprint} className="button alien-hero-btn-outline" style={{ cursor: 'pointer' }}>
+                <span>View Sprint Blueprint</span>
+                <ArrowUpRight size={16} />
+              </button>
+
+              <a
+                href={`https://wa.me/917852052323?text=Hello%20Selmedic%20Digital%20Labs%2C%20I%20am%20interested%20in%20your%20${encodeURIComponent(service.shortTitle)}%20service.`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="sdp-whatsapp-btn"
+                style={{ textDecoration: 'none' }}
+              >
+                <MessageSquare size={16} />
+                <span>WhatsApp Direct Desk</span>
+              </a>
+            </div>
+          </div>
 
           {/* Quick Metrics Grid */}
           <div className="sdp-metrics-grid">
@@ -221,30 +295,6 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
                 <div className="sdp-metric-desc">{benefit.desc}</div>
               </div>
             ))}
-          </div>
-
-          {/* Conversion Action Buttons */}
-          <div className="sdp-hero-actions">
-            <button onClick={handleConsultation} className="sdp-primary-btn">
-              <PhoneCall size={16} />
-              <span>Schedule Architecture Review</span>
-              <ArrowUpRight size={15} />
-            </button>
-
-            <a
-              href={`https://wa.me/917852052323?text=Hello%20Selmedic%20Digital%20Labs%2C%20I%20am%20interested%20in%20your%20${encodeURIComponent(service.shortTitle)}%20service.`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="sdp-whatsapp-btn"
-            >
-              <MessageSquare size={16} />
-              <span>WhatsApp Direct Desk</span>
-            </a>
-
-            <button onClick={scrollToBlueprint} className="sdp-outline-btn">
-              <span>View Sprint Blueprint</span>
-              <ArrowRight size={15} />
-            </button>
           </div>
         </header>
 

@@ -113,10 +113,10 @@ export default function Hero({ onNavigate }: HeroProps) {
 
               <button
                 className="button alien-hero-btn-outline"
-                onClick={() => onNavigate?.('book-call')}
+                onClick={() => onNavigate?.('contact')}
                 style={{ cursor: 'pointer' }}
               >
-                Book A Call <ArrowUpRight size={16} />
+                Contact Us <ArrowUpRight size={16} />
               </button>
             </motion.div>
           </div>

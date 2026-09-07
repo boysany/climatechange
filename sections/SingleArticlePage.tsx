@@ -486,12 +486,12 @@ export const SingleArticlePage: React.FC<SingleArticlePageProps> = ({ slug, onNa
             </p>
             <div className="article-cta-actions">
               <button
-                onClick={() => onNavigate('book-call')}
+                onClick={() => onNavigate('contact')}
                 className="button button-dark"
                 style={{ cursor: 'pointer' }}
               >
                 <PhoneCall size={15} />
-                <span>Schedule Discovery Consultation</span>
+                <span>Start a Project Brief</span>
                 <ArrowUpRight size={16} />
               </button>
               <a
