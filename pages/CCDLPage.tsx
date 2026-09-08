@@ -1,4 +1,6 @@
 import React, { useMemo, useState } from 'react';
+import { motion as m } from 'framer-motion';
+const motion = m as any;
 import ScrollReveal from '../components/ScrollReveal.tsx';
 import TextReveal from '../components/TextReveal.tsx';
 import { ServiceDetailPage } from '../sections/ServiceDetailPage.tsx';
@@ -1023,7 +1025,6 @@ export default function CCDLPage({
   if (pageId === 'growth' || pageId === 'seo-growth') normalizedPageId = 'seo-ads';
   if (pageId === 'fullstack-software') normalizedPageId = 'software';
   if (pageId === 'digital-strategy') normalizedPageId = 'strategy';
-  if (pageId === 'book-call') normalizedPageId = 'contact';
 
   // 0. SEO STRATEGY & TECHNICAL AUDIT HUB
   if (pageId === 'seo-strategy' || pageId === 'seo-audit') {
@@ -1224,10 +1225,9 @@ export default function CCDLPage({
           UNIVERSAL HIGH-END HERO HEADER (Matching Home Page Foundation)
           ============================================================ */}
       <section className="hero section-pad alien-hero inner-hero" id={`inner-${normalizedPageId}`}>
-        <div className="alien-hero-aura" />
-        <div className="inner-hero-container">
-          {/* Top Status Bar (Left-Aligned, Matching Home Hero) */}
-          <div className="hero-meta alien-hero-meta" style={{ width: '100%', display: 'flex', justifyContent: 'flex-start', flexWrap: 'wrap', gap: '0.75rem', marginBottom: '1.25rem' }}>
+        <div className="hero-grid alien-hero-grid inner-hero-grid" style={{ minHeight: 'auto', display: 'block' }}>
+          {/* Top Status Bar (Live Availability & Clutch Rating - matches Home Hero) */}
+          <div className="hero-meta alien-hero-meta">
             <div className="hero-live-status">
               <span className="live-pulse-dot" />
               <span className="live-status-text">
@@ -1248,44 +1248,63 @@ export default function CCDLPage({
             </button>
           </div>
 
-          {/* Kicker Pill (Left-Aligned) */}
-          <div className="hero-badge-row" style={{ justifyContent: 'flex-start', marginBottom: '1.25rem' }}>
-            <span className="kicker-pill" style={{ cursor: 'default' }}>
-              <Sparkles size={13} className="pill-spark" />
-              {copy.label}
-            </span>
-          </div>
-
-          {/* Main Title with Home Page Highlight Colors */}
-          <h1 className="display-title alien-display-title inner-display-title" style={{ textAlign: 'left', maxWidth: '1240px' }}>
-            {copy.titleNode || copy.title}
-          </h1>
-
-          {/* Narrative & Left-Aligned CTA Buttons */}
-          <div className="hero-bottom alien-hero-bottom inner-hero-bottom" style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', marginTop: '1.5rem', width: '100%' }}>
-            <p className="hero-narrative inner-hero-narrative" style={{ textAlign: 'left', maxWidth: '840px', margin: '0 0 1.85rem' }}>
-              {copy.intro}
-            </p>
-
-            {/* Action Buttons Left-Aligned */}
-            <div className="hero-actions alien-hero-actions inner-hero-actions" style={{ justifyContent: 'flex-start', flexWrap: 'wrap' }}>
+          {/* Main Headline & Narrative Copy */}
+          <div className="hero-copy alien-hero-copy">
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="hero-badge-row"
+            >
               <button
-                className="button button-dark alien-hero-btn"
-                onClick={() => onNavigate(copy.primaryRoute || (normalizedPageId === 'work' ? 'contact' : 'work'))}
-                style={{ cursor: 'pointer' }}
+                onClick={() => onNavigate('about')}
+                className="kicker-pill"
+                style={{ cursor: 'pointer', border: 'none', display: 'inline-flex', alignItems: 'center' }}
               >
-                <span>{copy.primaryText || (normalizedPageId === 'work' ? 'Start a Project' : 'Explore Work')}</span>
-                <ArrowDownRight size={16} />
+                <Sparkles size={13} className="pill-spark" />
+                {copy.label}
               </button>
+            </motion.div>
 
-              <button
-                className="button alien-hero-btn-outline"
-                onClick={() => onNavigate(copy.secondaryRoute || 'contact')}
-                style={{ cursor: 'pointer' }}
+            <h1 className="display-title alien-display-title">
+              {copy.titleNode || copy.title}
+            </h1>
+
+            <div className="hero-bottom alien-hero-bottom">
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.35, duration: 0.7 }}
+                className="hero-narrative"
               >
-                <span>{copy.secondaryText || 'Get in Touch'}</span>
-                <ArrowUpRight size={16} />
-              </button>
+                {copy.intro}
+              </motion.p>
+
+              {/* Action Buttons */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.45, duration: 0.7 }}
+                className="hero-actions alien-hero-actions"
+              >
+                <button
+                  className="button button-dark alien-hero-btn"
+                  onClick={() => onNavigate(copy.primaryRoute || (normalizedPageId === 'work' ? 'contact' : 'work'))}
+                  style={{ cursor: 'pointer' }}
+                >
+                  <span>{copy.primaryText || (normalizedPageId === 'work' ? 'Start a Project' : 'Explore Work')}</span>
+                  <ArrowDownRight size={16} />
+                </button>
+
+                <button
+                  className="button alien-hero-btn-outline"
+                  onClick={() => onNavigate(copy.secondaryRoute || 'contact')}
+                  style={{ cursor: 'pointer' }}
+                >
+                  <span>{copy.secondaryText || 'Get in Touch'}</span>
+                  <ArrowUpRight size={16} />
+                </button>
+              </motion.div>
             </div>
           </div>
         </div>
@@ -3299,8 +3318,8 @@ export default function CCDLPage({
                           <span>Your Full Name<span className="contact-required-dot">*</span></span>
                         </label>
                         <div className="contact-input-wrapper">
-                          <div className="contact-input-icon-slot icon-slot-blue">
-                            <User size={15} />
+                          <div className="contact-input-icon-slot">
+                            <User size={16} className="contact-field-icon" />
                           </div>
                           <input
                             id="contact-name"
@@ -3319,8 +3338,8 @@ export default function CCDLPage({
                           <span>Phone / WhatsApp<span className="contact-required-dot">*</span></span>
                         </label>
                         <div className="contact-input-wrapper">
-                          <div className="contact-input-icon-slot icon-slot-emerald">
-                            <Phone size={15} />
+                          <div className="contact-input-icon-slot">
+                            <Phone size={16} className="contact-field-icon" />
                           </div>
                           <input
                             id="contact-phone"
@@ -3341,8 +3360,8 @@ export default function CCDLPage({
                         <span>Email Address<span className="contact-required-dot">*</span></span>
                       </label>
                       <div className="contact-input-wrapper">
-                        <div className="contact-input-icon-slot icon-slot-violet">
-                          <Mail size={15} />
+                        <div className="contact-input-icon-slot">
+                          <Mail size={16} className="contact-field-icon" />
                         </div>
                         <input
                           id="contact-email"
@@ -3362,8 +3381,8 @@ export default function CCDLPage({
                         <span>Your Message<span className="contact-required-dot">*</span></span>
                       </label>
                       <div className="contact-input-wrapper contact-textarea-wrapper">
-                        <div className="contact-input-icon-slot icon-slot-amber icon-slot-textarea">
-                          <FileText size={15} />
+                        <div className="contact-input-icon-slot icon-slot-textarea">
+                          <FileText size={16} className="contact-field-icon" />
                         </div>
                         <textarea
                           id="contact-message"

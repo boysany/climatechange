@@ -108,7 +108,8 @@ export default function Hero({ onNavigate }: HeroProps) {
                 onClick={() => onNavigate?.('work')}
                 style={{ cursor: 'pointer' }}
               >
-                Explore Work <ArrowDownRight size={16} />
+                <span>Explore Work</span>
+                <ArrowDownRight size={16} />
               </button>
 
               <button
@@ -116,7 +117,8 @@ export default function Hero({ onNavigate }: HeroProps) {
                 onClick={() => onNavigate?.('contact')}
                 style={{ cursor: 'pointer' }}
               >
-                Contact Us <ArrowUpRight size={16} />
+                <span>Contact Us</span>
+                <ArrowUpRight size={16} />
               </button>
             </motion.div>
           </div>

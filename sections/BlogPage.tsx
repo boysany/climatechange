@@ -1,4 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
+import { motion as m } from 'framer-motion';
+const motion = m as any;
 import {
   ArrowDownRight,
   ArrowRight,
@@ -27,6 +29,7 @@ import {
 } from 'lucide-react';
 import gsap from 'gsap';
 import { getReducedMotion } from '../lib/animations.ts';
+import ScrollReveal from '../components/ScrollReveal.tsx';
 
 import sandeepAvatar from '../src/assets/images/sandeep_barupal_1787155579146.jpg';
 import gaganAvatar from '../src/assets/images/gagan_chouhan_1787155556813.jpg';
@@ -487,82 +490,103 @@ export const BlogPage: React.FC<BlogPageProps> = ({ onNavigate }) => {
   return (
     <div className="blog-page-root" id="blog-page-container">
       {/* 2. ENTERPRISE BLOG HERO SECTION */}
-      <section className="blog-hero" id="blog-hero">
-        <div className="alien-hero-aura" />
-
-        <div className="blog-hero-centered-content">
+      <section className="hero section-pad alien-hero blog-hero" id="blog-hero">
+        <div className="hero-grid alien-hero-grid" style={{ minHeight: 'auto', display: 'block' }}>
           {/* Top Status & Metrics Row */}
-          <div className="blog-hero-kicker-bar">
-            <span className="blog-hero-kicker-pill">
+          <div className="hero-meta alien-hero-meta">
+            <div className="hero-live-status">
               <span className="live-pulse-dot" />
-              <span>EDITORIAL JOURNAL &amp; RESEARCH</span>
-            </span>
+              <span className="live-status-text">EDITORIAL JOURNAL &amp; RESEARCH ARCHIVE</span>
+            </div>
 
-            <span className="blog-hero-metric-badge">
+            <div className="hero-rating-badge">
               <Sparkles size={12} style={{ color: 'var(--blue)' }} />
-              <span>10 Dispatches • Updated Weekly</span>
-            </span>
-
-            <span className="blog-hero-metric-badge">
-              <Clock size={12} style={{ color: 'var(--blue)' }} />
-              <span>42 Min Reading Archive</span>
-            </span>
+              <span className="rating-clutch">DISPATCHES</span>
+              <span className="rating-num">10</span>
+              <span className="rating-divider">/</span>
+              <span>UPDATED WEEKLY</span>
+            </div>
           </div>
 
-          {/* Main Display Headline */}
-          <h1 className="blog-hero-title">
-            Engineering <span className="hero-hl-blue">dispatches</span>, design{' '}
-            <span className="hero-hl-purple">systems</span>, &amp; architecture{' '}
-            <span className="hero-hl-cyan">playbooks</span>.
-          </h1>
-
-          {/* Subtitle / Narrative Copy */}
-          <p className="blog-hero-description">
-            In-depth architectural breakdowns on sub-100ms client applications, resilient distributed systems, mathematical design tokens, database query execution tuning, and high-velocity product engineering.
-          </p>
-
-          {/* Action CTAs */}
-          <div className="blog-hero-actions-row">
-            <button
-              className="blog-hero-btn-featured"
-              onClick={() => {
-                const el = document.getElementById('featured-dispatch-section');
-                el?.scrollIntoView({ behavior: 'smooth' });
-              }}
-              style={{ cursor: 'pointer' }}
+          {/* Main Display Headline & Narrative Copy */}
+          <div className="hero-copy alien-hero-copy">
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="hero-badge-row"
             >
-              <span>Explore Featured Story</span>
-              <ArrowDownRight size={17} className="btn-icon" />
-            </button>
+              <span className="kicker-pill" style={{ display: 'inline-flex', alignItems: 'center' }}>
+                <Sparkles size={13} className="pill-spark" />
+                EDITORIAL JOURNAL &amp; RESEARCH
+              </span>
+            </motion.div>
 
-            <button
-              className="blog-hero-btn-subscribe"
-              onClick={() => {
-                const el = document.getElementById('blog-newsletter-section');
-                el?.scrollIntoView({ behavior: 'smooth' });
-              }}
-              style={{ cursor: 'pointer' }}
-            >
-              <span>Subscribe to Dispatch</span>
-              <ArrowUpRight size={17} className="btn-icon" />
-            </button>
-          </div>
+            <h1 className="display-title alien-display-title">
+              Engineering <span className="hero-hl-blue">dispatches</span>, design{' '}
+              <span className="hero-hl-purple">systems</span>, &amp; architecture{' '}
+              <span className="hero-hl-cyan">playbooks</span>.
+            </h1>
 
-          {/* Quick Topic Jump Chips */}
-          <div className="blog-hero-topic-pills">
-            <span className="blog-topic-label">QUICK TOPICS:</span>
-            {['React 18', 'Design Systems', 'PostgreSQL', 'Microservices', 'Core Web Vitals'].map((tag) => (
-              <button
-                key={tag}
-                className="blog-hero-tag-btn"
-                onClick={() => {
-                  setSearchQuery(tag);
-                  document.getElementById('blog-catalog-section')?.scrollIntoView({ behavior: 'smooth' });
-                }}
+            <div className="hero-bottom alien-hero-bottom">
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.35, duration: 0.7 }}
+                className="hero-narrative"
               >
-                #{tag}
-              </button>
-            ))}
+                In-depth architectural breakdowns on sub-100ms client applications, resilient distributed systems, mathematical design tokens, database query execution tuning, and high-velocity product engineering.
+              </motion.p>
+
+              {/* Action CTAs */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.45, duration: 0.7 }}
+                className="hero-actions alien-hero-actions blog-hero-actions-row"
+              >
+                <button
+                  className="button button-dark alien-hero-btn"
+                  onClick={() => {
+                    const el = document.getElementById('featured-dispatch-section');
+                    el?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  style={{ cursor: 'pointer' }}
+                >
+                  <span>Featured Story</span>
+                  <ArrowDownRight size={16} />
+                </button>
+
+                <button
+                  className="button alien-hero-btn-outline"
+                  onClick={() => {
+                    const el = document.getElementById('blog-newsletter-section');
+                    el?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  style={{ cursor: 'pointer' }}
+                >
+                  <span>Subscribe Dispatch</span>
+                  <ArrowUpRight size={16} />
+                </button>
+              </motion.div>
+
+              {/* Quick Topic Jump Chips */}
+              <div className="blog-hero-topic-pills">
+                <span className="blog-topic-label">QUICK TOPICS:</span>
+                {['React 18', 'Design Systems', 'PostgreSQL', 'Microservices', 'Core Web Vitals'].map((tag) => (
+                  <button
+                    key={tag}
+                    className="blog-hero-tag-btn"
+                    onClick={() => {
+                      setSearchQuery(tag);
+                      document.getElementById('blog-catalog-section')?.scrollIntoView({ behavior: 'smooth' });
+                    }}
+                  >
+                    #{tag}
+                  </button>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
 
@@ -651,63 +675,65 @@ export const BlogPage: React.FC<BlogPageProps> = ({ onNavigate }) => {
               </div>
             </div>
 
-            <article
-              className="featured-story-card cursor-pointer"
-              onClick={() => onNavigate('article/' + featuredPost.slug)}
-            >
-              <div className="featured-story-media">
-                <img src={featuredPost.coverImage} alt={featuredPost.title} />
-                <span className="featured-pill">FEATURED STORY</span>
-              </div>
-
-              <div className="featured-story-content">
-                <div className="story-meta-row">
-                  <span className="story-category-tag">{featuredPost.category}</span>
-                  <span className="story-meta-sep">•</span>
-                  <span className="story-date">{featuredPost.date}</span>
-                  <span className="story-meta-sep">•</span>
-                  <span className="story-time">
-                    <Clock size={13} /> {featuredPost.readTime}
-                  </span>
+            <ScrollReveal delay={40}>
+              <article
+                className="featured-story-card cursor-pointer"
+                onClick={() => onNavigate('article/' + featuredPost.slug)}
+              >
+                <div className="featured-story-media">
+                  <img src={featuredPost.coverImage} alt={featuredPost.title} />
+                  <span className="featured-pill">FEATURED STORY</span>
                 </div>
 
-                <h2 className="featured-story-title">{featuredPost.title}</h2>
-                <p className="featured-story-excerpt">{featuredPost.excerpt}</p>
-
-                {/* Takeaways Snippet */}
-                <div className="featured-takeaways-preview">
-                  <span className="takeaways-preview-label">WHAT YOU'LL LEARN:</span>
-                  <ul>
-                    {featuredPost.takeaways.slice(0, 2).map((item, i) => (
-                      <li key={i}>
-                        <CheckCircle2 size={14} className="takeaway-check" />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="featured-story-footer">
-                  <div className="author-badge">
-                    <img src={featuredPost.author.avatar} alt={featuredPost.author.name} />
-                    <div>
-                      <strong>{featuredPost.author.name}</strong>
-                      <span>{featuredPost.author.role}</span>
-                    </div>
+                <div className="featured-story-content">
+                  <div className="story-meta-row">
+                    <span className="story-category-tag">{featuredPost.category}</span>
+                    <span className="story-meta-sep">•</span>
+                    <span className="story-date">{featuredPost.date}</span>
+                    <span className="story-meta-sep">•</span>
+                    <span className="story-time">
+                      <Clock size={13} /> {featuredPost.readTime}
+                    </span>
                   </div>
 
-                  <button
-                    className="button button-dark featured-read-btn"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      onNavigate('article/' + featuredPost.slug);
-                    }}
-                  >
-                    Read Dispatch <ArrowUpRight size={16} />
-                  </button>
+                  <h2 className="featured-story-title">{featuredPost.title}</h2>
+                  <p className="featured-story-excerpt">{featuredPost.excerpt}</p>
+
+                  {/* Takeaways Snippet */}
+                  <div className="featured-takeaways-preview">
+                    <span className="takeaways-preview-label">WHAT YOU'LL LEARN:</span>
+                    <ul>
+                      {featuredPost.takeaways.slice(0, 2).map((item, i) => (
+                        <li key={i}>
+                          <CheckCircle2 size={14} className="takeaway-check" />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <div className="featured-story-footer">
+                    <div className="author-badge">
+                      <img src={featuredPost.author.avatar} alt={featuredPost.author.name} />
+                      <div>
+                        <strong>{featuredPost.author.name}</strong>
+                        <span>{featuredPost.author.role}</span>
+                      </div>
+                    </div>
+
+                    <button
+                      className="button button-dark featured-read-btn"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        onNavigate('article/' + featuredPost.slug);
+                      }}
+                    >
+                      Read Dispatch <ArrowUpRight size={16} />
+                    </button>
+                  </div>
                 </div>
-              </div>
-            </article>
+              </article>
+            </ScrollReveal>
           </section>
         )}
 
@@ -725,10 +751,12 @@ export const BlogPage: React.FC<BlogPageProps> = ({ onNavigate }) => {
             </div>
 
             <div className="spotlight-grid">
-              {spotlightPosts.map((post) => (
-                <article
+              {spotlightPosts.map((post, idx) => (
+                <ScrollReveal
                   key={post.slug}
+                  delay={idx * 80}
                   className="spotlight-card cursor-pointer"
+                  as="article"
                   onClick={() => onNavigate('article/' + post.slug)}
                 >
                   <div className="spotlight-img-wrap">
@@ -756,7 +784,7 @@ export const BlogPage: React.FC<BlogPageProps> = ({ onNavigate }) => {
                       </span>
                     </div>
                   </div>
-                </article>
+                </ScrollReveal>
               ))}
             </div>
           </section>
@@ -778,10 +806,12 @@ export const BlogPage: React.FC<BlogPageProps> = ({ onNavigate }) => {
 
           {filteredPosts.length > 0 ? (
             <div className="blog-archive-grid">
-              {filteredPosts.map((post) => (
-                <article
+              {filteredPosts.map((post, idx) => (
+                <ScrollReveal
                   key={post.slug}
+                  delay={(idx % 6) * 60}
                   className="archive-card cursor-pointer"
+                  as="article"
                   onClick={() => onNavigate('article/' + post.slug)}
                 >
                   <div className="archive-img-wrap">
@@ -821,7 +851,7 @@ export const BlogPage: React.FC<BlogPageProps> = ({ onNavigate }) => {
                       </span>
                     </div>
                   </div>
-                </article>
+                </ScrollReveal>
               ))}
             </div>
           ) : (
@@ -884,8 +914,8 @@ export const BlogPage: React.FC<BlogPageProps> = ({ onNavigate }) => {
                 specialty: 'PostgreSQL Query Plans, Cloud DevOps & Security',
                 articlesCount: 2,
               },
-            ].map((author) => (
-              <div key={author.name} className="author-card">
+            ].map((author, idx) => (
+              <ScrollReveal key={author.name} delay={idx * 70} className="author-card">
                 <img src={author.avatar} alt={author.name} className="author-portrait" />
                 <div className="author-info">
                   <h4>{author.name}</h4>
@@ -893,13 +923,13 @@ export const BlogPage: React.FC<BlogPageProps> = ({ onNavigate }) => {
                   <p className="author-specialty">{author.specialty}</p>
                   <span className="author-contributions">{author.articlesCount} Published Dispatches</span>
                 </div>
-              </div>
+              </ScrollReveal>
             ))}
           </div>
         </section>
 
         {/* SECTION 05: NEWSLETTER SUBSCRIPTION (Matching Home Page CTA Style) */}
-        <section className="blog-section blog-newsletter-section" id="blog-newsletter-section">
+        <ScrollReveal as="section" delay={80} className="blog-section blog-newsletter-section" id="blog-newsletter-section">
           <div className="blog-newsletter-card">
             <div className="newsletter-ambient" aria-hidden="true" />
             <div className="newsletter-content">
@@ -949,7 +979,7 @@ export const BlogPage: React.FC<BlogPageProps> = ({ onNavigate }) => {
               </div>
             </div>
           </div>
-        </section>
+        </ScrollReveal>
       </main>
     </div>
   );

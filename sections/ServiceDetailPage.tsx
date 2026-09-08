@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { motion as m } from 'framer-motion';
+const motion = m as any;
 import {
   ArrowRight,
   ArrowUpRight,
@@ -25,6 +27,7 @@ import {
 } from 'lucide-react';
 import { ServiceDetail, SEO_SERVICES_MAP } from '../lib/seoData';
 import { useSEO } from '../lib/useSEO';
+import ScrollReveal from '../components/ScrollReveal.tsx';
 
 interface ServiceDetailPageProps {
   service: ServiceDetail;
@@ -207,7 +210,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
           <div className="sdp-hero-bg-glow" aria-hidden="true" />
 
           {/* Top Status Bar (Left-Aligned, Matching Home Hero) */}
-          <div className="hero-meta alien-hero-meta" style={{ width: '100%', display: 'flex', justifyContent: 'flex-start', flexWrap: 'wrap', gap: '0.75rem', marginBottom: '1.25rem' }}>
+          <div className="hero-meta alien-hero-meta">
             <div className="hero-live-status">
               <span className="live-pulse-dot" />
               <span className="live-status-text">
@@ -228,72 +231,90 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
             </button>
           </div>
 
-          {/* Badges Row */}
-          <div className="sdp-badge-row" style={{ justifyContent: 'flex-start', marginBottom: '1.25rem' }}>
-            <span className="kicker-pill" style={{ cursor: 'default' }}>
-              <Sparkles size={13} className="pill-spark" />
-              <span>{service.tag}</span>
-            </span>
-
-            <span className="sdp-badge-pill sdp-badge-muted">
-              <span>{service.category}</span>
-            </span>
-
-            <button
-              onClick={handleCopyLink}
-              className="sdp-badge-pill sdp-badge-muted"
-              style={{ cursor: 'pointer', background: 'transparent' }}
-              title="Share service page"
+          <div className="hero-copy alien-hero-copy">
+            {/* Badges Row */}
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="hero-badge-row sdp-badge-row"
             >
-              {copiedLink ? <Check size={12} className="text-emerald-500" /> : <Share2 size={12} />}
-              <span>{copiedLink ? 'COPIED!' : 'SHARE'}</span>
-            </button>
-          </div>
+              <span className="kicker-pill" style={{ cursor: 'default' }}>
+                <Sparkles size={13} className="pill-spark" />
+                <span>{service.tag}</span>
+              </span>
 
-          {/* Main Title with Home Page Highlight Colors */}
-          <h1 className="display-title alien-display-title sdp-hero-headline" style={{ textAlign: 'left', maxWidth: '1240px' }}>
-            {renderHighlightedHeadline(service.heroHeadline)}
-          </h1>
+              <span className="sdp-badge-pill sdp-badge-muted">
+                <span>{service.category}</span>
+              </span>
 
-          <div className="hero-bottom alien-hero-bottom" style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', marginTop: '1.5rem', width: '100%' }}>
-            <p className="hero-narrative sdp-hero-subheadline" style={{ textAlign: 'left', maxWidth: '840px', margin: '0 0 1.85rem' }}>
-              {service.heroSubheadline}
-            </p>
-
-            {/* Conversion Action Buttons (Matching Home Page Buttons) */}
-            <div className="hero-actions alien-hero-actions sdp-hero-actions" style={{ justifyContent: 'flex-start', flexWrap: 'wrap', marginBottom: '2rem' }}>
-              <button onClick={handleConsultation} className="button button-dark alien-hero-btn" style={{ cursor: 'pointer' }}>
-                <PhoneCall size={16} />
-                <span>Schedule Architecture Review</span>
-                <ArrowDownRight size={16} />
-              </button>
-
-              <button onClick={scrollToBlueprint} className="button alien-hero-btn-outline" style={{ cursor: 'pointer' }}>
-                <span>View Sprint Blueprint</span>
-                <ArrowUpRight size={16} />
-              </button>
-
-              <a
-                href={`https://wa.me/917852052323?text=Hello%20Selmedic%20Digital%20Labs%2C%20I%20am%20interested%20in%20your%20${encodeURIComponent(service.shortTitle)}%20service.`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="sdp-whatsapp-btn"
-                style={{ textDecoration: 'none' }}
+              <button
+                onClick={handleCopyLink}
+                className="sdp-badge-pill sdp-badge-muted"
+                style={{ cursor: 'pointer', background: 'transparent' }}
+                title="Share service page"
               >
-                <MessageSquare size={16} />
-                <span>WhatsApp Direct Desk</span>
-              </a>
+                {copiedLink ? <Check size={12} className="text-emerald-500" /> : <Share2 size={12} />}
+                <span>{copiedLink ? 'COPIED!' : 'SHARE'}</span>
+              </button>
+            </motion.div>
+
+            {/* Main Title with Home Page Highlight Colors */}
+            <h1 className="display-title alien-display-title sdp-hero-headline" style={{ textAlign: 'left', maxWidth: '1240px' }}>
+              {renderHighlightedHeadline(service.heroHeadline)}
+            </h1>
+
+            <div className="hero-bottom alien-hero-bottom">
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.35, duration: 0.7 }}
+                className="hero-narrative sdp-hero-subheadline"
+                style={{ textAlign: 'left', maxWidth: '840px', margin: '0 0 1.85rem' }}
+              >
+                {service.heroSubheadline}
+              </motion.p>
+
+              {/* Conversion Action Buttons (Matching Home Page Buttons) */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.45, duration: 0.7 }}
+                className="hero-actions alien-hero-actions sdp-hero-actions"
+              >
+                <button onClick={handleConsultation} className="button button-dark alien-hero-btn" style={{ cursor: 'pointer' }}>
+                  <PhoneCall size={16} />
+                  <span>Architecture Review</span>
+                  <ArrowDownRight size={16} />
+                </button>
+
+                <button onClick={scrollToBlueprint} className="button alien-hero-btn-outline" style={{ cursor: 'pointer' }}>
+                  <span>Sprint Blueprint</span>
+                  <ArrowUpRight size={16} />
+                </button>
+
+                <a
+                  href={`https://wa.me/917852052323?text=Hello%20Selmedic%20Digital%20Labs%2C%20I%20am%20interested%20in%20your%20${encodeURIComponent(service.shortTitle)}%20service.`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="sdp-whatsapp-btn"
+                  style={{ textDecoration: 'none' }}
+                >
+                  <MessageSquare size={16} />
+                  <span>WhatsApp Direct Desk</span>
+                </a>
+              </motion.div>
             </div>
           </div>
 
           {/* Quick Metrics Grid */}
           <div className="sdp-metrics-grid">
             {service.keyBenefits.map((benefit, idx) => (
-              <div key={idx} className="sdp-metric-card">
+              <ScrollReveal key={idx} delay={idx * 60} className="sdp-metric-card">
                 <div className="sdp-metric-stat">{benefit.stat || '99.9%'}</div>
                 <div className="sdp-metric-title">{benefit.title}</div>
                 <div className="sdp-metric-desc">{benefit.desc}</div>
-              </div>
+              </ScrollReveal>
             ))}
           </div>
         </header>
@@ -333,11 +354,11 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
 
               <div className="sdp-deliverables-grid">
                 {service.features.map((feat, idx) => (
-                  <div key={idx} className="sdp-deliverable-card">
+                  <ScrollReveal key={idx} delay={idx * 60} className="sdp-deliverable-card">
                     <div className="sdp-deliverable-icon-box">{getDeliverableIcon(idx)}</div>
                     <h3 className="sdp-deliverable-title">{feat.title}</h3>
                     <p className="sdp-deliverable-desc">{feat.desc}</p>
-                  </div>
+                  </ScrollReveal>
                 ))}
               </div>
             </div>
@@ -411,7 +432,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
 
           <div className="sdp-process-grid">
             {service.process.map((stage, idx) => (
-              <div key={idx} className="sdp-stage-card">
+              <ScrollReveal key={idx} delay={idx * 60} className="sdp-stage-card">
                 <div>
                   <div className="sdp-stage-top">
                     <span className="sdp-stage-num">{stage.step}</span>
@@ -420,7 +441,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
                   <h3 className="sdp-stage-title">{stage.title}</h3>
                   <p className="sdp-stage-desc">{stage.desc}</p>
                 </div>
-              </div>
+              </ScrollReveal>
             ))}
           </div>
         </section>
@@ -468,8 +489,9 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
                 const rel = SEO_SERVICES_MAP[relSlug];
                 if (!rel) return null;
                 return (
-                  <div
+                  <ScrollReveal
                     key={idx}
+                    delay={idx * 60}
                     onClick={() => onNavigate(`service-${rel.slug}`)}
                     className="sdp-related-item"
                     role="button"
@@ -484,7 +506,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
                       <span>EXPLORE SERVICE</span>
                       <ChevronRight size={15} />
                     </div>
-                  </div>
+                  </ScrollReveal>
                 );
               })}
             </div>
@@ -492,7 +514,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
         )}
 
         {/* 7. Full-Width Conversion Footer Banner */}
-        <footer className="sdp-cta-banner">
+        <ScrollReveal as="footer" delay={60} className="sdp-cta-banner">
           <div className="sdp-cta-glow" aria-hidden="true" />
           <div className="sdp-cta-content">
             <span className="sdp-cta-eyebrow">READY TO DEPLOY YOUR SPRINT?</span>
@@ -522,7 +544,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
               </a>
             </div>
           </div>
-        </footer>
+        </ScrollReveal>
       </div>
     </main>
   );

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion as m } from 'framer-motion';
+const motion = m as any;
 import {
   CheckCircle2,
   ShieldCheck,
@@ -28,6 +29,7 @@ import {
 } from 'lucide-react';
 import { SEO_SERVICES_MAP, SEO_KEYWORD_CLUSTERS, SEO_ROADMAP_PHASES } from '../lib/seoData';
 import { useSEO } from '../lib/useSEO';
+import ScrollReveal from '../components/ScrollReveal.tsx';
 
 interface SEOStrategyPageProps {
   onNavigate: (route: string) => void;
@@ -78,9 +80,9 @@ export const SEOStrategyPage: React.FC<SEOStrategyPageProps> = ({
         </nav>
 
         {/* Hero Header (Matching Home Page Hero Layout) */}
-        <header className="seo-hero-card" id="seo-hero-header" style={{ textAlign: 'left' }}>
+        <header className="seo-hero-card" id="seo-hero-header">
           {/* Top Status Bar Left-Aligned */}
-          <div className="hero-meta alien-hero-meta" style={{ width: '100%', display: 'flex', justifyContent: 'flex-start', flexWrap: 'wrap', gap: '0.75rem', marginBottom: '1.25rem' }}>
+          <div className="hero-meta alien-hero-meta">
             <div className="hero-live-status">
               <span className="live-pulse-dot" />
               <span className="live-status-text">
@@ -101,44 +103,68 @@ export const SEOStrategyPage: React.FC<SEOStrategyPageProps> = ({
             </button>
           </div>
 
-          <div className="hero-badge-row" style={{ justifyContent: 'flex-start', marginBottom: '1.25rem' }}>
-            <span className="kicker-pill">
-              <Sparkles size={13} className="pill-spark" />
-              100% WHITE-HAT TECHNICAL SEO &amp; GOOGLE RANKING ENGINE
-            </span>
-          </div>
-
-          <h1 className="display-title alien-display-title" id="seo-main-heading" style={{ textAlign: 'left', maxWidth: '1240px' }}>
-            Selmedic <span className="hero-hl-blue">SEO Engine</span>, Google{' '}
-            <span className="hero-hl-purple">Ranking Architecture</span>, &amp; Search{' '}
-            <span className="hero-hl-cyan">Dominance</span>.
-          </h1>
-
-          <div className="hero-bottom alien-hero-bottom" style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', marginTop: '1.5rem', width: '100%' }}>
-            <p className="hero-narrative" id="seo-sub-heading" style={{ textAlign: 'left', maxWidth: '820px', margin: '0 0 1.85rem' }}>
-              A comprehensive, data-driven blueprint engineered for India market dominance and seamless global expansion. Verified against modern Google Search algorithms, Core Web Vitals, and structured entity graphs.
-            </p>
-
-            {/* Action Buttons Left-Aligned */}
-            <div className="hero-actions alien-hero-actions" style={{ justifyContent: 'flex-start', flexWrap: 'wrap', marginBottom: '2rem' }}>
+          <div className="hero-copy alien-hero-copy">
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="hero-badge-row"
+            >
               <button
-                className="button button-dark alien-hero-btn"
-                onClick={() => {
-                  setActiveTab('audit');
-                  document.getElementById('seo-card-audit-checklist')?.scrollIntoView({ behavior: 'smooth' });
-                }}
-                style={{ cursor: 'pointer' }}
+                onClick={() => onNavigate('about')}
+                className="kicker-pill"
+                style={{ cursor: 'pointer', border: 'none', display: 'inline-flex', alignItems: 'center' }}
               >
-                Explore 8-Pillar Audit <ArrowDownRight size={16} />
+                <Sparkles size={13} className="pill-spark" />
+                100% WHITE-HAT TECHNICAL SEO &amp; GOOGLE RANKING ENGINE
               </button>
+            </motion.div>
 
-              <button
-                className="button alien-hero-btn-outline"
-                onClick={() => onNavigate('contact')}
-                style={{ cursor: 'pointer' }}
+            <h1 className="display-title alien-display-title" id="seo-main-heading">
+              Selmedic <span className="hero-hl-blue">SEO Engine</span>, Google{' '}
+              <span className="hero-hl-purple">Ranking Architecture</span>, &amp; Search{' '}
+              <span className="hero-hl-cyan">Dominance</span>.
+            </h1>
+
+            <div className="hero-bottom alien-hero-bottom">
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.35, duration: 0.7 }}
+                className="hero-narrative"
+                id="seo-sub-heading"
               >
-                Contact SEO Team <ArrowUpRight size={16} />
-              </button>
+                A comprehensive, data-driven blueprint engineered for India market dominance and seamless global expansion. Verified against modern Google Search algorithms, Core Web Vitals, and structured entity graphs.
+              </motion.p>
+
+              {/* Action Buttons Left-Aligned */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.45, duration: 0.7 }}
+                className="hero-actions alien-hero-actions"
+              >
+                <button
+                  className="button button-dark alien-hero-btn"
+                  onClick={() => {
+                    setActiveTab('audit');
+                    document.getElementById('seo-card-audit-checklist')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  style={{ cursor: 'pointer' }}
+                >
+                  <span>8-Pillar Audit</span>
+                  <ArrowDownRight size={16} />
+                </button>
+
+                <button
+                  className="button alien-hero-btn-outline"
+                  onClick={() => onNavigate('contact')}
+                  style={{ cursor: 'pointer' }}
+                >
+                  <span>Contact SEO Team</span>
+                  <ArrowUpRight size={16} />
+                </button>
+              </motion.div>
             </div>
           </div>
 
@@ -187,8 +213,9 @@ export const SEOStrategyPage: React.FC<SEOStrategyPageProps> = ({
                 {auditChecklist.map((item, idx) => {
                   const Icon = item.icon;
                   return (
-                    <div
+                    <ScrollReveal
                       key={idx}
+                      delay={idx * 35}
                       className="seo-audit-item"
                       id={`seo-audit-item-${idx}`}
                     >
@@ -208,7 +235,7 @@ export const SEOStrategyPage: React.FC<SEOStrategyPageProps> = ({
                           {item.desc}
                         </p>
                       </div>
-                    </div>
+                    </ScrollReveal>
                   );
                 })}
               </div>
@@ -216,7 +243,7 @@ export const SEOStrategyPage: React.FC<SEOStrategyPageProps> = ({
 
             {/* Performance & Core Web Vitals Box */}
             <div className="seo-vitals-grid" id="seo-vitals-grid">
-              <div className="seo-vital-card" id="seo-vital-lcp">
+              <ScrollReveal delay={40} className="seo-vital-card" id="seo-vital-lcp">
                 <span className="seo-vital-eyebrow">
                   LARGEST CONTENTFUL PAINT (LCP)
                 </span>
@@ -226,9 +253,9 @@ export const SEOStrategyPage: React.FC<SEOStrategyPageProps> = ({
                 <p className="seo-vital-sub">
                   Target: &lt; 2.5s (Rated: Good / Green). Asynchronous image loading and edge CDN delivery.
                 </p>
-              </div>
+              </ScrollReveal>
 
-              <div className="seo-vital-card" id="seo-vital-cls">
+              <ScrollReveal delay={80} className="seo-vital-card" id="seo-vital-cls">
                 <span className="seo-vital-eyebrow">
                   CUMULATIVE LAYOUT SHIFT (CLS)
                 </span>
@@ -238,9 +265,9 @@ export const SEOStrategyPage: React.FC<SEOStrategyPageProps> = ({
                 <p className="seo-vital-sub">
                   Target: &lt; 0.1 (Rated: Zero Visual Jitter). Hardcoded aspect ratios on all cards and containers.
                 </p>
-              </div>
+              </ScrollReveal>
 
-              <div className="seo-vital-card" id="seo-vital-inp">
+              <ScrollReveal delay={120} className="seo-vital-card" id="seo-vital-inp">
                 <span className="seo-vital-eyebrow">
                   INTERACTION TO NEXT PAINT (INP)
                 </span>
@@ -250,7 +277,7 @@ export const SEOStrategyPage: React.FC<SEOStrategyPageProps> = ({
                 <p className="seo-vital-sub">
                   Target: &lt; 200ms (Rated: Instant). Lightweight React 18 event batching and zero heavy thread blocking.
                 </p>
-              </div>
+              </ScrollReveal>
             </div>
           </section>
         )}
@@ -527,8 +554,10 @@ export const SEOStrategyPage: React.FC<SEOStrategyPageProps> = ({
 
           <div className="seo-hubs-grid" id="seo-hubs-grid">
             {Object.values(SEO_SERVICES_MAP).map((srv, idx) => (
-              <button
+              <ScrollReveal
                 key={idx}
+                delay={(idx % 4) * 50}
+                as="button"
                 id={`seo-service-hub-${srv.slug}`}
                 onClick={() => onNavigate(`service-${srv.slug}`)}
                 className="seo-hub-card"
@@ -548,7 +577,7 @@ export const SEOStrategyPage: React.FC<SEOStrategyPageProps> = ({
                   <span>/services/{srv.slug}</span>
                   <ArrowRight size={14} />
                 </div>
-              </button>
+              </ScrollReveal>
             ))}
           </div>
         </section>

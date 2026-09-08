@@ -1,4 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
+import { motion as m } from 'framer-motion';
+const motion = m as any;
 import {
   ArrowDownRight,
   ArrowRight,
@@ -32,6 +34,7 @@ import {
 } from 'lucide-react';
 import gsap from 'gsap';
 import { getReducedMotion } from '../lib/animations.ts';
+import ScrollReveal from '../components/ScrollReveal.tsx';
 
 import sandeepAvatar from '../src/assets/images/sandeep_barupal_1787155579146.jpg';
 import gaganAvatar from '../src/assets/images/gagan_chouhan_1787155556813.jpg';
@@ -533,11 +536,9 @@ export const CommunityPage: React.FC<CommunityPageProps> = ({ onNavigate }) => {
 
       {/* 3. EXACT HOME PAGE HERO FOUNDATION (LEFT-ALIGNED) */}
       <section className="hero section-pad alien-hero community-hero" id="community-hero">
-        <div className="alien-hero-aura" />
-
-        <div className="hero-grid alien-hero-grid community-hero-grid-wide" style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', maxWidth: '1360px', margin: '0 auto', width: '100%', padding: '0 clamp(1.25rem, 4vw, 3rem)' }}>
-          {/* Top Status Bar (Left-Aligned) */}
-          <div className="hero-meta alien-hero-meta" style={{ width: '100%', display: 'flex', justifyContent: 'flex-start', flexWrap: 'wrap', gap: '0.75rem' }}>
+        <div className="hero-grid alien-hero-grid" style={{ minHeight: 'auto', display: 'block' }}>
+          {/* Top Status Bar (Live Availability & GitHub Stars) */}
+          <div className="hero-meta alien-hero-meta">
             <button
               onClick={() => onNavigate('home')}
               className="hero-live-pill"
@@ -555,36 +556,56 @@ export const CommunityPage: React.FC<CommunityPageProps> = ({ onNavigate }) => {
             </div>
           </div>
 
-          {/* Left-Aligned Headline & Narrative Copy */}
-          <div className="hero-copy alien-hero-copy" style={{ maxWidth: '1240px', width: '100%', margin: '0', textAlign: 'left', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-            <div className="hero-badge-row" style={{ justifyContent: 'flex-start', width: '100%' }}>
-              <span className="kicker-pill">
+          {/* Headline & Narrative Copy */}
+          <div className="hero-copy alien-hero-copy">
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="hero-badge-row"
+            >
+              <button
+                onClick={() => onNavigate('home')}
+                className="kicker-pill"
+                style={{ cursor: 'pointer', border: 'none', display: 'inline-flex', alignItems: 'center' }}
+              >
                 <Sparkles size={13} className="pill-spark" />
                 THE SELMEDIC &amp; CCDL BUILDER GUILD
-              </span>
-            </div>
+              </button>
+            </motion.div>
 
-            <h1 className="display-title alien-display-title" style={{ textAlign: 'left', maxWidth: '1200px' }}>
+            <h1 className="display-title alien-display-title">
               Build <span className="hero-hl-blue">together</span>, share{' '}
               <span className="hero-hl-purple">craft</span>, &amp; ship digital{' '}
               <span className="hero-hl-cyan">products</span>.
             </h1>
 
-            <div className="hero-bottom alien-hero-bottom" style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', marginTop: '1.75rem', width: '100%' }}>
-              <p className="hero-narrative" style={{ textAlign: 'left', maxWidth: '820px', margin: '0 0 1.75rem' }}>
+            <div className="hero-bottom alien-hero-bottom">
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.35, duration: 0.7 }}
+                className="hero-narrative"
+              >
                 A high-density network of software engineers, product designers, technical founders, and growth
                 architects. We build in public, contribute to production-grade open source, conduct live design
                 clinics, and run weekly peer architectural AMAs.
-              </p>
+              </motion.p>
 
-              {/* Action Buttons Left-Aligned */}
-              <div className="hero-actions alien-hero-actions" style={{ justifyContent: 'flex-start', flexWrap: 'wrap' }}>
+              {/* Action Buttons */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.45, duration: 0.7 }}
+                className="hero-actions alien-hero-actions community-hero-actions"
+              >
                 <button
                   className="button button-dark alien-hero-btn"
                   onClick={() => setShowJoinModal(true)}
                   style={{ cursor: 'pointer' }}
                 >
-                  Join Guild Discord &amp; Slack <ArrowDownRight size={16} />
+                  <span>Join Discord Guild</span>
+                  <ArrowDownRight size={16} />
                 </button>
 
                 <button
@@ -595,12 +616,13 @@ export const CommunityPage: React.FC<CommunityPageProps> = ({ onNavigate }) => {
                   }}
                   style={{ cursor: 'pointer' }}
                 >
-                  Explore Open Source Repos <ArrowUpRight size={16} />
+                  <span>Open Source Repos</span>
+                  <ArrowUpRight size={16} />
                 </button>
-              </div>
+              </motion.div>
 
               {/* Value proposition points Left-Aligned */}
-              <div className="community-hero-points-strip" style={{ justifyContent: 'flex-start', flexWrap: 'wrap', marginTop: '1.25rem' }}>
+              <div className="community-hero-points-strip">
                 <div className="hero-point-item">
                   <Code2 size={15} className="text-blue-500" />
                   <span>Production Code</span>
@@ -680,14 +702,14 @@ export const CommunityPage: React.FC<CommunityPageProps> = ({ onNavigate }) => {
             ].map((stat, i) => {
               const IconComp = stat.icon;
               return (
-                <div key={i} className="community-stat-box">
+                <ScrollReveal key={i} delay={i * 70} className="community-stat-box">
                   <div className="stat-icon-wrap">
                     <IconComp size={20} />
                   </div>
                   <strong>{stat.num}</strong>
                   <h3>{stat.label}</h3>
                   <p>{stat.desc}</p>
-                </div>
+                </ScrollReveal>
               );
             })}
           </div>
@@ -721,8 +743,8 @@ export const CommunityPage: React.FC<CommunityPageProps> = ({ onNavigate }) => {
           </div>
 
           <div className="community-repos-grid">
-            {filteredRepos.map((repo) => (
-              <div key={repo.id} className="community-repo-card">
+            {filteredRepos.map((repo, idx) => (
+              <ScrollReveal key={repo.id} delay={(idx % 4) * 80} className="community-repo-card">
                 <div className="repo-top-row">
                   <div className="flex items-center gap-2">
                     <Github size={18} className="text-blue-500" />
@@ -746,9 +768,21 @@ export const CommunityPage: React.FC<CommunityPageProps> = ({ onNavigate }) => {
                 </div>
 
                 {/* Clone Command Bar */}
-                <div className="repo-clone-bar" onClick={() => handleCopyClone(repo)}>
-                  <code>{repo.cloneCmd}</code>
-                  <button className="copy-cmd-btn" aria-label="Copy clone command">
+                <div
+                  className="repo-clone-bar"
+                  onClick={() => handleCopyClone(repo)}
+                  title={`Click to copy: ${repo.cloneCmd}`}
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      handleCopyClone(repo);
+                    }
+                  }}
+                >
+                  <code title={repo.cloneCmd}>{repo.cloneCmd}</code>
+                  <button type="button" className="copy-cmd-btn" aria-label="Copy clone command">
                     {copiedRepoId === repo.id ? (
                       <Check size={14} className="text-emerald-400" />
                     ) : (
@@ -770,7 +804,7 @@ export const CommunityPage: React.FC<CommunityPageProps> = ({ onNavigate }) => {
                     {copiedRepoId === repo.id ? 'Copied to Clipboard!' : 'Copy Command'}
                   </button>
                 </div>
-              </div>
+              </ScrollReveal>
             ))}
           </div>
         </section>
@@ -800,8 +834,8 @@ export const CommunityPage: React.FC<CommunityPageProps> = ({ onNavigate }) => {
           </div>
 
           <div className="community-events-grid">
-            {filteredEvents.map((evt) => (
-              <div key={evt.id} className="community-event-card">
+            {filteredEvents.map((evt, idx) => (
+              <ScrollReveal key={evt.id} delay={(idx % 3) * 80} className="community-event-card">
                 <div className="event-date-badge">
                   <Calendar size={13} />
                   <span>{evt.date}</span>
@@ -839,13 +873,13 @@ export const CommunityPage: React.FC<CommunityPageProps> = ({ onNavigate }) => {
                     RSVP Free <ArrowRight size={14} />
                   </button>
                 </div>
-              </div>
+              </ScrollReveal>
             ))}
           </div>
         </section>
 
         {/* SECTION 04: FINAL INTAKE CTA (Matching Home Page CTA Style) */}
-        <section className="community-section community-final-cta-section">
+        <ScrollReveal as="section" delay={80} className="community-section community-final-cta-section">
           <div className="community-cta-box">
             <div className="cta-ambient" aria-hidden="true" />
             <div className="cta-inner-content">
@@ -886,7 +920,7 @@ export const CommunityPage: React.FC<CommunityPageProps> = ({ onNavigate }) => {
               </div>
             </div>
           </div>
-        </section>
+        </ScrollReveal>
       </main>
     </div>
   );

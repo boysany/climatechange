@@ -20,6 +20,7 @@ export function useReducedMotion() {
 
 export interface ScrollRevealProps {
   children: React.ReactNode;
+  id?: string;
   className?: string;
   delay?: number;
   as?: React.ElementType;
@@ -29,12 +30,14 @@ export interface ScrollRevealProps {
   key?: React.Key;
   role?: string;
   tabIndex?: number;
+  style?: React.CSSProperties;
   onClick?: React.MouseEventHandler<HTMLElement>;
   onKeyDown?: React.KeyboardEventHandler<HTMLElement>;
 }
 
 export default function ScrollReveal({
   children,
+  id,
   className = '',
   delay = 0,
   as: Component = 'div',
@@ -43,6 +46,7 @@ export default function ScrollReveal({
   scale = 0.98,
   role,
   tabIndex,
+  style,
   onClick,
   onKeyDown,
 }: ScrollRevealProps) {
@@ -65,21 +69,37 @@ export default function ScrollReveal({
       filter: 'blur(4px)',
     });
 
+    // Check if element is already inside the viewport upon mount/navigation
+    const rect = el.getBoundingClientRect();
+    const inViewport = rect.top < window.innerHeight * 0.92 && rect.bottom > 0;
+
+    let hasAnimated = false;
+    const triggerAnimation = () => {
+      if (hasAnimated) return;
+      hasAnimated = true;
+      gsap.to(el, {
+        y: 0,
+        scale: 1,
+        opacity: 1,
+        filter: 'blur(0px)',
+        duration,
+        delay: delay / 1000,
+        ease: 'power3.out',
+        clearProps: 'filter,scale',
+      });
+    };
+
+    if (inViewport) {
+      triggerAnimation();
+      return;
+    }
+
     const st = ScrollTrigger.create({
       trigger: el,
-      start: 'top 88%',
+      start: 'top 90%',
       once: true,
       onEnter: () => {
-        gsap.to(el, {
-          y: 0,
-          scale: 1,
-          opacity: 1,
-          filter: 'blur(0px)',
-          duration,
-          delay: delay / 1000,
-          ease: 'power3.out',
-          clearProps: 'filter,scale',
-        });
+        triggerAnimation();
       },
     });
 
@@ -93,6 +113,8 @@ export default function ScrollReveal({
   return (
     <Tag
       ref={ref}
+      id={id}
+      style={style}
       className={`scroll-reveal-gsap ${className}`}
       role={role}
       tabIndex={tabIndex}
