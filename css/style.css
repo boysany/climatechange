@@ -1602,9 +1602,10 @@ html {
 }
 
 .alien-hero-btn {
-  background: var(--blue);
+  background: var(--ink);
   color: var(--paper);
-  box-shadow: var(--cta-shadow);
+  border-color: var(--ink);
+  box-shadow: 0 14px 30px color-mix(in srgb, var(--ink) 16%, transparent);
 }
 
 .alien-hero-btn:hover,
@@ -1615,21 +1616,22 @@ html {
 }
 
 .alien-hero-btn-outline {
-  background: color-mix(in srgb, var(--paper) 72%, transparent);
-  border: 1px solid var(--blue);
-  color: var(--blue);
+  background: color-mix(in srgb, var(--paper) 78%, transparent);
+  border: 1px solid var(--ink);
+  color: var(--ink);
 }
 
 .alien-hero-btn-outline:hover,
 .premium-button-secondary:hover {
-  background: var(--blue);
-  border-color: var(--blue);
+  background: var(--ink);
+  border-color: var(--ink);
   color: var(--paper);
   transform: translateY(-4px);
 }
 
 .premium-button {
   min-width: 0;
+  width: 100%;
   height: 3.5rem;
   min-height: 3.5rem;
   padding: 0.35rem;
@@ -1638,13 +1640,14 @@ html {
 }
 
 .premium-button-primary {
-  background: var(--blue);
+  background: var(--ink);
   color: var(--paper);
-  border-color: var(--blue);
+  border-color: var(--ink);
+  box-shadow: 0 14px 30px color-mix(in srgb, var(--ink) 16%, transparent);
 }
 
 .premium-button-secondary {
-  background: transparent;
+  background: color-mix(in srgb, var(--paper) 78%, transparent);
   color: var(--ink);
   border-color: var(--line);
 }
@@ -1656,16 +1659,27 @@ html {
   justify-content: center;
   width: 2.75rem;
   height: 2.75rem;
-  border-radius: calc(var(--cta-radius) - 0.2rem);
+  border-radius: 999px;
 }
 
 .premium-button-icon-primary {
   background: var(--paper);
-  color: var(--blue);
+  color: var(--ink);
 }
 
 .premium-button-icon-secondary {
   background: var(--ink);
+  color: var(--paper);
+}
+
+.premium-button-primary:hover {
+  background: var(--ink);
+  border-color: var(--ink);
+}
+
+.premium-button-secondary:hover {
+  background: var(--ink);
+  border-color: var(--ink);
   color: var(--paper);
 }
 
@@ -4337,7 +4351,9 @@ html {
 /* Mobile Visibility Handling */
 @media (max-width: 768px) {
   .nav-cta-contact {
-    display: none !important;
+  display: inline-flex !important;
+  padding: 0.58rem 1rem;
+  font-size: 0.82rem;
   }
   .nav-cta-book {
     padding: 0.55rem 1rem;
