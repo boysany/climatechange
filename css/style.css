@@ -1646,12 +1646,10 @@ html {
   box-shadow: 0 14px 30px color-mix(in srgb, var(--ink) 16%, transparent);
 }
 
-.premium-button-secondary,
-.premium-button-outline {
-  background: var(--paper);
+.premium-button-secondary {
+  background: color-mix(in srgb, var(--paper) 78%, transparent);
   color: var(--ink);
-  border-color: var(--ink);
-  box-shadow: none;
+  border-color: var(--line);
 }
 
 .premium-button-icon-primary,
