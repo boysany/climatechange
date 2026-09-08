@@ -14436,9 +14436,17 @@ select.form-input {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1.5rem;
+  min-width: 0;
+}
+
+@media (max-width: 860px) {
+  .community-repos-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 
 .community-repo-card {
+  min-width: 0;
   padding: 1.75rem;
   border: 1px solid var(--line);
   background: var(--paper-card);
@@ -14459,7 +14467,17 @@ select.form-input {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 0.75rem;
+  min-width: 0;
   margin-bottom: 1rem;
+}
+
+.repo-top-row > div:first-child {
+  min-width: 0;
+}
+
+.repo-stars-badge {
+  flex-shrink: 0;
 }
 
 .repo-lang-badge {
@@ -14488,6 +14506,7 @@ select.form-input {
 }
 
 .repo-name {
+  overflow-wrap: anywhere;
   font-size: 1.3rem;
   font-weight: 800;
   letter-spacing: -0.03em;
@@ -14523,6 +14542,7 @@ select.form-input {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  min-width: 0;
   padding: 0.65rem 0.95rem;
   background: var(--paper);
   border: 1px solid var(--line);
@@ -14558,6 +14578,7 @@ select.form-input {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 1rem;
   padding-top: 1rem;
   border-top: 1px solid var(--line);
 }
@@ -14565,6 +14586,37 @@ select.form-input {
 .repo-link-btn {
   padding: 0.6rem 1.15rem;
   font-size: 0.78rem;
+}
+
+@media (max-width: 540px) {
+  .community-main-content {
+    padding-inline: 1rem;
+  }
+
+  .community-repo-card {
+    padding: 1.25rem;
+  }
+
+  .repo-top-row,
+  .repo-actions-row {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .repo-actions-row {
+    flex-direction: column;
+  }
+
+  .repo-link-btn,
+  .repo-actions-row > .text-link {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .repo-clone-bar code {
+    min-width: 0;
+  }
 }
 
 /* Events Grid */
