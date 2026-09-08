@@ -26,17 +26,17 @@ const PremiumButton: React.FC<PremiumButtonProps> = ({
   disabled = false
 }) => {
   const variants = {
-    primary: 'premium-button-primary',
-    secondary: 'premium-button-primary',
-    outline: 'premium-button-secondary',
-    white: 'premium-button-secondary'
+    primary: 'bg-blue-600 text-white hover:bg-blue-700 shadow-blue-500/20',
+    secondary: 'bg-[#0a0a0b] text-white hover:bg-slate-900 shadow-xl',
+    outline: 'bg-transparent border border-slate-200 text-slate-900 hover:border-slate-950',
+    white: 'bg-white text-slate-950 hover:bg-slate-50 shadow-xl'
   };
 
   const iconStyles = {
-    primary: 'premium-button-icon-primary',
-    secondary: 'premium-button-icon-primary',
-    outline: 'premium-button-icon-secondary',
-    white: 'premium-button-icon-secondary'
+    primary: 'bg-white text-blue-600',
+    secondary: 'bg-white text-[#0a0a0b]',
+    outline: 'bg-[#0a0a0b] text-white',
+    white: 'bg-[#0a0a0b] text-white'
   };
 
   return (
@@ -46,7 +46,7 @@ const PremiumButton: React.FC<PremiumButtonProps> = ({
       whileHover={disabled || isLoading ? {} : { scale: 1.02 }}
       whileTap={disabled || isLoading ? {} : { scale: 0.98 }}
       onClick={onClick}
-      className={`premium-button group relative flex items-center rounded-full p-1.5 min-w-[240px] md:min-w-[260px] h-[58px] transition-all duration-500 ${variants[variant]} ${className} ${disabled || isLoading ? 'opacity-70 cursor-not-allowed' : ''}`}
+      className={`group relative flex items-center rounded-full p-1.5 min-w-[240px] md:min-w-[260px] h-[58px] transition-all duration-500 ${variants[variant]} ${className} ${disabled || isLoading ? 'opacity-70 cursor-not-allowed' : ''}`}
     >
       {/* The Kinetic Circle */}
       <motion.div 
