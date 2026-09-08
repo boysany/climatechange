@@ -1554,6 +1554,190 @@ button {
   gap: 0.5rem;
 }
 
+/* ============================================================
+   SHARED ENTERPRISE INTERACTION SYSTEM
+   ============================================================ */
+:root {
+  --cta-radius: 0.85rem;
+  --cta-shadow: 0 16px 34px color-mix(in srgb, var(--blue) 18%, transparent);
+  --ease-enterprise: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 4px;
+}
+
+.button,
+.premium-button,
+.alien-hero-btn,
+.alien-hero-btn-outline {
+  min-height: 3.5rem;
+  border-radius: var(--cta-radius);
+  font-weight: 750;
+  letter-spacing: 0.02em;
+  transition: transform 420ms var(--ease-enterprise), background-color 260ms ease,
+    border-color 260ms ease, color 260ms ease, box-shadow 420ms var(--ease-enterprise);
+  will-change: transform;
+}
+
+.alien-hero-actions,
+.inner-hero-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  width: min(100%, 34rem);
+}
+
+.alien-hero-btn,
+.alien-hero-btn-outline {
+  width: 100%;
+  justify-content: center;
+  padding: 0.9rem 1.15rem;
+  white-space: normal;
+}
+
+.alien-hero-btn {
+  background: var(--blue);
+  color: var(--paper);
+  box-shadow: var(--cta-shadow);
+}
+
+.alien-hero-btn:hover,
+.premium-button-primary:hover {
+  background: var(--blue-light);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 42px color-mix(in srgb, var(--blue) 28%, transparent);
+}
+
+.alien-hero-btn-outline {
+  background: color-mix(in srgb, var(--paper) 72%, transparent);
+  border: 1px solid var(--blue);
+  color: var(--blue);
+}
+
+.alien-hero-btn-outline:hover,
+.premium-button-secondary:hover {
+  background: var(--blue);
+  border-color: var(--blue);
+  color: var(--paper);
+  transform: translateY(-4px);
+}
+
+.premium-button {
+  min-width: 0;
+  height: 3.5rem;
+  min-height: 3.5rem;
+  padding: 0.35rem;
+  border: 1px solid transparent;
+  box-shadow: none;
+}
+
+.premium-button-primary {
+  background: var(--blue);
+  color: var(--paper);
+  border-color: var(--blue);
+}
+
+.premium-button-secondary {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--line);
+}
+
+.premium-button-icon-primary,
+.premium-button-icon-secondary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: calc(var(--cta-radius) - 0.2rem);
+}
+
+.premium-button-icon-primary {
+  background: var(--paper);
+  color: var(--blue);
+}
+
+.premium-button-icon-secondary {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.hero-art,
+.hero-roadmap-card,
+.case-study-hero-img-wrap,
+.case-card {
+  transition: transform 650ms var(--ease-enterprise), box-shadow 650ms var(--ease-enterprise), border-color 260ms ease;
+}
+
+.hero-art:hover,
+.hero-roadmap-card:hover,
+.case-study-hero-img-wrap:hover,
+.case-card:hover {
+  transform: translateY(-6px);
+  border-color: color-mix(in srgb, var(--blue) 60%, var(--line));
+  box-shadow: 0 24px 60px color-mix(in srgb, var(--ink) 12%, transparent);
+}
+
+@media (min-width: 800px) {
+  .alien-hero-actions,
+  .inner-hero-actions {
+    display: flex;
+    width: auto;
+  }
+
+  .alien-hero-btn,
+  .alien-hero-btn-outline {
+    width: auto;
+    min-width: 10rem;
+  }
+}
+
+@media (max-width: 520px) {
+  .alien-hero-actions,
+  .inner-hero-actions {
+    width: 100%;
+  }
+
+  .alien-hero-btn,
+  .alien-hero-btn-outline {
+    min-height: 3.75rem;
+    font-size: 0.78rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .hero-art:hover,
+  .hero-roadmap-card:hover,
+  .case-study-hero-img-wrap:hover,
+  .case-card:hover,
+  .alien-hero-btn:hover,
+  .alien-hero-btn-outline:hover,
+  .premium-button-primary:hover,
+  .premium-button-secondary:hover {
+    transform: none;
+  }
+}
+
 .process-duration-pill {
   display: inline-flex;
   align-items: center;
