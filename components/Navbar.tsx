@@ -10,7 +10,6 @@ import {
   Sparkles,
   Clock,
   Compass,
-  Linkedin,
   MessageSquare,
 } from 'lucide-react';
 import CcdlLogo from './CcdlLogo.tsx';
@@ -205,22 +204,7 @@ export default function Navbar({ currentRoute = 'home', onNavigate }: NavbarProp
 
           {/* Desktop & Mobile Right Action Bar */}
           <div className="alien-nav-right">
-            {/* Quick-Access LinkedIn & Discord Action Buttons */}
-            <a
-              href="https://www.linkedin.com/in/climate-change-digital-labs-3796b1431/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="alien-nav-social-btn desktop-only-flex"
-              title="Connect with CCDL on LinkedIn"
-              aria-label="LinkedIn Profile"
-              onClick={(e) => {
-                e.stopPropagation();
-                window.open('https://www.linkedin.com/in/climate-change-digital-labs-3796b1431/', '_blank', 'noopener,noreferrer');
-              }}
-            >
-              <Linkedin size={15} />
-            </a>
-
+            {/* Quick-access Discord action button */}
             <a
               href="https://discord.gg/climatechangedigitallabs"
               target="_blank"
@@ -621,20 +605,6 @@ export default function Navbar({ currentRoute = 'home', onNavigate }: NavbarProp
                     Instagram
                   </a>
                   <a
-                    href="https://www.linkedin.com/in/climate-change-digital-labs-3796b1431/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="menu-social-link menu-social-featured linkedin-highlight"
-                    title="Connect on LinkedIn"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      window.open('https://www.linkedin.com/in/climate-change-digital-labs-3796b1431/', '_blank', 'noopener,noreferrer');
-                    }}
-                  >
-                    <Linkedin size={13} />
-                    <span>LinkedIn</span>
-                  </a>
-                  <a
                     href="https://discord.gg/climatechangedigitallabs"
                     target="_blank"
                     rel="noopener noreferrer"
@@ -647,14 +617,6 @@ export default function Navbar({ currentRoute = 'home', onNavigate }: NavbarProp
                   >
                     <MessageSquare size={13} />
                     <span>Discord</span>
-                  </a>
-                  <a
-                    href="https://x.com/DD_Digitallabs"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="menu-social-link"
-                  >
-                    Twitter / X
                   </a>
                 </div>
               </div>
