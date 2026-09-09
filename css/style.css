@@ -2317,9 +2317,79 @@ button {
   box-shadow: 0 0 8px #4f7fff, 0 0 16px #5ce3d8;
 }
 
-/* ============================================================
-   SERVICES & EXPERTISE SECTION (ALLIES.DESIGN STYLE HOVER POPUP)
-   ============================================================ */
+/* Shared responsive safeguards for long-form, legal, and trust content */
+.static-page-content,
+.static-page-content > *,
+.static-page-content h1,
+.static-page-content h2,
+.static-page-content h3,
+.static-page-content p,
+.static-page-content li,
+.static-page-content a {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.static-page-content p,
+.static-page-content li,
+.static-page-content a,
+.static-page-content span {
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+.static-page-content .glass,
+.static-page-content [class*="rounded-"] {
+  max-width: 100%;
+}
+
+@media (max-width: 640px) {
+  html { scroll-padding-top: 4.5rem; }
+  .section-pad { padding-inline: 1rem; }
+  .static-page-content { padding-inline: 1rem; }
+  .static-page-content > section,
+  .static-page-content > div { width: 100%; }
+  .static-page-content h1 { font-size: clamp(2.4rem, 12vw, 4rem); line-height: 0.98; }
+  .static-page-content h2 { font-size: clamp(1.65rem, 8vw, 2.5rem); }
+  .static-page-content .glass { padding: 1.25rem; border-radius: 1.5rem; }
+  .static-page-content .grid { gap: 1rem; }
+  .static-page-content button,
+  .static-page-content a { min-height: 2.75rem; }
+}
+
+  @media (max-width: 640px) {
+  .static-page-hero {
+  min-height: 29rem;
+  padding: 5rem 1rem 2rem;
+  }
+  .static-page-hero > .relative.z-10 {
+  position: absolute !important;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100% !important;
+  max-width: none !important;
+  padding: 5rem 1.5rem 2rem;
+  }
+  .static-page-hero h1 {
+  font-size: clamp(2.75rem, 14vw, 4.25rem);
+  line-height: 0.96;
+  overflow-wrap: anywhere;
+  }
+  .static-page-hero > div.relative > div:first-child {
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  }
+  .static-page-hero > div.relative > div:first-child span {
+  letter-spacing: 0.18em;
+  }
+  }
+
+  /* ============================================================
+  SERVICES & EXPERTISE SECTION (ALLIES.DESIGN STYLE HOVER POPUP)
+  ============================================================ */
 .services {
   position: relative;
 }

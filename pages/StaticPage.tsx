@@ -149,7 +149,7 @@ const StaticPage: React.FC<StaticPageProps> = ({ pageId, isDark, onBack }) => {
       'newsletter': {
         title: "The Pulse",
         subtitle: "Studio Insights",
-        heroImg: "https://images.unsplash.com/photo-1516245834210-c4c142787335?auto=format&fit=crop&get=80&w=1600",
+        heroImg: "https://images.unsplash.com/photo-1516245834210-c4c142787335?auto=format&fit=crop&q=80&w=1600",
         icon: <Send className="text-blue-600" size={32} />,
         type: 'newsletter-promo',
         topics: ["UI/UX Trends", "Full-Stack Performance", "Case Studies & Breakdown"]
@@ -238,7 +238,7 @@ const StaticPage: React.FC<StaticPageProps> = ({ pageId, isDark, onBack }) => {
       </div>
 
       {/* Hero */}
-      <motion.section className="relative h-[55vh] flex items-center justify-center overflow-hidden">
+      <motion.section className="static-page-hero relative min-h-[55vh] flex items-center justify-center overflow-hidden">
         <motion.div 
           initial={{ scale: 1.1, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
@@ -287,8 +287,8 @@ const StaticPage: React.FC<StaticPageProps> = ({ pageId, isDark, onBack }) => {
       </motion.section>
 
       {/* Main Content Areas */}
-      <motion.section className="py-24 px-6 relative z-10">
-        <motion.div className="max-w-7xl mx-auto">
+      <motion.section className="static-page-content py-24 px-6 relative z-10">
+        <motion.div className="max-w-7xl mx-auto min-w-0">
           
           {/* JOBS LIST */}
           {page.type === 'jobs-list' && (
@@ -425,7 +425,7 @@ const StaticPage: React.FC<StaticPageProps> = ({ pageId, isDark, onBack }) => {
                       </div>
                     </div>
                   </div>
-                  <PremiumButton text="Reserve Seat" variant="primary" />
+                  <PremiumButton text="Register Interest" variant="primary" />
                 </motion.div>
               ))}
             </div>

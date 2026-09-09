@@ -13,6 +13,7 @@ import WhyUs from './sections/WhyUs.tsx';
 import CTA from './sections/CTA.tsx';
 import Footer from './sections/Footer.tsx';
 import CCDLPage from './pages/CCDLPage.tsx';
+import StaticPage from './pages/StaticPage.tsx';
 import { initLenis, destroyLenis, refreshScrollTriggers } from './lib/animations.ts';
 
 const motion = m as any;
@@ -134,7 +135,11 @@ export default function App() {
       >
         <main>
           {internal ? (
-            <CCDLPage pageId={route} onNavigate={navigate} />
+            ['privacy-policy', 'terms-of-service', 'security-compliance', 'cookie-policy', 'faqs', 'contact'].includes(route) ? (
+              <StaticPage pageId={route} isDark={isDark} onBack={() => navigate('home')} />
+            ) : (
+              <CCDLPage pageId={route} onNavigate={navigate} />
+            )
           ) : (
             <>
               <Hero onNavigate={navigate} />
