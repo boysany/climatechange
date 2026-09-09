@@ -1,9 +1,6 @@
 /**
- * Authentic, Human-Centered Executive & Engineering Leadership Profiles
- * All portraits are high-resolution editorial photography of real industry professionals,
- * strictly eliminating AI-generated artifacts, plastic skin filters, and uncanny-valley textures.
- * 
- * Sourced under the permissive Unsplash License (Commercial & Non-Commercial royalty-free).
+ * Human-centered executive and engineering leadership profiles.
+ * Team cards use privacy-safe monogram avatars rather than personal photographs.
  */
 
 export interface TeamMember {
@@ -12,7 +9,6 @@ export interface TeamMember {
   specialty: string;
   tag: string;
   location: string;
-  image: string;
   bio: string;
   skills: string[];
   experience: string;
@@ -33,7 +29,6 @@ export const AUTHENTIC_TEAM_MEMBERS: TeamMember[] = [
     specialty: 'Creative Direction & Design Systems',
     tag: 'FOUNDING CORE',
     location: 'Jaipur, Rajasthan',
-    image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=800&auto=format&fit=crop',
     bio: 'Pioneers human-centered visual architectures, tokenized component libraries, and spatial interfaces engineered with pixel-level mathematical rigor.',
     skills: ['Figma Systems', 'UI/UX Architecture', 'Design Tokens', 'Web Design', 'Spatial Motion'],
     experience: '6+ Years Experience',
@@ -45,7 +40,6 @@ export const AUTHENTIC_TEAM_MEMBERS: TeamMember[] = [
     specialty: 'React 18, TypeScript & Micro-Interactions',
     tag: 'FOUNDING CORE',
     location: 'Jaipur, Rajasthan',
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop',
     bio: 'Turns complex design visions into ultra-responsive, resilient frontend applications with sub-second load times and silky-smooth GSAP motion physics.',
     skills: ['React 18', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'Next.js & Vite'],
     experience: '5+ Years Experience',
@@ -57,7 +51,6 @@ export const AUTHENTIC_TEAM_MEMBERS: TeamMember[] = [
     specialty: 'Distributed Systems & High-Throughput APIs',
     tag: 'FOUNDING CORE',
     location: 'Jaipur, Rajasthan',
-    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=800&auto=format&fit=crop',
     bio: 'Architects robust microservice pipelines, relational database schemas, and low-latency REST/GraphQL APIs engineered for 99.99% uptime.',
     skills: ['Node.js', 'PostgreSQL', 'REST & GraphQL', 'Prisma ORM', 'Redis Caching'],
     experience: '5+ Years Experience',
@@ -69,7 +62,6 @@ export const AUTHENTIC_TEAM_MEMBERS: TeamMember[] = [
     specialty: 'Database Security & Cloud DevOps',
     tag: 'FOUNDING CORE',
     location: 'Jaipur, Rajasthan',
-    image: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=800&auto=format&fit=crop',
     bio: 'Translates high-load enterprise requirements into bulletproof cloud infrastructures, automated CI/CD pipelines, and SOC2-compliant microservices.',
     skills: ['Database Optimization', 'Cloud DevOps', 'Microservices', 'API Security', 'Docker'],
     experience: '5+ Years Experience',
@@ -81,7 +73,6 @@ export const AUTHENTIC_TEAM_MEMBERS: TeamMember[] = [
     specialty: 'Positioning, Content & Growth Campaigns',
     tag: 'DELIVERY CORE',
     location: 'Remote / Jaipur',
-    image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=800&auto=format&fit=crop',
     bio: 'Builds clear product stories and practical growth systems that turn technical value into qualified enterprise demand.',
     skills: ['Content Strategy', 'Product Marketing', 'Growth Campaigns'],
     experience: '4+ Years Experience',
@@ -93,7 +84,6 @@ export const AUTHENTIC_TEAM_MEMBERS: TeamMember[] = [
     specialty: 'Quality Systems & Release Automation',
     tag: 'DELIVERY CORE',
     location: 'Remote / Bangalore',
-    image: 'https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?q=80&w=800&auto=format&fit=crop',
     bio: 'Keeps every release dependable through thoughtful test coverage, end-to-end Cypress suites, and zero-regression protocols.',
     skills: ['QA Automation', 'CI/CD Pipelines', 'Performance Benchmarks'],
     experience: '4+ Years Experience',
@@ -105,7 +95,6 @@ export const AUTHENTIC_TEAM_MEMBERS: TeamMember[] = [
     specialty: 'Client Enablement & Sprint Delivery',
     tag: 'DELIVERY CORE',
     location: 'Remote / Mumbai',
-    image: 'https://images.unsplash.com/photo-1534751516642-a1714f5a5b17?q=80&w=800&auto=format&fit=crop',
     bio: 'Connects client business objectives to practical sprint decisions and makes collaboration transparent from kickoff to production handoff.',
     skills: ['Sprint Discovery', 'Delivery Cadence', 'Client Enablement'],
     experience: '5+ Years Experience',
@@ -117,7 +106,6 @@ export const AUTHENTIC_TEAM_MEMBERS: TeamMember[] = [
     specialty: 'Infrastructure & Platform Reliability',
     tag: 'DELIVERY CORE',
     location: 'Remote / Pune',
-    image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=800&auto=format&fit=crop',
     bio: 'Supports secure, observable cloud environments that help product teams deploy rapidly without compromising availability or security.',
     skills: ['Cloud Ops', 'Kubernetes', 'Real-Time Monitoring'],
     experience: '4+ Years Experience',
