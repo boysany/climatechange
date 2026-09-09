@@ -10,7 +10,6 @@ import {
   Sparkles,
   Clock,
   Compass,
-  MessageSquare,
 } from 'lucide-react';
 import CcdlLogo from './CcdlLogo.tsx';
 
@@ -204,22 +203,6 @@ export default function Navbar({ currentRoute = 'home', onNavigate }: NavbarProp
 
           {/* Desktop & Mobile Right Action Bar */}
           <div className="alien-nav-right">
-            {/* Quick-access Discord action button */}
-            <a
-              href="https://discord.gg/climatechangedigitallabs"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="alien-nav-social-btn desktop-only-flex"
-              title="Join CCDL Discord Community"
-              aria-label="Discord Community"
-              onClick={(e) => {
-                e.stopPropagation();
-                window.open('https://discord.gg/climatechangedigitallabs', '_blank', 'noopener,noreferrer');
-              }}
-            >
-              <MessageSquare size={15} />
-            </a>
-
             {/* Contact Solid Dark Pill */}
             <button
               onClick={() => handleNav('contact')}
