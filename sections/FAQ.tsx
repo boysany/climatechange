@@ -3,6 +3,9 @@ import React, { useState } from 'react';
 import { motion as m, AnimatePresence } from 'framer-motion';
 import { Plus, Minus, MessageCircle, HelpCircle, ArrowRight } from 'lucide-react';
 import PremiumButton from '../components/PremiumButton.tsx';
+import { FOUNDER_AVATARS } from '../lib/teamData.ts';
+
+const sandeepPortrait = FOUNDER_AVATARS.sandeep;
 
 // Cast motion to any to bypass strict type checking on motion props
 const motion = m as any;
@@ -83,18 +86,18 @@ const FAQ: React.FC = () => {
                 <motion.div className="flex items-center justify-between gap-4">
                   <motion.div className="flex items-center gap-3">
                     <motion.img 
-                      src="https://i.pravatar.cc/150?u=alex" 
-                      className="w-12 h-12 rounded-full border-2 border-white dark:border-slate-800 shadow-sm" 
-                      alt="Alex"
+                      src={sandeepPortrait} 
+                      className="w-12 h-12 rounded-full border-2 border-white dark:border-slate-800 shadow-sm object-cover" 
+                      alt="Sandeep Barupal"
                     />
                     <motion.div>
                       <motion.div className="flex items-center gap-1">
-                        <motion.span className="font-medium text-slate-900 dark:text-white text-sm transition-colors">Alex Rivera</motion.span>
+                        <motion.span className="font-medium text-slate-900 dark:text-white text-sm transition-colors">Sandeep Barupal</motion.span>
                         <motion.div className="w-3 h-3 bg-green-500 rounded-full flex items-center justify-center">
                           <motion.div className="w-1.5 h-1.5 bg-white rounded-full animate-pulse" />
                         </motion.div>
                       </motion.div>
-                      <motion.p className="text-[10px] text-slate-400 dark:text-slate-500 font-medium transition-colors">business.deepx@gmail.com</motion.p>
+                      <motion.p className="text-[10px] text-slate-400 dark:text-slate-500 font-medium transition-colors">climatechangedigitallabs@gmail.com</motion.p>
                     </motion.div>
                   </motion.div>
                 </motion.div>

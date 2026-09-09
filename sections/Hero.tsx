@@ -4,6 +4,7 @@ import { motion as m } from 'framer-motion';
 import gsap from 'gsap';
 import { getReducedMotion } from '../lib/animations.ts';
 import TextReveal from '../components/TextReveal.tsx';
+import MarkerHighlight from '../components/MarkerHighlight.tsx';
 
 const motion = m as any;
 
@@ -80,9 +81,13 @@ export default function Hero({ onNavigate }: HeroProps) {
 
           <h1 className="display-title alien-display-title">
             <span className="hero-brand-name">CCDL</span> creates{' '}
-            <span className="hero-hl-blue" onClick={() => onNavigate?.('digital-products')} style={{ cursor: 'pointer' }}>digital products</span>,{' '}
+            <span onClick={() => onNavigate?.('digital-products')} style={{ cursor: 'pointer' }}>
+              <MarkerHighlight color="blue">digital products</MarkerHighlight>
+            </span>,{' '}
             <span className="hero-hl-purple" onClick={() => onNavigate?.('design-systems')} style={{ cursor: 'pointer' }}>design systems</span>, &amp;{' '}
-            <span className="hero-hl-cyan" onClick={() => onNavigate?.('software')} style={{ cursor: 'pointer' }}>experiences</span> that move business forward.
+            <span onClick={() => onNavigate?.('software')} style={{ cursor: 'pointer' }}>
+              <MarkerHighlight color="cyan">experiences</MarkerHighlight>
+            </span> that move business forward.
           </h1>
 
           <div className="hero-bottom alien-hero-bottom">
@@ -107,6 +112,7 @@ export default function Hero({ onNavigate }: HeroProps) {
                 className="button button-dark alien-hero-btn"
                 onClick={() => onNavigate?.('work')}
                 style={{ cursor: 'pointer' }}
+                data-cursor="EXPLORE"
               >
                 <span>Explore Work</span>
                 <ArrowDownRight size={16} />
@@ -116,6 +122,7 @@ export default function Hero({ onNavigate }: HeroProps) {
                 className="button alien-hero-btn-outline"
                 onClick={() => onNavigate?.('contact')}
                 style={{ cursor: 'pointer' }}
+                data-cursor="CONNECT"
               >
                 <span>Contact Us</span>
                 <ArrowUpRight size={16} />
@@ -131,6 +138,7 @@ export default function Hero({ onNavigate }: HeroProps) {
           style={{ '--mx': `${pointer.x}%`, '--my': `${pointer.y}%`, perspective: 1000, cursor: 'pointer' } as any}
           aria-label="Interactive geometric design card"
           onClick={() => onNavigate?.('product-design')}
+          data-cursor="VIEW"
         >
           <span className="art-label">System / Specimen</span>
           <span className="art-code">

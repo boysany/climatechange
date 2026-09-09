@@ -30,11 +30,12 @@ import {
 import gsap from 'gsap';
 import { getReducedMotion } from '../lib/animations.ts';
 import ScrollReveal from '../components/ScrollReveal.tsx';
+import { FOUNDER_AVATARS } from '../lib/teamData.ts';
 
-import sandeepAvatar from '../src/assets/images/sandeep_barupal_1787155579146.jpg';
-import gaganAvatar from '../src/assets/images/gagan_chouhan_1787155556813.jpg';
-import jaspalAvatar from '../src/assets/images/jaspal_byavat_1787155617742.jpg';
-import sahiramAvatar from '../src/assets/images/sahiram_nayak_1787155597072.jpg';
+const sandeepAvatar = FOUNDER_AVATARS.sandeep;
+const gaganAvatar = FOUNDER_AVATARS.gagan;
+const jaspalAvatar = FOUNDER_AVATARS.jaspal;
+const sahiramAvatar = FOUNDER_AVATARS.sahiram;
 
 export interface BlogPost {
   slug: string;

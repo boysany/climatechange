@@ -140,9 +140,10 @@ const StaticPage: React.FC<StaticPageProps> = ({ pageId, isDark, onBack }) => {
         type: 'social-feed',
         channels: [
           { name: "LinkedIn", value: "Climate Change Digital Labs", url: "https://www.linkedin.com/in/climate-change-digital-labs-3796b1431/", icon: <ArrowUpRight size={24} /> },
+          { name: "Discord", value: "CCDL Developer Guild", url: "https://discord.gg/climatechangedigitallabs", icon: <MessageCircle size={24} /> },
           { name: "Instagram", value: "@climate_change_digital_labs", url: "https://www.instagram.com/climate_change_digital_labs/", icon: <Camera size={24} /> },
           { name: "Twitter / X", value: "@DD_Digitallabs", url: "https://x.com/DD_Digitallabs", icon: <Share2 size={24} /> },
-          { name: "Dribbble", value: "climate-change-digital-labs", url: "https://dribbble.com/climate-change-digital-labs", icon: <Star size={24} /> },
+          { name: "Dribbble", value: "WorkConnect Dashboard", url: "https://dribbble.com/shots/27699397-WorkConnect-HR-Employee-Management-Dashboard?utm_source=Clipboard_Shot&utm_campaign=climate-change-digital-labs&utm_content=WorkConnect%20HR%20%26%20Employee%20Management%20Dashboard&utm_medium=Social_Share", icon: <Star size={24} /> },
           { name: "Behance", value: "climatedigital1", url: "https://www.behance.net/climatedigital1", icon: <Star size={24} /> }
         ]
       },

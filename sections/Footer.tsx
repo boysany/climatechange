@@ -18,6 +18,9 @@ export default function Footer({
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const dribbbleWorkConnectUrl =
+    'https://dribbble.com/shots/27699397-WorkConnect-HR-Employee-Management-Dashboard?utm_source=Clipboard_Shot&utm_campaign=climate-change-digital-labs&utm_content=WorkConnect%20HR%20%26%20Employee%20Management%20Dashboard&utm_medium=Social_Share';
+
   return (
     <footer className="footer" id="site-footer">
       <div className="footer-container">
@@ -72,10 +75,16 @@ export default function Footer({
             {/* Sub-column 1 */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.1rem' }}>
               <a
-                href="https://dribbble.com/climate-change-digital-labs"
+                href={dribbbleWorkConnectUrl}
                 target="_blank"
-                rel="noreferrer"
-                className="footer-link-row"
+                rel="noopener noreferrer"
+                className="footer-link-row footer-dribbble-link"
+                title="WorkConnect HR & Employee Management Dashboard on Dribbble"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  window.open(dribbbleWorkConnectUrl, '_blank', 'noopener,noreferrer');
+                }}
+                style={{ cursor: 'pointer' }}
               >
                 <span>Dribbble</span>
                 <ArrowUpRight size={16} className="footer-arrow" />
@@ -83,7 +92,7 @@ export default function Footer({
               <a
                 href="https://www.behance.net/climatedigital1"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="footer-link-row"
               >
                 <span>Behance</span>
@@ -92,7 +101,7 @@ export default function Footer({
               <a
                 href="https://www.instagram.com/climate_change_digital_labs/"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="footer-link-row"
               >
                 <span>Instagram</span>
@@ -103,18 +112,9 @@ export default function Footer({
             {/* Sub-column 2 */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.1rem' }}>
               <a
-                href="https://www.linkedin.com/in/climate-change-digital-labs-3796b1431/"
-                target="_blank"
-                rel="noreferrer"
-                className="footer-link-row"
-              >
-                <span>LinkedIn</span>
-                <ArrowUpRight size={16} className="footer-arrow" />
-              </a>
-              <a
                 href="https://x.com/DD_Digitallabs"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="footer-link-row"
               >
                 <span>Twitter / X</span>
@@ -123,21 +123,11 @@ export default function Footer({
               <a
                 href="https://wa.me/917852052323"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="footer-link-row"
                 title="WhatsApp Direct"
               >
                 <span>WhatsApp</span>
-                <ArrowUpRight size={16} className="footer-arrow" />
-              </a>
-              <a
-                href="https://discord.gg/climatechangedigitallabs"
-                target="_blank"
-                rel="noreferrer"
-                className="footer-link-row"
-                title="Join our Discord Community"
-              >
-                <span>Discord</span>
                 <ArrowUpRight size={16} className="footer-arrow" />
               </a>
             </div>

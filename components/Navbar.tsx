@@ -10,6 +10,8 @@ import {
   Sparkles,
   Clock,
   Compass,
+  Linkedin,
+  MessageSquare,
 } from 'lucide-react';
 import CcdlLogo from './CcdlLogo.tsx';
 
@@ -203,6 +205,37 @@ export default function Navbar({ currentRoute = 'home', onNavigate }: NavbarProp
 
           {/* Desktop & Mobile Right Action Bar */}
           <div className="alien-nav-right">
+            {/* Quick-Access LinkedIn & Discord Action Buttons */}
+            <a
+              href="https://www.linkedin.com/in/climate-change-digital-labs-3796b1431/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="alien-nav-social-btn desktop-only-flex"
+              title="Connect with CCDL on LinkedIn"
+              aria-label="LinkedIn Profile"
+              onClick={(e) => {
+                e.stopPropagation();
+                window.open('https://www.linkedin.com/in/climate-change-digital-labs-3796b1431/', '_blank', 'noopener,noreferrer');
+              }}
+            >
+              <Linkedin size={15} />
+            </a>
+
+            <a
+              href="https://discord.gg/climatechangedigitallabs"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="alien-nav-social-btn desktop-only-flex"
+              title="Join CCDL Discord Community"
+              aria-label="Discord Community"
+              onClick={(e) => {
+                e.stopPropagation();
+                window.open('https://discord.gg/climatechangedigitallabs', '_blank', 'noopener,noreferrer');
+              }}
+            >
+              <MessageSquare size={15} />
+            </a>
+
             {/* Contact Solid Dark Pill */}
             <button
               onClick={() => handleNav('contact')}
@@ -559,17 +592,22 @@ export default function Navbar({ currentRoute = 'home', onNavigate }: NavbarProp
 
                 <div className="menu-meta-socials">
                   <a
-                    href="https://dribbble.com/climate-change-digital-labs"
+                    href="https://dribbble.com/shots/27699397-WorkConnect-HR-Employee-Management-Dashboard?utm_source=Clipboard_Shot&utm_campaign=climate-change-digital-labs&utm_content=WorkConnect%20HR%20%26%20Employee%20Management%20Dashboard&utm_medium=Social_Share"
                     target="_blank"
-                    rel="noreferrer"
+                    rel="noopener noreferrer"
                     className="menu-social-link"
+                    title="WorkConnect HR & Employee Management Dashboard on Dribbble"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      window.open('https://dribbble.com/shots/27699397-WorkConnect-HR-Employee-Management-Dashboard?utm_source=Clipboard_Shot&utm_campaign=climate-change-digital-labs&utm_content=WorkConnect%20HR%20%26%20Employee%20Management%20Dashboard&utm_medium=Social_Share', '_blank', 'noopener,noreferrer');
+                    }}
                   >
                     Dribbble
                   </a>
                   <a
                     href="https://www.behance.net/climatedigital1"
                     target="_blank"
-                    rel="noreferrer"
+                    rel="noopener noreferrer"
                     className="menu-social-link"
                   >
                     Behance
@@ -577,7 +615,7 @@ export default function Navbar({ currentRoute = 'home', onNavigate }: NavbarProp
                   <a
                     href="https://www.instagram.com/climate_change_digital_labs/"
                     target="_blank"
-                    rel="noreferrer"
+                    rel="noopener noreferrer"
                     className="menu-social-link"
                   >
                     Instagram
@@ -585,15 +623,35 @@ export default function Navbar({ currentRoute = 'home', onNavigate }: NavbarProp
                   <a
                     href="https://www.linkedin.com/in/climate-change-digital-labs-3796b1431/"
                     target="_blank"
-                    rel="noreferrer"
-                    className="menu-social-link"
+                    rel="noopener noreferrer"
+                    className="menu-social-link menu-social-featured linkedin-highlight"
+                    title="Connect on LinkedIn"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      window.open('https://www.linkedin.com/in/climate-change-digital-labs-3796b1431/', '_blank', 'noopener,noreferrer');
+                    }}
                   >
-                    LinkedIn
+                    <Linkedin size={13} />
+                    <span>LinkedIn</span>
+                  </a>
+                  <a
+                    href="https://discord.gg/climatechangedigitallabs"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="menu-social-link menu-social-featured discord-highlight"
+                    title="Join Discord Community"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      window.open('https://discord.gg/climatechangedigitallabs', '_blank', 'noopener,noreferrer');
+                    }}
+                  >
+                    <MessageSquare size={13} />
+                    <span>Discord</span>
                   </a>
                   <a
                     href="https://x.com/DD_Digitallabs"
                     target="_blank"
-                    rel="noreferrer"
+                    rel="noopener noreferrer"
                     className="menu-social-link"
                   >
                     Twitter / X

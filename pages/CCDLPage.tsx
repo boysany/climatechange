@@ -11,11 +11,9 @@ import { SingleArticlePage } from '../sections/SingleArticlePage.tsx';
 import { SEO_SERVICES_MAP } from '../lib/seoData.ts';
 import { portfolioProjects } from '../sections/Portfolio.tsx';
 
-// Authentic, real-world team member portraits provided by user
-import gaganPortrait from '../src/assets/images/gagan_chouhan_1787155556813.jpg';
-import sandeepPortrait from '../src/assets/images/sandeep_barupal_1787155579146.jpg';
-import jaspalPortrait from '../src/assets/images/jaspal_byavat_1787155617742.jpg';
-import sahiramPortrait from '../src/assets/images/sahiram_nayak_1787155597072.jpg';
+import MarkerHighlight from '../components/MarkerHighlight.tsx';
+import TiltCard from '../components/TiltCard.tsx';
+import { AUTHENTIC_TEAM_MEMBERS } from '../lib/teamData.ts';
 
 import {
   ArrowUpRight,
@@ -66,6 +64,8 @@ import {
   MapPin,
   Download,
   Share2,
+  Linkedin,
+  MessageSquare,
 } from 'lucide-react';
 
 /* ============================================================
@@ -367,68 +367,7 @@ export const processStages = [
   },
 ];
 
-export const teamMembers = [
-  {
-    name: 'Mira Kapoor',
-    role: 'Lead Web & UI/UX Designer',
-    specialty: 'Creative Direction & Design Systems',
-    tag: 'FOUNDING CORE',
-    location: 'Jaipur, Rajasthan',
-    image: gaganPortrait,
-    bio: 'Pioneers human-centered visual architectures, tokenized component libraries, and spatial interfaces engineered with pixel-level mathematical rigor.',
-    skills: ['Figma Systems', 'UI/UX Architecture', 'Design Tokens', 'Web Design', 'Spatial Motion'],
-    experience: '6+ Years Experience',
-    highlights: '50+ High-Conversion Interfaces Delivered',
-  },
-  {
-    name: 'Aarav Mehta',
-    role: 'Lead Frontend Engineer',
-    specialty: 'React 18, TypeScript & Micro-Interactions',
-    tag: 'FOUNDING CORE',
-    location: 'Jaipur, Rajasthan',
-    image: sandeepPortrait,
-    bio: 'Turns complex design visions into ultra-responsive, resilient frontend applications with sub-second load times and silky-smooth GSAP motion physics.',
-    skills: ['React 18', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'Next.js & Vite'],
-    experience: '5+ Years Experience',
-    highlights: '99.9% Uptime & 95+ Core Web Vitals Specialist',
-  },
-  {
-    name: 'Rohan Verma',
-    role: 'Senior Backend Architect',
-    specialty: 'Distributed Systems & High-Throughput APIs',
-    tag: 'FOUNDING CORE',
-    location: 'Jaipur, Rajasthan',
-    image: jaspalPortrait,
-    bio: 'Architects robust microservice pipelines, relational database schemas, and low-latency REST/GraphQL APIs engineered for 99.99% uptime.',
-    skills: ['Node.js', 'PostgreSQL', 'REST & GraphQL', 'Prisma ORM', 'Redis Caching'],
-    experience: '5+ Years Experience',
-    highlights: '<100ms API Response Latency Engineering',
-  },
-  {
-    name: 'Nisha Rao',
-    role: 'Senior Backend & Cloud Engineer',
-    specialty: 'Database Security & Cloud DevOps',
-    tag: 'FOUNDING CORE',
-    location: 'Jaipur, Rajasthan',
-    image: sahiramPortrait,
-    bio: 'Translates high-load enterprise requirements into bulletproof cloud infrastructures, automated CI/CD pipelines, and SOC2-compliant microservices.',
-    skills: ['Database Optimization', 'Cloud DevOps', 'Microservices', 'API Security', 'Docker'],
-    experience: '5+ Years Experience',
-    highlights: 'Zero-Downtime Migration & SOC2 Security Standards',
-  },
-  {
-    name: 'Ishita Sen', role: 'Product Marketing Lead', specialty: 'Positioning, Content & Growth Campaigns', tag: 'DELIVERY CORE', location: 'Remote / Jaipur', image: gaganPortrait, bio: 'Builds clear product stories and practical growth systems that turn technical value into qualified demand.', skills: ['Content Strategy', 'Product Marketing', 'Campaigns'], experience: '4+ Years Experience', highlights: 'Multi-channel launch strategy',
-  },
-  {
-    name: 'Dev Malhotra', role: 'QA & Release Engineer', specialty: 'Quality Systems & Release Automation', tag: 'DELIVERY CORE', location: 'Remote / Bangalore', image: sandeepPortrait, bio: 'Keeps every release dependable through thoughtful test coverage, observability, and calm incident response.', skills: ['QA Automation', 'CI/CD', 'Performance'], experience: '4+ Years Experience', highlights: 'Reliable release pipelines',
-  },
-  {
-    name: 'Kavya Iyer', role: 'Customer Success Partner', specialty: 'Client Enablement & Sprint Delivery', tag: 'DELIVERY CORE', location: 'Remote / Mumbai', image: jaspalPortrait, bio: 'Connects client goals to practical sprint decisions and makes collaboration transparent from kickoff to launch.', skills: ['Discovery', 'Delivery', 'Client Success'], experience: '5+ Years Experience', highlights: 'High-trust client partnerships',
-  },
-  {
-    name: 'Arjun Rao', role: 'Cloud Support Engineer', specialty: 'Infrastructure & Platform Reliability', tag: 'DELIVERY CORE', location: 'Remote / Pune', image: sahiramPortrait, bio: 'Supports secure, observable cloud environments that help product teams move quickly without compromising stability.', skills: ['Cloud Ops', 'Monitoring', 'Security'], experience: '4+ Years Experience', highlights: 'Reliable platform operations',
-  },
-];
+export const teamMembers = AUTHENTIC_TEAM_MEMBERS;
 
 export const openJobs = [
   {
@@ -580,7 +519,7 @@ const pageMeta: Record<string, PageMetaItem> = {
     title: 'We design and engineer what comes next.',
     titleNode: (
       <>
-        We design &amp; engineer <span className="hero-hl-blue">what comes next</span> with <span className="hero-hl-purple">human craft</span> &amp; <span className="hero-hl-cyan">deep code</span>.
+        We design &amp; engineer <MarkerHighlight color="blue">what comes next</MarkerHighlight> with <MarkerHighlight color="yellow">human craft</MarkerHighlight> &amp; <MarkerHighlight color="cyan">deep code</MarkerHighlight>.
       </>
     ),
     intro:
@@ -1745,25 +1684,27 @@ export default function CCDLPage({
 
                 <div className="team-compressed-grid">
                   {teamMembers.slice(0, 2).map((member, idx) => (
-                    <ScrollReveal key={member.name} delay={idx * 80} className="team-compact-card">
-                      {/* ONLY Photo */}
-                      <div className="team-compact-avatar-wrap">
-                        <img
-                          src={member.image}
-                          alt={`${member.name} - ${member.role}`}
-                          loading="lazy"
-                          referrerPolicy="no-referrer"
-                        />
-                      </div>
-
-                      {/* ONLY Name, Experience, and Role */}
-                      <div className="team-compact-body">
-                        <div className="team-compact-header-row">
-                          <h4 className="team-compact-name">{member.name}</h4>
-                          <span className="team-compact-exp">{member.experience}</span>
+                    <ScrollReveal key={member.name} delay={idx * 80}>
+                      <TiltCard className="team-compact-card" maxTilt={7} scale={1.02} glare={true}>
+                        {/* ONLY Photo */}
+                        <div className="team-compact-avatar-wrap" data-cursor="LEADER">
+                          <img
+                            src={member.image}
+                            alt={`${member.name} - ${member.role}`}
+                            loading="lazy"
+                            referrerPolicy="no-referrer"
+                          />
                         </div>
-                        <p className="team-compact-role">{member.role}</p>
-                      </div>
+
+                        {/* ONLY Name, Experience, and Role */}
+                        <div className="team-compact-body">
+                          <div className="team-compact-header-row">
+                            <h4 className="team-compact-name">{member.name}</h4>
+                            <span className="team-compact-exp">{member.experience}</span>
+                          </div>
+                          <p className="team-compact-role">{member.role}</p>
+                        </div>
+                      </TiltCard>
                     </ScrollReveal>
                   ))}
                 </div>
@@ -1782,25 +1723,27 @@ export default function CCDLPage({
 
                 <div className="team-compressed-grid">
                   {teamMembers.slice(2, 4).map((member, idx) => (
-                    <ScrollReveal key={member.name} delay={idx * 80 + 160} className="team-compact-card">
-                      {/* ONLY Photo */}
-                      <div className="team-compact-avatar-wrap">
-                        <img
-                          src={member.image}
-                          alt={`${member.name} - ${member.role}`}
-                          loading="lazy"
-                          referrerPolicy="no-referrer"
-                        />
-                      </div>
-
-                      {/* ONLY Name, Experience, and Role */}
-                      <div className="team-compact-body">
-                        <div className="team-compact-header-row">
-                          <h4 className="team-compact-name">{member.name}</h4>
-                          <span className="team-compact-exp">{member.experience}</span>
+                    <ScrollReveal key={member.name} delay={idx * 80 + 160}>
+                      <TiltCard className="team-compact-card" maxTilt={7} scale={1.02} glare={true}>
+                        {/* ONLY Photo */}
+                        <div className="team-compact-avatar-wrap" data-cursor="LEADER">
+                          <img
+                            src={member.image}
+                            alt={`${member.name} - ${member.role}`}
+                            loading="lazy"
+                            referrerPolicy="no-referrer"
+                          />
                         </div>
-                        <p className="team-compact-role">{member.role}</p>
-                      </div>
+
+                        {/* ONLY Name, Experience, and Role */}
+                        <div className="team-compact-body">
+                          <div className="team-compact-header-row">
+                            <h4 className="team-compact-name">{member.name}</h4>
+                            <span className="team-compact-exp">{member.experience}</span>
+                          </div>
+                          <p className="team-compact-role">{member.role}</p>
+                        </div>
+                      </TiltCard>
                     </ScrollReveal>
                   ))}
                 </div>
@@ -3204,6 +3147,45 @@ export default function CCDLPage({
                     <strong>Working Hours</strong>
                     <p>Monday – Saturday: 9:00 AM – 8:00 PM IST</p>
                     <span className="contact-timing-sub">Sunday: Closed</span>
+                  </div>
+                </div>
+
+                {/* Social & Community Channels Card */}
+                <div className="contact-card-simple">
+                  <div className="contact-card-icon">
+                    <Share2 size={20} />
+                  </div>
+                  <div className="contact-card-details">
+                    <strong>Community &amp; Social</strong>
+                    <p style={{ marginBottom: '0.65rem' }}>Connect directly with our engineering collective and founding architects:</p>
+                    <div className="contact-card-actions-inline">
+                      <a
+                        href="https://www.linkedin.com/in/climate-change-digital-labs-3796b1431/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="contact-action-btn"
+                        style={{ color: '#0077b5', borderColor: 'rgba(0, 119, 181, 0.3)' }}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          window.open('https://www.linkedin.com/in/climate-change-digital-labs-3796b1431/', '_blank', 'noopener,noreferrer');
+                        }}
+                      >
+                        <Linkedin size={13} /> LinkedIn
+                      </a>
+                      <a
+                        href="https://discord.gg/climatechangedigitallabs"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="contact-action-btn"
+                        style={{ color: '#5865F2', borderColor: 'rgba(88, 101, 242, 0.3)' }}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          window.open('https://discord.gg/climatechangedigitallabs', '_blank', 'noopener,noreferrer');
+                        }}
+                      >
+                        <MessageSquare size={13} /> Discord Guild
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>

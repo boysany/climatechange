@@ -13,6 +13,7 @@ import WhyUs from './sections/WhyUs.tsx';
 import CTA from './sections/CTA.tsx';
 import Footer from './sections/Footer.tsx';
 import CCDLPage from './pages/CCDLPage.tsx';
+import ScrollProgressWidget from './components/ScrollProgressWidget.tsx';
 import { initLenis, destroyLenis, refreshScrollTriggers } from './lib/animations.ts';
 
 const motion = m as any;
@@ -148,6 +149,7 @@ export default function App() {
           )}
         </main>
       </motion.div>
+      <ScrollProgressWidget />
       <Footer onNavigate={navigate} isDark={isDark} toggleTheme={() => setIsDark((v) => !v)} />
     </div>
   );

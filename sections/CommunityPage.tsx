@@ -31,15 +31,17 @@ import {
   Users,
   X,
   Zap,
+  Linkedin,
 } from 'lucide-react';
 import gsap from 'gsap';
 import { getReducedMotion } from '../lib/animations.ts';
 import ScrollReveal from '../components/ScrollReveal.tsx';
+import { FOUNDER_AVATARS } from '../lib/teamData.ts';
 
-import sandeepAvatar from '../src/assets/images/sandeep_barupal_1787155579146.jpg';
-import gaganAvatar from '../src/assets/images/gagan_chouhan_1787155556813.jpg';
-import jaspalAvatar from '../src/assets/images/jaspal_byavat_1787155617742.jpg';
-import sahiramAvatar from '../src/assets/images/sahiram_nayak_1787155597072.jpg';
+const sandeepAvatar = FOUNDER_AVATARS.sandeep;
+const gaganAvatar = FOUNDER_AVATARS.gagan;
+const jaspalAvatar = FOUNDER_AVATARS.jaspal;
+const sahiramAvatar = FOUNDER_AVATARS.sahiram;
 
 export interface CommunityRepo {
   id: string;
@@ -150,9 +152,9 @@ const EVENTS: CommunityEvent[] = [
     time: '6:30 PM - 8:00 PM IST',
     location: 'Live Stream + Discord Stage',
     host: {
-      name: 'Aarav Mehta',
-      role: 'Lead Frontend Engineer',
-      avatar: sandeepAvatar,
+      name: 'Gagan Chouhan',
+      role: 'Co-Founder & Engineering Lead',
+      avatar: gaganAvatar,
     },
     description:
       'Bring your slow web applications. We will inspect Chrome DevTools performance recordings live and fix LCP/CLS bottlenecks in real time.',
@@ -167,9 +169,9 @@ const EVENTS: CommunityEvent[] = [
     time: '7:00 PM - 8:30 PM IST',
     location: 'Discord Audio Stage',
     host: {
-      name: 'Mira Kapoor',
-      role: 'Lead Product & UX Designer',
-      avatar: gaganAvatar,
+      name: 'Sandeep Barupal',
+      role: 'Founder & Principal Designer',
+      avatar: sandeepAvatar,
     },
     description:
       'Deep dive into mathematical typography scaling, semantic spacing tokens, and automated pull requests when design updates in Figma.',
@@ -184,8 +186,8 @@ const EVENTS: CommunityEvent[] = [
     time: '6:00 PM - 7:30 PM IST',
     location: 'Google Meet + Stage',
     host: {
-      name: 'Rohan Verma',
-      role: 'Senior Backend Architect',
+      name: 'Jaspal Byavat',
+      role: 'Senior Full-Stack Architect',
       avatar: jaspalAvatar,
     },
     description:
@@ -200,9 +202,9 @@ const DISCUSSIONS: CommunityDiscussion[] = [
     id: 'disc-1',
     title: 'How we achieved 99+ Core Web Vitals on Next.js 15 App Router',
     author: {
-      name: 'Aarav Mehta',
-      role: 'Frontend Core',
-      avatar: sandeepAvatar,
+      name: 'Gagan Chouhan',
+      role: 'Engineering Core',
+      avatar: gaganAvatar,
     },
     replies: 28,
     upvotes: 74,
@@ -215,9 +217,9 @@ const DISCUSSIONS: CommunityDiscussion[] = [
     id: 'disc-2',
     title: 'Building an end-to-end token pipeline from Figma Variables to Tailwind v4',
     author: {
-      name: 'Mira Kapoor',
-      role: 'Design Systems',
-      avatar: gaganAvatar,
+      name: 'Sandeep Barupal',
+      role: 'Design Systems Lead',
+      avatar: sandeepAvatar,
     },
     replies: 19,
     upvotes: 62,
@@ -230,8 +232,8 @@ const DISCUSSIONS: CommunityDiscussion[] = [
     id: 'disc-3',
     title: 'PostgreSQL connection pooling under 10,000 concurrent RPS',
     author: {
-      name: 'Rohan Verma',
-      role: 'Backend Architect',
+      name: 'Jaspal Byavat',
+      role: 'Full-Stack Architect',
       avatar: jaspalAvatar,
     },
     replies: 34,
@@ -245,7 +247,7 @@ const DISCUSSIONS: CommunityDiscussion[] = [
     id: 'disc-4',
     title: 'Micro-frontends vs. Modular Monoliths: What we learned scaling to 2M MAU',
     author: {
-      name: 'Nisha Rao',
+      name: 'Sahiram Nayak',
       role: 'Cloud & Infrastructure',
       avatar: sahiramAvatar,
     },
@@ -406,10 +408,14 @@ export const CommunityPage: React.FC<CommunityPageProps> = ({ onNavigate }) => {
 
             <div className="community-modal-links">
               <a
-                href="https://discord.com"
+                href="https://discord.gg/climatechangedigitallabs"
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 className="community-channel-btn discord"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  window.open('https://discord.gg/climatechangedigitallabs', '_blank', 'noopener,noreferrer');
+                }}
               >
                 <div className="channel-icon-wrap">
                   <MessageSquare size={20} />
@@ -417,6 +423,27 @@ export const CommunityPage: React.FC<CommunityPageProps> = ({ onNavigate }) => {
                 <div>
                   <strong>Join via Discord Stage</strong>
                   <span>Live audio stages, voice AMAs, and code clinics</span>
+                </div>
+                <ArrowUpRight size={16} className="ml-auto" />
+              </a>
+
+              <a
+                href="https://www.linkedin.com/in/climate-change-digital-labs-3796b1431/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="community-channel-btn linkedin"
+                style={{ background: 'rgba(0, 119, 181, 0.08)', borderColor: 'rgba(0, 119, 181, 0.25)' }}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  window.open('https://www.linkedin.com/in/climate-change-digital-labs-3796b1431/', '_blank', 'noopener,noreferrer');
+                }}
+              >
+                <div className="channel-icon-wrap" style={{ background: '#0077b5', color: '#fff' }}>
+                  <Linkedin size={20} />
+                </div>
+                <div>
+                  <strong>Connect on LinkedIn</strong>
+                  <span>Company updates, executive insights, and industry releases</span>
                 </div>
                 <ArrowUpRight size={16} className="ml-auto" />
               </a>
@@ -507,7 +534,7 @@ export const CommunityPage: React.FC<CommunityPageProps> = ({ onNavigate }) => {
                     <input
                       type="text"
                       required
-                      placeholder="e.g. Alex Sharma"
+                      placeholder="e.g. Rahul Sharma"
                       value={rsvpName}
                       onChange={(e) => setRsvpName(e.target.value)}
                     />
@@ -518,7 +545,7 @@ export const CommunityPage: React.FC<CommunityPageProps> = ({ onNavigate }) => {
                     <input
                       type="email"
                       required
-                      placeholder="e.g. alex@company.com"
+                      placeholder="e.g. founder@company.com"
                       value={rsvpEmail}
                       onChange={(e) => setRsvpEmail(e.target.value)}
                     />
