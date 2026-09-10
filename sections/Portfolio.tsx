@@ -12,16 +12,6 @@ if (typeof window !== 'undefined') {
 
 export const portfolioProjects = [
   {
-    num: '01',
-    tag: 'HR Management System',
-    title: 'WorkConnect Dashboard',
-    desc: 'An enterprise HR and employee management dashboard orchestrating attendance telemetry, team rosters, automated workflows, and payroll analytics.',
-    img: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&q=82&w=1200',
-    liveUrl: 'https://dribbble.com/shots/27699397-WorkConnect-HR-Employee-Management-Dashboard?utm_source=Clipboard_Shot&utm_campaign=climate-change-digital-labs&utm_content=WorkConnect%20HR%20%26%20Employee%20Management%20Dashboard&utm_medium=Social_Share',
-    year: '2026',
-    category: 'Enterprise / HR Dashboard',
-  },
-  {
     num: '02', tag: 'Legal Platform', title: 'Legal Website',
     desc: 'A clear, trustworthy legal services website designed for discovery, education, and qualified inquiries.',
     img: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&q=82&w=1200', liveUrl: 'https://legal-jz4g.vercel.app/', year: '2026', category: 'Legal / Web',

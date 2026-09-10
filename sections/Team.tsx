@@ -70,14 +70,19 @@ const Team: React.FC = () => {
                       scale={1.02}
                       glare={true}
                     >
-                      {/* Authentic Editorial Photo */}
-                      <div className="team-compact-avatar-wrap" data-cursor="PROFILE">
-                        <img
-                          src={member.image}
-                          alt={`${member.name} - ${member.role}`}
-                          loading="lazy"
-                          referrerPolicy="no-referrer"
-                        />
+                      <div
+                        className="team-compact-avatar-wrap"
+                        data-cursor="PROFILE"
+                        aria-label={`${member.name} — ${member.role}`}
+                      >
+                        {member.image ? (
+                          <img src={member.image} alt={`${member.name} — ${member.role}`} loading="lazy" />
+                        ) : (
+                          <>
+                            <span aria-hidden="true">{member.name.split(' ').map((part) => part[0]).join('')}</span>
+                            <small aria-hidden="true">INDIA</small>
+                          </>
+                        )}
                       </div>
 
                       {/* Name, Experience, and Role */}

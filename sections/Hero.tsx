@@ -82,11 +82,11 @@ export default function Hero({ onNavigate }: HeroProps) {
           <h1 className="display-title alien-display-title">
             <span className="hero-brand-name">CCDL</span> creates{' '}
             <span onClick={() => onNavigate?.('digital-products')} style={{ cursor: 'pointer' }}>
-              <MarkerHighlight color="blue">digital products</MarkerHighlight>
+              <MarkerHighlight color="blue" className="hero-no-marker-bg">digital products</MarkerHighlight>
             </span>,{' '}
             <span className="hero-hl-purple" onClick={() => onNavigate?.('design-systems')} style={{ cursor: 'pointer' }}>design systems</span>, &amp;{' '}
             <span onClick={() => onNavigate?.('software')} style={{ cursor: 'pointer' }}>
-              <MarkerHighlight color="cyan">experiences</MarkerHighlight>
+              <MarkerHighlight color="cyan" className="hero-no-marker-bg">experiences</MarkerHighlight>
             </span> that move business forward.
           </h1>
 
