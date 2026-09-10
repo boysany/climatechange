@@ -63,9 +63,6 @@ import {
   Smartphone,
   MapPin,
   Download,
-  Share2,
-  Linkedin,
-  MessageSquare,
 } from 'lucide-react';
 
 /* ============================================================
@@ -3150,44 +3147,6 @@ export default function CCDLPage({
                   </div>
                 </div>
 
-                {/* Social & Community Channels Card */}
-                <div className="contact-card-simple">
-                  <div className="contact-card-icon">
-                    <Share2 size={20} />
-                  </div>
-                  <div className="contact-card-details">
-                    <strong>Community &amp; Social</strong>
-                    <p style={{ marginBottom: '0.65rem' }}>Connect directly with our engineering collective and founding architects:</p>
-                    <div className="contact-card-actions-inline">
-                      <a
-                        href="https://www.linkedin.com/in/climate-change-digital-labs-3796b1431/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="contact-action-btn"
-                        style={{ color: '#0077b5', borderColor: 'rgba(0, 119, 181, 0.3)' }}
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          window.open('https://www.linkedin.com/in/climate-change-digital-labs-3796b1431/', '_blank', 'noopener,noreferrer');
-                        }}
-                      >
-                        <Linkedin size={13} /> LinkedIn
-                      </a>
-                      <a
-                        href="https://discord.gg/climatechangedigitallabs"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="contact-action-btn"
-                        style={{ color: '#5865F2', borderColor: 'rgba(88, 101, 242, 0.3)' }}
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          window.open('https://discord.gg/climatechangedigitallabs', '_blank', 'noopener,noreferrer');
-                        }}
-                      >
-                        <MessageSquare size={13} /> Discord Guild
-                      </a>
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
 
