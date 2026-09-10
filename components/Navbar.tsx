@@ -3,6 +3,7 @@ import { motion as m, AnimatePresence } from 'framer-motion';
 import {
   ArrowUpRight,
   MessageCircle,
+  MessageSquare,
   Phone,
   Mail,
   X,
