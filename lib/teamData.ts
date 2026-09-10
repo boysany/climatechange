@@ -5,6 +5,7 @@
 
 export interface TeamMember {
   name: string;
+  image?: string;
   role: string;
   specialty: string;
   tag: string;
@@ -36,6 +37,7 @@ export const AUTHENTIC_TEAM_MEMBERS: TeamMember[] = [
   },
   {
     name: 'Aarav Mehta',
+    image: '/images/team-aarav-india.png',
     role: 'Lead Frontend Engineer',
     specialty: 'React 18, TypeScript & Micro-Interactions',
     tag: 'FOUNDING CORE',
