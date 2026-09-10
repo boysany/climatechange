@@ -25,7 +25,8 @@ export const FOUNDER_AVATARS = {
 
 export const AUTHENTIC_TEAM_MEMBERS: TeamMember[] = [
   {
-    name: 'Mira Kapoor',
+    name: 'Aarav Sharma',
+    image: '/images/team-aarav-sharma.png',
     role: 'Lead Web & UI/UX Designer',
     specialty: 'Creative Direction & Design Systems',
     tag: 'FOUNDING CORE',
@@ -36,8 +37,8 @@ export const AUTHENTIC_TEAM_MEMBERS: TeamMember[] = [
     highlights: '50+ High-Conversion Interfaces Delivered',
   },
   {
-    name: 'Aarav Mehta',
-    image: '/images/team-aarav-india.png',
+    name: 'Rohan Verma',
+    image: '/images/team-rohan-verma.png',
     role: 'Lead Frontend Engineer',
     specialty: 'React 18, TypeScript & Micro-Interactions',
     tag: 'FOUNDING CORE',
@@ -48,7 +49,8 @@ export const AUTHENTIC_TEAM_MEMBERS: TeamMember[] = [
     highlights: '99.9% Uptime & 95+ Core Web Vitals Specialist',
   },
   {
-    name: 'Rohan Verma',
+    name: 'Aditya Patel',
+    image: '/images/team-aditya-patel.png',
     role: 'Senior Backend Architect',
     specialty: 'Distributed Systems & High-Throughput APIs',
     tag: 'FOUNDING CORE',
@@ -59,7 +61,8 @@ export const AUTHENTIC_TEAM_MEMBERS: TeamMember[] = [
     highlights: '<100ms API Response Latency Engineering',
   },
   {
-    name: 'Nisha Rao',
+    name: 'Kunal Singh',
+    image: '/images/team-kunal-singh.png',
     role: 'Senior Backend & Cloud Engineer',
     specialty: 'Database Security & Cloud DevOps',
     tag: 'FOUNDING CORE',
@@ -70,7 +73,7 @@ export const AUTHENTIC_TEAM_MEMBERS: TeamMember[] = [
     highlights: 'Zero-Downtime Migration & SOC2 Security Standards',
   },
   {
-    name: 'Ishita Sen',
+    name: 'Nisha Rao',
     role: 'Product Marketing Lead',
     specialty: 'Positioning, Content & Growth Campaigns',
     tag: 'DELIVERY CORE',
