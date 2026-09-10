@@ -19064,12 +19064,17 @@ select.form-input {
   transition: opacity 0.3s ease;
 }
 
-.marker-content {
+  .marker-content {
   position: relative;
   z-index: 2;
   font-weight: inherit;
   color: inherit;
-}
+  }
+
+  .hero-no-marker-bg .marker-stroke-bg {
+  display: none;
+  }
+
 
 /* Marker color variants */
 .marker-yellow .marker-stroke-bg {
