@@ -104,6 +104,7 @@ interface ProcessProps {
 export default function Process({ onNavigate }: ProcessProps) {
   const sectionRef = useRef<HTMLElement | null>(null);
   const cardsRef = useRef<HTMLDivElement | null>(null);
+  const navListRef = useRef<HTMLDivElement | null>(null);
   const [activeStep, setActiveStep] = useState(0);
 
   useEffect(() => {
@@ -115,40 +116,23 @@ export default function Process({ onNavigate }: ProcessProps) {
     const isDesktop = window.innerWidth > 960;
 
     const ctx = gsap.context(() => {
-      cards.forEach((card, index) => {
-        // Active indicator on scroll to update left-side tracker & navigation
-        ScrollTrigger.create({
-          trigger: card,
-          start: 'top center',
-          end: 'bottom center',
-          onEnter: () => setActiveStep(index),
-          onEnterBack: () => setActiveStep(index),
-        });
-
-        // 3D Stacking depth scroll effect on desktop:
-        // As subsequent cards scroll up over this card, this card's inner content
-        // progressively scales down slightly (1 -> 0.94) and dims subtly, creating
-        // a physical layered card deck feel without breaking CSS position: sticky
-        if (isDesktop && index < cards.length - 1) {
-          const inner = card.querySelector<HTMLElement>('.process-card-inner');
-          const nextCard = cards[index + 1];
-
-          if (inner && nextCard) {
-            gsap.to(inner, {
-              scale: 0.94,
-              opacity: 0.82,
-              filter: 'brightness(0.92)',
-              transformOrigin: 'top center',
-              ease: 'none',
-              scrollTrigger: {
-                trigger: nextCard,
-                start: 'top bottom-=60',
-                end: 'top top+=140',
-                scrub: true,
-              },
-            });
-          }
-        }
+      // 1. Precise active card detection for both mobile & desktop:
+      // Evaluates topmost stuck card continuously during scroll
+      ScrollTrigger.create({
+        trigger: cardsContainer,
+        start: 'top center',
+        end: 'bottom bottom',
+        onUpdate: () => {
+          const stickyThreshold = isDesktop ? 180 : 140;
+          let currentActive = 0;
+          cards.forEach((card, idx) => {
+            const rect = card.getBoundingClientRect();
+            if (rect.top <= stickyThreshold + 20) {
+              currentActive = idx;
+            }
+          });
+          setActiveStep((prev) => (prev !== currentActive ? currentActive : prev));
+        },
       });
     }, section);
 
@@ -157,11 +141,31 @@ export default function Process({ onNavigate }: ProcessProps) {
     };
   }, []);
 
+  // Ensure active pill smoothly scrolls horizontally into view on mobile as cards scroll
+  useEffect(() => {
+    const container = navListRef.current;
+    if (!container) return;
+
+    const buttons = container.querySelectorAll<HTMLElement>('.process-nav-item');
+    const activeBtn = buttons[activeStep];
+    if (activeBtn) {
+      const containerWidth = container.clientWidth;
+      const btnOffset = activeBtn.offsetLeft;
+      const btnWidth = activeBtn.offsetWidth;
+      const targetScroll = btnOffset - (containerWidth / 2) + (btnWidth / 2);
+      container.scrollTo({
+        left: Math.max(0, targetScroll),
+        behavior: 'smooth',
+      });
+    }
+  }, [activeStep]);
+
   const scrollToStep = (index: number) => {
     if (!cardsRef.current) return;
     const cards = cardsRef.current.querySelectorAll<HTMLElement>('.process-card-item');
     if (cards[index]) {
-      const stickyOffset = 90 + index * 18;
+      const isMobile = window.innerWidth <= 960;
+      const stickyOffset = isMobile ? 120 + index * 10 : 90 + index * 18;
       const cardRect = cards[index].getBoundingClientRect();
       const targetY = window.pageYOffset + cardRect.top - stickyOffset;
       window.scrollTo({ top: targetY, behavior: 'smooth' });
@@ -209,27 +213,9 @@ export default function Process({ onNavigate }: ProcessProps) {
             </div>
           </div>
 
+          {/* Clean Segmented Phase Navigation */}
           <div className="process-nav-wrapper">
-            <div className="process-active-tracker">
-              <span className="process-tracker-label">CURRENTLY VIEWING</span>
-              <div className="process-tracker-val">
-                <span className="tracker-num" style={{ color: processSteps[activeStep].accent }}>
-                  {processSteps[activeStep].num}
-                </span>
-                <span className="tracker-title">{processSteps[activeStep].title}</span>
-                <span
-                  className="tracker-time"
-                  style={{
-                    color: processSteps[activeStep].accent,
-                    borderColor: `color-mix(in srgb, ${processSteps[activeStep].accent} 35%, transparent)`,
-                  }}
-                >
-                  {processSteps[activeStep].duration}
-                </span>
-              </div>
-            </div>
-
-            <div className="process-nav-list">
+            <div className="process-nav-list" ref={navListRef}>
               {processSteps.map((step, idx) => (
                 <button
                   key={step.num}
@@ -244,18 +230,16 @@ export default function Process({ onNavigate }: ProcessProps) {
                     className="nav-dot"
                     style={{
                       backgroundColor: activeStep === idx ? step.accent : undefined,
-                      boxShadow: activeStep === idx ? `0 0 10px ${step.accent}` : undefined,
                     }}
                   />
                   <div className="nav-content">
-                    <span
-                      className="nav-main-title"
-                      style={{ color: activeStep === idx ? step.accent : undefined }}
-                    >
-                      {step.num} — {step.title}
-                    </span>
+                    <div className="nav-title-row">
+                      <span className="nav-num">{step.num}</span>
+                      <span className="nav-main-title">{step.title}</span>
+                    </div>
                     <span className="nav-sub-phase">{step.phase}</span>
                   </div>
+                  <span className="nav-step-time">{step.duration}</span>
                 </button>
               ))}
             </div>
@@ -274,7 +258,7 @@ export default function Process({ onNavigate }: ProcessProps) {
               } as React.CSSProperties}
             >
               <div className="process-card-inner">
-                {/* Top Media Banner (Full Bleed, No Padding Pinch) */}
+                {/* Top Media Banner */}
                 <div className="process-card-media">
                   <img src={step.image} alt={step.title} loading="lazy" />
                   <div className="process-card-media-gradient" />
@@ -284,14 +268,14 @@ export default function Process({ onNavigate }: ProcessProps) {
                       style={{ borderColor: `color-mix(in srgb, ${step.accent} 40%, transparent)` }}
                     >
                       <span className="phase-dot" style={{ backgroundColor: step.accent }} />
-                      {step.num} • {step.phase}
+                      <span className="phase-pill-num">{step.num}</span>
+                      <span className="phase-pill-dot">•</span>
+                      <span className="phase-pill-text">{step.phase}</span>
                     </span>
-                    <div className="process-media-tags">
-                      <span className="process-duration-pill">
-                        <Clock size={11} /> {step.duration}
-                      </span>
-                      <span className="process-timeline-pill">{step.timeline}</span>
-                    </div>
+                    <span className="process-duration-pill">
+                      <Clock size={11} />
+                      <span>{step.duration}</span>
+                    </span>
                   </div>
                 </div>
 

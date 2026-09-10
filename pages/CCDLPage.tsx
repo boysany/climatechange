@@ -179,7 +179,11 @@ const livePortfolioProjects = portfolioProjects
   .map((project) => ({
     id: `live-${project.num}`,
     title: project.title,
-    type: project.category.includes('Education') ? 'EdTech' : project.category.includes('DeFi') ? 'DeFi' : 'Platforms',
+    type: project.category.includes('EdTech') || project.category.includes('Education')
+      ? 'EdTech'
+      : project.category.includes('DeFi') || project.category.includes('Fintech') || project.category.includes('Exchange') || project.category.includes('Wallet')
+      ? 'DeFi'
+      : 'Platforms',
     category: project.category,
     metrics: 'Live project preview',
     text: project.desc,
@@ -191,7 +195,11 @@ const livePortfolioProjects = portfolioProjects
 const allProjectsData = portfolioProjects.map((project) => ({
   id: `live-${project.liveUrl}`,
   title: project.title,
-  type: project.category.includes('Education') ? 'EdTech' : project.category.includes('DeFi') ? 'DeFi' : 'Platforms',
+  type: project.category.includes('EdTech') || project.category.includes('Education')
+    ? 'EdTech'
+    : project.category.includes('DeFi') || project.category.includes('Fintech') || project.category.includes('Exchange') || project.category.includes('Wallet')
+    ? 'DeFi'
+    : 'Platforms',
   category: project.category,
   metrics: 'Live project preview',
   text: project.desc,

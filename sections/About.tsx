@@ -18,7 +18,7 @@ const pillars = [
     icon: Sparkles,
     metric: '60 FPS Transitions',
     accent: '#06b6d4',
-    desc: 'Considered, intuitive interfaces shaped with typographic discipline, visual balance, and human empathy.',
+    desc: 'Considered, intuitive interfaces shaped with typographic precision, visual balance, and human empathy.',
     bullets: ['Tokenized Design Systems', 'Fluid Micro-Interactions', 'Editorial Typography & Rhythm', 'Spatial Precision Layouts'],
   },
   {
@@ -247,7 +247,6 @@ export default function About({ onNavigate }: AboutProps) {
         {pillars.map((pillar) => {
           const targetPage =
             pillar.num === '01' ? 'product-design' : pillar.num === '02' ? 'software' : 'strategy';
-          const IconComponent = pillar.icon;
           return (
             <div
               key={pillar.num}
@@ -256,15 +255,6 @@ export default function About({ onNavigate }: AboutProps) {
               style={{ cursor: 'pointer' }}
             >
               <div>
-                <div className="about-pillar-top">
-                  <div className="about-pillar-badge-group">
-                    <div className="about-pillar-icon-box" style={{ color: pillar.accent }}>
-                      <IconComponent size={18} />
-                    </div>
-                    <span className="about-pillar-num">{pillar.num} / DISCIPLINE</span>
-                  </div>
-                  <span className="about-pillar-metric">{pillar.metric}</span>
-                </div>
                 <h3>{pillar.role}</h3>
                 <span className="about-pillar-subtag">{pillar.tag}</span>
                 <p>{pillar.desc}</p>
