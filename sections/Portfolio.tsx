@@ -101,16 +101,6 @@ export const portfolioProjects = [
     year: '2026',
     category: 'Product / Web',
   },
-  {
-    num: '10',
-    tag: 'HRTech & Operations',
-    title: 'WorkConnect Dashboard',
-    desc: 'An enterprise workforce management dashboard featuring real-time attendance tracking, payroll workflows, and employee performance metrics.',
-    img: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&q=82&w=1200',
-    liveUrl: 'https://dribbble.com/shots/27699397-WorkConnect-HR-Employee-Management-Dashboard?utm_source=Clipboard_Shot&utm_campaign=climate-change-digital-labs&utm_content=WorkConnect%20HR%20%26%20Employee%20Management%20Dashboard&utm_medium=Social_Share',
-    year: '2026',
-    category: 'HRTech / Dashboard',
-  },
 ];
 
 interface PortfolioProps {

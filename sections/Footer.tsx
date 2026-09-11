@@ -18,9 +18,6 @@ export default function Footer({
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const dribbbleWorkConnectUrl =
-    'https://dribbble.com/shots/27699397-WorkConnect-HR-Employee-Management-Dashboard?utm_source=Clipboard_Shot&utm_campaign=climate-change-digital-labs&utm_content=WorkConnect%20HR%20%26%20Employee%20Management%20Dashboard&utm_medium=Social_Share';
-
   return (
     <footer className="footer" id="site-footer">
       <div className="footer-container">
@@ -74,21 +71,6 @@ export default function Footer({
           <div className="footer-social-grid">
             {/* Sub-column 1 */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.1rem' }}>
-              <a
-                href={dribbbleWorkConnectUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="footer-link-row footer-dribbble-link"
-                title="WorkConnect HR & Employee Management Dashboard on Dribbble"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  window.open(dribbbleWorkConnectUrl, '_blank', 'noopener,noreferrer');
-                }}
-                style={{ cursor: 'pointer' }}
-              >
-                <span>Dribbble</span>
-                <ArrowUpRight size={16} className="footer-arrow" />
-              </a>
               <a
                 href="https://www.behance.net/climatedigital1"
                 target="_blank"

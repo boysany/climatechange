@@ -560,19 +560,6 @@ export default function Navbar({ currentRoute = 'home', onNavigate }: NavbarProp
 
                 <div className="menu-meta-socials">
                   <a
-                    href="https://dribbble.com/shots/27699397-WorkConnect-HR-Employee-Management-Dashboard?utm_source=Clipboard_Shot&utm_campaign=climate-change-digital-labs&utm_content=WorkConnect%20HR%20%26%20Employee%20Management%20Dashboard&utm_medium=Social_Share"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="menu-social-link"
-                    title="WorkConnect HR & Employee Management Dashboard on Dribbble"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      window.open('https://dribbble.com/shots/27699397-WorkConnect-HR-Employee-Management-Dashboard?utm_source=Clipboard_Shot&utm_campaign=climate-change-digital-labs&utm_content=WorkConnect%20HR%20%26%20Employee%20Management%20Dashboard&utm_medium=Social_Share', '_blank', 'noopener,noreferrer');
-                    }}
-                  >
-                    Dribbble
-                  </a>
-                  <a
                     href="https://www.behance.net/climatedigital1"
                     target="_blank"
                     rel="noopener noreferrer"
