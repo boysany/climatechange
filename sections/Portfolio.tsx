@@ -34,9 +34,9 @@ export const portfolioProjects = [
   {
     num: '03',
     tag: 'DeFi & Web3',
-    title: 'Swap Platform',
-    desc: 'A live exchange interface designed around clear asset discovery, confident transaction flow, and real-time market context.',
-    img: 'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&q=82&w=1200',
+    title: 'Urmi Swap',
+    desc: 'A polished decentralized exchange experience designed around clear asset discovery, confident transaction flow, and real-time market context.',
+    img: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-qynMwPc3KOW4ELNNfQHQXjzKtWfxrE.png',
     liveUrl: 'https://swap-zeta.vercel.app/',
     year: '2026',
     category: 'DeFi / Web3 Product',
