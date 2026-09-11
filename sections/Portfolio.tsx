@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { ArrowUpRight } from 'lucide-react';
 import TextReveal from '../components/TextReveal.tsx';
 import ScrollReveal from '../components/ScrollReveal.tsx';
 import gsap from 'gsap';
@@ -34,9 +33,9 @@ export const portfolioProjects = [
   {
     num: '03',
     tag: 'DeFi & Web3',
-    title: 'Swap Platform',
-    desc: 'A live exchange interface designed around clear asset discovery, confident transaction flow, and real-time market context.',
-    img: 'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&q=82&w=1200',
+    title: 'Urmi Swap',
+    desc: 'A polished decentralized exchange experience designed around clear asset discovery, confident transaction flow, and real-time market context.',
+    img: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-qynMwPc3KOW4ELNNfQHQXjzKtWfxrE.png',
     liveUrl: 'https://swap-zeta.vercel.app/',
     year: '2026',
     category: 'DeFi / Web3 Product',
@@ -100,16 +99,6 @@ export const portfolioProjects = [
     liveUrl: 'https://zenith-gules-seven.vercel.app/',
     year: '2026',
     category: 'Product / Web',
-  },
-  {
-    num: '10',
-    tag: 'HRTech & Operations',
-    title: 'WorkConnect Dashboard',
-    desc: 'An enterprise workforce management dashboard featuring real-time attendance tracking, payroll workflows, and employee performance metrics.',
-    img: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&q=82&w=1200',
-    liveUrl: 'https://dribbble.com/shots/27699397-WorkConnect-HR-Employee-Management-Dashboard?utm_source=Clipboard_Shot&utm_campaign=climate-change-digital-labs&utm_content=WorkConnect%20HR%20%26%20Employee%20Management%20Dashboard&utm_medium=Social_Share',
-    year: '2026',
-    category: 'HRTech / Dashboard',
   },
 ];
 
@@ -230,24 +219,8 @@ export default function Portfolio({ onNavigate }: PortfolioProps) {
             <div
               key={project.title}
               className={`project-card-h project-${i}`}
-              role="link"
-              tabIndex={0}
-              onClick={() => window.open(project.liveUrl, '_blank', 'noopener,noreferrer')}
-              onKeyDown={(event) => {
-                if (event.key === 'Enter' || event.key === ' ') {
-                  event.preventDefault();
-                  window.open(project.liveUrl, '_blank', 'noopener,noreferrer');
-                }
-              }}
             >
-              <a
-                className="project-image-box"
-                href={project.liveUrl}
-                target="_blank"
-                rel="noreferrer"
-                aria-label={`Open ${project.title} live site`}
-                onClick={(event) => event.stopPropagation()}
-              >
+              <div className="project-image-box">
                 <img
                   src={project.img}
                   alt={`${project.title} software preview`}
@@ -260,8 +233,7 @@ export default function Portfolio({ onNavigate }: PortfolioProps) {
                     image.src = 'https://images.unsplash.com/photo-1558655146-9f40138edfeb?auto=format&fit=crop&q=80&w=1200';
                   }}
                 />
-                <span className="project-live-badge">Live site <ArrowUpRight size={14} /></span>
-              </a>
+              </div>
               <small>
                 {project.num} — {project.tag}
               </small>
