@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { ArrowUpRight } from 'lucide-react';
 import TextReveal from '../components/TextReveal.tsx';
 import ScrollReveal from '../components/ScrollReveal.tsx';
 import gsap from 'gsap';
@@ -220,24 +219,8 @@ export default function Portfolio({ onNavigate }: PortfolioProps) {
             <div
               key={project.title}
               className={`project-card-h project-${i}`}
-              role="link"
-              tabIndex={0}
-              onClick={() => window.open(project.liveUrl, '_blank', 'noopener,noreferrer')}
-              onKeyDown={(event) => {
-                if (event.key === 'Enter' || event.key === ' ') {
-                  event.preventDefault();
-                  window.open(project.liveUrl, '_blank', 'noopener,noreferrer');
-                }
-              }}
             >
-              <a
-                className="project-image-box"
-                href={project.liveUrl}
-                target="_blank"
-                rel="noreferrer"
-                aria-label={`Open ${project.title} live site`}
-                onClick={(event) => event.stopPropagation()}
-              >
+              <div className="project-image-box">
                 <img
                   src={project.img}
                   alt={`${project.title} software preview`}
@@ -250,8 +233,7 @@ export default function Portfolio({ onNavigate }: PortfolioProps) {
                     image.src = 'https://images.unsplash.com/photo-1558655146-9f40138edfeb?auto=format&fit=crop&q=80&w=1200';
                   }}
                 />
-                <span className="project-live-badge">Live site <ArrowUpRight size={14} /></span>
-              </a>
+              </div>
               <small>
                 {project.num} — {project.tag}
               </small>
