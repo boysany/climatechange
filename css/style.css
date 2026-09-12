@@ -1981,9 +1981,146 @@ button {
 @media (max-width: 800px) { .careers-hero-grid, .careers-split, .careers-apply, .careers-section-heading { grid-template-columns: 1fr; gap: 1.5rem; } .careers-reasons { grid-template-columns: repeat(2, 1fr); } .careers-steps { grid-template-columns: 1fr; } .careers-empty { align-items: flex-start; flex-wrap: wrap; } .text-link { margin-left: 2.5rem; } }
 @media (max-width: 520px) { .careers-reasons { grid-template-columns: 1fr; } .careers-hero { padding-top: 7rem; } }
 
-/* ============================================================
-   SIMPLE & MINIMAL PRELOADER DESIGN
-   ============================================================ */
+  /* Careers visual refinement — keeps the homepage design language intact */
+  .careers-page {
+    background: var(--paper);
+  }
+
+  .careers-hero-grid,
+  .careers-section,
+  .careers-how,
+  .careers-faq {
+    width: min(100%, 1500px);
+  }
+
+  .careers-hero h1,
+  .careers-section-heading h2,
+  .careers-split h2,
+  .careers-apply h2,
+  .careers-final h2 {
+    font-weight: 700;
+  }
+
+  .careers-hero-note,
+  .careers-empty,
+  .careers-reason,
+  .careers-steps > div {
+    transition: transform .35s cubic-bezier(.16, 1, .3, 1), border-color .3s ease, background .3s ease, box-shadow .35s ease;
+  }
+
+  .careers-hero-note {
+    border-radius: 14px;
+    box-shadow: 0 18px 50px color-mix(in srgb, var(--ink) 7%, transparent);
+  }
+
+  .careers-hero-note:hover,
+  .careers-empty:hover,
+  .careers-reason:hover,
+  .careers-steps > div:hover {
+    transform: translateY(-4px);
+    border-color: color-mix(in srgb, var(--blue) 55%, var(--line));
+  }
+
+  .careers-reasons,
+  .careers-steps {
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 18px 50px color-mix(in srgb, var(--ink) 5%, transparent);
+  }
+
+  .careers-reason,
+  .careers-steps > div {
+    min-height: 14rem;
+    padding: 1.6rem;
+  }
+
+  .careers-reason h3,
+  .careers-steps h3,
+  .careers-empty h3 {
+    font-size: 1.15rem;
+    font-weight: 700;
+  }
+
+  .careers-empty {
+    border-radius: 14px;
+    padding: clamp(1.35rem, 3vw, 2rem);
+  }
+
+  .careers-apply {
+    width: min(100%, 1500px);
+    border-radius: 14px;
+    margin: 0 auto;
+  }
+
+  .careers-form input::placeholder {
+    color: color-mix(in srgb, var(--paper) 52%, transparent);
+  }
+
+  .careers-input-row:focus-within {
+    border-color: var(--cyan);
+  }
+
+  .careers-input-row button,
+  .careers-final button,
+  .careers-button,
+  .text-link {
+    transition: transform .25s ease, background .25s ease, color .25s ease, border-color .25s ease;
+  }
+
+  .careers-input-row button:hover,
+  .careers-final button:hover,
+  .text-link:hover {
+    color: var(--cyan);
+    transform: translateX(3px);
+  }
+
+  .careers-button-primary:hover,
+  .careers-final button:hover {
+    background: var(--blue);
+    color: #fff;
+  }
+
+  .careers-button-secondary:hover {
+    border-color: var(--blue);
+    color: var(--blue);
+  }
+
+  .careers-final {
+    position: relative;
+    overflow: hidden;
+    border-top: 1px solid var(--line);
+  }
+
+  .careers-final h2 {
+    max-width: 12ch;
+  }
+
+  .careers-faq-list details:last-child {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .careers-faq-list summary:focus-visible,
+  .careers-button:focus-visible,
+  .careers-final button:focus-visible,
+  .careers-input-row button:focus-visible {
+    outline: 2px solid var(--cyan);
+    outline-offset: 4px;
+  }
+
+  @media (max-width: 800px) {
+    .careers-apply {
+      border-radius: 0;
+    }
+
+    .careers-reason,
+    .careers-steps > div {
+      min-height: auto;
+    }
+  }
+
+  /* ============================================================
+  SIMPLE & MINIMAL PRELOADER DESIGN
+  ============================================================ */
 .simple-preloader {
   position: fixed;
   top: 0;
