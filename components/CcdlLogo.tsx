@@ -19,7 +19,7 @@ export function CxLogoMark({
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       style={{ display: 'block', flexShrink: 0 }}
-      aria-label="CX Digital Labs Brandmark"
+      aria-label="Climate change Digital Labs Brandmark"
     >
       <defs>
         {/* Continuous top-to-bottom vibrant royal electric gradient */}

@@ -99,20 +99,21 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
     title: service.seoTitle,
     description: service.metaDesc,
     keywords: `${service.primaryKeyword}, ${service.secondaryKeywords.join(', ')}`,
-    canonicalUrl: `https://selmedicdigitallabs.com/services/${service.slug}`,
+    canonicalUrl: `https://climatechangedigitallabs.com/services/${service.slug}`,
     ogType: 'article',
     jsonLd: {
       '@context': 'https://schema.org',
       '@graph': [
         {
           '@type': 'Service',
-          '@id': `https://selmedicdigitallabs.com/services/${service.slug}#service`,
+          '@id': `https://climatechangedigitallabs.com/services/${service.slug}#service`,
           'name': service.title,
           'serviceType': service.shortTitle,
           'provider': {
             '@type': 'Organization',
-            'name': 'Selmedic Digital Labs',
-            'url': 'https://selmedicdigitallabs.com'
+            'name': 'Climate Change Digital Labs',
+            'alternateName': 'CCDL',
+            'url': 'https://climatechangedigitallabs.com'
           },
           'description': service.metaDesc,
           'areaServed': [
@@ -136,31 +137,31 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
         },
         {
           '@type': 'BreadcrumbList',
-          '@id': `https://selmedicdigitallabs.com/services/${service.slug}#breadcrumb`,
+          '@id': `https://climatechangedigitallabs.com/services/${service.slug}#breadcrumb`,
           'itemListElement': [
             {
               '@type': 'ListItem',
               'position': 1,
               'name': 'Home',
-              'item': 'https://selmedicdigitallabs.com/'
+              'item': 'https://climatechangedigitallabs.com/'
             },
             {
               '@type': 'ListItem',
               'position': 2,
               'name': 'Services',
-              'item': 'https://selmedicdigitallabs.com/services'
+              'item': 'https://climatechangedigitallabs.com/services'
             },
             {
               '@type': 'ListItem',
               'position': 3,
               'name': service.shortTitle,
-              'item': `https://selmedicdigitallabs.com/services/${service.slug}`
+              'item': `https://climatechangedigitallabs.com/services/${service.slug}`
             }
           ]
         },
         {
           '@type': 'FAQPage',
-          '@id': `https://selmedicdigitallabs.com/services/${service.slug}#faq`,
+          '@id': `https://climatechangedigitallabs.com/services/${service.slug}#faq`,
           'mainEntity': service.faqs.map(faq => ({
             '@type': 'Question',
             'name': faq.q,
@@ -294,7 +295,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
                 </button>
 
                 <a
-                  href={`https://wa.me/917852052323?text=Hello%20Selmedic%20Digital%20Labs%2C%20I%20am%20interested%20in%20your%20${encodeURIComponent(service.shortTitle)}%20service.`}
+                  href={`https://wa.me/917852052323?text=Hello%20CCDL%20team%2C%20I%20am%20interested%20in%20your%20${encodeURIComponent(service.shortTitle)}%20service.`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="sdp-whatsapp-btn"
@@ -519,7 +520,7 @@ export const ServiceDetailPage: React.FC<ServiceDetailPageProps> = ({
           <div className="sdp-cta-content">
             <span className="sdp-cta-eyebrow">READY TO DEPLOY YOUR SPRINT?</span>
             <h2 className="sdp-cta-title">
-              Ready to engineer high-impact {service.shortTitle.toLowerCase()} with Selmedic Digital Labs?
+              Ready to engineer high-impact {service.shortTitle.toLowerCase()} with CCDL?
             </h2>
             <p className="sdp-cta-desc">
               Our founding engineering and UI/UX design collective is ready to scope your requirements and provide an itemized sprint roadmap within 4 hours.

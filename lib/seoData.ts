@@ -27,8 +27,8 @@ export const SEO_SERVICES_MAP: Record<string, ServiceDetail> = {
     slug: 'software-development',
     title: 'Custom Software Development Services',
     shortTitle: 'Software Development',
-    seoTitle: 'Software Development Company in India | Custom Software Solutions — Selmedic Digital Labs',
-    metaDesc: 'Selmedic Digital Labs delivers enterprise-grade custom software development services in India and worldwide. Scalable architectures, secure microservices, and 99.99% uptime.',
+    seoTitle: 'Software Development Company in India | Custom Software Solutions — CCDL — Climate Change Digital Labs',
+    metaDesc: 'CCDL — Climate Change Digital Labs delivers enterprise-grade custom software development services in India and worldwide. Scalable architectures, secure microservices, and 99.99% uptime.',
     primaryKeyword: 'custom software development company',
     secondaryKeywords: [
       'software development services India',
@@ -40,8 +40,8 @@ export const SEO_SERVICES_MAP: Record<string, ServiceDetail> = {
     category: 'Software & Cloud',
     tag: 'Enterprise & Scale',
     heroHeadline: 'High-Velocity Custom Software Engineering Built for Ambitious Scale',
-    heroSubheadline: 'From complex cloud platforms to mission-critical backend systems, Selmedic Digital Labs crafts resilient, maintainable software architectures with zero downtime.',
-    overview: 'In an era where software defines market leadership, off-the-shelf templates limit growth. Selmedic Digital Labs architects tailor-made software systems designed from first principles. We build modular, SOC2-ready applications using clean TypeScript, microservices, robust API gateways, and distributed cloud infrastructure.',
+    heroSubheadline: 'From complex cloud platforms to mission-critical backend systems, CCDL — Climate Change Digital Labs crafts resilient, maintainable software architectures with zero downtime.',
+    overview: 'In an era where software defines market leadership, off-the-shelf templates limit growth. CCDL — Climate Change Digital Labs architects tailor-made software systems designed from first principles. We build modular, SOC2-ready applications using clean TypeScript, microservices, robust API gateways, and distributed cloud infrastructure.',
     challengesSolved: [
       'Eliminating technical debt from unmaintainable legacy monoliths.',
       'Engineering high-concurrency microservices capable of handling millions of requests.',
@@ -74,7 +74,7 @@ export const SEO_SERVICES_MAP: Record<string, ServiceDetail> = {
       { title: 'Strict Sprint SLAs', desc: 'Weekly live staging builds with transparent Jira/Linear milestones and clear delivery commitments.' }
     ],
     faqs: [
-      { q: 'What is the pricing model for custom software development at Selmedic Digital Labs?', a: 'We provide transparent fixed-price milestone sprints for clearly defined scopes as well as dedicated senior developer squads on monthly retainers. Contact us for an itemized estimate within 4 business hours.' },
+      { q: 'What is the pricing model for custom software development at CCDL — Climate Change Digital Labs?', a: 'We provide transparent fixed-price milestone sprints for clearly defined scopes as well as dedicated senior developer squads on monthly retainers. Contact us for an itemized estimate within 4 business hours.' },
       { q: 'Who owns the intellectual property and code repository?', a: 'You retain 100% full intellectual property ownership. Complete git repositories, environment scripts, and architecture docs are transferred upon milestone completion.' },
       { q: 'Can you migrate our existing legacy monolithic software?', a: 'Yes. We specialize in zero-downtime strangler pattern migrations, decoupling legacy components into scalable microservices without business disruption.' }
     ],
@@ -86,8 +86,8 @@ export const SEO_SERVICES_MAP: Record<string, ServiceDetail> = {
     slug: 'website-development',
     title: 'High-Performance Website Development Services',
     shortTitle: 'Website Development',
-    seoTitle: 'Website Development Agency in India | Fast, SEO-Optimized Sites — Selmedic Digital Labs',
-    metaDesc: 'Selmedic Digital Labs builds lightning-fast, conversion-focused websites in India. 95+ Core Web Vitals, custom designs, and responsive layouts that rank on Google.',
+    seoTitle: 'Website Development Agency in India | Fast, SEO-Optimized Sites — CCDL — Climate Change Digital Labs',
+    metaDesc: 'CCDL — Climate Change Digital Labs builds lightning-fast, conversion-focused websites in India. 95+ Core Web Vitals, custom designs, and responsive layouts that rank on Google.',
     primaryKeyword: 'website development company in India',
     secondaryKeywords: [
       'professional website development agency',
@@ -100,7 +100,7 @@ export const SEO_SERVICES_MAP: Record<string, ServiceDetail> = {
     tag: 'Web & Speed',
     heroHeadline: 'Bespoke, High-Conversion Websites Engineered to Rank & Convert',
     heroSubheadline: 'We build ultra-fast corporate websites and marketing portals that combine bespoke visual elegance with flawless technical SEO and sub-second load times.',
-    overview: 'Your website is your primary digital storefront. Most websites fail because of sluggish page speed, generic templates, and broken mobile responsiveness. Selmedic Digital Labs crafts custom, bespoke web experiences that load in under 0.8s, score 95+ on Google Lighthouse, and turn visitors into qualified inbound leads.',
+    overview: 'Your website is your primary digital storefront. Most websites fail because of sluggish page speed, generic templates, and broken mobile responsiveness. CCDL — Climate Change Digital Labs crafts custom, bespoke web experiences that load in under 0.8s, score 95+ on Google Lighthouse, and turn visitors into qualified inbound leads.',
     challengesSolved: [
       'Overcoming high bounce rates caused by slow template bloat and WordPress plugins.',
       'Achieving top rankings on Google with built-in semantic HTML5 and JSON-LD schema.',
@@ -134,7 +134,7 @@ export const SEO_SERVICES_MAP: Record<string, ServiceDetail> = {
     ],
     faqs: [
       { q: 'How long does it take to develop a custom website?', a: 'Standard corporate websites take 2 to 3 weeks, while complex platforms take 4 to 6 weeks. We follow strict sprint timelines.' },
-      { q: 'Will my website be optimized for Google search and mobile devices?', a: 'Yes. Every website built by Selmedic Digital Labs is 100% mobile-responsive and passes Google Mobile-Friendly and Core Web Vitals tests with 95+ scores.' },
+      { q: 'Will my website be optimized for Google search and mobile devices?', a: 'Yes. Every website built by CCDL — Climate Change Digital Labs is 100% mobile-responsive and passes Google Mobile-Friendly and Core Web Vitals tests with 95+ scores.' },
       { q: 'Can we update content ourselves after launch?', a: 'Absolutely. We integrate intuitive headless CMS solutions like Sanity, Strapi, or headless WordPress so your non-technical team can easily publish blogs and update pages.' }
     ],
     relatedServices: ['web-application-development', 'ui-ux-design', 'seo-services', 'branding'],
@@ -145,7 +145,7 @@ export const SEO_SERVICES_MAP: Record<string, ServiceDetail> = {
     slug: 'web-application-development',
     title: 'Custom Web Application Development',
     shortTitle: 'Web Applications',
-    seoTitle: 'Web Application Development Company | Scalable SaaS & Portals — Selmedic Digital Labs',
+    seoTitle: 'Web Application Development Company | Scalable SaaS & Portals — CCDL — Climate Change Digital Labs',
     metaDesc: 'Custom web application development company building secure SaaS platforms, enterprise portals, and dashboard systems in India for global businesses.',
     primaryKeyword: 'web application development company',
     secondaryKeywords: [
@@ -159,7 +159,7 @@ export const SEO_SERVICES_MAP: Record<string, ServiceDetail> = {
     tag: 'SaaS & Portals',
     heroHeadline: 'Scalable, High-Impact Web Applications & B2B SaaS Platforms',
     heroSubheadline: 'We engineer rich, reactive web applications with dynamic state management, bank-grade authentication, real-time sync, and intuitive user workflows.',
-    overview: 'Modern businesses run on web applications. Whether you are building an AI-powered SaaS product, an internal enterprise governance tool, or an institutional portal, Selmedic Digital Labs delivers rock-solid web applications engineered for millions of interactions.',
+    overview: 'Modern businesses run on web applications. Whether you are building an AI-powered SaaS product, an internal enterprise governance tool, or an institutional portal, CCDL — Climate Change Digital Labs delivers rock-solid web applications engineered for millions of interactions.',
     challengesSolved: [
       'Building responsive complex dashboards that render large datasets smoothly.',
       'Securing user authentication, multi-tenant databases, and granular role permissions.',
@@ -204,7 +204,7 @@ export const SEO_SERVICES_MAP: Record<string, ServiceDetail> = {
     slug: 'mobile-app-development',
     title: 'Mobile App Development Services (iOS & Android)',
     shortTitle: 'Mobile App Development',
-    seoTitle: 'Mobile App Development Company in India | iOS & Android Apps — Selmedic Digital Labs',
+    seoTitle: 'Mobile App Development Company in India | iOS & Android Apps — CCDL — Climate Change Digital Labs',
     metaDesc: 'Leading mobile app development company in India building intuitive, high-performance iOS and Android applications. Native & cross-platform Flutter/React Native.',
     primaryKeyword: 'mobile app development company in India',
     secondaryKeywords: [
@@ -218,7 +218,7 @@ export const SEO_SERVICES_MAP: Record<string, ServiceDetail> = {
     tag: 'iOS & Android',
     heroHeadline: 'High-Performance Mobile Apps That Users Love & Retain',
     heroSubheadline: 'We design and engineer fluid, native-feeling mobile applications for iOS and Android with intuitive touch interactions, offline support, and high store ratings.',
-    overview: 'Mobile applications demand perfection in touch ergonomics, battery efficiency, and silky 60fps animations. Selmedic Digital Labs builds top-tier native and cross-platform mobile apps for startups and enterprises, handling everything from App Store optimization to push notification infrastructure.',
+    overview: 'Mobile applications demand perfection in touch ergonomics, battery efficiency, and silky 60fps animations. CCDL — Climate Change Digital Labs builds top-tier native and cross-platform mobile apps for startups and enterprises, handling everything from App Store optimization to push notification infrastructure.',
     challengesSolved: [
       'Eliminating laggy UI rendering, memory leaks, and excessive battery consumption.',
       'Unifying iOS and Android feature sets with single-codebase cross-platform speed.',
@@ -263,7 +263,7 @@ export const SEO_SERVICES_MAP: Record<string, ServiceDetail> = {
     slug: 'android-app-development',
     title: 'Android App Development Services',
     shortTitle: 'Android App Development',
-    seoTitle: 'Android App Development Company in India | Native & Hybrid Apps — Selmedic Digital Labs',
+    seoTitle: 'Android App Development Company in India | Native & Hybrid Apps — CCDL — Climate Change Digital Labs',
     metaDesc: 'Premier Android app development company in India building secure, fast, and scalable Android applications for Google Play. Kotlin, Jetpack Compose, and Flutter.',
     primaryKeyword: 'Android app development company in India',
     secondaryKeywords: [
@@ -277,7 +277,7 @@ export const SEO_SERVICES_MAP: Record<string, ServiceDetail> = {
     tag: 'Google Play & Kotlin',
     heroHeadline: 'Bespoke Android Apps Engineered for India & Global Android Ecosystems',
     heroSubheadline: 'We build responsive, battery-conscious Android applications that run smoothly across thousands of diverse Android device models and screen sizes.',
-    overview: 'Android powers over 70% of global smartphones and 95%+ of India mobile users. Building for Android requires mastery of memory management, background services, Google Play requirements, and deep device fragmentation. Selmedic Digital Labs creates top-rated Android apps built on modern Kotlin and Jetpack Compose.',
+    overview: 'Android powers over 70% of global smartphones and 95%+ of India mobile users. Building for Android requires mastery of memory management, background services, Google Play requirements, and deep device fragmentation. CCDL — Climate Change Digital Labs creates top-rated Android apps built on modern Kotlin and Jetpack Compose.',
     challengesSolved: [
       'Handling Android fragmentation across diverse OEM skins (Samsung, Xiaomi, OnePlus, Pixel).',
       'Optimizing background work without triggering aggressive Android OS battery kills.',
@@ -322,7 +322,7 @@ export const SEO_SERVICES_MAP: Record<string, ServiceDetail> = {
     slug: 'ios-app-development',
     title: 'iOS App Development Services (iPhone & iPad)',
     shortTitle: 'iOS App Development',
-    seoTitle: 'iOS App Development Company in India | Native Swift & SwiftUI Apps — Selmedic Digital Labs',
+    seoTitle: 'iOS App Development Company in India | Native Swift & SwiftUI Apps — CCDL — Climate Change Digital Labs',
     metaDesc: 'Premium iOS app development company building elegant, high-converting iPhone and iPad applications with Swift, SwiftUI, and strict Apple design standards.',
     primaryKeyword: 'iOS app development company in India',
     secondaryKeywords: [
@@ -336,7 +336,7 @@ export const SEO_SERVICES_MAP: Record<string, ServiceDetail> = {
     tag: 'Apple & Swift',
     heroHeadline: 'Luxurious, High-Precision iOS Applications for Apple Platforms',
     heroSubheadline: 'We craft pixel-perfect iPhone and iPad applications with native SwiftUI responsiveness, Apple Pay, Face ID, widgets, and strict Apple Human Interface standards.',
-    overview: 'Apple iOS users generate the highest lifetime customer value in digital products. They expect uncompromising fluid animations, intuitive navigation, haptic feedback, and absolute privacy. Selmedic Digital Labs delivers world-class iOS applications engineered in modern Swift and SwiftUI.',
+    overview: 'Apple iOS users generate the highest lifetime customer value in digital products. They expect uncompromising fluid animations, intuitive navigation, haptic feedback, and absolute privacy. CCDL — Climate Change Digital Labs delivers world-class iOS applications engineered in modern Swift and SwiftUI.',
     challengesSolved: [
       'Complying with strict Apple App Store Review Guidelines (Guideline 2.1, 4.0, 5.1).',
       'Implementing seamless Apple Pay and In-App Purchase (StoreKit 2) subscriptions.',
@@ -381,7 +381,7 @@ export const SEO_SERVICES_MAP: Record<string, ServiceDetail> = {
     slug: 'ecommerce-development',
     title: 'E-Commerce Website & Platform Development',
     shortTitle: 'E-Commerce Development',
-    seoTitle: 'E-Commerce Website Development Company in India | High-Conversion Online Stores — Selmedic Digital Labs',
+    seoTitle: 'E-Commerce Website Development Company in India | High-Conversion Online Stores — CCDL — Climate Change Digital Labs',
     metaDesc: 'Top e-commerce website development company in India. Custom Shopify, WooCommerce, and Headless Next.js e-commerce platforms engineered for sales growth.',
     primaryKeyword: 'ecommerce development company in India',
     secondaryKeywords: [
@@ -395,7 +395,7 @@ export const SEO_SERVICES_MAP: Record<string, ServiceDetail> = {
     tag: 'Stores & Checkout',
     heroHeadline: 'High-Converting E-Commerce Stores Engineered for Revenue & Speed',
     heroSubheadline: 'We build ultra-fast online stores, custom Shopify setups, and headless Next.js e-commerce platforms with frictionless checkouts and high average order values.',
-    overview: 'In e-commerce, every 100ms of latency costs 1% in lost sales. Selmedic Digital Labs builds custom e-commerce stores engineered for extreme page speed, seamless 1-click checkout, automated inventory sync, and intelligent product recommendation engines.',
+    overview: 'In e-commerce, every 100ms of latency costs 1% in lost sales. CCDL — Climate Change Digital Labs builds custom e-commerce stores engineered for extreme page speed, seamless 1-click checkout, automated inventory sync, and intelligent product recommendation engines.',
     challengesSolved: [
       'Drastically reducing shopping cart abandonment with streamlined 2-step checkout.',
       'Scaling store infrastructure to handle massive flash sales and festival traffic spikes.',
@@ -440,7 +440,7 @@ export const SEO_SERVICES_MAP: Record<string, ServiceDetail> = {
     slug: 'custom-software-development',
     title: 'Custom Enterprise Software Solutions',
     shortTitle: 'Custom Software',
-    seoTitle: 'Custom Software Development Services India | Bespoke Enterprise Solutions — Selmedic Digital Labs',
+    seoTitle: 'Custom Software Development Services India | Bespoke Enterprise Solutions — CCDL — Climate Change Digital Labs',
     metaDesc: 'Tailor-made custom software development services for enterprises and high-growth companies. Scalable, secure, and built precisely for your unique business workflows.',
     primaryKeyword: 'custom software development services',
     secondaryKeywords: [
@@ -453,7 +453,7 @@ export const SEO_SERVICES_MAP: Record<string, ServiceDetail> = {
     category: 'Software & Cloud',
     tag: 'Bespoke & Enterprise',
     heroHeadline: 'Tailor-Made Software Systems Engineered for Unique Business Workflows',
-    heroSubheadline: 'When commercial off-the-shelf software fails to meet your operational needs, Selmedic Digital Labs engineers bespoke software that gives you an unfair competitive edge.',
+    heroSubheadline: 'When commercial off-the-shelf software fails to meet your operational needs, CCDL — Climate Change Digital Labs engineers bespoke software that gives you an unfair competitive edge.',
     overview: 'Generic software forces your company to fit into someone else rigid process. Custom software adapts completely to your proprietary operational models, automating manual tasks, eliminating errors, and scaling smoothly as your revenue compounds.',
     challengesSolved: [
       'Replacing costly disconnected SaaS subscriptions with a single unified company operating system.',
@@ -499,7 +499,7 @@ export const SEO_SERVICES_MAP: Record<string, ServiceDetail> = {
     slug: 'ui-ux-design',
     title: 'UI/UX Design & Design Systems Studio',
     shortTitle: 'UI/UX Design',
-    seoTitle: 'UI/UX Design Agency in India | Product Design & Figma Systems — Selmedic Digital Labs',
+    seoTitle: 'UI/UX Design Agency in India | Product Design & Figma Systems — CCDL — Climate Change Digital Labs',
     metaDesc: 'Award-winning UI/UX design agency in India. We design human-centered digital products, interactive Figma prototypes, design tokens, and high-conversion UX.',
     primaryKeyword: 'UI UX design agency in India',
     secondaryKeywords: [
@@ -513,7 +513,7 @@ export const SEO_SERVICES_MAP: Record<string, ServiceDetail> = {
     tag: 'Human & Tokens',
     heroHeadline: 'Human-Centered UI/UX Design Engineered with Mathematical Precision',
     heroSubheadline: 'We design intuitive interfaces, multi-brand design systems, and clickable Figma prototypes that eliminate user confusion and accelerate conversion velocity.',
-    overview: 'Great product design is not just how it looks; it is how effortlessly it works. Selmedic Digital Labs crafts user experiences derived from cognitive psychology, mathematical typography scales, and tokenized design systems that scale effortlessly across mobile and desktop.',
+    overview: 'Great product design is not just how it looks; it is how effortlessly it works. CCDL — Climate Change Digital Labs crafts user experiences derived from cognitive psychology, mathematical typography scales, and tokenized design systems that scale effortlessly across mobile and desktop.',
     challengesSolved: [
       'Solving confusing user journeys and reducing user churn in complex web and mobile apps.',
       'Aligning product teams around reusable, tokenized design systems in Figma and Storybook.',
@@ -558,7 +558,7 @@ export const SEO_SERVICES_MAP: Record<string, ServiceDetail> = {
     slug: 'digital-marketing',
     title: 'Data-Driven Digital Marketing & Performance Growth',
     shortTitle: 'Digital Marketing',
-    seoTitle: 'Digital Marketing Agency in India | ROI-Driven Performance Marketing — Selmedic Digital Labs',
+    seoTitle: 'Digital Marketing Agency in India | ROI-Driven Performance Marketing — CCDL — Climate Change Digital Labs',
     metaDesc: 'Results-driven digital marketing agency in India. We drive predictable revenue through Google Ads, Meta advertising, conversion rate optimization, and growth funnels.',
     primaryKeyword: 'digital marketing agency in India',
     secondaryKeywords: [
@@ -572,7 +572,7 @@ export const SEO_SERVICES_MAP: Record<string, ServiceDetail> = {
     tag: 'ROI & Funnels',
     heroHeadline: 'Data-Driven Digital Marketing Built to Scale Qualified Inbound Revenue',
     heroSubheadline: 'We eliminate wasted ad spend with surgical performance marketing, high-converting landing pages, and automated multi-channel lead funnels.',
-    overview: 'Traffic without conversions is vanity. Selmedic Digital Labs builds full-funnel digital marketing strategies that connect paid acquisition (Google Ads, Meta, LinkedIn) with high-intent search engine optimization and automated lead nurturing systems.',
+    overview: 'Traffic without conversions is vanity. CCDL — Climate Change Digital Labs builds full-funnel digital marketing strategies that connect paid acquisition (Google Ads, Meta, LinkedIn) with high-intent search engine optimization and automated lead nurturing systems.',
     challengesSolved: [
       'Stopping wasteful ad budgets spent on broad, irrelevant search queries.',
       'Overcoming declining Meta ROAS with creative testing and server-side Conversion API (CAPI).',
@@ -617,7 +617,7 @@ export const SEO_SERVICES_MAP: Record<string, ServiceDetail> = {
     slug: 'seo-services',
     title: 'Search Engine Optimization (SEO) Services',
     shortTitle: 'SEO Services',
-    seoTitle: 'SEO Company in India | Technical SEO & Organic Growth — Selmedic Digital Labs',
+    seoTitle: 'SEO Company in India | Technical SEO & Organic Growth — CCDL — Climate Change Digital Labs',
     metaDesc: 'Leading SEO company in India. Dominate Google search with technical SEO audits, Core Web Vitals optimization, programmatic keywords, and high-authority link building.',
     primaryKeyword: 'SEO company in India',
     secondaryKeywords: [
@@ -631,7 +631,7 @@ export const SEO_SERVICES_MAP: Record<string, ServiceDetail> = {
     tag: 'Rank & Organic',
     heroHeadline: 'Dominate Google Search with Technical SEO & Compounding Organic Authority',
     heroSubheadline: 'We engineer white-hat SEO strategies that rank your high-value commercial keywords on Page 1 of Google, driving high-intent organic traffic that never stops.',
-    overview: 'Paid ads stop delivering the moment you stop paying. SEO builds a permanent, compounding organic asset for your business. Selmedic Digital Labs combines deep technical website architecture, structured schema markup, semantic keyword clusters, and high-authority link building to achieve sustained Page 1 Google rankings.',
+    overview: 'Paid ads stop delivering the moment you stop paying. SEO builds a permanent, compounding organic asset for your business. CCDL — Climate Change Digital Labs combines deep technical website architecture, structured schema markup, semantic keyword clusters, and high-authority link building to achieve sustained Page 1 Google rankings.',
     challengesSolved: [
       'Fixing indexing errors, crawl budget waste, and broken site architecture in Google Search Console.',
       'Achieving 95+ Core Web Vitals scores required for Google ranking advantage.',
@@ -676,7 +676,7 @@ export const SEO_SERVICES_MAP: Record<string, ServiceDetail> = {
     slug: 'branding',
     title: 'Brand Identity & Visual Strategy Studio',
     shortTitle: 'Branding & Identity',
-    seoTitle: 'Branding Agency in India | Visual Identity & Brand Strategy — Selmedic Digital Labs',
+    seoTitle: 'Branding Agency in India | Visual Identity & Brand Strategy — CCDL — Climate Change Digital Labs',
     metaDesc: 'Elite branding agency in India. We design memorable visual identities, logo marks, brand guidelines, typography systems, and narrative positioning for modern brands.',
     primaryKeyword: 'branding agency in India',
     secondaryKeywords: [
@@ -690,7 +690,7 @@ export const SEO_SERVICES_MAP: Record<string, ServiceDetail> = {
     tag: 'Identity & Voice',
     heroHeadline: 'Distinct Visual Identities That Command Authority & Market Premium',
     heroSubheadline: 'We design enduring brand identities, custom typography pairings, iconography, and comprehensive brand books that make your company unforgettable.',
-    overview: 'In crowded markets, branding is what allows premium businesses to charge 5x more than commoditized competitors. Selmedic Digital Labs crafts cohesive visual identities built on mathematical proportions, distinctive color theory, and clear brand positioning.',
+    overview: 'In crowded markets, branding is what allows premium businesses to charge 5x more than commoditized competitors. CCDL — Climate Change Digital Labs crafts cohesive visual identities built on mathematical proportions, distinctive color theory, and clear brand positioning.',
     challengesSolved: [
       'Eliminating generic, forgettable branding that blends in with low-cost competitors.',
       'Unifying fragmented marketing assets across web, mobile, social, and print collateral.',
@@ -735,7 +735,7 @@ export const SEO_SERVICES_MAP: Record<string, ServiceDetail> = {
     slug: 'ai-solutions',
     title: 'Enterprise AI Solutions & Generative Intelligence',
     shortTitle: 'AI Solutions',
-    seoTitle: 'AI Development Company in India | Custom Generative AI & LLM Solutions — Selmedic Digital Labs',
+    seoTitle: 'AI Development Company in India | Custom Generative AI & LLM Solutions — CCDL — Climate Change Digital Labs',
     metaDesc: 'Premier AI development company in India building custom Generative AI agents, LLM integrations, intelligent workflow automation, and predictive analytics for enterprises.',
     primaryKeyword: 'AI development company in India',
     secondaryKeywords: [
@@ -749,7 +749,7 @@ export const SEO_SERVICES_MAP: Record<string, ServiceDetail> = {
     tag: 'GenAI & Agents',
     heroHeadline: 'Bespoke AI Solutions & Intelligent Agents That Automate Complex Workflows',
     heroSubheadline: 'We integrate cutting-edge Generative AI models, Retrieval-Augmented Generation (RAG), and autonomous LLM agents securely into your existing enterprise software.',
-    overview: 'Artificial Intelligence is no longer an experiment; it is an immediate operational imperative. Selmedic Digital Labs designs and deploys custom AI solutions, private RAG knowledge assistants, and autonomous multi-agent pipelines with strict data privacy and zero data leakage.',
+    overview: 'Artificial Intelligence is no longer an experiment; it is an immediate operational imperative. CCDL — Climate Change Digital Labs designs and deploys custom AI solutions, private RAG knowledge assistants, and autonomous multi-agent pipelines with strict data privacy and zero data leakage.',
     challengesSolved: [
       'Empowering employees with instant answers from thousands of private company documents.',
       'Automating complex multi-step data extraction, summarization, and customer ticket triaging.',
@@ -794,8 +794,8 @@ export const SEO_SERVICES_MAP: Record<string, ServiceDetail> = {
     slug: 'cloud-devops',
     title: 'Cloud Architecture & DevOps Engineering Services',
     shortTitle: 'Cloud & DevOps',
-    seoTitle: 'Cloud Architecture & DevOps Consulting Company India — Selmedic Digital Labs',
-    metaDesc: 'Selmedic Digital Labs provides enterprise cloud architecture, AWS/GCP migration, Kubernetes cluster management, Docker containerization, and zero-downtime CI/CD pipelines.',
+    seoTitle: 'Cloud Architecture & DevOps Consulting Company India — CCDL — Climate Change Digital Labs',
+    metaDesc: 'CCDL — Climate Change Digital Labs provides enterprise cloud architecture, AWS/GCP migration, Kubernetes cluster management, Docker containerization, and zero-downtime CI/CD pipelines.',
     primaryKeyword: 'cloud DevOps consulting company',
     secondaryKeywords: [
       'AWS cloud architecture services',
@@ -808,7 +808,7 @@ export const SEO_SERVICES_MAP: Record<string, ServiceDetail> = {
     tag: 'Cloud & Infrastructure',
     heroHeadline: 'Resilient Cloud Infrastructure & Automated CI/CD for Zero-Downtime Operations',
     heroSubheadline: 'We design, automate, and manage secure cloud systems on AWS, GCP, and Azure with automated scaling, Terraform infrastructure-as-code, and 99.99% uptime guarantees.',
-    overview: 'Modern software requires bulletproof infrastructure. Sluggish servers, manual deployments, and high AWS bills drain company resources. Selmedic Digital Labs engineers automated, containerized cloud environments using Kubernetes, Docker, and Terraform to eliminate downtime and cut cloud costs by up to 45%.',
+    overview: 'Modern software requires bulletproof infrastructure. Sluggish servers, manual deployments, and high AWS bills drain company resources. CCDL — Climate Change Digital Labs engineers automated, containerized cloud environments using Kubernetes, Docker, and Terraform to eliminate downtime and cut cloud costs by up to 45%.',
     challengesSolved: [
       'Eliminating unpredictable downtime during high-traffic surges and product launches.',
       'Slashing bloated AWS/GCP cloud bills through rightsizing, caching, and serverless architectures.',
@@ -853,8 +853,8 @@ export const SEO_SERVICES_MAP: Record<string, ServiceDetail> = {
     slug: 'saas-mvp-development',
     title: 'SaaS MVP Development & Startup Acceleration',
     shortTitle: 'SaaS MVP Development',
-    seoTitle: 'SaaS MVP Development Company in India | Rapid 4-6 Week Launch — Selmedic Digital Labs',
-    metaDesc: 'Build and launch your SaaS MVP in 4-6 weeks with Selmedic Digital Labs. Production-grade TypeScript, multi-tenancy, Stripe billing, auth, and investor-ready architectures.',
+    seoTitle: 'SaaS MVP Development Company in India | Rapid 4-6 Week Launch — CCDL — Climate Change Digital Labs',
+    metaDesc: 'Build and launch your SaaS MVP in 4-6 weeks with CCDL — Climate Change Digital Labs. Production-grade TypeScript, multi-tenancy, Stripe billing, auth, and investor-ready architectures.',
     primaryKeyword: 'SaaS MVP development company',
     secondaryKeywords: [
       'startup MVP developers India',
@@ -867,7 +867,7 @@ export const SEO_SERVICES_MAP: Record<string, ServiceDetail> = {
     tag: 'Startups & Scale',
     heroHeadline: 'Launch Your Venture-Grade SaaS MVP to Market in 4 to 6 Weeks',
     heroSubheadline: 'We turn ambitious founder concepts into production-ready, investor-grade SaaS platforms with multi-tenant security, subscription billing, and flawless UX.',
-    overview: 'Speed is the ultimate unfair advantage for modern startups. Spending 9 months building an over-engineered product burns cash before getting customer validation. Selmedic Digital Labs operates as your fractional CTO and senior product squad, engineering lean, beautiful, scalable SaaS MVPs in rapid 4-6 week sprints.',
+    overview: 'Speed is the ultimate unfair advantage for modern startups. Spending 9 months building an over-engineered product burns cash before getting customer validation. CCDL — Climate Change Digital Labs operates as your fractional CTO and senior product squad, engineering lean, beautiful, scalable SaaS MVPs in rapid 4-6 week sprints.',
     challengesSolved: [
       'Eliminating months of wasted engineering on unvalidated features.',
       'Implementing complex multi-tenancy, team roles, and permission architectures.',
@@ -912,8 +912,8 @@ export const SEO_SERVICES_MAP: Record<string, ServiceDetail> = {
     slug: 'flutter-cross-platform',
     title: 'Cross-Platform Flutter & Mobile App Development',
     shortTitle: 'Flutter App Development',
-    seoTitle: 'Flutter App Development Company in India | iOS & Android Apps — Selmedic Digital Labs',
-    metaDesc: 'Selmedic Digital Labs is a top Flutter app development company in India creating high-performance cross-platform mobile apps for iOS and Android with 60fps native feel.',
+    seoTitle: 'Flutter App Development Company in India | iOS & Android Apps — CCDL — Climate Change Digital Labs',
+    metaDesc: 'CCDL — Climate Change Digital Labs is a top Flutter app development company in India creating high-performance cross-platform mobile apps for iOS and Android with 60fps native feel.',
     primaryKeyword: 'Flutter app development company in India',
     secondaryKeywords: [
       'cross platform mobile app development',
@@ -926,7 +926,7 @@ export const SEO_SERVICES_MAP: Record<string, ServiceDetail> = {
     tag: 'Mobile & Native',
     heroHeadline: 'One Codebase, Native 60fps Performance on Both iOS & Android',
     heroSubheadline: 'Cut mobile development costs by 50% without sacrificing speed, responsiveness, or native device features using production-grade Flutter and React Native architecture.',
-    overview: 'Building separate native iOS and Android apps doubles development timelines, budgets, and bug maintenance. Selmedic Digital Labs crafts enterprise-grade cross-platform mobile applications using Flutter and React Native. We deliver razor-sharp 60fps UI animations, offline data caching, and native hardware access across iPhones, iPads, and Android devices.',
+    overview: 'Building separate native iOS and Android apps doubles development timelines, budgets, and bug maintenance. CCDL — Climate Change Digital Labs crafts enterprise-grade cross-platform mobile applications using Flutter and React Native. We deliver razor-sharp 60fps UI animations, offline data caching, and native hardware access across iPhones, iPads, and Android devices.',
     challengesSolved: [
       'Cutting development and maintenance budgets in half with unified codebase architecture.',
       'Achieving silky-smooth 60fps native UI responsiveness without WebView lag.',
@@ -971,8 +971,8 @@ export const SEO_SERVICES_MAP: Record<string, ServiceDetail> = {
     slug: 'api-microservices',
     title: 'API Engineering & Microservices Architecture',
     shortTitle: 'API & Microservices',
-    seoTitle: 'API Development & Microservices Architecture Services — Selmedic Digital Labs',
-    metaDesc: 'Selmedic Digital Labs engineers high-throughput REST, GraphQL, and gRPC APIs, payment gateways, webhook brokers, and scalable microservices architectures.',
+    seoTitle: 'API Development & Microservices Architecture Services — CCDL — Climate Change Digital Labs',
+    metaDesc: 'CCDL — Climate Change Digital Labs engineers high-throughput REST, GraphQL, and gRPC APIs, payment gateways, webhook brokers, and scalable microservices architectures.',
     primaryKeyword: 'API development and integration company',
     secondaryKeywords: [
       'microservices architecture consulting',
@@ -985,7 +985,7 @@ export const SEO_SERVICES_MAP: Record<string, ServiceDetail> = {
     tag: 'APIs & Integration',
     heroHeadline: 'High-Throughput APIs & Distributed Microservices Built for Scale',
     heroSubheadline: 'Connect disparate systems, orchestrate complex payment pipelines, and engineer sub-50ms REST, GraphQL, and gRPC backend services with automated rate limiting.',
-    overview: 'Modern digital ecosystems rely on robust API connectivity. Slow, undocumented, or fragile APIs stall development and lead to lost customer transactions. Selmedic Digital Labs designs resilient API ecosystems, webhook event buses, and distributed microservices with automated documentation (OpenAPI/Swagger), token throttling, and ironclad encryption.',
+    overview: 'Modern digital ecosystems rely on robust API connectivity. Slow, undocumented, or fragile APIs stall development and lead to lost customer transactions. CCDL — Climate Change Digital Labs designs resilient API ecosystems, webhook event buses, and distributed microservices with automated documentation (OpenAPI/Swagger), token throttling, and ironclad encryption.',
     challengesSolved: [
       'Modernizing slow, monolithic backends into decoupled, horizontally scalable microservices.',
       'Integrating third-party payment gateways, CRM systems, and ERPs seamlessly.',
@@ -1030,8 +1030,8 @@ export const SEO_SERVICES_MAP: Record<string, ServiceDetail> = {
     slug: 'cybersecurity-code-audit',
     title: 'Cybersecurity, Code Audit & Performance Tuning',
     shortTitle: 'Security & Code Audit',
-    seoTitle: 'Cybersecurity Audit & Code Review Services India — Selmedic Digital Labs',
-    metaDesc: 'Selmedic Digital Labs provides thorough security vulnerability assessments, OWASP penetration testing, source code audits, and full-stack performance tuning.',
+    seoTitle: 'Cybersecurity Audit & Code Review Services India — CCDL — Climate Change Digital Labs',
+    metaDesc: 'CCDL — Climate Change Digital Labs provides thorough security vulnerability assessments, OWASP penetration testing, source code audits, and full-stack performance tuning.',
     primaryKeyword: 'cybersecurity audit and code review services',
     secondaryKeywords: [
       'source code audit company India',
@@ -1044,7 +1044,7 @@ export const SEO_SERVICES_MAP: Record<string, ServiceDetail> = {
     tag: 'Security & Audit',
     heroHeadline: 'Fortify Your Digital Infrastructure & Optimize Full-Stack Performance',
     heroSubheadline: 'Uncover hidden vulnerabilities, eliminate technical debt, pass enterprise vendor security reviews, and double your application throughput with our rigorous audit sprints.',
-    overview: 'Security breaches and sluggish performance destroy customer trust and investor valuations. Selmedic Digital Labs conducts exhaustive source code reviews, automated penetration testing, and database query optimizations. We identify OWASP Top 10 vulnerabilities, memory leaks, and query bottlenecks, delivering prioritized remediation patches.',
+    overview: 'Security breaches and sluggish performance destroy customer trust and investor valuations. CCDL — Climate Change Digital Labs conducts exhaustive source code reviews, automated penetration testing, and database query optimizations. We identify OWASP Top 10 vulnerabilities, memory leaks, and query bottlenecks, delivering prioritized remediation patches.',
     challengesSolved: [
       'Passing rigorous enterprise security audits and SOC2/ISO vendor questionnaires.',
       'Discovering critical SQL injection, XSS, SSRF, and authentication bypass flaws.',
@@ -1087,6 +1087,24 @@ export const SEO_SERVICES_MAP: Record<string, ServiceDetail> = {
 };
 
 export const SEO_KEYWORD_CLUSTERS = [
+  {
+    cluster: 'CCDL Brand & Entity Authority',
+    primary: 'CCDL',
+    intent: 'Navigational / Direct Commercial / Brand Entity',
+    targetPage: '/about',
+    supportingKeywords: [
+      'Climate Change Digital Labs',
+      'CCDL Digital Labs',
+      'CCDL Studio',
+      'CCDL Agency',
+      'CCDL Software',
+      'CCDL India',
+      'CCDL Web Development',
+      'ccdl digital',
+      'Climate Change Digital Labs (CCDL)'
+    ],
+    contentAngle: 'Dominating brand SERPs, establishing Google Knowledge Graph entity ownership, and directing high-intent queries to CCDL.'
+  },
   {
     cluster: 'Software Development & Architecture',
     primary: 'custom software development company',
@@ -1266,7 +1284,7 @@ export const SEO_ROADMAP_PHASES = {
     { title: 'Google Search Console Verification & Sitemap Ping', desc: 'Verify ownership, submit sitemap.xml, and request immediate indexing for main URLs.', status: 'Ready to Ping' }
   ],
   mediumPriority: [
-    { title: 'Google Business Profile (GBP) Optimization', desc: 'Claim and optimize Selmedic Digital Labs GBP listing in Jaipur/India with consistent NAP details.', status: 'Next 30 Days' },
+    { title: 'Google Business Profile (GBP) Optimization', desc: 'Claim and optimize CCDL — Climate Change Digital Labs GBP listing in Jaipur/India with consistent NAP details.', status: 'Next 30 Days' },
     { title: 'Local Citations & Directory Listings', desc: 'Build 50+ high-authority Indian business citations (JustDial, IndiaMART, Sulekha, Crunchbase, Clutch).', status: 'Days 30–60' },
     { title: 'Authoritative Topic Cluster Content Expansion', desc: 'Publish 6 in-depth architectural pillar blog posts targeting long-tail engineering queries.', status: 'Days 30–60' },
     { title: 'Clutch & G2 Verified Client Reviews Engine', desc: 'Collect 10+ verified 5-star client testimonials to build domain trust signals.', status: 'Days 45–60' }

@@ -8,6 +8,7 @@ import { SEOStrategyPage } from '../sections/SEOStrategyPage.tsx';
 import { BlogPage, BLOG_POSTS } from '../sections/BlogPage.tsx';
 import { CommunityPage } from '../sections/CommunityPage.tsx';
 import { SingleArticlePage } from '../sections/SingleArticlePage.tsx';
+import LegalPage from './LegalPage.tsx';
 import { SEO_SERVICES_MAP } from '../lib/seoData.ts';
 import { portfolioProjects } from '../sections/Portfolio.tsx';
 
@@ -146,18 +147,29 @@ export const projectsData = [
     category: 'Enterprise SaaS',
     metrics: '+185% Match Rate · 45k Active Users',
     text: 'A high-performance talent orchestration platform connecting vetted specialists with enterprise teams through automated AI matchmaking and smart contracts.',
-    image: 'https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&q=82&w=1200',
+    image: '/images/projects/hirepro.jpg',
     tech: ['React', 'TypeScript', 'Node.js', 'Tailwind CSS'],
     liveUrl: 'https://hireprofessional.vercel.app/',
   },
   {
+    id: 'ccexchange',
+    title: 'CC Exchange',
+    type: 'DeFi',
+    category: 'Crypto Spot Trading',
+    metrics: '$2.59B Spot Volume · <0.2ms Match',
+    text: 'An institutional crypto spot trading terminal with live order books, 180% reserve backing, and sub-millisecond execution matching.',
+    image: '/images/projects/ccexchange.jpg',
+    tech: ['React', 'TypeScript', 'WebSockets', 'OrderBook Engine'],
+    liveUrl: 'https://ccexchange.vercel.app/',
+  },
+  {
     id: 'school-management',
-    title: 'School Management',
+    title: 'SchoolPro Academy',
     type: 'EdTech',
     category: 'Institutional Portal',
     metrics: '99.98% Uptime · 12,000+ Daily Students',
     text: 'An all-in-one institutional management portal orchestrating student grading, attendance telemetry, faculty scheduling, fee pipelines, and parent communication.',
-    image: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=82&w=1200',
+    image: '/images/projects/schoolpro.jpg',
     tech: ['Next.js', 'PostgreSQL', 'Express', 'D3.js'],
     liveUrl: 'https://schoolmangment.vercel.app/',
   },
@@ -168,9 +180,86 @@ export const projectsData = [
     category: 'FinTech & Web3',
     metrics: '$24M+ Volume · <250ms Execution',
     text: 'A focused decentralized liquidity exchange experience built around real-time liquidity pools, minimal slippage, speed, and confident asset swapping.',
-    image: 'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&q=82&w=1200',
+    image: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-qynMwPc3KOW4ELNNfQHQXjzKtWfxrE.png',
     tech: ['Web3.js', 'React', 'Tailwind', 'Ethers'],
     liveUrl: 'https://swap-zeta.vercel.app/',
+  },
+  {
+    id: 'zenith',
+    title: 'Zenith',
+    type: 'Platforms',
+    category: 'AI Health & Fitness',
+    metrics: '14-Day Streaks · Real-time Biometrics',
+    text: 'An AI-powered fitness and health tracking dashboard monitoring daily activity streaks, biometric telemetry, and real-time nutritional analysis.',
+    image: '/images/projects/zenith.jpg',
+    tech: ['React', 'TypeScript', 'D3.js', 'HealthKit API'],
+    liveUrl: 'https://zenith-gules-seven.vercel.app/',
+  },
+  {
+    id: 'aitranslate',
+    title: 'AITranslate',
+    type: 'Platforms',
+    category: 'AI Translation',
+    metrics: '100+ Languages · Real-time OCR',
+    text: 'Break language barriers with fast, accurate multi-language translation across text, documents, images, and live websites in 100+ languages.',
+    image: '/images/projects/aitranslate.jpg',
+    tech: ['React', 'FastAPI', 'Gemini AI', 'Tailwind CSS'],
+    liveUrl: 'https://aitraslate.vercel.app/',
+  },
+  {
+    id: 'elan-vogue',
+    title: 'Élan & Vogue',
+    type: 'Platforms',
+    category: 'Haute Fashion & Commerce',
+    metrics: 'Haute Couture · Global Checkout',
+    text: 'A luxury haute couture editorial e-commerce experience showcasing seasonal collections, runway highlights, and refined visual merchandising.',
+    image: '/images/projects/elan-vogue.jpg',
+    tech: ['React', 'Next.js', 'Tailwind CSS', 'Stripe'],
+    liveUrl: 'https://gshop-gamma.vercel.app/',
+  },
+  {
+    id: 'hezafx',
+    title: 'HEZAFX Trade',
+    type: 'DeFi',
+    category: 'Fintech & Trading',
+    metrics: '$45,000 Portfolio · Live Telemetry',
+    text: 'A professional crypto trading platform built with bank-grade security, real-time portfolio tracking, and deep algorithmic trading charts.',
+    image: '/images/projects/hezafx.jpg',
+    tech: ['React', 'Node.js', 'MongoDB', 'Tailwind CSS'],
+    liveUrl: 'https://tpwallet.vercel.app/',
+  },
+  {
+    id: 'medexpert',
+    title: 'MedExpert',
+    type: 'Platforms',
+    category: 'Healthcare Platform',
+    metrics: '500k+ Patients · 150k+ Doctors',
+    text: 'A patient-first healthcare discovery portal connecting 500k+ patients with 150k+ verified doctors and instant digital appointments.',
+    image: '/images/projects/medexpert.jpg',
+    tech: ['React', 'Node.js', 'PostgreSQL', 'TeleHealth'],
+    liveUrl: 'https://legal-jz4g.vercel.app/',
+  },
+  {
+    id: 'aicafe',
+    title: 'Aicafe',
+    type: 'Platforms',
+    category: 'Food & Delivery',
+    metrics: '<25min Delivery · Live Tracking',
+    text: 'An interactive food delivery platform crafted for rapid ordering, seasonal chef menus, live kitchen tracking, and seamless checkout.',
+    image: '/images/projects/aicafe.jpg',
+    tech: ['React', 'Express', 'Google Maps', 'Tailwind CSS'],
+    liveUrl: 'https://hireprofessional.vercel.app/',
+  },
+  {
+    id: 'allstar',
+    title: 'Allstar',
+    type: 'Platforms',
+    category: 'Talent & Agency Marketplace',
+    metrics: '1250+ Firms · Elite Specialists',
+    text: 'An elite agency and talent marketplace empowering 1250+ firms to discover, hire, and manage top-tier creative and engineering specialists.',
+    image: '/images/projects/allstar.jpg',
+    tech: ['React', 'TypeScript', 'PostgreSQL', 'GraphQL'],
+    liveUrl: 'https://legal-jz4g.vercel.app/',
   },
 ];
 
@@ -231,7 +320,7 @@ export const caseStudiesDetail: Record<string, {
     client: 'HirePro Inc. (San Francisco, CA)',
     duration: '6 Weeks Sprint',
     metrics: '+185% Match Rate · 45,000+ Active Users',
-    heroImg: 'https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&q=82&w=1200',
+    heroImg: '/images/projects/hirepro.jpg',
     challenge: 'Enterprises were losing up to 4 weeks vetting niche senior contractors across disjointed platforms, with high mis-hire rates and delayed onboarding cycles.',
     solution: 'We engineered a high-throughput talent orchestration portal with algorithmic skill graphing, automated verification telemetry, smart contract milestones, and unified workspace billing.',
     stack: ['React 18', 'TypeScript', 'Node.js', 'PostgreSQL', 'Tailwind CSS', 'Redis'],
@@ -247,15 +336,39 @@ export const caseStudiesDetail: Record<string, {
       { stat: '99.98%', label: 'Platform Availability SLA' }
     ]
   },
+  'ccexchange': {
+    title: 'CC Exchange',
+    subtitle: 'Institutional Crypto Spot Trading & Liquidity Terminal',
+    tag: 'Fintech • Spot Exchange',
+    year: '2026',
+    client: 'CC Exchange Global',
+    duration: '7 Weeks Sprint',
+    metrics: '$2.59B 24h Spot Turnover · <0.2ms Match Latency',
+    heroImg: '/images/projects/ccexchange.jpg',
+    challenge: 'High-frequency traders demanded ultra-low latency execution alongside verifiable multi-sig reserve backing and bank-grade custody proof.',
+    solution: 'Designed and deployed an in-memory deterministic order matching engine with zero-sum double-entry ledgers and interactive Depth-of-Market visualizers.',
+    stack: ['React', 'TypeScript', 'Go Matching Engine', 'WebSockets', 'Tailwind CSS'],
+    features: [
+      { title: 'Deterministic Matching', desc: 'Sub-millisecond trade pairing capable of processing 100k orders per second.' },
+      { title: 'Proof of Reserves', desc: '180% cryptographic reserve backing verified live on-chain every block.' },
+      { title: 'Cold Custody Telemetry', desc: 'Multi-signature institutional vaults with time-delayed administrative recovery.' }
+    ],
+    results: [
+      { stat: '$2.59B', label: 'Daily Spot Turnover' },
+      { stat: '<0.2ms', label: 'Median Order Execution' },
+      { stat: '180%', label: 'Reserve Asset Backing' },
+      { stat: '99.99%', label: 'Infrastructure Availability' }
+    ]
+  },
   'school-management': {
-    title: 'School Management',
+    title: 'SchoolPro Academy',
     subtitle: 'Next-Generation Unified Institutional Governance System',
     tag: 'Institutional Portal • EdTech',
     year: '2026',
-    client: 'EduCore Systems',
+    client: 'SchoolPro Education Group',
     duration: '8 Weeks Sprint',
     metrics: '99.98% Uptime · 12,000+ Daily Active Students',
-    heroImg: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&q=82&w=1200',
+    heroImg: '/images/projects/schoolpro.jpg',
     challenge: 'Educational institutions were struggling with fractured legacy software for attendance, grading, fee collections, and parent communications, causing massive administrative overhead.',
     solution: 'Designed and deployed an all-in-one administrative hub featuring role-based dashboards, automated SMS/WhatsApp alerts, real-time grading analytics, and automated fee reconciliation.',
     stack: ['Next.js App Router', 'TypeScript', 'PostgreSQL', 'Express', 'D3.js', 'AWS ECS'],
@@ -271,6 +384,174 @@ export const caseStudiesDetail: Record<string, {
       { stat: '100%', label: 'Digital Fee Collection Compliance' }
     ]
   },
+  'zenith': {
+    title: 'Zenith',
+    subtitle: 'AI-Powered Fitness & Biometric Health Intelligence',
+    tag: 'HealthTech • AI Platform',
+    year: '2026',
+    client: 'Zenith Health Dynamics',
+    duration: '5 Weeks Sprint',
+    metrics: '14-Day User Streaks · 98% Bio-tracking Precision',
+    heroImg: '/images/projects/zenith.jpg',
+    challenge: 'Users suffered from fitness tracking fatigue and disconnected calorie, step, and hydration logs with zero actionable coaching insights.',
+    solution: 'Built an unified AI companion that correlates step counts, macronutrient ratios, and calorie burn into real-time personalized recovery advice.',
+    stack: ['React', 'TypeScript', 'D3.js', 'HealthKit API', 'Tailwind CSS'],
+    features: [
+      { title: 'Live AI Analysis', desc: 'Contextual coaching alerts prompting hydration and movement based on heart rate telemetry.' },
+      { title: 'Macronutrient Breakdown', desc: 'Dynamic visual ring charts monitoring protein, carbs, and healthy fats targets.' },
+      { title: 'Streak Gamification', desc: 'Habit-reinforcing milestones that increased user retention by 240% over 60 days.' }
+    ],
+    results: [
+      { stat: '14 Days', label: 'Average Habit Streak' },
+      { stat: '1,840 kcal', label: 'Tracked Daily Energy Burn' },
+      { stat: '+240%', label: 'User Retention Improvement' },
+      { stat: '4.9/5', label: 'App Store Satisfaction Score' }
+    ]
+  },
+  'aitranslate': {
+    title: 'AITranslate',
+    subtitle: 'Zero-Latency Multi-Modal Neural Translation Engine',
+    tag: 'AI • Language Platform',
+    year: '2026',
+    client: 'Polyglot AI Labs',
+    duration: '4 Weeks Sprint',
+    metrics: '100+ Languages · 99.4% Syntactic Accuracy',
+    heroImg: '/images/projects/aitranslate.jpg',
+    challenge: 'Cross-border teams required immediate, context-aware translations across documents, audio transcripts, images, and live website DOM trees.',
+    solution: 'Engineered an accessible translation suite powered by low-latency LLMs with specialized dialect preservation and side-by-side verification.',
+    stack: ['React', 'FastAPI', 'Gemini AI', 'Tailwind CSS', 'Web Audio API'],
+    features: [
+      { title: 'Multi-Modal Input', desc: 'Translate text, PDF documents, image OCR scans, and video transcripts simultaneously.' },
+      { title: 'Context-Aware Lexicon', desc: 'Preserves legal, technical, and medical jargon across complex document translations.' },
+      { title: 'Instant Live Web Translation', desc: 'Chrome extension and embedded widget for dynamic web app localisation.' }
+    ],
+    results: [
+      { stat: '100+', label: 'Supported Global Dialects' },
+      { stat: '<150ms', label: 'Text Chunk Translation Latency' },
+      { stat: '99.4%', label: 'Grammar and Syntax Accuracy' },
+      { stat: '500k+', label: 'Documents Translated Monthly' }
+    ]
+  },
+  'elan-vogue': {
+    title: 'Élan & Vogue',
+    subtitle: 'Haute Couture Editorial E-Commerce Experience',
+    tag: 'Luxury • E-Commerce',
+    year: '2026',
+    client: 'Maison Élan Paris',
+    duration: '6 Weeks Sprint',
+    metrics: '3.8x Mobile Checkout Conversion · 60fps Merchandising',
+    heroImg: '/images/projects/elan-vogue.jpg',
+    challenge: 'Luxury brands struggle with sluggish Shopify templates that diminish high-fashion imagery and create disjointed checkout friction.',
+    solution: 'Designed a high-velocity headless commerce frontend featuring editorial runway videos, lookbook hotspots, and one-tap global checkout.',
+    stack: ['Next.js', 'Tailwind CSS', 'Stripe Elements', 'Shopify Storefront API'],
+    features: [
+      { title: 'Editorial Lookbooks', desc: 'Interactive high-res lifestyle spreads with click-to-bag fashion tag overlays.' },
+      { title: 'Micro-Animation Polish', desc: 'Silky smooth cursor-guided hover states and delicate image reveals.' },
+      { title: 'Frictionless Bag & Cart', desc: 'Slide-out bag with instant multi-currency price recalculation and Apple Pay integration.' }
+    ],
+    results: [
+      { stat: '3.8x', label: 'Increase in Checkout Conversions' },
+      { stat: '<1.2s', label: 'First Contentful Paint on 4G' },
+      { stat: '$420', label: 'Average Order Value Increase (+45%)' },
+      { stat: '100%', label: 'Mobile Luxury Fidelity' }
+    ]
+  },
+  'hezafx': {
+    title: 'HEZAFX Trade',
+    subtitle: 'Bank-Grade Algorithmic Crypto Trading Terminal',
+    tag: 'Fintech • Trading Platform',
+    year: '2026',
+    client: 'HezaFX Capital',
+    duration: '6 Weeks Sprint',
+    metrics: '$45,000 Portfolio Telemetry · 99.99% Reliability',
+    heroImg: '/images/projects/hezafx.jpg',
+    challenge: 'Retail and pro traders required advanced charting, risk-managed stop-loss executions, and cross-asset portfolio rebalancing in one clean dark interface.',
+    solution: 'Engineered a high-contrast dark green terminal with real-time candlestick feeds, multi-asset allocation donuts, and instant order routing.',
+    stack: ['React', 'Node.js', 'MongoDB', 'TradingView Lightweight Charts', 'Tailwind CSS'],
+    features: [
+      { title: 'Live Technical Charts', desc: 'Hardware-accelerated candlestick rendering with customizable RSI, MACD, and Bollinger bands.' },
+      { title: 'Asset Allocation Visualizer', desc: 'Instant breakdown of portfolio percentages across BTC, ETH, and stablecoins.' },
+      { title: 'Bank-Grade Security', desc: 'Session fingerprinting, biometric confirmations, and cold withdrawal limits.' }
+    ],
+    results: [
+      { stat: '$45k+', label: 'Average Active Portfolio Managed' },
+      { stat: '<50ms', label: 'Chart Data Stream Update Interval' },
+      { stat: '99.99%', label: 'Execution Engine Reliability' },
+      { stat: '0', label: 'Reported Security Incidents' }
+    ]
+  },
+  'medexpert': {
+    title: 'MedExpert',
+    subtitle: 'Patient-First Healthcare Discovery & Telemedicine Portal',
+    tag: 'Healthcare • Telemedicine',
+    year: '2026',
+    client: 'MedExpert Health Network',
+    duration: '7 Weeks Sprint',
+    metrics: '500k+ Patients · 150k+ Verified Specialists',
+    heroImg: '/images/projects/medexpert.jpg',
+    challenge: 'Finding vetted doctors, understanding clinical specialities, and booking appointments was plagued by outdated phone systems and long wait times.',
+    solution: 'Crafted an intuitive medical discovery portal with filterable physician credentials, verified patient reviews, and instant appointment confirmation.',
+    stack: ['React', 'TypeScript', 'Node.js', 'PostgreSQL', 'WebRTC Video Telehealth'],
+    features: [
+      { title: 'Verified Specialist Search', desc: 'Instant filtering by specialty, location, insurance provider, and available time slots.' },
+      { title: 'HD Video Consultations', desc: 'Browser-based encrypted telemedicine rooms requiring zero plugin downloads.' },
+      { title: 'Electronic Health Records', desc: 'HIPAA-compliant patient document vault with automated prescription delivery.' }
+    ],
+    results: [
+      { stat: '500,000+', label: 'Patients Empowered' },
+      { stat: '150,000+', label: 'Board-Certified Specialists' },
+      { stat: '2 Minutes', label: 'Average Appointment Booking Time' },
+      { stat: '98.5%', label: 'Patient Trust & Satisfaction Rating' }
+    ]
+  },
+  'aicafe': {
+    title: 'Aicafe',
+    subtitle: 'Interactive Gourmet Food Delivery & Live Order Experience',
+    tag: 'FoodTech • Ordering Platform',
+    year: '2026',
+    client: 'Aicafe Restaurant Collective',
+    duration: '5 Weeks Sprint',
+    metrics: '<25min Average Delivery · 4.9 Star Rating',
+    heroImg: '/images/projects/aicafe.jpg',
+    challenge: 'Restaurateurs needed a branded direct-to-consumer ordering platform to bypass third-party aggregator commissions without sacrificing order speed.',
+    solution: 'Built a vibrant, high-conversion food ordering platform featuring category carousels, chef specials, live GPS kitchen tracking, and instant re-ordering.',
+    stack: ['React', 'Express', 'Google Maps Platform', 'Tailwind CSS', 'Stripe'],
+    features: [
+      { title: 'Visual Food Merchandising', desc: 'Mouthwatering menu cards with calorie counts, allergen tags, and customization toggles.' },
+      { title: 'Real-Time Kitchen Telemetry', desc: 'Live stage tracker from order acceptance, food preparation, to courier dispatch.' },
+      { title: 'Smart Combo Suggestions', desc: 'Algorithmic upselling for beverages and desserts increasing average basket size by 32%.' }
+    ],
+    results: [
+      { stat: '<25 min', label: 'Average Door-to-Door Delivery' },
+      { stat: '+32%', label: 'Average Order Basket Value' },
+      { stat: '4.9 / 5', label: 'Customer App Rating' },
+      { stat: '0%', label: 'Third-Party Aggregator Commission' }
+    ]
+  },
+  'allstar': {
+    title: 'Allstar',
+    subtitle: 'Elite Agency & Technical Talent Marketplace',
+    tag: 'Enterprise • Marketplace',
+    year: '2026',
+    client: 'Allstar Global Talent Network',
+    duration: '6 Weeks Sprint',
+    metrics: '1,250+ Firms Empowered · Top 1% Specialists',
+    heroImg: '/images/projects/allstar.jpg',
+    challenge: 'High-growth startups struggled to recruit proven design directors, principal engineers, and product strategists on demand.',
+    solution: 'Engineered a vetted talent marketplace showcasing rich portfolio case studies, verified hourly rates, and automated engagement contracting.',
+    stack: ['React', 'TypeScript', 'PostgreSQL', 'GraphQL', 'Tailwind CSS'],
+    features: [
+      { title: 'Vetted Specialist Profiles', desc: 'Detailed skill graphs with peer endorsements, previous client work, and verified code repos.' },
+      { title: 'Rapid Team Assembling', desc: 'Assemble full agile squads (PM, Designer, 2 Developers) in under 48 hours.' },
+      { title: 'Consolidated Billing', desc: 'Unified invoice management with tax compliance across 40+ countries.' }
+    ],
+    results: [
+      { stat: '1,250+', label: 'Global Tech Firms Empowered' },
+      { stat: 'Top 1%', label: 'Vetted Talent Acceptance Rate' },
+      { stat: '48 Hours', label: 'Average Squad Match Time' },
+      { stat: '99.2%', label: 'Contract Completion Success' }
+    ]
+  },
   'urmi-swap': {
     title: 'Urmi Swap',
     subtitle: 'High-Velocity Decentralized Token Liquidity Engine',
@@ -279,7 +560,7 @@ export const caseStudiesDetail: Record<string, {
     client: 'Urmi Protocol Labs',
     duration: '5 Weeks Sprint',
     metrics: '$24M+ Total Swapped Volume · <250ms Execution',
-    heroImg: 'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&q=82&w=1200',
+    heroImg: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-qynMwPc3KOW4ELNNfQHQXjzKtWfxrE.png',
     challenge: 'Existing decentralized exchanges suffered from complex, intimidating interfaces, excessive transaction failures, high slippage, and unclear gas estimation for retail traders.',
     solution: 'Engineered an ultra-clean, tactile swapping interface with instant routing optimization, dynamic slippage protection, and real-time mempool tracking.',
     stack: ['Web3.js', 'Ethers.js', 'React', 'TypeScript', 'Tailwind CSS', 'Vite'],
@@ -970,6 +1251,23 @@ export default function CCDLPage({
   if (pageId === 'fullstack-software') normalizedPageId = 'software';
   if (pageId === 'digital-strategy') normalizedPageId = 'strategy';
 
+  // 0. LEGAL & BUSINESS TRANSPARENCY PAGES
+  if (
+    pageId === 'privacy-policy' ||
+    pageId === 'privacy' ||
+    pageId === 'terms-and-conditions' ||
+    pageId === 'terms' ||
+    pageId === 'terms-of-service' ||
+    pageId === 'refund-cancellation' ||
+    pageId === 'refund-policy' ||
+    pageId === 'cancellation-policy' ||
+    pageId === 'disclaimer' ||
+    pageId === 'legal-business-transparency' ||
+    pageId === 'transparency'
+  ) {
+    return <LegalPage pageId={pageId} onNavigate={onNavigate} />;
+  }
+
   // 0. SEO STRATEGY & TECHNICAL AUDIT HUB
   if (pageId === 'seo-strategy' || pageId === 'seo-audit') {
     return <SEOStrategyPage onNavigate={onNavigate} />;
@@ -1282,37 +1580,20 @@ export default function CCDLPage({
                 key={project.title}
                 delay={idx * 80}
                 className="enterprise-case-card"
-                role={project.liveUrl ? 'link' : undefined}
-                tabIndex={project.liveUrl ? 0 : undefined}
-                onClick={project.liveUrl ? () => window.open(project.liveUrl, '_blank', 'noopener,noreferrer') : undefined}
-                onKeyDown={project.liveUrl ? (event) => {
-                  if (event.key === 'Enter' || event.key === ' ') {
-                    event.preventDefault();
-                    window.open(project.liveUrl, '_blank', 'noopener,noreferrer');
-                  }
-                } : undefined}
               >
-                <div
-                  className="case-card-media"
-                  onClick={(event) => {
-                    event.stopPropagation();
-                    if (project.liveUrl) window.open(project.liveUrl, '_blank', 'noopener,noreferrer');
-                    else onNavigate(`case-study/${project.id}`);
-                  }}
-                  style={{ cursor: 'pointer' }}
-                >
+                <div className="case-card-media">
                   <img
-    src={project.image}
-    alt={`${project.title} project preview`}
-    loading={idx < 3 ? 'eager' : 'lazy'}
-    decoding="async"
-    onError={(event) => {
-      const image = event.currentTarget;
-      if (image.dataset.fallbackApplied) return;
-      image.dataset.fallbackApplied = 'true';
-      image.src = 'https://images.unsplash.com/photo-1558655146-9f40138edfeb?auto=format&fit=crop&q=80&w=1200';
-    }}
-  />
+                    src={project.image}
+                    alt={`${project.title} project preview`}
+                    loading={idx < 3 ? 'eager' : 'lazy'}
+                    decoding="async"
+                    onError={(event) => {
+                      const image = event.currentTarget;
+                      if (image.dataset.fallbackApplied) return;
+                      image.dataset.fallbackApplied = 'true';
+                      image.src = 'https://images.unsplash.com/photo-1558655146-9f40138edfeb?auto=format&fit=crop&q=80&w=1200';
+                    }}
+                  />
                   <span className="case-category-tag">{project.category}</span>
                 </div>
 
@@ -1321,15 +1602,7 @@ export default function CCDLPage({
                     <span className="case-metric-highlight">{project.metrics}</span>
                   </div>
 
-                  <h3
-                    className="case-title"
-                    onClick={(event) => {
-                      event.stopPropagation();
-                      if (project.liveUrl) window.open(project.liveUrl, '_blank', 'noopener,noreferrer');
-                      else onNavigate(`case-study/${project.id}`);
-                    }}
-                    style={{ cursor: 'pointer' }}
-                  >
+                  <h3 className="case-title">
                     {project.title}
                   </h3>
                   <p className="case-description">{project.text}</p>
@@ -1340,23 +1613,6 @@ export default function CCDLPage({
                         {t}
                       </span>
                     ))}
-                  </div>
-
-                  <div className="case-action-row">
-                    {'liveUrl' in project && project.liveUrl ? (
-                      <a href={project.liveUrl} target="_blank" rel="noreferrer" className="case-live-btn">
-                        <span>View Project</span>
-                        <ArrowUpRight size={14} />
-                      </a>
-                    ) : (
-                      <button
-                        onClick={() => onNavigate(`case-study/${project.id}`)}
-                        className="case-live-btn"
-                      >
-                        <span>In-Depth Case Study</span>
-                        <ArrowRight size={14} />
-                      </button>
-                    )}
                   </div>
                 </div>
               </ScrollReveal>
@@ -1547,18 +1803,18 @@ export default function CCDLPage({
                 <span className="telemetry-live-dot" />
                 <span>STUDIO TELEMETRY & VERIFIED METRICS</span>
               </div>
-              <span className="telemetry-sub-meta">JAIPUR HQ • GLOBAL CLIENTS • 2026 SPRINT ARCHIVE</span>
+              <span className="telemetry-sub-meta">INDIA HQ • GLOBAL CLIENTS • ACTIVE SPRINT REPOSITORY</span>
             </div>
 
             <div className="about-metrics-grid">
               <ScrollReveal delay={40} className="metric-box metric-box-cyan">
                 <div className="metric-icon-wrap">
                   <Sparkles size={20} className="metric-icon" />
-                  <span className="metric-badge-tag">SHIPPED</span>
+                  <span className="metric-badge-tag">ENGINEERED</span>
                 </div>
-                <strong className="metric-number">50+</strong>
-                <span className="metric-title">Digital Products Shipped</span>
-                <span className="metric-desc">Web apps, SaaS & enterprise platforms delivered</span>
+                <strong className="metric-number">25+</strong>
+                <span className="metric-title">Digital Products Delivered</span>
+                <span className="metric-desc">High-performance web apps, SaaS platforms & bespoke systems</span>
                 <div className="metric-footer-bar">
                   <span className="metric-trend-pill">100% On-Time Delivery</span>
                 </div>
@@ -1567,26 +1823,26 @@ export default function CCDLPage({
               <ScrollReveal delay={80} className="metric-box metric-box-gold">
                 <div className="metric-icon-wrap">
                   <Star size={20} className="metric-icon text-amber-400" />
-                  <span className="metric-badge-tag">VERIFIED</span>
+                  <span className="metric-badge-tag">SATISFACTION</span>
                 </div>
                 <strong className="metric-number">4.9/5</strong>
-                <span className="metric-title">Verified Clutch Score</span>
-                <span className="metric-desc">Independent verified client reviews & testimonials</span>
+                <span className="metric-title">Verified Client Rating</span>
+                <span className="metric-desc">Direct verified ratings from global founders & product teams</span>
                 <div className="metric-footer-bar">
-                  <span className="metric-trend-pill">Top 1% Digital Studio</span>
+                  <span className="metric-trend-pill">Top Craft Standard</span>
                 </div>
               </ScrollReveal>
 
               <ScrollReveal delay={120} className="metric-box metric-box-blue">
                 <div className="metric-icon-wrap">
-                  <TrendingUp size={20} className="metric-icon text-blue-400" />
-                  <span className="metric-badge-tag">CAPITAL</span>
+                  <ShieldCheck size={20} className="metric-icon text-blue-400" />
+                  <span className="metric-badge-tag">OWNERSHIP</span>
                 </div>
-                <strong className="metric-number">$120M+</strong>
-                <span className="metric-title">Client Capital Raised</span>
-                <span className="metric-desc">Across YC, Seed & Series A partner portfolios</span>
+                <strong className="metric-number">100%</strong>
+                <span className="metric-title">Full IP & Code Ownership</span>
+                <span className="metric-desc">Complete Git repositories & design tokens transferred irrevocably</span>
                 <div className="metric-footer-bar">
-                  <span className="metric-trend-pill">High-Conversion MVPs</span>
+                  <span className="metric-trend-pill">Zero Vendor Lock-In</span>
                 </div>
               </ScrollReveal>
 
@@ -1595,11 +1851,11 @@ export default function CCDLPage({
                   <Globe2 size={20} className="metric-icon text-purple-400" />
                   <span className="metric-badge-tag">REACH</span>
                 </div>
-                <strong className="metric-number">14+</strong>
+                <strong className="metric-number">12+</strong>
                 <span className="metric-title">Global Client Markets</span>
-                <span className="metric-desc">US, UK, UAE, India, Singapore & European hubs</span>
+                <span className="metric-desc">India, US, UK, UAE, Singapore & international hubs</span>
                 <div className="metric-footer-bar">
-                  <span className="metric-trend-pill">24/7 Timezone Sync</span>
+                  <span className="metric-trend-pill">24/7 Async Sprint Sync</span>
                 </div>
               </ScrollReveal>
             </div>
@@ -2807,17 +3063,19 @@ export default function CCDLPage({
 
             {/* Action Box */}
             <div className="legal-rights-action-card">
-              <div>
+              <div className="legal-action-content">
                 <h3>Need a custom Security & Compliance Review?</h3>
                 <p>We provide vendor security questionnaires, architecture diagrams, and SOC2 readiness audits upon request.</p>
               </div>
-              <a
-                href="mailto:climatechangedigitallabs@gmail.com?subject=Security%20Whitepaper%20Request"
-                className="button button-dark"
-                style={{ textDecoration: 'none' }}
-              >
-                Request Security Package <ArrowUpRight size={16} />
-              </a>
+              <div className="legal-action-buttons-group">
+                <a
+                  href="mailto:climatechangedigitallabs@gmail.com?subject=Security%20Whitepaper%20Request"
+                  className="legal-action-btn legal-action-btn-primary"
+                >
+                  <span>Request Security Package</span>
+                  <ArrowUpRight size={16} />
+                </a>
+              </div>
             </div>
           </div>
         </section>
@@ -2954,29 +3212,33 @@ export default function CCDLPage({
 
             {/* Quick Preference Reset Action */}
             <div className="legal-rights-action-card">
-              <div>
+              <div className="legal-action-content">
                 <h3>Reset Local Site Preferences</h3>
                 <p>Clear all local theme and session state stored on this device with a single click.</p>
               </div>
-              <button
-                onClick={() => {
-                  localStorage.removeItem('theme');
-                  sessionStorage.removeItem('ccdl-preloader-seen');
-                  setCookieResetSuccess(true);
-                  setTimeout(() => setCookieResetSuccess(false), 3000);
-                }}
-                className="button button-dark"
-              >
-                {cookieResetSuccess ? (
-                  <>
-                    <CheckCheck size={16} className="text-green-400" /> Preferences Cleared!
-                  </>
-                ) : (
-                  <>
-                    <RefreshCw size={16} /> Reset Local Cache
-                  </>
-                )}
-              </button>
+              <div className="legal-action-buttons-group">
+                <button
+                  onClick={() => {
+                    localStorage.removeItem('theme');
+                    sessionStorage.removeItem('ccdl-preloader-seen');
+                    setCookieResetSuccess(true);
+                    setTimeout(() => setCookieResetSuccess(false), 3000);
+                  }}
+                  className="legal-action-btn legal-action-btn-primary"
+                >
+                  {cookieResetSuccess ? (
+                    <>
+                      <CheckCheck size={16} className="text-green-400" />
+                      <span>Preferences Cleared!</span>
+                    </>
+                  ) : (
+                    <>
+                      <RefreshCw size={16} />
+                      <span>Reset Local Cache</span>
+                    </>
+                  )}
+                </button>
+              </div>
             </div>
           </div>
         </section>
@@ -3481,17 +3743,19 @@ export default function CCDLPage({
 
             {/* Data Protection Officer Action Card */}
             <div className="legal-rights-action-card">
-              <div>
+              <div className="legal-action-content">
                 <h3>Exercise Your Data Privacy Rights</h3>
                 <p>Submit a formal data access, export, or erasure request directly to our designated compliance officer.</p>
               </div>
-              <a
-                href="mailto:climatechangedigitallabs@gmail.com?subject=Data%20Privacy%20Request"
-                className="button button-dark"
-                style={{ textDecoration: 'none' }}
-              >
-                Contact Compliance Officer <ArrowUpRight size={16} />
-              </a>
+              <div className="legal-action-buttons-group">
+                <a
+                  href="mailto:climatechangedigitallabs@gmail.com?subject=Data%20Privacy%20Request"
+                  className="legal-action-btn legal-action-btn-primary"
+                >
+                  <span>Contact Compliance Officer</span>
+                  <ArrowUpRight size={16} />
+                </a>
+              </div>
             </div>
           </div>
         </section>
@@ -3608,16 +3872,19 @@ export default function CCDLPage({
 
             {/* Action Card */}
             <div className="legal-rights-action-card">
-              <div>
+              <div className="legal-action-content">
                 <h3>Need a customized Master Services Agreement (MSA)?</h3>
                 <p>We provide enterprise MSAs with tailored payment milestones, mutual NDAs, and bespoke SLA commitments.</p>
               </div>
-              <button
-                onClick={() => onNavigate('contact')}
-                className="button button-dark"
-              >
-                Request Custom MSA <ArrowUpRight size={16} />
-              </button>
+              <div className="legal-action-buttons-group">
+                <button
+                  onClick={() => onNavigate('contact')}
+                  className="legal-action-btn legal-action-btn-primary"
+                >
+                  <span>Request Custom MSA</span>
+                  <ArrowUpRight size={16} />
+                </button>
+              </div>
             </div>
           </div>
         </section>

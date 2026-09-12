@@ -1,9 +1,28 @@
-# Robots.txt for Selmedic Digital Labs (https://selmedicdigitallabs.com)
+# Robots.txt for CCDL — Climate Change Digital Labs (https://climatechangedigitallabs.com)
 User-agent: *
 Allow: /
 Disallow: /api/
 Disallow: /admin/
 Disallow: /private/
 
-# Sitemaps
-Sitemap: https://selmedicdigitallabs.com/sitemap.xml
+# Googlebot specific rules
+User-agent: Googlebot
+Allow: /
+Allow: /services/
+Allow: /about
+Allow: /portfolio
+Allow: /pricing
+Allow: /seo-strategy
+Allow: /contact
+
+# Image and media indexing for Google Knowledge Graph
+User-agent: Googlebot-Image
+Allow: /
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.png$
+Allow: /*.webp$
+Allow: /*.svg$
+
+# Canonical XML Sitemap
+Sitemap: https://climatechangedigitallabs.com/sitemap.xml

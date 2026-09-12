@@ -29,7 +29,7 @@ const StaticPage: React.FC<StaticPageProps> = ({ pageId, isDark, onBack }) => {
         heroImg: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1600",
         icon: <Users className="text-blue-600" size={32} />,
         type: 'generic',
-        content: "CC Digital Labs (CCDL) is a high-precision digital product studio based in Near Bikaner Bypass, Anupgarh, Sri Ganganagar, Rajasthan, India. We combine strategic product thinking, world-class UI/UX design, and full-stack software engineering to deliver robust platforms, mobile apps, and enterprise solutions for ambitious brands globally."
+        content: "Climate Change Digital Labs (CCDL) is a high-precision digital product studio based in Near Bikaner Bypass, Anupgarh, Sri Ganganagar, Rajasthan, India. We combine strategic product thinking, world-class UI/UX design, and full-stack software engineering to deliver robust platforms, mobile apps, and enterprise solutions for ambitious brands globally."
       },
       'contact': {
         title: "Let's Build the Future",
@@ -192,7 +192,7 @@ const StaticPage: React.FC<StaticPageProps> = ({ pageId, isDark, onBack }) => {
         icon: <Scale className="text-blue-600" size={32} />,
         type: 'document',
         articles: [
-          { title: "Engagement & Acceptance", content: "By accessing the CCDL (CC Digital Labs) website or commissioning our engineering services, you enter into a binding legal agreement. This framework is designed to protect both the visionary creative process and the strategic interests of our clients." },
+          { title: "Engagement & Acceptance", content: "By accessing the CCDL (Climate Change Digital Labs) website or commissioning our engineering services, you enter into a binding legal agreement. This framework is designed to protect both the visionary creative process and the strategic interests of our clients." },
           { title: "Intellectual Property Protocols", content: "Upon full project completion and final milestone settlement, CCDL grants clients an exclusive, perpetual license for the final visual and technical source artifacts delivered." },
           { title: "Client Stewardship", content: "Successful digital transformation requires active client participation. You agree to provide feedback and necessary brand assets within our agreed-upon sprint timelines to maintain our high-fidelity standards." },
           { title: "Payment Milestones", content: "All creative and engineering investments are structured on transparent sprint-based milestones. Upfront deposits initiate deep discovery, sprint scoping, and architectural planning." },

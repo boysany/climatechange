@@ -98,7 +98,7 @@ const REPOSITORIES: CommunityRepo[] = [
     forks: 64,
     category: 'React & Next.js',
     language: 'TypeScript',
-    cloneCmd: 'git clone https://github.com/selmedic/react-enterprise-starter.git',
+    cloneCmd: 'git clone https://github.com/climatechangedigitallabs/react-enterprise-starter.git',
     githubUrl: 'https://github.com',
     tags: ['React 18', 'TypeScript', 'Tailwind', 'Vite'],
   },
@@ -137,7 +137,7 @@ const REPOSITORIES: CommunityRepo[] = [
     forks: 28,
     category: 'Mobile & Cross-Platform',
     language: 'TypeScript',
-    cloneCmd: 'git clone https://github.com/selmedic/native-motion-primitives.git',
+    cloneCmd: 'git clone https://github.com/climatechangedigitallabs/native-motion-primitives.git',
     githubUrl: 'https://github.com',
     tags: ['React Native', 'Reanimated 3', 'Gestures'],
   },
@@ -337,7 +337,7 @@ export const CommunityPage: React.FC<CommunityPageProps> = ({ onNavigate }) => {
 
   const handleCopyInvite = async () => {
     if (navigator.clipboard) {
-      await navigator.clipboard.writeText('https://discord.gg/selmedic-ccdl-guild');
+      await navigator.clipboard.writeText('https://discord.gg/climatechangedigitallabs');
       setCopiedInvite(true);
       setTimeout(() => setCopiedInvite(false), 2000);
     }
@@ -597,7 +597,7 @@ export const CommunityPage: React.FC<CommunityPageProps> = ({ onNavigate }) => {
                 style={{ cursor: 'pointer', border: 'none', display: 'inline-flex', alignItems: 'center' }}
               >
                 <Sparkles size={13} className="pill-spark" />
-                THE SELMEDIC &amp; CCDL BUILDER GUILD
+                THE CLIMATE CHANGE DIGITAL LABS (CCDL) BUILDER GUILD
               </button>
             </motion.div>
 

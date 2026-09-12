@@ -28,7 +28,7 @@ export default function CTA({ onNavigate }: CTAProps) {
             <span className="final-cta-live-dot" />
             <span className="final-cta-status-text">Studio Capacity: Accepting Q3/Q4 Projects</span>
           </div>
-          <span className="final-cta-coord-tag">SELMEDIC LABS // INITIATION SUITE</span>
+          <span className="final-cta-coord-tag">CLIMATE CHANGE DIGITAL LABS // INITIATION SUITE</span>
         </div>
 
         {/* Section Heading & Tagline */}
@@ -61,7 +61,7 @@ export default function CTA({ onNavigate }: CTAProps) {
             onClick={() => onNavigate?.('contact')}
             className="final-cta-btn final-cta-btn-primary"
             id="final-cta-start-project"
-            title="Start a Project with Selmedic Digital Labs"
+            title="Start a Project with CCDL — Climate Change Digital Labs"
           >
             <div className="final-cta-btn-glow" />
             <Sparkles size={16} className="final-cta-icon" />

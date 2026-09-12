@@ -5,184 +5,202 @@
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
-  <!-- Core Pages -->
+  <!-- Core CCDL Brand & Service Pages (High Crawl Priority) -->
   <url>
-    <loc>https://selmedicdigitallabs.com/</loc>
-    <lastmod>2026-08-29</lastmod>
-    <changefreq>weekly</changefreq>
+    <loc>https://climatechangedigitallabs.com/</loc>
+    <lastmod>2026-09-12</lastmod>
+    <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://selmedicdigitallabs.com/services</loc>
-    <lastmod>2026-08-29</lastmod>
+    <loc>https://climatechangedigitallabs.com/services</loc>
+    <lastmod>2026-09-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://selmedicdigitallabs.com/about</loc>
-    <lastmod>2026-08-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://selmedicdigitallabs.com/portfolio</loc>
-    <lastmod>2026-08-29</lastmod>
+    <loc>https://climatechangedigitallabs.com/about</loc>
+    <lastmod>2026-09-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://selmedicdigitallabs.com/process</loc>
-    <lastmod>2026-08-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://selmedicdigitallabs.com/team</loc>
-    <lastmod>2026-08-29</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.75</priority>
-  </url>
-  <url>
-    <loc>https://selmedicdigitallabs.com/contact</loc>
-    <lastmod>2026-08-29</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://climatechangedigitallabs.com/portfolio</loc>
+    <lastmod>2026-09-12</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://selmedicdigitallabs.com/pricing</loc>
-    <lastmod>2026-08-29</lastmod>
+    <loc>https://climatechangedigitallabs.com/process</loc>
+    <lastmod>2026-09-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://climatechangedigitallabs.com/team</loc>
+    <lastmod>2026-09-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+  <url>
+    <loc>https://climatechangedigitallabs.com/contact</loc>
+    <lastmod>2026-09-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://climatechangedigitallabs.com/pricing</loc>
+    <lastmod>2026-09-12</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
   </url>
 
-  <!-- 13 Dedicated High-Ranking Service Hubs -->
+  <!-- 13 Dedicated High-Ranking CCDL Service Hubs -->
   <url>
-    <loc>https://selmedicdigitallabs.com/services/software-development</loc>
-    <lastmod>2026-08-29</lastmod>
+    <loc>https://climatechangedigitallabs.com/services/software-development</loc>
+    <lastmod>2026-09-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://selmedicdigitallabs.com/services/website-development</loc>
-    <lastmod>2026-08-29</lastmod>
+    <loc>https://climatechangedigitallabs.com/services/website-development</loc>
+    <lastmod>2026-09-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://selmedicdigitallabs.com/services/web-application-development</loc>
-    <lastmod>2026-08-29</lastmod>
+    <loc>https://climatechangedigitallabs.com/services/web-application-development</loc>
+    <lastmod>2026-09-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://selmedicdigitallabs.com/services/mobile-app-development</loc>
-    <lastmod>2026-08-29</lastmod>
+    <loc>https://climatechangedigitallabs.com/services/mobile-app-development</loc>
+    <lastmod>2026-09-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://selmedicdigitallabs.com/services/android-app-development</loc>
-    <lastmod>2026-08-29</lastmod>
+    <loc>https://climatechangedigitallabs.com/services/android-app-development</loc>
+    <lastmod>2026-09-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://selmedicdigitallabs.com/services/ios-app-development</loc>
-    <lastmod>2026-08-29</lastmod>
+    <loc>https://climatechangedigitallabs.com/services/ios-app-development</loc>
+    <lastmod>2026-09-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://selmedicdigitallabs.com/services/ecommerce-development</loc>
-    <lastmod>2026-08-29</lastmod>
+    <loc>https://climatechangedigitallabs.com/services/ecommerce-development</loc>
+    <lastmod>2026-09-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://selmedicdigitallabs.com/services/custom-software-development</loc>
-    <lastmod>2026-08-29</lastmod>
+    <loc>https://climatechangedigitallabs.com/services/custom-software-development</loc>
+    <lastmod>2026-09-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://selmedicdigitallabs.com/services/ui-ux-design</loc>
-    <lastmod>2026-08-29</lastmod>
+    <loc>https://climatechangedigitallabs.com/services/ui-ux-design</loc>
+    <lastmod>2026-09-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://selmedicdigitallabs.com/services/digital-marketing</loc>
-    <lastmod>2026-08-29</lastmod>
+    <loc>https://climatechangedigitallabs.com/services/digital-marketing</loc>
+    <lastmod>2026-09-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://selmedicdigitallabs.com/services/seo-services</loc>
-    <lastmod>2026-08-29</lastmod>
+    <loc>https://climatechangedigitallabs.com/services/seo-services</loc>
+    <lastmod>2026-09-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://selmedicdigitallabs.com/services/branding</loc>
-    <lastmod>2026-08-29</lastmod>
+    <loc>https://climatechangedigitallabs.com/services/branding</loc>
+    <lastmod>2026-09-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://selmedicdigitallabs.com/services/ai-solutions</loc>
-    <lastmod>2026-08-29</lastmod>
+    <loc>https://climatechangedigitallabs.com/services/ai-solutions</loc>
+    <lastmod>2026-09-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <!-- Audience & Strategy Landing Pages -->
   <url>
-    <loc>https://selmedicdigitallabs.com/startups</loc>
-    <lastmod>2026-08-29</lastmod>
+    <loc>https://climatechangedigitallabs.com/startups</loc>
+    <lastmod>2026-09-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://selmedicdigitallabs.com/enterprise</loc>
-    <lastmod>2026-08-29</lastmod>
+    <loc>https://climatechangedigitallabs.com/enterprise</loc>
+    <lastmod>2026-09-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://selmedicdigitallabs.com/seo-strategy</loc>
-    <lastmod>2026-08-29</lastmod>
+    <loc>https://climatechangedigitallabs.com/seo-strategy</loc>
+    <lastmod>2026-09-12</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://selmedicdigitallabs.com/insights</loc>
-    <lastmod>2026-08-29</lastmod>
+    <loc>https://climatechangedigitallabs.com/insights</loc>
+    <lastmod>2026-09-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://selmedicdigitallabs.com/faq</loc>
-    <lastmod>2026-08-29</lastmod>
+    <loc>https://climatechangedigitallabs.com/faq</loc>
+    <lastmod>2026-09-12</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.75</priority>
+    <priority>0.8</priority>
   </url>
 
-  <!-- Legal & Compliance -->
+  <!-- Legal & Business Transparency Pages -->
   <url>
-    <loc>https://selmedicdigitallabs.com/privacy</loc>
-    <lastmod>2026-08-29</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.4</priority>
+    <loc>https://climatechangedigitallabs.com/legal</loc>
+    <lastmod>2026-09-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://selmedicdigitallabs.com/terms</loc>
-    <lastmod>2026-08-29</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.4</priority>
+    <loc>https://climatechangedigitallabs.com/privacy</loc>
+    <lastmod>2026-09-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://selmedicdigitallabs.com/security</loc>
-    <lastmod>2026-08-29</lastmod>
+    <loc>https://climatechangedigitallabs.com/terms</loc>
+    <lastmod>2026-09-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://climatechangedigitallabs.com/refund-policy</loc>
+    <lastmod>2026-09-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://climatechangedigitallabs.com/disclaimer</loc>
+    <lastmod>2026-09-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://climatechangedigitallabs.com/security</loc>
+    <lastmod>2026-09-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>

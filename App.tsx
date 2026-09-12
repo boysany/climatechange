@@ -25,7 +25,7 @@ function getRoute() {
 export default function App() {
   const [loading, setLoading] = useState(() => {
     if (typeof window !== 'undefined') {
-      const hasLoaded = sessionStorage.getItem('selmedic_preloader_seen');
+      const hasLoaded = sessionStorage.getItem('ccdl_preloader_seen');
       if (hasLoaded) return false;
     }
     return true;
@@ -55,7 +55,7 @@ export default function App() {
     if (loading) {
       const timer = window.setTimeout(() => {
         setLoading(false);
-        sessionStorage.setItem('selmedic_preloader_seen', 'true');
+        sessionStorage.setItem('ccdl_preloader_seen', 'true');
         refreshScrollTriggers();
       }, 2000);
       return () => window.clearTimeout(timer);
@@ -111,7 +111,7 @@ export default function App() {
             isDark={isDark}
             onComplete={() => {
               setLoading(false);
-              sessionStorage.setItem('selmedic_preloader_seen', 'true');
+              sessionStorage.setItem('ccdl_preloader_seen', 'true');
               refreshScrollTriggers();
             }}
           />

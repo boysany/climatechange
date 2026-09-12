@@ -8,9 +8,9 @@ import {
   Mail,
   X,
   Globe,
-  Sparkles,
   Clock,
-  Compass,
+  Sparkles,
+  TrendingUp,
 } from 'lucide-react';
 import CcdlLogo from './CcdlLogo.tsx';
 
@@ -26,19 +26,6 @@ interface NavbarProps {
 export default function Navbar({ currentRoute = 'home', onNavigate }: NavbarProps) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [activeMobileTab, setActiveMobileTab] = useState<'main' | 'direct'>('main');
-  const [hoveredItem, setHoveredItem] = useState<{
-    title: string;
-    category: string;
-    desc: string;
-    preview: string;
-  }>({
-    title: 'Flagship Portfolio',
-    category: 'CASE STUDIES • 2026',
-    desc: 'Selected enterprise systems, SaaS platforms, and digital experiences.',
-    preview: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=900&auto=format&fit=crop',
-  });
-
   const [currentTime, setCurrentTime] = useState('');
 
   // Live world time for studio header
@@ -98,98 +85,11 @@ export default function Navbar({ currentRoute = 'home', onNavigate }: NavbarProp
 
   const cleanCurrent = currentRoute.replace(/^\//, '').replace(/\/$/, '') || 'home';
 
-  const studioGridOne = [
-    {
-      num: '01',
-      label: 'WORK',
-      page: 'portfolio',
-      category: 'CASE STUDIES',
-      desc: 'Selected enterprise systems & award-winning products',
-      preview: 'https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=900&auto=format&fit=crop',
-    },
-    {
-      num: '02',
-      label: 'PROCESS',
-      page: 'process',
-      category: 'METHODOLOGY',
-      desc: 'Our 4-stage sprint & architecture methodology',
-      preview: 'https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?q=80&w=900&auto=format&fit=crop',
-    },
-    {
-      num: '03',
-      label: 'SERVICES',
-      page: 'services',
-      category: 'CAPABILITIES',
-      desc: 'Full-cycle design, cloud engineering & AI systems',
-      preview: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=900&auto=format&fit=crop',
-    },
-    {
-      num: '04',
-      label: 'SEO STRATEGY',
-      page: 'seo-strategy',
-      category: 'GROWTH BLUEPRINT',
-      desc: 'Technical SEO audit, keyword clusters & ranking roadmap',
-      preview: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=900&auto=format&fit=crop',
-    },
-    {
-      num: '05',
-      label: 'ABOUT',
-      page: 'about',
-      category: 'STUDIO STORY',
-      desc: 'Founding team, collective mindset & studio origins',
-      preview: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=900&auto=format&fit=crop',
-    },
-  ];
-
-  const studioGridTwo = [
-    {
-      num: '06',
-      label: 'BLOG',
-      page: 'blog',
-      category: 'DISPATCHES',
-      desc: 'Architectural thinking & deep tech engineering analysis',
-      preview: 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?q=80&w=900&auto=format&fit=crop',
-    },
-    {
-      num: '07',
-      label: 'COMMUNITY',
-      page: 'community',
-      category: 'DEVELOPER HUB',
-      desc: 'Open source tooling, developer hub & collective sync',
-      preview: 'https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=900&auto=format&fit=crop',
-    },
-    {
-      num: '08',
-      label: 'CAREERS',
-      page: 'careers',
-      category: 'JOIN STUDIO',
-      desc: 'Open roles in design engineering & cloud systems',
-      preview: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=900&auto=format&fit=crop',
-    },
-    {
-      num: '09',
-      label: 'CONTACT',
-      page: 'contact',
-      category: 'FOUNDER SYNC',
-      desc: 'Direct channels, project intake & founder sync',
-      preview: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=900&auto=format&fit=crop',
-    },
-  ];
-
-  const quickServices = [
-    { label: 'Software Dev', page: 'service-software-development' },
-    { label: 'Website Dev', page: 'service-website-development' },
-    { label: 'Mobile Apps', page: 'service-mobile-app-development' },
-    { label: 'UI/UX Design', page: 'service-ui-ux-design' },
-    { label: 'SEO & Growth', page: 'seo-strategy' },
-    { label: 'Contact Us', page: 'contact' },
-  ];
-
   return (
     <>
       <header className={`alien-nav-header ${scrolled ? 'is-scrolled' : ''}`}>
         <div className="alien-nav-container">
-          {/* CCDL Agency Precision Geometric Brandmark & Link */}
+          {/* CCDL Agency Geometric Brandmark & Link */}
           <a
             className="alien-logo"
             href="/"
@@ -197,7 +97,7 @@ export default function Navbar({ currentRoute = 'home', onNavigate }: NavbarProp
               e.preventDefault();
               handleNav('home');
             }}
-            aria-label="CCDL Digital Labs Home"
+            aria-label="Climate change Digital Labs Home"
           >
             <CcdlLogo height={28} />
           </a>
@@ -231,7 +131,7 @@ export default function Navbar({ currentRoute = 'home', onNavigate }: NavbarProp
         </div>
       </header>
 
-      {/* Full-Screen Enterprise Mega Menu Portal */}
+      {/* Full-Screen Alien Design Menu Overlay Portal */}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -239,9 +139,9 @@ export default function Navbar({ currentRoute = 'home', onNavigate }: NavbarProp
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+            transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
           >
-            {/* Ambient Background Glowing Blobs & Grid Lines */}
+            {/* Ambient Background Glowing Blobs matching thealien.design */}
             <div className="alien-ambient-blob blob-purple" />
             <div className="alien-ambient-blob blob-cyan" />
             <div className="alien-ambient-blob blob-yellow" />
@@ -256,7 +156,8 @@ export default function Navbar({ currentRoute = 'home', onNavigate }: NavbarProp
                     className="menu-topbar-brand"
                     style={{ cursor: 'pointer' }}
                   >
-                    <CcdlLogo height={22} showLabel={false} />
+                    <CcdlLogo height={24} showLabel={false} />
+                    <span className="menu-topbar-agency-name">AGENCY</span>
                   </div>
 
                   <div className="alien-menu-status-pill">
@@ -273,280 +174,317 @@ export default function Navbar({ currentRoute = 'home', onNavigate }: NavbarProp
                 </div>
 
                 <div className="alien-mega-top-right">
-                  <div className="alien-clutch-pill desktop-clutch-pill">
+                  {/* Exact Clutch 4.9/5.0 ★ Pill Badge */}
+                  <div className="alien-clutch-pill">
                     <span className="clutch-brand">CLUTCH</span>
                     <span className="clutch-score">4.9/5.0</span>
                     <span className="clutch-star">★</span>
                   </div>
 
-                  {/* Close button with ESC indicator */}
+                  {/* Circular Solid Dark Close Button with ESC badge */}
                   <button
                     onClick={() => setOpen(false)}
                     className="alien-close-circle-btn"
                     aria-label="Close navigation menu (ESC)"
                     title="Close (ESC)"
                   >
-                    <X size={20} strokeWidth={2.4} />
+                    <X size={18} strokeWidth={2.4} />
                     <span className="esc-key-badge">ESC</span>
                   </button>
                 </div>
               </div>
 
-              {/* Mobile-Only Segment Navigation Switcher Tabs */}
-              <div className="mobile-menu-segment-tabs">
-                <button
-                  className={`mobile-tab-btn ${activeMobileTab === 'main' ? 'is-active' : ''}`}
-                  onClick={() => setActiveMobileTab('main')}
-                >
-                  <span>Studio Index</span>
-                </button>
-                <button
-                  className={`mobile-tab-btn ${activeMobileTab === 'direct' ? 'is-active' : ''}`}
-                  onClick={() => setActiveMobileTab('direct')}
-                >
-                  <span>Direct Reach & Intake</span>
-                </button>
+              {/* Sub-header Studio Index marker */}
+              <div className="menu-studio-index-marker">
+                <span className="marker-dot" />
+                <span>01 // STUDIO INDEX</span>
               </div>
 
-              {/* Mega Menu Grid Content (Desktop View & Responsive Layout) */}
+              {/* Main 3-Column Content Layout (Matching User Screenshot Exactly) */}
               <div className="alien-mega-content-grid">
-                {/* Column 1: Studio Index divided into Two Cards / Grids */}
-                <div
-                  className={`alien-mega-col primary-col studio-index-col ${
-                    activeMobileTab === 'main' ? 'mobile-show' : 'mobile-hide'
-                  }`}
-                >
-                  <div className="alien-col-label">
-                    <span className="bullet-dot" />
-                    <span>01 // STUDIO INDEX</span>
+                {/* Column 1: Core Capabilities & Process Card */}
+                <div className="studio-index-card">
+                  <div className="studio-index-card-header">
+                    <div className="index-card-header-left">
+                      <span className="index-dot dot-blue" />
+                      <span>CORE CAPABILITIES & PROCESS</span>
+                    </div>
+                    <span className="index-badge">05 SECTIONS</span>
                   </div>
 
-                  <div className="studio-cards-grid">
-                    {/* Card 1: Core Capabilities & Architecture */}
-                    <div className="studio-nav-card">
-                      <div className="studio-card-top">
-                        <div className="studio-card-badge">
-                          <span className="studio-card-dot" />
-                          <span>CORE CAPABILITIES & PROCESS</span>
+                  <div className="studio-index-items-list">
+                    {/* 01 WORK */}
+                    <div
+                      className={`studio-index-item cursor-pointer group ${cleanCurrent === 'portfolio' ? 'is-active' : ''}`}
+                      onClick={() => handleNav('portfolio')}
+                    >
+                      <div className="item-num">01</div>
+                      <div className="item-content">
+                        <div className="item-title-row">
+                          <span className="item-title">WORK</span>
+                          {cleanCurrent === 'portfolio' && (
+                            <span className="current-route-badge">CURRENT</span>
+                          )}
                         </div>
-                        <span className="studio-card-count">05 SECTIONS</span>
+                        <p className="item-desc">Selected enterprise systems & award-winning products</p>
                       </div>
-
-                      <nav className="alien-menu-nav-list" aria-label="Core Capabilities and Process">
-                        {studioGridOne.map((item, idx) => {
-                          const isCurrent = cleanCurrent === item.page;
-                          return (
-                            <motion.a
-                              key={item.label}
-                              href={`/${item.page}`}
-                              onMouseEnter={() =>
-                                setHoveredItem({
-                                  title: item.label,
-                                  category: item.category,
-                                  desc: item.desc,
-                                  preview: item.preview,
-                                })
-                              }
-                              onClick={(e) => {
-                                e.preventDefault();
-                                handleNav(item.page);
-                              }}
-                              className={`alien-mega-link ${isCurrent ? 'is-current-route' : ''}`}
-                              initial={{ opacity: 0, y: 8 }}
-                              animate={{ opacity: 1, y: 0 }}
-                              transition={{ delay: 0.02 + idx * 0.025, duration: 0.28 }}
-                            >
-                              <div className="menu-link-lead">
-                                <span className="menu-num">{item.num}</span>
-                                {isCurrent && <span className="current-route-badge">CURRENT</span>}
-                              </div>
-
-                              <div className="menu-text-wrap">
-                                <span className="menu-text">{item.label}</span>
-                                <span className="menu-sub-desc">{item.desc}</span>
-                              </div>
-
-                              <div className="link-arrow-circle">
-                                <ArrowUpRight size={15} className="link-arrow" />
-                              </div>
-                            </motion.a>
-                          );
-                        })}
-                      </nav>
+                      <ArrowUpRight className="item-arrow" size={18} />
                     </div>
 
-                    {/* Card 2: Perspectives, Ecosystem & Direct Line */}
-                    <div className="studio-nav-card">
-                      <div className="studio-card-top">
-                        <div className="studio-card-badge">
-                          <span className="studio-card-dot dot-alt" />
-                          <span>PERSPECTIVES & DIRECT REACH</span>
+                    {/* 02 PROCESS */}
+                    <div
+                      className={`studio-index-item cursor-pointer group ${cleanCurrent === 'process' ? 'is-active' : ''}`}
+                      onClick={() => handleNav('process')}
+                    >
+                      <div className="item-num">02</div>
+                      <div className="item-content">
+                        <div className="item-title-row">
+                          {cleanCurrent === 'process' && (
+                            <span className="current-route-badge">CURRENT</span>
+                          )}
+                          <span className="item-title">PROCESS</span>
                         </div>
-                        <span className="studio-card-count">05 SECTIONS</span>
+                        <p className="item-desc">Our 4-stage sprint & architecture methodology</p>
                       </div>
+                      <ArrowUpRight className="item-arrow" size={18} />
+                    </div>
 
-                      <nav className="alien-menu-nav-list" aria-label="Perspectives and Direct Reach">
-                        {studioGridTwo.map((item, idx) => {
-                          const isCurrent = cleanCurrent === item.page;
-                          return (
-                            <motion.a
-                              key={item.label}
-                              href={`/${item.page}`}
-                              onMouseEnter={() =>
-                                setHoveredItem({
-                                  title: item.label,
-                                  category: item.category,
-                                  desc: item.desc,
-                                  preview: item.preview,
-                                })
-                              }
-                              onClick={(e) => {
-                                e.preventDefault();
-                                handleNav(item.page);
-                              }}
-                              className={`alien-mega-link ${isCurrent ? 'is-current-route' : ''}`}
-                              initial={{ opacity: 0, y: 8 }}
-                              animate={{ opacity: 1, y: 0 }}
-                              transition={{ delay: 0.06 + idx * 0.025, duration: 0.28 }}
-                            >
-                              <div className="menu-link-lead">
-                                <span className="menu-num">{item.num}</span>
-                                {isCurrent && <span className="current-route-badge">CURRENT</span>}
-                              </div>
+                    {/* 03 SERVICES */}
+                    <div
+                      className={`studio-index-item cursor-pointer group ${cleanCurrent === 'services' ? 'is-active' : ''}`}
+                      onClick={() => handleNav('services')}
+                    >
+                      <div className="item-num">03</div>
+                      <div className="item-content">
+                        <div className="item-title-row">
+                          <span className="item-title">SERVICES</span>
+                          {cleanCurrent === 'services' && (
+                            <span className="current-route-badge">CURRENT</span>
+                          )}
+                        </div>
+                        <p className="item-desc">Full-cycle design, cloud engineering & AI systems</p>
+                      </div>
+                      <ArrowUpRight className="item-arrow" size={18} />
+                    </div>
 
-                              <div className="menu-text-wrap">
-                                <span className="menu-text">{item.label}</span>
-                                <span className="menu-sub-desc">{item.desc}</span>
-                              </div>
+                    {/* 04 SEO STRATEGY */}
+                    <div
+                      className={`studio-index-item cursor-pointer group ${cleanCurrent === 'seo-strategy' ? 'is-active' : ''}`}
+                      onClick={() => handleNav('seo-strategy')}
+                    >
+                      <div className="item-num">04</div>
+                      <div className="item-content">
+                        <div className="item-title-row">
+                          <span className="item-title">SEO STRATEGY</span>
+                          {cleanCurrent === 'seo-strategy' && (
+                            <span className="current-route-badge">CURRENT</span>
+                          )}
+                        </div>
+                        <p className="item-desc">Technical SEO audit, keyword clusters & ranking roadmap</p>
+                      </div>
+                      <ArrowUpRight className="item-arrow" size={18} />
+                    </div>
 
-                              <div className="link-arrow-circle">
-                                <ArrowUpRight size={15} className="link-arrow" />
-                              </div>
-                            </motion.a>
-                          );
-                        })}
-                      </nav>
+                    {/* 05 ABOUT */}
+                    <div
+                      className={`studio-index-item cursor-pointer group ${cleanCurrent === 'about' ? 'is-active' : ''}`}
+                      onClick={() => handleNav('about')}
+                    >
+                      <div className="item-num">05</div>
+                      <div className="item-content">
+                        <div className="item-title-row">
+                          <span className="item-title">ABOUT</span>
+                          {cleanCurrent === 'about' && (
+                            <span className="current-route-badge">CURRENT</span>
+                          )}
+                        </div>
+                        <p className="item-desc">Founding team, collective mindset & studio origins</p>
+                      </div>
+                      <ArrowUpRight className="item-arrow" size={18} />
                     </div>
                   </div>
                 </div>
 
-                {/* Column 2: Interactive Media Showcase & Direct Booking Dock (Desktop) */}
-                <div
-                  className={`alien-mega-col preview-col ${
-                    activeMobileTab === 'direct' ? 'mobile-show' : ''
-                  }`}
-                >
-                  <div className="preview-col-wrapper">
-                    {/* Live Preview Display Card */}
-                    <motion.div
-                      className="alien-preview-card"
-                      initial={{ opacity: 0, scale: 0.98 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: 0.1, duration: 0.35 }}
+                {/* Column 2: Perspectives & Direct Reach Card */}
+                <div className="studio-index-card">
+                  <div className="studio-index-card-header">
+                    <div className="index-card-header-left">
+                      <span className="index-dot dot-purple" />
+                      <span>PERSPECTIVES & DIRECT REACH</span>
+                    </div>
+                    <span className="index-badge">05 SECTIONS</span>
+                  </div>
+
+                  <div className="studio-index-items-list">
+                    {/* 06 BLOG */}
+                    <div
+                      className={`studio-index-item cursor-pointer group ${cleanCurrent === 'blog' ? 'is-active' : ''}`}
+                      onClick={() => handleNav('blog')}
                     >
-                      <img
-                        src={hoveredItem.preview}
-                        alt={hoveredItem.title}
-                        className="alien-preview-img"
-                      />
-                      <div className="alien-preview-overlay">
-                        <div className="preview-top-badge">
-                          <span className="preview-pulse-dot" />
-                          <span className="alien-preview-tag">{hoveredItem.category}</span>
+                      <div className="item-num">06</div>
+                      <div className="item-content">
+                        <div className="item-title-row">
+                          <span className="item-title">BLOG</span>
+                          {cleanCurrent === 'blog' && (
+                            <span className="current-route-badge">CURRENT</span>
+                          )}
                         </div>
-                        <h4 className="preview-headline">{hoveredItem.title}</h4>
-                        <p className="preview-desc-text">{hoveredItem.desc}</p>
+                        <p className="item-desc">Architectural thinking & deep tech engineering analysis</p>
                       </div>
-                    </motion.div>
+                      <ArrowUpRight className="item-arrow" size={18} />
+                    </div>
 
-                    {/* Direct Contact & Founder Booking Box inside Menu */}
-                    <div className="menu-direct-intake-card">
-                      <div className="intake-header">
-                        <span className="intake-label">INITIATE SPRINT //</span>
-                        <span className="intake-sub">Direct Line</span>
+                    {/* 07 COMMUNITY */}
+                    <div
+                      className={`studio-index-item cursor-pointer group ${cleanCurrent === 'community' ? 'is-active' : ''}`}
+                      onClick={() => handleNav('community')}
+                    >
+                      <div className="item-num">07</div>
+                      <div className="item-content">
+                        <div className="item-title-row">
+                          <span className="item-title">COMMUNITY</span>
+                          {cleanCurrent === 'community' && (
+                            <span className="current-route-badge">CURRENT</span>
+                          )}
+                        </div>
+                        <p className="item-desc">Open source tooling, developer hub & collective sync</p>
                       </div>
+                      <ArrowUpRight className="item-arrow" size={18} />
+                    </div>
 
-                      <div className="intake-actions-grid">
-                        <a
-                          href="https://wa.me/917852052323"
-                          target="_blank"
-                          rel="noreferrer"
-                          className="intake-action-btn intake-wa"
-                          title="WhatsApp Direct"
-                        >
-                          <MessageCircle size={14} />
-                          <span>WhatsApp (Line 1)</span>
-                        </a>
-
-                        <a
-                          href="https://wa.me/918005873764"
-                          target="_blank"
-                          rel="noreferrer"
-                          className="intake-action-btn intake-wa"
-                          title="WhatsApp Direct"
-                        >
-                          <MessageCircle size={14} />
-                          <span>WhatsApp (Line 2)</span>
-                        </a>
-
-                        <a
-                          href="tel:+917852052323"
-                          className="intake-action-btn intake-call"
-                          title="Call Line 1"
-                        >
-                          <Phone size={14} />
-                          <span>+91 78520 52323</span>
-                        </a>
-
-                        <a
-                          href="tel:+918005873764"
-                          className="intake-action-btn intake-call"
-                          title="Call Line 2"
-                        >
-                          <Phone size={14} />
-                          <span>+91 80058 73764</span>
-                        </a>
+                    {/* 08 CAREERS */}
+                    <div
+                      className={`studio-index-item cursor-pointer group ${cleanCurrent === 'careers' ? 'is-active' : ''}`}
+                      onClick={() => handleNav('careers')}
+                    >
+                      <div className="item-num">08</div>
+                      <div className="item-content">
+                        <div className="item-title-row">
+                          <span className="item-title">CAREERS</span>
+                          {cleanCurrent === 'careers' && (
+                            <span className="current-route-badge">CURRENT</span>
+                          )}
+                        </div>
+                        <p className="item-desc">Open roles in design engineering & cloud systems</p>
                       </div>
+                      <ArrowUpRight className="item-arrow" size={18} />
+                    </div>
 
-                      <div className="intake-bottom-row">
-                        <a href="mailto:climatechangedigitallabs@gmail.com" className="email-link">
-                          <Mail size={13} />
-                          <span>climatechangedigitallabs@gmail.com</span>
-                        </a>
-                        <button
-                          onClick={() => handleNav('contact')}
-                          className="intake-form-btn"
-                        >
-                          <span>Intake Form</span>
-                          <ArrowUpRight size={13} />
-                        </button>
+                    {/* 09 CONTACT */}
+                    <div
+                      className={`studio-index-item cursor-pointer group ${cleanCurrent === 'contact' ? 'is-active' : ''}`}
+                      onClick={() => handleNav('contact')}
+                    >
+                      <div className="item-num">09</div>
+                      <div className="item-content">
+                        <div className="item-title-row">
+                          <span className="item-title">CONTACT</span>
+                          {cleanCurrent === 'contact' && (
+                            <span className="current-route-badge">CURRENT</span>
+                          )}
+                        </div>
+                        <p className="item-desc">Direct channels, project intake & founder sync</p>
                       </div>
+                      <ArrowUpRight className="item-arrow" size={18} />
+                    </div>
+                  </div>
+                </div>
+
+                {/* Column 3: Stacked Right Showcase & Direct Line Intake */}
+                <div className="studio-showcase-stack">
+                  {/* Showcase Photo Card */}
+                  <div
+                    className="studio-flagship-photo-card cursor-pointer group"
+                    onClick={() => handleNav('portfolio')}
+                  >
+                    <img
+                      src="/images/projects/hirepro.jpg"
+                      alt="CCDL Flagship Portfolio"
+                      className="flagship-photo-bg"
+                    />
+                    <div className="flagship-photo-overlay" />
+
+                    <div className="flagship-card-content">
+                      <div className="flagship-case-badge">
+                        <span className="flagship-badge-dot" />
+                        <span>CASE STUDIES • 2026</span>
+                      </div>
+                      <h3 className="flagship-card-title">Flagship Portfolio</h3>
+                      <p className="flagship-card-sub">
+                        Selected enterprise systems, SaaS platforms, and digital experiences.
+                      </p>
+                    </div>
+                  </div>
+
+                  {/* Direct Line / Initiate Sprint Card */}
+                  <div className="studio-initiate-sprint-card">
+                    <div className="sprint-card-header">
+                      <span className="sprint-header-title">INITIATE SPRINT //</span>
+                      <span className="sprint-header-sub">Direct Line</span>
+                    </div>
+
+                    {/* WhatsApp Line 1 & Line 2 */}
+                    <div className="sprint-action-grid">
+                      <a
+                        href="https://wa.me/917852052323"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="sprint-btn-wa"
+                      >
+                        <MessageCircle size={15} />
+                        <span>WhatsApp (Line 1)</span>
+                      </a>
+                      <a
+                        href="https://wa.me/918005873764"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="sprint-btn-wa"
+                      >
+                        <MessageCircle size={15} />
+                        <span>WhatsApp (Line 2)</span>
+                      </a>
+                    </div>
+
+                    {/* Direct Call Numbers */}
+                    <div className="sprint-action-grid">
+                      <a
+                        href="tel:+917852052323"
+                        className="sprint-btn-phone"
+                      >
+                        <Phone size={14} />
+                        <span>+91 78520 52323</span>
+                      </a>
+                      <a
+                        href="tel:+918005873764"
+                        className="sprint-btn-phone"
+                      >
+                        <Phone size={14} />
+                        <span>+91 80058 73764</span>
+                      </a>
+                    </div>
+
+                    {/* Email Bar & Intake Form Button */}
+                    <div className="sprint-email-row">
+                      <a
+                        href="mailto:climatechangedigitallabs@gmail.com"
+                        className="sprint-email-link"
+                      >
+                        <Mail size={14} />
+                        <span className="email-txt">climatechangedigitallabs@gmail.com</span>
+                      </a>
+                      <button
+                        onClick={() => handleNav('contact')}
+                        className="sprint-intake-btn"
+                      >
+                        <span>Intake Form</span>
+                        <ArrowUpRight size={13} />
+                      </button>
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* Mobile-Only Quick Focus Capabilities Pills */}
-              <div className="alien-mobile-services-section">
-                <div className="alien-col-label">
-                  <Sparkles size={12} className="text-blue-500" />
-                  <span>QUICK SHORTCUTS</span>
-                </div>
-                <div className="mobile-services-pills-wrap">
-                  {quickServices.map((srv) => (
-                    <button
-                      key={srv.label}
-                      onClick={() => handleNav(srv.page)}
-                      className="mobile-service-chip"
-                      style={{ cursor: 'pointer' }}
-                    >
-                      {srv.label}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Menu Bottom Meta Strip */}
+              {/* Bottom Meta Bar (Jaipur/Bangalore, Discord, Instagram, Behance) */}
               <div className="alien-menu-bottom-footer">
                 <div className="menu-meta-location">
                   <Globe size={13} />
@@ -554,8 +492,8 @@ export default function Navbar({ currentRoute = 'home', onNavigate }: NavbarProp
                 </div>
 
                 <div className="menu-meta-system-badge desktop-only-pill">
-                  <Compass size={13} />
-                  <span>CCDL LABS // HIGH PERFORMANCE ENGINE</span>
+                  <TrendingUp size={13} />
+                  <span>HIGH PERFORMANCE DIGITAL ARCHITECTURE</span>
                 </div>
 
                 <div className="menu-meta-socials">
@@ -581,10 +519,6 @@ export default function Navbar({ currentRoute = 'home', onNavigate }: NavbarProp
                     rel="noopener noreferrer"
                     className="menu-social-link menu-social-featured discord-highlight"
                     title="Join Discord Community"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      window.open('https://discord.gg/climatechangedigitallabs', '_blank', 'noopener,noreferrer');
-                    }}
                   >
                     <MessageSquare size={13} />
                     <span>Discord</span>
@@ -598,3 +532,4 @@ export default function Navbar({ currentRoute = 'home', onNavigate }: NavbarProp
     </>
   );
 }
+

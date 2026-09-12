@@ -264,7 +264,7 @@ export default function About({ onNavigate }: AboutProps) {
                 <ul className="about-pillar-bullets">
                   {pillar.bullets.map((bullet) => (
                     <li key={bullet}>
-                      <CheckCircle2 size={13} className="bullet-check-icon" style={{ color: pillar.accent }} />
+                      <CheckCircle2 size={13} className="bullet-check-icon" style={{ color: pillar.accent, flexShrink: 0 }} />
                       <span>{bullet}</span>
                     </li>
                   ))}

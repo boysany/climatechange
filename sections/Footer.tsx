@@ -18,6 +18,9 @@ export default function Footer({
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const dribbbleProfileUrl =
+    'https://dribbble.com/climate-change-digital-labs';
+
   return (
     <footer className="footer" id="site-footer">
       <div className="footer-container">
@@ -72,6 +75,16 @@ export default function Footer({
             {/* Sub-column 1 */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.1rem' }}>
               <a
+                href={dribbbleProfileUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="footer-link-row footer-dribbble-link"
+                title="Climate Change Digital Labs on Dribbble"
+              >
+                <span>Dribbble</span>
+                <ArrowUpRight size={16} className="footer-arrow" />
+              </a>
+              <a
                 href="https://www.behance.net/climatedigital1"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -121,8 +134,8 @@ export default function Footer({
           <h3 className="footer-section-title">Legal & Trust</h3>
 
           <a
-            href="/privacy"
-            onClick={(e) => handleLegalClick(e, 'privacy')}
+            href="/privacy-policy"
+            onClick={(e) => handleLegalClick(e, 'privacy-policy')}
             className="footer-link-row"
           >
             <span>Privacy Policy</span>
@@ -130,47 +143,38 @@ export default function Footer({
           </a>
 
           <a
-            href="/terms"
-            onClick={(e) => handleLegalClick(e, 'terms')}
+            href="/terms-and-conditions"
+            onClick={(e) => handleLegalClick(e, 'terms-and-conditions')}
             className="footer-link-row"
           >
-            <span>Terms of Service</span>
+            <span>Terms & Conditions</span>
             <ArrowUpRight size={16} className="footer-arrow" />
           </a>
 
           <a
-            href="/security"
-            onClick={(e) => handleLegalClick(e, 'security')}
+            href="/refund-cancellation"
+            onClick={(e) => handleLegalClick(e, 'refund-cancellation')}
             className="footer-link-row"
           >
-            <span>Security & Compliance</span>
+            <span>Refund & Cancellation</span>
             <ArrowUpRight size={16} className="footer-arrow" />
           </a>
 
           <a
-            href="/cookies"
-            onClick={(e) => handleLegalClick(e, 'cookies')}
+            href="/disclaimer"
+            onClick={(e) => handleLegalClick(e, 'disclaimer')}
             className="footer-link-row"
           >
-            <span>Cookie Policy</span>
+            <span>Disclaimer</span>
             <ArrowUpRight size={16} className="footer-arrow" />
           </a>
 
           <a
-            href="/faqs"
-            onClick={(e) => handleLegalClick(e, 'faqs')}
+            href="/legal-business-transparency"
+            onClick={(e) => handleLegalClick(e, 'legal-business-transparency')}
             className="footer-link-row"
           >
-            <span>Frequently Asked Questions</span>
-            <ArrowUpRight size={16} className="footer-arrow" />
-          </a>
-
-          <a
-            href="/contact"
-            onClick={(e) => handleLegalClick(e, 'contact')}
-            className="footer-link-row"
-          >
-            <span>Contact & Inquiries</span>
+            <span>Legal & Business Transparency</span>
             <ArrowUpRight size={16} className="footer-arrow" />
           </a>
         </div>

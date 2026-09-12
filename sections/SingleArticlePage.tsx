@@ -71,10 +71,10 @@ export const SingleArticlePage: React.FC<SingleArticlePageProps> = ({ slug, onNa
 
   // Dynamic SEO Injection
   useSEO({
-    title: `${post.title} | Selmedic Digital Labs`,
+    title: `${post.title} | CCDL — Climate Change Digital Labs`,
     description: post.excerpt,
-    keywords: post.tags ? post.tags.join(', ') : `${post.category}, software architecture`,
-    canonicalUrl: `https://selmedicdigitallabs.com/article/${post.slug}`,
+    keywords: post.tags ? post.tags.join(', ') : `${post.category}, CCDL, software architecture`,
+    canonicalUrl: `https://climatechangedigitallabs.com/article/${post.slug}`,
     ogImage: post.coverImage,
     ogType: 'article',
     jsonLd: {
@@ -91,8 +91,9 @@ export const SingleArticlePage: React.FC<SingleArticlePageProps> = ({ slug, onNa
       },
       publisher: {
         '@type': 'Organization',
-        name: 'Selmedic Digital Labs',
-        url: 'https://selmedicdigitallabs.com',
+        name: 'Climate Change Digital Labs',
+        alternateName: 'CCDL',
+        url: 'https://climatechangedigitallabs.com',
       },
     },
   });
