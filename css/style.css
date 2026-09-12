@@ -1928,6 +1928,59 @@ button {
   transform: translate(2px, -2px);
 }
 
+/* Careers page */
+.careers-page { color: var(--ink); }
+.careers-hero { padding-top: clamp(8rem, 14vw, 12rem); }
+.careers-hero-grid, .careers-split, .careers-apply { max-width: 1500px; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(280px, .65fr); gap: clamp(2rem, 8vw, 8rem); align-items: end; }
+.careers-hero h1, .careers-section-heading h2, .careers-split h2, .careers-apply h2, .careers-final h2 { font-size: clamp(2.4rem, 5vw, 5.8rem); line-height: .98; letter-spacing: -.05em; margin: 0; }
+.careers-hero h1 em { color: var(--blue); font-style: normal; }
+.careers-hero p { max-width: 39rem; color: var(--muted); font-size: clamp(1rem, 1.5vw, 1.2rem); line-height: 1.7; margin: 2rem 0; }
+.careers-actions { display: flex; flex-wrap: wrap; gap: .75rem; }
+.careers-button { display: inline-flex; align-items: center; gap: .75rem; padding: .95rem 1.25rem; border: 1px solid var(--line); border-radius: 999px; font-weight: 700; transition: transform .25s ease, background .25s ease; }
+.careers-button:hover { transform: translateY(-2px); }
+.careers-button-primary { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+.careers-button-secondary { color: var(--ink); }
+.careers-hero-note { min-height: 15rem; padding: 1.5rem; border: 1px solid var(--line); background: var(--paper-card); display: flex; flex-direction: column; justify-content: space-between; gap: 2rem; }
+.careers-note-number, .careers-reason > span, .careers-steps b { font-family: var(--mono); color: var(--blue); font-size: .72rem; letter-spacing: .12em; font-weight: 800; }
+.careers-hero-note strong { font-size: clamp(1.5rem, 2.5vw, 2.4rem); line-height: 1.05; letter-spacing: -.04em; }
+.careers-hero-note > span:last-child { color: var(--muted); font-size: .78rem; text-transform: uppercase; letter-spacing: .08em; }
+.careers-section { max-width: 1500px; margin: 0 auto; }
+.careers-section-heading { display: grid; grid-template-columns: minmax(140px, .5fr) minmax(0, 1fr) minmax(200px, .7fr); gap: 2rem; align-items: end; border-top: 1px solid var(--line); padding-top: 1.25rem; margin-bottom: 3rem; }
+.careers-section-heading p { color: var(--muted); line-height: 1.6; max-width: 23rem; margin: 0; }
+.careers-reasons, .careers-steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.careers-reason, .careers-steps > div { background: var(--paper); padding: 1.35rem; min-height: 12rem; }
+.careers-reason h3, .careers-steps h3, .careers-empty h3 { margin: 2.5rem 0 .5rem; font-size: 1.1rem; letter-spacing: -.02em; }
+.careers-reason p, .careers-steps p, .careers-empty p, .careers-split > p, .careers-apply-copy p { color: var(--muted); line-height: 1.65; margin: 0; }
+.careers-empty { display: flex; align-items: center; gap: 1.25rem; border: 1px solid var(--line); padding: 1.5rem; background: var(--paper-card); }
+.careers-empty > svg { flex: 0 0 auto; color: var(--blue); }
+.careers-empty h3 { margin: 0 0 .35rem; }
+.text-link { margin-left: auto; white-space: nowrap; display: inline-flex; align-items: center; gap: .5rem; color: var(--blue); font-weight: 700; }
+.careers-split { align-items: start; border-top: 1px solid var(--line); }
+.careers-split > p { font-size: 1.15rem; max-width: 40rem; }
+.careers-apply { background: var(--ink); color: var(--paper); max-width: none; padding: clamp(2rem, 6vw, 6rem) clamp(1.25rem, 5vw, 6rem); align-items: center; }
+.careers-apply-copy p { color: color-mix(in srgb, var(--paper) 68%, transparent); max-width: 36rem; margin-top: 1.25rem; }
+.careers-form { max-width: 32rem; width: 100%; }
+.careers-form label { display: block; font-size: .8rem; font-weight: 700; margin-bottom: .6rem; }
+.careers-input-row { display: flex; border-bottom: 1px solid color-mix(in srgb, var(--paper) 45%, transparent); }
+.careers-input-row input { min-width: 0; flex: 1; background: transparent; border: 0; outline: 0; color: var(--paper); padding: .75rem 0; font: inherit; }
+.careers-input-row button { color: var(--paper); cursor: pointer; padding: .7rem 0 .7rem .8rem; }
+.careers-error { color: #ffb4ab; font-size: .8rem; margin-top: .6rem; }
+.careers-success { display: flex; gap: .5rem; align-items: center; color: var(--cyan); font-size: .82rem; margin-top: .8rem; }
+.careers-how, .careers-faq { max-width: 1500px; margin: 0 auto; }
+.careers-steps { grid-template-columns: repeat(3, 1fr); }
+.careers-faq-list { max-width: 900px; margin-left: auto; }
+.careers-faq-list details { border-top: 1px solid var(--line); padding: 1.2rem 0; }
+.careers-faq-list summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; gap: 1rem; font-size: 1.05rem; font-weight: 700; }
+.careers-faq-list summary::-webkit-details-marker { display: none; }
+.careers-faq-list summary svg { color: var(--blue); transition: transform .2s ease; }
+.careers-faq-list details[open] summary svg { transform: rotate(180deg); }
+.careers-faq-list details p { color: var(--muted); max-width: 42rem; margin: 1rem 2rem 0 0; line-height: 1.65; }
+.careers-final { text-align: center; padding: clamp(5rem, 10vw, 10rem) 1.25rem; background: var(--paper-card); }
+.careers-final h2 { max-width: 10ch; margin: .75rem auto 2rem; }
+.careers-final button { display: inline-flex; align-items: center; gap: .7rem; padding: 1rem 1.35rem; border-radius: 999px; background: var(--ink); color: var(--paper); font-weight: 700; cursor: pointer; }
+@media (max-width: 800px) { .careers-hero-grid, .careers-split, .careers-apply, .careers-section-heading { grid-template-columns: 1fr; gap: 1.5rem; } .careers-reasons { grid-template-columns: repeat(2, 1fr); } .careers-steps { grid-template-columns: 1fr; } .careers-empty { align-items: flex-start; flex-wrap: wrap; } .text-link { margin-left: 2.5rem; } }
+@media (max-width: 520px) { .careers-reasons { grid-template-columns: 1fr; } .careers-hero { padding-top: 7rem; } }
+
 /* ============================================================
    SIMPLE & MINIMAL PRELOADER DESIGN
    ============================================================ */

@@ -11,6 +11,7 @@ import { SingleArticlePage } from '../sections/SingleArticlePage.tsx';
 import LegalPage from './LegalPage.tsx';
 import { SEO_SERVICES_MAP } from '../lib/seoData.ts';
 import { portfolioProjects } from '../sections/Portfolio.tsx';
+import CareersPage from './CareersPage.tsx';
 
 import MarkerHighlight from '../components/MarkerHighlight.tsx';
 import TiltCard from '../components/TiltCard.tsx';
@@ -1250,6 +1251,10 @@ export default function CCDLPage({
   if (pageId === 'growth' || pageId === 'seo-growth') normalizedPageId = 'seo-ads';
   if (pageId === 'fullstack-software') normalizedPageId = 'software';
   if (pageId === 'digital-strategy') normalizedPageId = 'strategy';
+
+  if (pageId === 'careers') {
+    return <CareersPage onNavigate={onNavigate} />;
+  }
 
   // 0. LEGAL & BUSINESS TRANSPARENCY PAGES
   if (
