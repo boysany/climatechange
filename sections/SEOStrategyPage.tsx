@@ -536,14 +536,6 @@ export const SEOStrategyPage: React.FC<SEOStrategyPageProps> = ({
                 </button>
               </div>
 
-              <button
-                className="seo-contact-pill-btn"
-                onClick={() => onNavigate('contact')}
-                id="seo-btn-consultation"
-              >
-                <span>Request Custom SEO Audit</span>
-                <ArrowRight size={14} />
-              </button>
             </div>
           </div>
 
