@@ -6245,6 +6245,250 @@ button {
 }
 
 /* ============================================================
+   REFERENCE SIDE MENU OVERRIDES
+   ============================================================ */
+.alien-mega-overlay {
+  inset: 1.75rem 1.75rem 1.75rem;
+  width: auto;
+  height: auto;
+  min-height: calc(100dvh - 3.5rem);
+  border-radius: 2rem;
+  background: rgba(218, 217, 221, 0.96);
+  color: #09090b;
+  box-shadow: 0 24px 80px rgba(9, 9, 11, 0.22);
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+}
+
+.alien-mega-overlay::-webkit-scrollbar-thumb {
+  background: rgba(9, 9, 11, 0.28);
+}
+
+.alien-mega-inner {
+  max-width: none;
+  padding: clamp(2rem, 5vw, 5.5rem) clamp(2rem, 7vw, 8.5rem) clamp(2rem, 5vw, 5rem);
+  min-height: calc(100dvh - 3.5rem);
+  justify-content: flex-start;
+}
+
+.menu-portal-grid-lines,
+.alien-ambient-blob {
+  display: none;
+}
+
+.alien-mega-topbar {
+  padding: 0;
+  border: 0;
+  align-items: flex-start;
+}
+
+.alien-mega-top-left {
+  gap: 0;
+}
+
+.menu-topbar-brand,
+.alien-menu-status-pill,
+.alien-menu-time-pill,
+.alien-clutch-pill {
+  display: none;
+}
+
+.alien-mega-top-right {
+  margin-left: auto;
+}
+
+.alien-close-circle-btn {
+  width: 4.35rem;
+  height: 4.35rem;
+  background: #09090b;
+  color: #ffffff;
+  box-shadow: none;
+}
+
+.alien-close-circle-btn:hover {
+  background: #09090b;
+  transform: scale(1.04);
+}
+
+.esc-key-badge {
+  display: none;
+}
+
+.menu-studio-index-marker {
+  margin: 0 0 2.5rem;
+  color: #09090b;
+  font-size: clamp(0.78rem, 1vw, 1rem);
+  letter-spacing: 0.02em;
+}
+
+.menu-studio-index-marker .marker-dot {
+  width: 0.9rem;
+  height: 0.9rem;
+  background: #09090b;
+  box-shadow: none;
+}
+
+.alien-mega-content-grid {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(19rem, 0.72fr);
+  gap: clamp(2rem, 6vw, 7rem);
+  align-items: start;
+}
+
+.studio-index-card,
+.studio-initiate-sprint-card {
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.studio-index-card-header {
+  padding: 0;
+  margin: 0 0 2rem;
+  border: 0;
+}
+
+.index-card-header-left {
+  font-size: clamp(0.8rem, 1.1vw, 1rem);
+  color: #09090b;
+  letter-spacing: 0.01em;
+}
+
+.index-card-header-left .index-dot,
+.index-badge {
+  display: none;
+}
+
+.studio-index-items-list {
+  gap: 0.45rem;
+}
+
+.studio-index-item {
+  padding: 0;
+  min-height: clamp(4.2rem, 6vw, 6.5rem);
+  gap: 0;
+  align-items: center;
+  border-radius: 0;
+  border-bottom: 1px solid rgba(9, 9, 11, 0.14);
+}
+
+.studio-index-item:hover,
+.studio-index-item.is-active {
+  background: transparent;
+  transform: none;
+}
+
+.item-num,
+.item-desc,
+.item-arrow,
+.current-route-badge {
+  display: none;
+}
+
+.item-title-row {
+  margin: 0;
+}
+
+.item-title {
+  font-family: var(--display, Arial, sans-serif);
+  font-size: clamp(2.25rem, 4.25vw, 4.8rem);
+  font-weight: 400;
+  letter-spacing: -0.065em;
+  line-height: 0.98;
+  color: #09090b;
+}
+
+.studio-index-item.is-active .item-title,
+.studio-index-item:hover .item-title {
+  color: #09090b;
+}
+
+.studio-showcase-stack {
+  gap: 1.5rem;
+  padding-top: 5.5rem;
+}
+
+.studio-flagship-photo-card {
+  height: clamp(16rem, 28vw, 25rem);
+  border-radius: 1.25rem;
+  box-shadow: none;
+}
+
+.studio-initiate-sprint-card {
+  gap: 0.85rem;
+}
+
+.sprint-card-header,
+.sprint-action-grid,
+.sprint-email-row {
+  opacity: 0.92;
+}
+
+.alien-menu-bottom-footer {
+  display: none;
+}
+
+@media (max-width: 1100px) {
+  .alien-mega-content-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
+
+  .studio-showcase-stack {
+    grid-column: 1 / -1;
+    padding-top: 0;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .alien-mega-overlay {
+    inset: 0.75rem;
+    min-height: calc(100dvh - 1.5rem);
+    border-radius: 1.35rem;
+  }
+
+  .alien-mega-inner {
+    min-height: calc(100dvh - 1.5rem);
+    padding: 1.5rem 1.25rem 2rem;
+  }
+
+  .alien-close-circle-btn {
+    width: 3.1rem;
+    height: 3.1rem;
+  }
+
+  .menu-studio-index-marker {
+    margin-bottom: 1.25rem;
+  }
+
+  .alien-mega-content-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .studio-index-card {
+    padding: 0;
+  }
+
+  .studio-index-item {
+    min-height: 4.25rem;
+  }
+
+  .item-title {
+    font-size: clamp(2rem, 11vw, 3.5rem);
+  }
+
+  .studio-showcase-stack {
+    grid-column: auto;
+    display: flex;
+    padding-top: 0;
+  }
+}
+
+/* ============================================================
    INNER PAGES (ENTERPRISE GRADE ARCHITECTURE)
    ============================================================ */
 .inner-page {
