@@ -3,10 +3,8 @@ import { motion as m, AnimatePresence } from 'framer-motion';
 const motion = m as any;
 import {
   CheckCircle2,
-  ShieldCheck,
   Search,
   Zap,
-  Globe,
   Layers,
   ArrowRight,
   ArrowDownRight,
@@ -430,27 +428,6 @@ export const SEOStrategyPage: React.FC<SEOStrategyPageProps> = ({
 
         {/* Hero Card */}
         <header className="seo-hero-card" id="seo-hero-header">
-          {/* Top Status Bar */}
-          <div className="seo-hero-status-row">
-            <div className="seo-live-indicator">
-              <span className="seo-pulse-dot" />
-              <span className="seo-status-text">
-                GOOGLE CORE UPDATE 2026 COMPLIANT • ZERO TECHNICAL DEBT
-              </span>
-            </div>
-
-            <div className="seo-header-chips">
-              <span className="seo-header-tag">
-                <ShieldCheck size={13} className="text-emerald-500" />
-                WHITE-HAT ENTERPRISE ARCHITECTURE
-              </span>
-              <span className="seo-header-tag seo-header-tag-blue">
-                <Globe size={13} />
-                INDIA HQ + GLOBAL REACH
-              </span>
-            </div>
-          </div>
-
           <div className="seo-hero-main">
             <div className="hero-badge-row" style={{ marginBottom: '1rem' }}>
               <span className="kicker-pill">
@@ -468,45 +445,6 @@ export const SEOStrategyPage: React.FC<SEOStrategyPageProps> = ({
             <p className="seo-hero-desc" id="seo-sub-heading">
               A comprehensive technical blueprint engineered to capture high-intent commercial search queries across India and international markets. Verified against Google PageSpeed, Core Web Vitals (sub-0.8s LCP), Semantic JSON-LD schemas, and crawl efficiency.
             </p>
-
-            {/* Live Metrics HUD */}
-            <div className="seo-metrics-hud" id="seo-metrics-hud">
-              <div className="seo-hud-card">
-                <div className="seo-hud-label">
-                  <Gauge size={14} className="text-emerald-500" />
-                  <span>LIGHTHOUSE PERFORMANCE</span>
-                </div>
-                <div className="seo-hud-value text-emerald-500">100 / 100</div>
-                <div className="seo-hud-sub">Sub-0.8s FCP &amp; LCP under edge CDN</div>
-              </div>
-
-              <div className="seo-hud-card">
-                <div className="seo-hud-label">
-                  <Activity size={14} className="text-blue-500" />
-                  <span>CORE WEB VITALS</span>
-                </div>
-                <div className="seo-hud-value text-blue-500">ALL GREEN</div>
-                <div className="seo-hud-sub">CLS: 0.012 • INP: &lt;40ms • LCP: 0.64s</div>
-              </div>
-
-              <div className="seo-hud-card">
-                <div className="seo-hud-label">
-                  <Network size={14} className="text-indigo-500" />
-                  <span>KNOWLEDGE GRAPH</span>
-                </div>
-                <div className="seo-hud-value text-indigo-500">MULTI-ENTITY</div>
-                <div className="seo-hud-sub">Organization + Service + FAQ Schema</div>
-              </div>
-
-              <div className="seo-hud-card">
-                <div className="seo-hud-label">
-                  <Layers size={14} className="text-amber-500" />
-                  <span>INDEXED SERVICE HUBS</span>
-                </div>
-                <div className="seo-hud-value text-amber-500">18 DEDICATED</div>
-                <div className="seo-hud-sub">Targeted high-intent landing pages</div>
-              </div>
-            </div>
 
             {/* Action Bar */}
             <div className="seo-hero-actions-row">
@@ -536,14 +474,6 @@ export const SEOStrategyPage: React.FC<SEOStrategyPageProps> = ({
                 </button>
               </div>
 
-              <button
-                className="seo-contact-pill-btn"
-                onClick={() => onNavigate('contact')}
-                id="seo-btn-consultation"
-              >
-                <span>Request Custom SEO Audit</span>
-                <ArrowRight size={14} />
-              </button>
             </div>
           </div>
 
