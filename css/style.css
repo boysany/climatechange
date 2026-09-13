@@ -5014,8 +5014,8 @@ button {
   height: 100vh;
   height: 100dvh;
   z-index: 9999;
-  background: rgba(246, 245, 242, 0.98);
-  backdrop-filter: blur(28px);
+  background: rgba(246, 245, 242, 0.72);
+  backdrop-filter: blur(28px) saturate(120%);
   -webkit-backdrop-filter: blur(28px);
   overflow-y: auto;
   overflow-x: hidden;
@@ -5042,7 +5042,7 @@ button {
 }
 
 .dark .alien-mega-overlay {
-  background: rgba(9, 12, 19, 0.98);
+  background: rgba(9, 12, 19, 0.72);
 }
 
 .alien-ambient-blob {
@@ -5301,6 +5301,74 @@ button {
 /* ============================================================
    MEGA MENU FULLSCREEN STUDIO PORTAL (MATCHING USER SCREENSHOT)
    ============================================================ */
+
+/* Menu-open depth treatment: keep navigation behavior intact while the page recedes. */
+.site-shell > :not(.alien-mega-overlay) {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), filter 0.35s ease;
+}
+
+.site-shell:has(.alien-mega-overlay) > :not(.alien-mega-overlay) {
+  transform: scale(0.965) translateY(10px);
+  filter: saturate(0.82) brightness(0.9);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-shell > :not(.alien-mega-overlay) {
+    transition: none;
+  }
+}
+
+/* Compact menu type scale keeps the full-height navigation airy on smaller screens. */
+.alien-mega-overlay .studio-index-card {
+  padding: 1.15rem 1.3rem;
+}
+
+.alien-mega-overlay .index-card-header-left,
+.alien-mega-overlay .menu-studio-index-marker {
+  font-size: 0.64rem;
+}
+
+.alien-mega-overlay .item-title {
+  font-size: 0.98rem;
+}
+
+.alien-mega-overlay .item-description,
+.alien-mega-overlay .index-badge,
+.alien-mega-overlay .alien-menu-status-pill,
+.alien-mega-overlay .alien-menu-time-pill {
+  font-size: 0.58rem;
+}
+
+.alien-mega-overlay .studio-index-item {
+  padding: 0.7rem 0;
+}
+
+.alien-mega-overlay .alien-mega-content-grid {
+  gap: clamp(1rem, 1.8vw, 1.5rem);
+}
+
+@media (max-width: 768px) {
+  .alien-mega-overlay .alien-mega-inner {
+    padding: 0.85rem 0.9rem 1.1rem;
+  }
+
+  .alien-mega-overlay .alien-mega-topbar {
+    padding-bottom: 0.8rem;
+  }
+
+  .alien-mega-overlay .menu-topbar-agency-name {
+    font-size: 0.82rem;
+  }
+
+  .alien-mega-overlay .alien-mega-content-grid {
+    gap: 0.75rem;
+  }
+
+  .alien-mega-overlay .studio-index-card {
+    border-radius: 16px;
+    padding: 0.9rem 1rem;
+  }
+}
 .alien-mega-overlay {
   position: fixed;
   inset: 0;
