@@ -2,19 +2,20 @@ import React, { useEffect, useState } from 'react';
 import { motion as m, AnimatePresence } from 'framer-motion';
 import {
   ArrowUpRight,
-  MessageCircle,
-  MessageSquare,
-  Phone,
-  Mail,
   X,
-  Globe,
   Clock,
   Sparkles,
-  TrendingUp,
 } from 'lucide-react';
 import CcdlLogo from './CcdlLogo.tsx';
 
 const motion = m as any;
+
+const menuShowcaseImages = [
+  { src: '/images/projects/hirepro.jpg', alt: 'HirePro portfolio interface' },
+  { src: '/images/projects/aicafe.jpg', alt: 'AI Cafe portfolio interface' },
+  { src: '/images/projects/ccexchange.jpg', alt: 'CC Exchange portfolio interface' },
+  { src: '/images/projects/aitranslate.jpg', alt: 'AI Translate portfolio interface' },
+];
 
 interface NavbarProps {
   isDark?: boolean;
@@ -27,6 +28,7 @@ export default function Navbar({ currentRoute = 'home', onNavigate }: NavbarProp
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [currentTime, setCurrentTime] = useState('');
+  const [showcaseImageIndex, setShowcaseImageIndex] = useState(0);
 
   // Live world time for studio header
   useEffect(() => {
@@ -46,6 +48,14 @@ export default function Navbar({ currentRoute = 'home', onNavigate }: NavbarProp
     const interval = setInterval(updateTime, 1000);
     return () => clearInterval(interval);
   }, []);
+
+  useEffect(() => {
+    if (!open) return;
+    const interval = setInterval(() => {
+      setShowcaseImageIndex((current) => (current + 1) % menuShowcaseImages.length);
+    }, 3200);
+    return () => clearInterval(interval);
+  }, [open]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -390,139 +400,28 @@ export default function Navbar({ currentRoute = 'home', onNavigate }: NavbarProp
                   </div>
                 </div>
 
-                {/* Column 3: Stacked Right Showcase & Direct Line Intake */}
+                {/* Column 3: Dynamic portfolio showcase only */}
                 <div className="studio-showcase-stack">
-                  {/* Showcase Photo Card */}
-                  <div
-                    className="studio-flagship-photo-card cursor-pointer group"
-                    onClick={() => handleNav('portfolio')}
-                  >
-                    <img
-                      src="/images/projects/hirepro.jpg"
-                      alt="CCDL Flagship Portfolio"
+                  <div className="studio-flagship-photo-card">
+                    <motion.img
+                      key={menuShowcaseImages[showcaseImageIndex].src}
+                      src={menuShowcaseImages[showcaseImageIndex].src}
+                      alt={menuShowcaseImages[showcaseImageIndex].alt}
                       className="flagship-photo-bg"
+                      initial={{ opacity: 0, scale: 1.03 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ duration: 0.45, ease: 'easeOut' }}
                     />
                     <div className="flagship-photo-overlay" />
-
                     <div className="flagship-card-content">
                       <div className="flagship-case-badge">
                         <span className="flagship-badge-dot" />
-                        <span>CASE STUDIES • 2026</span>
+                        <span>SELECTED WORK • {String(showcaseImageIndex + 1).padStart(2, '0')}</span>
                       </div>
-                      <h3 className="flagship-card-title">Flagship Portfolio</h3>
-                      <p className="flagship-card-sub">
-                        Selected enterprise systems, SaaS platforms, and digital experiences.
-                      </p>
+                      <h3 className="flagship-card-title">Portfolio Showcase</h3>
+                      <p className="flagship-card-sub">Selected digital products and enterprise experiences.</p>
                     </div>
                   </div>
-
-                  {/* Direct Line / Initiate Sprint Card */}
-                  <div className="studio-initiate-sprint-card">
-                    <div className="sprint-card-header">
-                      <span className="sprint-header-title">INITIATE SPRINT //</span>
-                      <span className="sprint-header-sub">Direct Line</span>
-                    </div>
-
-                    {/* WhatsApp Line 1 & Line 2 */}
-                    <div className="sprint-action-grid">
-                      <a
-                        href="https://wa.me/917852052323"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="sprint-btn-wa"
-                      >
-                        <MessageCircle size={15} />
-                        <span>WhatsApp (Line 1)</span>
-                      </a>
-                      <a
-                        href="https://wa.me/918005873764"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="sprint-btn-wa"
-                      >
-                        <MessageCircle size={15} />
-                        <span>WhatsApp (Line 2)</span>
-                      </a>
-                    </div>
-
-                    {/* Direct Call Numbers */}
-                    <div className="sprint-action-grid">
-                      <a
-                        href="tel:+917852052323"
-                        className="sprint-btn-phone"
-                      >
-                        <Phone size={14} />
-                        <span>+91 78520 52323</span>
-                      </a>
-                      <a
-                        href="tel:+918005873764"
-                        className="sprint-btn-phone"
-                      >
-                        <Phone size={14} />
-                        <span>+91 80058 73764</span>
-                      </a>
-                    </div>
-
-                    {/* Email Bar & Intake Form Button */}
-                    <div className="sprint-email-row">
-                      <a
-                        href="mailto:climatechangedigitallabs@gmail.com"
-                        className="sprint-email-link"
-                      >
-                        <Mail size={14} />
-                        <span className="email-txt">climatechangedigitallabs@gmail.com</span>
-                      </a>
-                      <button
-                        onClick={() => handleNav('contact')}
-                        className="sprint-intake-btn"
-                      >
-                        <span>Intake Form</span>
-                        <ArrowUpRight size={13} />
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Bottom Meta Bar (Jaipur/Bangalore, Discord, Instagram, Behance) */}
-              <div className="alien-menu-bottom-footer">
-                <div className="menu-meta-location">
-                  <Globe size={13} />
-                  <span>JAIPUR HQ • BANGALORE HUB • GLOBAL CLIENTS</span>
-                </div>
-
-                <div className="menu-meta-system-badge desktop-only-pill">
-                  <TrendingUp size={13} />
-                  <span>HIGH PERFORMANCE DIGITAL ARCHITECTURE</span>
-                </div>
-
-                <div className="menu-meta-socials">
-                  <a
-                    href="https://www.behance.net/climatedigital1"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="menu-social-link"
-                  >
-                    Behance
-                  </a>
-                  <a
-                    href="https://www.instagram.com/climate_change_digital_labs/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="menu-social-link"
-                  >
-                    Instagram
-                  </a>
-                  <a
-                    href="https://discord.gg/climatechangedigitallabs"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="menu-social-link menu-social-featured discord-highlight"
-                    title="Join Discord Community"
-                  >
-                    <MessageSquare size={13} />
-                    <span>Discord</span>
-                  </a>
                 </div>
               </div>
             </div>
