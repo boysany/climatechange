@@ -5014,8 +5014,8 @@ button {
   height: 100vh;
   height: 100dvh;
   z-index: 9999;
-  background: rgba(246, 245, 242, 0.98);
-  backdrop-filter: blur(28px);
+  background: rgba(246, 245, 242, 0.72);
+  backdrop-filter: blur(28px) saturate(120%);
   -webkit-backdrop-filter: blur(28px);
   overflow-y: auto;
   overflow-x: hidden;
@@ -5042,7 +5042,7 @@ button {
 }
 
 .dark .alien-mega-overlay {
-  background: rgba(9, 12, 19, 0.98);
+  background: rgba(9, 12, 19, 0.72);
 }
 
 .alien-ambient-blob {
