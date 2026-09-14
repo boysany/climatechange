@@ -245,40 +245,56 @@ export default function Portfolio({ onNavigate }: PortfolioProps) {
 
       <div className="horizontal-track-container">
         <div ref={trackRef} className="horizontal-track">
-          {portfolioProjects.map((project, i) => (
-            <div
-              key={project.title}
-              className={`project-card-h project-${i}`}
-            >
-              <div className="project-image-box">
-                <img
-                  src={project.img}
-                  alt={`${project.title} software preview`}
-                  loading={i < 3 ? 'eager' : 'lazy'}
-                  decoding="async"
-                  onError={(event) => {
-                    const image = event.currentTarget;
-                    if (image.dataset.fallbackApplied) return;
-                    image.dataset.fallbackApplied = 'true';
-                    image.src = 'https://images.unsplash.com/photo-1558655146-9f40138edfeb?auto=format&fit=crop&q=80&w=1200';
-                  }}
-                />
+          {portfolioProjects.map((project, i) => {
+            const cardContent = (
+              <>
+                <div className="project-image-box">
+                  <img
+                    src={project.img}
+                    alt={`${project.title} software preview`}
+                    loading={i < 3 ? 'eager' : 'lazy'}
+                    decoding="async"
+                    onError={(event) => {
+                      const image = event.currentTarget;
+                      if (image.dataset.fallbackApplied) return;
+                      image.dataset.fallbackApplied = 'true';
+                      image.src = 'https://images.unsplash.com/photo-1558655146-9f40138edfeb?auto=format&fit=crop&q=80&w=1200';
+                    }}
+                  />
+                </div>
+                <small>
+                  {project.num} — {project.tag}
+                </small>
+                <h3>{project.title}</h3>
+                <p>{project.desc}</p>
+                <div style={{ marginTop: 'auto', paddingTop: '0.75rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                  <span style={{ fontSize: '0.75rem', color: 'var(--muted)', letterSpacing: '0.05em', textTransform: 'uppercase' }}>
+                    {project.category}
+                  </span>
+                  <span style={{ fontSize: '0.75rem', color: 'var(--muted)', fontWeight: 600 }}>
+                    {project.year}
+                  </span>
+                </div>
+              </>
+            );
+
+            return project.title === 'CCDL Store' ? (
+              <a
+                key={project.title}
+                className={`project-card-h project-${i}`}
+                href={project.liveUrl}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={`Open ${project.title} website`}
+              >
+                {cardContent}
+              </a>
+            ) : (
+              <div key={project.title} className={`project-card-h project-${i}`}>
+                {cardContent}
               </div>
-              <small>
-                {project.num} — {project.tag}
-              </small>
-              <h3>{project.title}</h3>
-              <p>{project.desc}</p>
-              <div style={{ marginTop: 'auto', paddingTop: '0.75rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                <span style={{ fontSize: '0.75rem', color: 'var(--muted)', letterSpacing: '0.05em', textTransform: 'uppercase' }}>
-                  {project.category}
-                </span>
-                <span style={{ fontSize: '0.75rem', color: 'var(--muted)', fontWeight: 600 }}>
-                  {project.year}
-                </span>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
