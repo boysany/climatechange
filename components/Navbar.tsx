@@ -11,10 +11,34 @@ import CcdlLogo from './CcdlLogo.tsx';
 const motion = m as any;
 
 const menuShowcaseImages = [
-  { src: '/images/projects/hirepro.jpg', alt: 'HirePro portfolio interface' },
-  { src: '/images/projects/aicafe.jpg', alt: 'AI Cafe portfolio interface' },
-  { src: '/images/projects/ccexchange.jpg', alt: 'CC Exchange portfolio interface' },
-  { src: '/images/projects/aitranslate.jpg', alt: 'AI Translate portfolio interface' },
+  {
+    src: '/images/projects/hirepro.jpg',
+    alt: 'HirePro portfolio interface',
+    label: 'Selected Work',
+    title: 'HirePro Platform',
+    description: 'A focused hiring experience built for modern teams.',
+  },
+  {
+    src: '/images/projects/aicafe.jpg',
+    alt: 'AI Cafe portfolio interface',
+    label: 'Portfolio Showcase',
+    title: 'AI Cafe',
+    description: 'A warm, intelligent product experience for everyday ideas.',
+  },
+  {
+    src: '/images/projects/ccexchange.jpg',
+    alt: 'CC Exchange portfolio interface',
+    label: 'Selected Work',
+    title: 'CC Exchange',
+    description: 'A polished exchange platform designed for confident decisions.',
+  },
+  {
+    src: '/images/projects/aitranslate.jpg',
+    alt: 'AI Translate portfolio interface',
+    label: 'Portfolio Showcase',
+    title: 'AI Translate',
+    description: 'A clear, accessible translation workflow for global teams.',
+  },
 ];
 
 interface NavbarProps {
@@ -413,14 +437,23 @@ export default function Navbar({ currentRoute = 'home', onNavigate }: NavbarProp
                       transition={{ duration: 0.45, ease: 'easeOut' }}
                     />
                     <div className="flagship-photo-overlay" />
-                    <div className="flagship-card-content">
-                      <div className="flagship-case-badge">
-                        <span className="flagship-badge-dot" />
-                        <span>SELECTED WORK • {String(showcaseImageIndex + 1).padStart(2, '0')}</span>
-                      </div>
-                      <h3 className="flagship-card-title">Portfolio Showcase</h3>
-                      <p className="flagship-card-sub">Selected digital products and enterprise experiences.</p>
-                    </div>
+                    <AnimatePresence mode="wait" initial={false}>
+                      <motion.div
+                        key={`showcase-copy-${showcaseImageIndex}`}
+                        className="flagship-card-content"
+                        initial={{ opacity: 0, y: 16 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: -12 }}
+                        transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+                      >
+                        <div className="flagship-case-badge">
+                          <span className="flagship-badge-dot" />
+                          <span>{menuShowcaseImages[showcaseImageIndex].label} • {String(showcaseImageIndex + 1).padStart(2, '0')}</span>
+                        </div>
+                        <h3 className="flagship-card-title">{menuShowcaseImages[showcaseImageIndex].title}</h3>
+                        <p className="flagship-card-sub">{menuShowcaseImages[showcaseImageIndex].description}</p>
+                      </motion.div>
+                    </AnimatePresence>
                   </div>
                 </div>
               </div>
