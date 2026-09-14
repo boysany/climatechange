@@ -120,6 +120,16 @@ export const portfolioProjects = [
     year: '2026',
     category: 'Talent / Enterprise',
   },
+  {
+    num: '12',
+    tag: 'Digital Commerce',
+    title: 'CCDL Store',
+    desc: 'A focused digital storefront for exploring CCDL products, services, and carefully curated offerings through a clear, modern shopping experience.',
+    img: '/images/projects/elan-vogue.jpg',
+    liveUrl: 'https://ccdl.store',
+    year: '2026',
+    category: 'E-Commerce / Digital Store',
+  },
 ];
 
 interface PortfolioProps {
