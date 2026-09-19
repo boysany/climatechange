@@ -1,4 +1,4 @@
-# Robots.txt for CCDL — Climate Change Digital Labs (https://climatechangedigitallabs.com)
+# Robots.txt for CCDL — Climate Change Digital Labs (https://ccdl.in)
 User-agent: *
 Allow: /
 Disallow: /api/
@@ -25,4 +25,4 @@ Allow: /*.webp$
 Allow: /*.svg$
 
 # Canonical XML Sitemap
-Sitemap: https://climatechangedigitallabs.com/sitemap.xml
+Sitemap: https://ccdl.in/sitemap.xml
